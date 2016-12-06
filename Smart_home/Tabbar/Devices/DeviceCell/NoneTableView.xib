@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11761" systemVersion="16C53a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="373"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" tag="1001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="none_device" translatesAutoresizingMaskIntoConstraints="NO" id="YQ5-Tp-ObX">
+                    <rect key="frame" x="38" y="50" width="175" height="175"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="YQ5-Tp-ObX" secondAttribute="height" id="b1t-us-jQf"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未扫描到设备,请尝试" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztV-yA-Bvp">
+                    <rect key="frame" x="78" y="235" width="94" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.靠近设备,并重新扫描" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYd-UJ-hq3">
+                    <rect key="frame" x="78" y="263" width="153" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.检查设备是否已经添加" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gl9-4B-6co">
+                    <rect key="frame" x="78" y="291" width="166" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="YQ5-Tp-ObX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4Hp-Cl-QGO"/>
+                <constraint firstItem="YQ5-Tp-ObX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="5rO-d2-eCr"/>
+                <constraint firstItem="ztV-yA-Bvp" firstAttribute="top" secondItem="YQ5-Tp-ObX" secondAttribute="bottom" constant="10" id="9TR-yp-Goa"/>
+                <constraint firstItem="YQ5-Tp-ObX" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.7" id="CG3-AU-vL8"/>
+                <constraint firstItem="ztV-yA-Bvp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ckp-Se-gid"/>
+                <constraint firstItem="lYd-UJ-hq3" firstAttribute="leading" secondItem="YQ5-Tp-ObX" secondAttribute="leading" constant="40" id="N7Y-oX-7cL"/>
+                <constraint firstItem="lYd-UJ-hq3" firstAttribute="top" secondItem="ztV-yA-Bvp" secondAttribute="bottom" constant="10" id="O7Y-hC-yf7"/>
+                <constraint firstItem="Gl9-4B-6co" firstAttribute="top" secondItem="lYd-UJ-hq3" secondAttribute="bottom" constant="10" id="Rk1-88-xzP"/>
+                <constraint firstItem="Gl9-4B-6co" firstAttribute="leading" secondItem="YQ5-Tp-ObX" secondAttribute="leading" constant="40" id="klF-Ys-VRK"/>
+                <constraint firstItem="ztV-yA-Bvp" firstAttribute="leading" secondItem="YQ5-Tp-ObX" secondAttribute="leading" constant="40" id="nj2-vp-o7O"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="80" y="36.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="none_device" width="215" height="215"/>
+    </resources>
+</document>

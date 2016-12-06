@@ -1,0 +1,92 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - AvoidCrash (1.5.1)
+  - BlurryModalSegue (1.1.2):
+    - MZAppearance (~> 1.1.1)
+    - UIImage+BlurredFrame (~> 0.0.4)
+  - Bugly (2.4.2)
+  - CocoaAsyncSocket (7.5.1):
+    - CocoaAsyncSocket/GCD (= 7.5.1)
+  - CocoaAsyncSocket/GCD (7.5.1)
+  - CYLTableViewPlaceHolder (1.0.8)
+  - DCPathButton (2.1.4)
+  - FTPopOverMenu (1.2.5)
+  - IQKeyboardManager (4.0.7)
+  - MBProgressHUD (1.0.0)
+  - MJRefresh (3.1.12)
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.6.0):
+    - MMDrawerController/Core
+  - MZAppearance (1.1.6)
+  - Pgyer (2.8.4)
+  - PgyUpdate (1.2)
+  - pop (1.0.9)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - UIImage+BlurredFrame (0.0.4)
+
+DEPENDENCIES:
+  - AFNetworking
+  - AvoidCrash
+  - BlurryModalSegue
+  - Bugly
+  - CocoaAsyncSocket
+  - CYLTableViewPlaceHolder
+  - DCPathButton
+  - FTPopOverMenu
+  - IQKeyboardManager
+  - MBProgressHUD
+  - MJRefresh
+  - MMDrawerController
+  - Pgyer
+  - PgyUpdate
+  - pop
+  - SDWebImage
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AvoidCrash: 767acec95c5d684ec024ed9f21a439d13fbc06f3
+  BlurryModalSegue: 35cdad34eba31228e4d84073033a9ea7d6537aa4
+  Bugly: b09cd3c7e54048a0e079be88a7a99610f14eab8f
+  CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
+  CYLTableViewPlaceHolder: 44075c119aab78bbc514c75d771d6565e19938e8
+  DCPathButton: 99c8211ef3eafc3b438c917a4c7b4502fa77eee7
+  FTPopOverMenu: 4da913001eef1496a4bf47fc814aaf5d5d36d19d
+  IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
+  Pgyer: 26edfcc8da6da6383fabfdbccd2f77c623b9d6eb
+  PgyUpdate: a42e82cec5ad4e992af390e9d494f6fc62db65e4
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  UIImage+BlurredFrame: ad2f7195c6947ea3117c7d202f75a51958d5061a
+
+PODFILE CHECKSUM: 663c6f7e2daa345a55d628867399edb6ddc94e26
+
+COCOAPODS: 1.0.1

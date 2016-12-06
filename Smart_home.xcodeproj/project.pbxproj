@@ -1,0 +1,1433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C02B1FA1DD1CD4A007CE3BE /* SetBellWifiController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C02B1F91DD1CD4A007CE3BE /* SetBellWifiController.m */; };
+		3C05132F1D2CB4D100ED6DA1 /* InfraredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C05132E1D2CB4D100ED6DA1 /* InfraredController.m */; };
+		3C0513331D2CF18C00ED6DA1 /* CurtainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0513321D2CF18B00ED6DA1 /* CurtainCell.m */; };
+		3C0513351D2D080500ED6DA1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0513341D2D080500ED6DA1 /* CoreTelephony.framework */; };
+		3C0513371D2D084300ED6DA1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0513361D2D084300ED6DA1 /* OpenGLES.framework */; };
+		3C0513391D2D084B00ED6DA1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0513381D2D084B00ED6DA1 /* CoreMotion.framework */; };
+		3C05133B1D2D085200ED6DA1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C05133A1D2D085200ED6DA1 /* AudioToolbox.framework */; };
+		3C05133D1D2D085A00ED6DA1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C05133C1D2D085A00ED6DA1 /* AVFoundation.framework */; };
+		3C05133F1D2D086100ED6DA1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C05133E1D2D086100ED6DA1 /* SystemConfiguration.framework */; };
+		3C0513411D2D088800ED6DA1 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0513401D2D088800ED6DA1 /* CoreBluetooth.framework */; };
+		3C056F341D81069700EFB827 /* SceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C056F331D81069700EFB827 /* SceneView.m */; };
+		3C08F1B11D2F40CD0091224F /* AddDevicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C08F1B01D2F40CD0091224F /* AddDevicesController.m */; };
+		3C1ADD511D549FD4009EA027 /* InfrareAddController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1ADD501D549FD4009EA027 /* InfrareAddController.m */; };
+		3C1B5E1A1D2BB0EA00E68797 /* Devices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1B5E181D2BB0EA00E68797 /* Devices.storyboard */; };
+		3C1B5E1D1D2BBD3400E68797 /* RemoteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1B5E1C1D2BBD3400E68797 /* RemoteController.m */; };
+		3C1E8B551DBF4BA900900A82 /* jpush-ios-2.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1E8B541DBF4BA900900A82 /* jpush-ios-2.2.0.a */; };
+		3C1ECC901D30A81500F93FFF /* ManualAddBlueToothController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1ECC8F1D30A81500F93FFF /* ManualAddBlueToothController.m */; };
+		3C212A3F1D8804A900724EF6 /* EditSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C212A3E1D8804A900724EF6 /* EditSceneController.m */; };
+		3C23FE701D2BA5AB00728650 /* SocketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C23FE6F1D2BA5AB00728650 /* SocketCell.m */; };
+		3C24E5E71D8170A900E74C24 /* AddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C24E5E61D8170A900E74C24 /* AddView.xib */; };
+		3C24E5EA1D82908600E74C24 /* CommonInfraredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E5E91D82908600E74C24 /* CommonInfraredController.m */; };
+		3C24E5EC1D82A28B00E74C24 /* PopTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C24E5EB1D82A28B00E74C24 /* PopTopView.xib */; };
+		3C24E5EF1D82A75F00E74C24 /* PopTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E5EE1D82A75F00E74C24 /* PopTopView.m */; };
+		3C2C59D71D2E51ED009F5016 /* LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2C59D61D2E51ED009F5016 /* LaunchView.m */; };
+		3C2CB0921D6A9F0500E798C0 /* TVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CB0911D6A9F0400E798C0 /* TVController.m */; };
+		3C318B751D46FF6300359F60 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C318B741D46FF6300359F60 /* BluetoothManager.m */; };
+		3C318B781D47006200359F60 /* TTSUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C318B771D47006200359F60 /* TTSUtility.m */; };
+		3C3387701D927DBD00577C0D /* AutoChooseFuntion.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C33876F1D927DBD00577C0D /* AutoChooseFuntion.m */; };
+		3C3387731D927E5E00577C0D /* DeviceTypeList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C3387711D927E5E00577C0D /* DeviceTypeList.plist */; };
+		3C3387741D927E5E00577C0D /* InfraredBrandList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C3387721D927E5E00577C0D /* InfraredBrandList.plist */; };
+		3C33877E1D927E7500577C0D /* HyPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3387761D927E7500577C0D /* HyPopMenuView.m */; };
+		3C33877F1D927E7500577C0D /* PopMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3387791D927E7500577C0D /* PopMenuButton.m */; };
+		3C3387801D927E7500577C0D /* PopMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C33877B1D927E7500577C0D /* PopMenuModel.m */; };
+		3C3387811D927E7500577C0D /* UIColor+ImageGetColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C33877D1D927E7500577C0D /* UIColor+ImageGetColor.m */; };
+		3C36FBA71D929326002E02C8 /* DoorLabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C36FBA61D929326002E02C8 /* DoorLabViewController.m */; };
+		3C3804FD1D4A062E00B1EA72 /* RemoteManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3804FC1D4A062E00B1EA72 /* RemoteManger.m */; };
+		3C3A43E21D6C32A7008EDC47 /* LockAddController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3A43E11D6C32A7008EDC47 /* LockAddController.m */; };
+		3C3EFC4E1D55C27800CE5A89 /* ChooseBrandController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3EFC4D1D55C27800CE5A89 /* ChooseBrandController.m */; };
+		3C47717C1D8E86FA000284D6 /* SceneCellCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C47717B1D8E86FA000284D6 /* SceneCellCommon.m */; };
+		3C4771821D8F7AE7000284D6 /* OtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4771811D8F7AE7000284D6 /* OtherViewController.m */; };
+		3C4771861D8F97DB000284D6 /* BathTubController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4771851D8F97DB000284D6 /* BathTubController.m */; };
+		3C491F0A1DBA07C6007DC6A2 /* JFGSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C491F091DBA07C6007DC6A2 /* JFGSDK.framework */; };
+		3C4D8A861DAE33D7009B1CDA /* CallingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D8A851DAE33D7009B1CDA /* CallingController.m */; };
+		3C4D8A891DAE3E0E009B1CDA /* door.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D8A881DAE3E0E009B1CDA /* door.mp3 */; };
+		3C50ED3F1D6D487800FEB855 /* CurtainCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C50ED3E1D6D487800FEB855 /* CurtainCollectionCell.m */; };
+		3C579AE01DB4B4FC00E00E08 /* DoorAddController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C579ADF1DB4B4FC00E00E08 /* DoorAddController.m */; };
+		3C579AE31DB4D7FC00E00E08 /* DoorBellStep1.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C579AE21DB4D7FC00E00E08 /* DoorBellStep1.m */; };
+		3C579AE91DB5C4BC00E00E08 /* DoorBellStep2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C579AE81DB5C4BC00E00E08 /* DoorBellStep2.m */; };
+		3C579AEC1DB5CED400E00E08 /* DoorBellBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C579AEB1DB5CED400E00E08 /* DoorBellBinding.m */; };
+		3C5DBF3B1D5D807F006A6146 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DBF3A1D5D807F006A6146 /* SettingController.m */; };
+		3C6305181DB7077000218744 /* DoorCheckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C6305171DB7077000218744 /* DoorCheckController.m */; };
+		3C784F731D4763BF00FF2F6C /* SideBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C784F721D4763BF00FF2F6C /* SideBarController.m */; };
+		3C7C6ACD1D24C9E700CEDDEF /* SiderNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7C6ACC1D24C9E700CEDDEF /* SiderNormalCell.m */; };
+		3C7C6AD11D2514E400CEDDEF /* DevicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7C6AD01D2514E400CEDDEF /* DevicesController.m */; };
+		3C7EC80C1D2A4D11003CAAA6 /* SwitchTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7EC80B1D2A4D11003CAAA6 /* SwitchTwoCell.m */; };
+		3C7EC8121D2A5313003CAAA6 /* SwitchCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7EC8111D2A5313003CAAA6 /* SwitchCommonCell.m */; };
+		3C7ECDD91D23B48500335F75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7ECDD81D23B48500335F75 /* main.m */; };
+		3C7ECDDC1D23B48500335F75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7ECDDB1D23B48500335F75 /* AppDelegate.m */; };
+		3C7ECDE51D23B48500335F75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C7ECDE31D23B48500335F75 /* Main.storyboard */; };
+		3C7ECDE71D23B48500335F75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C7ECDE61D23B48500335F75 /* Assets.xcassets */; };
+		3C7ECDEA1D23B48500335F75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C7ECDE81D23B48500335F75 /* LaunchScreen.storyboard */; };
+		3C7ECDF81D23CB9F00335F75 /* TTSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7ECDF71D23CB9F00335F75 /* TTSTabBarController.m */; };
+		3C7ECDFE1D23E02600335F75 /* MainLeftController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7ECDFD1D23E02600335F75 /* MainLeftController.m */; };
+		3C7F2DDC1D6AFC4C000A85D1 /* LockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F2DDB1D6AFC4C000A85D1 /* LockController.m */; };
+		3C905F631D27680400A9FE5B /* SwitchOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C905F621D27680400A9FE5B /* SwitchOneCell.m */; };
+		3C905F651D27C4CE00A9FE5B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C905F641D27C4CE00A9FE5B /* CoreData.framework */; };
+		3C905F6B1D27C5BD00A9FE5B /* DataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C905F691D27C5BD00A9FE5B /* DataBase.xcdatamodeld */; };
+		3C905F6E1D27C5D000A9FE5B /* TTSCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C905F6D1D27C5D000A9FE5B /* TTSCoreDataManager.m */; };
+		3C934A731D6152CC00FD8965 /* DeviceSwitchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C934A721D6152CC00FD8965 /* DeviceSwitchController.m */; };
+		3C934A7A1D61741400FD8965 /* SwtichCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C934A791D61741300FD8965 /* SwtichCollectionCell.m */; };
+		3C954E721DACBF72008FF504 /* DoorBellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C954E711DACBF72008FF504 /* DoorBellController.m */; };
+		3C954E731DACE47B008FF504 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF119821DAA4432002A957D /* UserNotifications.framework */; };
+		3C999A701D6B16D000E66DCB /* UIColor+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C999A641D6B16D000E66DCB /* UIColor+XLPasswordView.m */; };
+		3C999A711D6B16D000E66DCB /* UIImage+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C999A661D6B16D000E66DCB /* UIImage+XLPasswordView.m */; };
+		3C999A721D6B16D000E66DCB /* UIView+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C999A681D6B16D000E66DCB /* UIView+XLPasswordView.m */; };
+		3C999A731D6B16D000E66DCB /* XLPasswordInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C999A6A1D6B16D000E66DCB /* XLPasswordInputView.m */; };
+		3C999A741D6B16D000E66DCB /* XLPasswordView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C999A6B1D6B16D000E66DCB /* XLPasswordView.bundle */; };
+		3C999A751D6B16D000E66DCB /* XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C999A6D1D6B16D000E66DCB /* XLPasswordView.m */; };
+		3C999A761D6B16D000E66DCB /* XLRandomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C999A6F1D6B16D000E66DCB /* XLRandomKeyboard.m */; };
+		3C999A7C1D6BF60000E66DCB /* LockSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C999A7B1D6BF60000E66DCB /* LockSettingController.m */; };
+		3C99F2DA1DBF4E0900614E91 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C99F2D91DBF4E0900614E91 /* libresolv.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
+		3CA37F2D1D5890B900852505 /* ConfirmCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA37F2C1D5890B900852505 /* ConfirmCodeController.m */; };
+		3CA485281D93743400BABB60 /* Remote53Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA485271D93743400BABB60 /* Remote53Controller.m */; };
+		3CA4852B1D93749400BABB60 /* RemoteOneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA4852A1D93749400BABB60 /* RemoteOneController.m */; };
+		3CA4852F1D93B2BC00BABB60 /* CenterAirController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA4852E1D93B2BC00BABB60 /* CenterAirController.m */; };
+		3CA715FD1D548FD70011473A /* NoneTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CA715FC1D548FD70011473A /* NoneTableView.xib */; };
+		3CAB77191DAC8A8800F7B73D /* Devices_Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB77171DAC8A8800F7B73D /* Devices_Other.storyboard */; };
+		3CAB771C1DAC93D700F7B73D /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB771B1DAC93D700F7B73D /* MessageController.m */; };
+		3CB83BD81D66A2BC003E1ECD /* BlurView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB83BD71D66A2BC003E1ECD /* BlurView.xib */; };
+		3CB83BDC1D66B813003E1ECD /* AirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB83BDB1D66B813003E1ECD /* AirViewController.m */; };
+		3CB9F5241D7565500027D155 /* RoomAddDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB9F5231D7565500027D155 /* RoomAddDeviceController.m */; };
+		3CB9F52D1D76EF9D0027D155 /* Devices_Switch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB9F52B1D76EF9D0027D155 /* Devices_Switch.storyboard */; };
+		3CB9F5301D76F09C0027D155 /* Devices_Infrared.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB9F52E1D76F09C0027D155 /* Devices_Infrared.storyboard */; };
+		3CB9F5331D76F1300027D155 /* Devices_Lock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB9F5311D76F1300027D155 /* Devices_Lock.storyboard */; };
+		3CC1FEB81D47532500784AE4 /* NSString+StringOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC1FEB71D47532500784AE4 /* NSString+StringOperation.m */; };
+		3CC1FEBB1D47549500784AE4 /* SwitchThreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC1FEBA1D47549500784AE4 /* SwitchThreeCell.m */; };
+		3CD233471DAF79A800614CED /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD233461DAF79A800614CED /* LoginController.m */; };
+		3CD8EA9A1D7418B000B843C7 /* AddRoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD8EA991D7418B000B843C7 /* AddRoomController.m */; };
+		3CDDD6291DC6E25400F6DDF7 /* EditBellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDD6281DC6E25400F6DDF7 /* EditBellController.m */; };
+		3CDDD62C1DC7228200F6DDF7 /* DoorBellInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDD62B1DC7228200F6DDF7 /* DoorBellInfoController.m */; };
+		3CDE29D31D7D71AA00EE90FD /* DeviceForScene+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE29C41D7D71AA00EE90FD /* DeviceForScene+CoreDataProperties.m */; };
+		3CDE29D41D7D71AA00EE90FD /* DeviceForScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE29C61D7D71AA00EE90FD /* DeviceForScene.m */; };
+		3CDE29D51D7D71AA00EE90FD /* DeviceInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE29C81D7D71AA00EE90FD /* DeviceInfo+CoreDataProperties.m */; };
+		3CDE29D61D7D71AA00EE90FD /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE29CA1D7D71AA00EE90FD /* DeviceInfo.m */; };
+		3CDE29D71D7D71AA00EE90FD /* RoomInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE29CC1D7D71AA00EE90FD /* RoomInfo+CoreDataProperties.m */; };
+		3CDE29D81D7D71AA00EE90FD /* RoomInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE29CE1D7D71AA00EE90FD /* RoomInfo.m */; };
+		3CDE29D91D7D71AA00EE90FD /* SceneInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE29D01D7D71AA00EE90FD /* SceneInfo+CoreDataProperties.m */; };
+		3CDE29DA1D7D71AA00EE90FD /* SceneInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE29D21D7D71AA00EE90FD /* SceneInfo.m */; };
+		3CDF07401DED0E29004B922C /* UIViewController+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDF073F1DED0E29004B922C /* UIViewController+Swizzling.m */; };
+		3CE479861D53420800C26168 /* NSMutableArray+AddDeviceArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE479851D53420800C26168 /* NSMutableArray+AddDeviceArray.m */; };
+		3CF119751DAA4387002A957D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF119741DAA4387002A957D /* CFNetwork.framework */; };
+		3CF119771DAA43A2002A957D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF119761DAA43A2002A957D /* CoreFoundation.framework */; };
+		3CF119791DAA43C5002A957D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF119781DAA43C5002A957D /* CoreGraphics.framework */; };
+		3CF1197B1DAA43D9002A957D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF1197A1DAA43D9002A957D /* Foundation.framework */; };
+		3CF1197D1DAA43F0002A957D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF1197C1DAA43F0002A957D /* UIKit.framework */; };
+		3CF1197F1DAA4400002A957D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF1197E1DAA4400002A957D /* Security.framework */; };
+		3CF119811DAA441C002A957D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF119801DAA441C002A957D /* libz.tbd */; };
+		3CF992051D644B3200E2FFE8 /* EditDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF992041D644B3200E2FFE8 /* EditDeviceController.m */; };
+		3CF992071D646BD800E2FFE8 /* TableViewBackGround.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF992061D646BD800E2FFE8 /* TableViewBackGround.xib */; };
+		3CF9920B1D65587700E2FFE8 /* DeviceInfraredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF9920A1D65587700E2FFE8 /* DeviceInfraredController.m */; };
+		3CF9920E1D655BB400E2FFE8 /* InfraredViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF9920D1D655BB400E2FFE8 /* InfraredViewCell.m */; };
+		D3AD2F938BA8C2D629D6DC9B /* libPods-Smart_home.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E65D69A5D7FD52519E23F03D /* libPods-Smart_home.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2474AA86074CB423A58CE2F4 /* Pods-Smart_home.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart_home.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smart_home/Pods-Smart_home.release.xcconfig"; sourceTree = "<group>"; };
+		3C02B1F81DD1CD4A007CE3BE /* SetBellWifiController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetBellWifiController.h; path = Tabbar/Devices/DeviceControl/Other/DoorBell/SetBellWifiController.h; sourceTree = "<group>"; };
+		3C02B1F91DD1CD4A007CE3BE /* SetBellWifiController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetBellWifiController.m; path = Tabbar/Devices/DeviceControl/Other/DoorBell/SetBellWifiController.m; sourceTree = "<group>"; };
+		3C05132D1D2CB4D100ED6DA1 /* InfraredController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfraredController.h; path = SiderBar/InfraredController.h; sourceTree = "<group>"; };
+		3C05132E1D2CB4D100ED6DA1 /* InfraredController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfraredController.m; path = SiderBar/InfraredController.m; sourceTree = "<group>"; };
+		3C0513311D2CF18B00ED6DA1 /* CurtainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurtainCell.h; path = Tabbar/Devices/DeviceCell/CurtainCell.h; sourceTree = "<group>"; };
+		3C0513321D2CF18B00ED6DA1 /* CurtainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurtainCell.m; path = Tabbar/Devices/DeviceCell/CurtainCell.m; sourceTree = "<group>"; };
+		3C0513341D2D080500ED6DA1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		3C0513361D2D084300ED6DA1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		3C0513381D2D084B00ED6DA1 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		3C05133A1D2D085200ED6DA1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3C05133C1D2D085A00ED6DA1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3C05133E1D2D086100ED6DA1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3C0513401D2D088800ED6DA1 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		3C056F321D81069700EFB827 /* SceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneView.h; path = Tabbar/Devices/DeviceCell/DeviceView/SceneView.h; sourceTree = "<group>"; };
+		3C056F331D81069700EFB827 /* SceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneView.m; path = Tabbar/Devices/DeviceCell/DeviceView/SceneView.m; sourceTree = "<group>"; };
+		3C08F1AF1D2F40CD0091224F /* AddDevicesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddDevicesController.h; path = Tabbar/Devices/AddDevicesController.h; sourceTree = "<group>"; };
+		3C08F1B01D2F40CD0091224F /* AddDevicesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddDevicesController.m; path = Tabbar/Devices/AddDevicesController.m; sourceTree = "<group>"; };
+		3C1ADD4F1D549FD4009EA027 /* InfrareAddController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfrareAddController.h; path = Tabbar/Devices/InfrareAddController.h; sourceTree = "<group>"; };
+		3C1ADD501D549FD4009EA027 /* InfrareAddController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfrareAddController.m; path = Tabbar/Devices/InfrareAddController.m; sourceTree = "<group>"; };
+		3C1B5E191D2BB0EA00E68797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Devices.storyboard; sourceTree = "<group>"; };
+		3C1B5E1B1D2BBD3400E68797 /* RemoteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RemoteController.h; path = SiderBar/RemoteController.h; sourceTree = "<group>"; };
+		3C1B5E1C1D2BBD3400E68797 /* RemoteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RemoteController.m; path = SiderBar/RemoteController.m; sourceTree = "<group>"; };
+		3C1E8B541DBF4BA900900A82 /* jpush-ios-2.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.2.0.a"; sourceTree = "<group>"; };
+		3C1E8B571DBF4BFF00900A82 /* JPUSHService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		3C1ECC8E1D30A81500F93FFF /* ManualAddBlueToothController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManualAddBlueToothController.h; path = Tabbar/Devices/ManualAddBlueToothController.h; sourceTree = "<group>"; };
+		3C1ECC8F1D30A81500F93FFF /* ManualAddBlueToothController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManualAddBlueToothController.m; path = Tabbar/Devices/ManualAddBlueToothController.m; sourceTree = "<group>"; };
+		3C212A3D1D8804A900724EF6 /* EditSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSceneController.h; path = Tabbar/Scene/EditSceneController.h; sourceTree = "<group>"; };
+		3C212A3E1D8804A900724EF6 /* EditSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditSceneController.m; path = Tabbar/Scene/EditSceneController.m; sourceTree = "<group>"; };
+		3C23FE6E1D2BA5AB00728650 /* SocketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocketCell.h; path = Tabbar/Devices/DeviceCell/SocketCell.h; sourceTree = "<group>"; };
+		3C23FE6F1D2BA5AB00728650 /* SocketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocketCell.m; path = Tabbar/Devices/DeviceCell/SocketCell.m; sourceTree = "<group>"; };
+		3C24E5E61D8170A900E74C24 /* AddView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddView.xib; path = Tabbar/Devices/DeviceCell/AddView.xib; sourceTree = "<group>"; };
+		3C24E5E81D82908600E74C24 /* CommonInfraredController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonInfraredController.h; path = Tabbar/Devices/DeviceControl/Infrared/CommonInfraredController.h; sourceTree = "<group>"; };
+		3C24E5E91D82908600E74C24 /* CommonInfraredController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonInfraredController.m; path = Tabbar/Devices/DeviceControl/Infrared/CommonInfraredController.m; sourceTree = "<group>"; };
+		3C24E5EB1D82A28B00E74C24 /* PopTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopTopView.xib; path = Tabbar/Devices/DeviceCell/PopTopView.xib; sourceTree = "<group>"; };
+		3C24E5ED1D82A75F00E74C24 /* PopTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopTopView.h; path = Tabbar/Devices/DeviceCell/DeviceView/PopTopView.h; sourceTree = "<group>"; };
+		3C24E5EE1D82A75F00E74C24 /* PopTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopTopView.m; path = Tabbar/Devices/DeviceCell/DeviceView/PopTopView.m; sourceTree = "<group>"; };
+		3C2C59D41D2E4B12009F5016 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		3C2C59D51D2E51ED009F5016 /* LaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchView.h; path = Launch/LaunchView.h; sourceTree = "<group>"; };
+		3C2C59D61D2E51ED009F5016 /* LaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchView.m; path = Launch/LaunchView.m; sourceTree = "<group>"; };
+		3C2CB0901D6A9F0400E798C0 /* TVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TVController.h; path = Tabbar/Devices/DeviceControl/Infrared/TVController.h; sourceTree = "<group>"; };
+		3C2CB0911D6A9F0400E798C0 /* TVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TVController.m; path = Tabbar/Devices/DeviceControl/Infrared/TVController.m; sourceTree = "<group>"; };
+		3C318B731D46FF6300359F60 /* BluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothManager.h; path = Tools/BluetoothManager.h; sourceTree = "<group>"; };
+		3C318B741D46FF6300359F60 /* BluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothManager.m; path = Tools/BluetoothManager.m; sourceTree = "<group>"; };
+		3C318B761D47006200359F60 /* TTSUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSUtility.h; path = Tools/TTSUtility.h; sourceTree = "<group>"; };
+		3C318B771D47006200359F60 /* TTSUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSUtility.m; path = Tools/TTSUtility.m; sourceTree = "<group>"; };
+		3C33876E1D927DBD00577C0D /* AutoChooseFuntion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutoChooseFuntion.h; path = Tabbar/Devices/DeviceControl/Other/Remote/AutoChooseFuntion.h; sourceTree = "<group>"; };
+		3C33876F1D927DBD00577C0D /* AutoChooseFuntion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AutoChooseFuntion.m; path = Tabbar/Devices/DeviceControl/Other/Remote/AutoChooseFuntion.m; sourceTree = "<group>"; };
+		3C3387711D927E5E00577C0D /* DeviceTypeList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DeviceTypeList.plist; path = DataBase/DeviceTypeList.plist; sourceTree = "<group>"; };
+		3C3387721D927E5E00577C0D /* InfraredBrandList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = InfraredBrandList.plist; path = DataBase/InfraredBrandList.plist; sourceTree = "<group>"; };
+		3C3387751D927E7500577C0D /* HyPopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HyPopMenuView.h; path = Library/HyPopMenuView.h; sourceTree = "<group>"; };
+		3C3387761D927E7500577C0D /* HyPopMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HyPopMenuView.m; path = Library/HyPopMenuView.m; sourceTree = "<group>"; };
+		3C3387771D927E7500577C0D /* HyPopMenuViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HyPopMenuViewDelegate.h; path = Library/HyPopMenuViewDelegate.h; sourceTree = "<group>"; };
+		3C3387781D927E7500577C0D /* PopMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopMenuButton.h; path = Library/PopMenuButton.h; sourceTree = "<group>"; };
+		3C3387791D927E7500577C0D /* PopMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopMenuButton.m; path = Library/PopMenuButton.m; sourceTree = "<group>"; };
+		3C33877A1D927E7500577C0D /* PopMenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopMenuModel.h; path = Library/PopMenuModel.h; sourceTree = "<group>"; };
+		3C33877B1D927E7500577C0D /* PopMenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopMenuModel.m; path = Library/PopMenuModel.m; sourceTree = "<group>"; };
+		3C33877C1D927E7500577C0D /* UIColor+ImageGetColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+ImageGetColor.h"; path = "Library/UIColor+ImageGetColor.h"; sourceTree = "<group>"; };
+		3C33877D1D927E7500577C0D /* UIColor+ImageGetColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ImageGetColor.m"; path = "Library/UIColor+ImageGetColor.m"; sourceTree = "<group>"; };
+		3C36FBA51D929326002E02C8 /* DoorLabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorLabViewController.h; path = Tabbar/Devices/DeviceControl/Other/Door/DoorLabViewController.h; sourceTree = "<group>"; };
+		3C36FBA61D929326002E02C8 /* DoorLabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorLabViewController.m; path = Tabbar/Devices/DeviceControl/Other/Door/DoorLabViewController.m; sourceTree = "<group>"; };
+		3C3804FB1D4A062E00B1EA72 /* RemoteManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RemoteManger.h; path = Tools/RemoteManger.h; sourceTree = "<group>"; };
+		3C3804FC1D4A062E00B1EA72 /* RemoteManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RemoteManger.m; path = Tools/RemoteManger.m; sourceTree = "<group>"; };
+		3C3A43E01D6C32A7008EDC47 /* LockAddController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LockAddController.h; path = Tabbar/Devices/DeviceControl/Lock/LockAddController.h; sourceTree = "<group>"; };
+		3C3A43E11D6C32A7008EDC47 /* LockAddController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LockAddController.m; path = Tabbar/Devices/DeviceControl/Lock/LockAddController.m; sourceTree = "<group>"; };
+		3C3EFC4C1D55C27800CE5A89 /* ChooseBrandController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChooseBrandController.h; path = Tabbar/Devices/ChooseBrandController.h; sourceTree = "<group>"; };
+		3C3EFC4D1D55C27800CE5A89 /* ChooseBrandController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChooseBrandController.m; path = Tabbar/Devices/ChooseBrandController.m; sourceTree = "<group>"; };
+		3C4361FC1D79735C00E0170F /* DataBase 2016.9.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataBase 2016.9.2.xcdatamodel"; sourceTree = "<group>"; };
+		3C47717A1D8E86FA000284D6 /* SceneCellCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneCellCommon.h; path = Tabbar/Scene/SceneCell/SceneCellCommon.h; sourceTree = "<group>"; };
+		3C47717B1D8E86FA000284D6 /* SceneCellCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneCellCommon.m; path = Tabbar/Scene/SceneCell/SceneCellCommon.m; sourceTree = "<group>"; };
+		3C4771801D8F7AE7000284D6 /* OtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OtherViewController.h; path = Tabbar/Devices/DeviceControl/Other/OtherViewController.h; sourceTree = "<group>"; };
+		3C4771811D8F7AE7000284D6 /* OtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OtherViewController.m; path = Tabbar/Devices/DeviceControl/Other/OtherViewController.m; sourceTree = "<group>"; };
+		3C4771841D8F97DB000284D6 /* BathTubController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BathTubController.h; path = Tabbar/Devices/DeviceControl/Other/BathTubController.h; sourceTree = "<group>"; };
+		3C4771851D8F97DB000284D6 /* BathTubController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BathTubController.m; path = Tabbar/Devices/DeviceControl/Other/BathTubController.m; sourceTree = "<group>"; };
+		3C491F091DBA07C6007DC6A2 /* JFGSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JFGSDK.framework; sourceTree = "<group>"; };
+		3C4D8A841DAE33D7009B1CDA /* CallingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CallingController.h; path = Tabbar/Devices/DeviceControl/Other/DoorBell/CallingController.h; sourceTree = "<group>"; };
+		3C4D8A851DAE33D7009B1CDA /* CallingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CallingController.m; path = Tabbar/Devices/DeviceControl/Other/DoorBell/CallingController.m; sourceTree = "<group>"; };
+		3C4D8A881DAE3E0E009B1CDA /* door.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = door.mp3; sourceTree = "<group>"; };
+		3C50ED3D1D6D487800FEB855 /* CurtainCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurtainCollectionCell.h; path = Tabbar/Devices/DeviceControl/CurtainCollectionCell.h; sourceTree = "<group>"; };
+		3C50ED3E1D6D487800FEB855 /* CurtainCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurtainCollectionCell.m; path = Tabbar/Devices/DeviceControl/CurtainCollectionCell.m; sourceTree = "<group>"; };
+		3C579ADE1DB4B4FC00E00E08 /* DoorAddController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorAddController.h; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorAddController.h; sourceTree = "<group>"; };
+		3C579ADF1DB4B4FC00E00E08 /* DoorAddController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorAddController.m; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorAddController.m; sourceTree = "<group>"; };
+		3C579AE11DB4D7FC00E00E08 /* DoorBellStep1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorBellStep1.h; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellStep1.h; sourceTree = "<group>"; };
+		3C579AE21DB4D7FC00E00E08 /* DoorBellStep1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorBellStep1.m; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellStep1.m; sourceTree = "<group>"; };
+		3C579AE71DB5C4BC00E00E08 /* DoorBellStep2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorBellStep2.h; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellStep2.h; sourceTree = "<group>"; };
+		3C579AE81DB5C4BC00E00E08 /* DoorBellStep2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorBellStep2.m; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellStep2.m; sourceTree = "<group>"; };
+		3C579AEA1DB5CED400E00E08 /* DoorBellBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorBellBinding.h; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellBinding.h; sourceTree = "<group>"; };
+		3C579AEB1DB5CED400E00E08 /* DoorBellBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorBellBinding.m; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellBinding.m; sourceTree = "<group>"; };
+		3C5DBF391D5D807F006A6146 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingController.h; path = SettingBar/SettingController.h; sourceTree = "<group>"; };
+		3C5DBF3A1D5D807F006A6146 /* SettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingController.m; path = SettingBar/SettingController.m; sourceTree = "<group>"; };
+		3C6305161DB7077000218744 /* DoorCheckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorCheckController.h; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorCheckController.h; sourceTree = "<group>"; };
+		3C6305171DB7077000218744 /* DoorCheckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorCheckController.m; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorCheckController.m; sourceTree = "<group>"; };
+		3C784F711D4763BF00FF2F6C /* SideBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideBarController.h; path = SiderBar/SideBarController.h; sourceTree = "<group>"; };
+		3C784F721D4763BF00FF2F6C /* SideBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SideBarController.m; path = SiderBar/SideBarController.m; sourceTree = "<group>"; };
+		3C7C6ACB1D24C9E700CEDDEF /* SiderNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SiderNormalCell.h; path = SiderBar/SiderNormalCell.h; sourceTree = "<group>"; };
+		3C7C6ACC1D24C9E700CEDDEF /* SiderNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SiderNormalCell.m; path = SiderBar/SiderNormalCell.m; sourceTree = "<group>"; };
+		3C7C6ACF1D2514E400CEDDEF /* DevicesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DevicesController.h; path = Tabbar/Devices/DevicesController.h; sourceTree = "<group>"; };
+		3C7C6AD01D2514E400CEDDEF /* DevicesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DevicesController.m; path = Tabbar/Devices/DevicesController.m; sourceTree = "<group>"; };
+		3C7EC80A1D2A4D11003CAAA6 /* SwitchTwoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwitchTwoCell.h; path = Tabbar/Devices/DeviceCell/SwitchTwoCell.h; sourceTree = "<group>"; };
+		3C7EC80B1D2A4D11003CAAA6 /* SwitchTwoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwitchTwoCell.m; path = Tabbar/Devices/DeviceCell/SwitchTwoCell.m; sourceTree = "<group>"; };
+		3C7EC8101D2A5313003CAAA6 /* SwitchCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwitchCommonCell.h; path = Tabbar/Devices/DeviceCell/SwitchCommonCell.h; sourceTree = "<group>"; };
+		3C7EC8111D2A5313003CAAA6 /* SwitchCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwitchCommonCell.m; path = Tabbar/Devices/DeviceCell/SwitchCommonCell.m; sourceTree = "<group>"; };
+		3C7ECDD41D23B48500335F75 /* Smart_home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smart_home.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C7ECDD81D23B48500335F75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3C7ECDDA1D23B48500335F75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3C7ECDDB1D23B48500335F75 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3C7ECDE41D23B48500335F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3C7ECDE61D23B48500335F75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3C7ECDE91D23B48500335F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3C7ECDEB1D23B48500335F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C7ECDF61D23CB9F00335F75 /* TTSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSTabBarController.h; path = Tabbar/TTSTabBarController.h; sourceTree = "<group>"; };
+		3C7ECDF71D23CB9F00335F75 /* TTSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSTabBarController.m; path = Tabbar/TTSTabBarController.m; sourceTree = "<group>"; };
+		3C7ECDFC1D23E02600335F75 /* MainLeftController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainLeftController.h; path = Tabbar/MainLeftController.h; sourceTree = "<group>"; };
+		3C7ECDFD1D23E02600335F75 /* MainLeftController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainLeftController.m; path = Tabbar/MainLeftController.m; sourceTree = "<group>"; };
+		3C7F2DDA1D6AFC4C000A85D1 /* LockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LockController.h; path = Tabbar/Devices/DeviceControl/Lock/LockController.h; sourceTree = "<group>"; };
+		3C7F2DDB1D6AFC4C000A85D1 /* LockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LockController.m; path = Tabbar/Devices/DeviceControl/Lock/LockController.m; sourceTree = "<group>"; };
+		3C905F611D27680400A9FE5B /* SwitchOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwitchOneCell.h; path = Tabbar/Devices/DeviceCell/SwitchOneCell.h; sourceTree = "<group>"; };
+		3C905F621D27680400A9FE5B /* SwitchOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwitchOneCell.m; path = Tabbar/Devices/DeviceCell/SwitchOneCell.m; sourceTree = "<group>"; };
+		3C905F641D27C4CE00A9FE5B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3C905F6A1D27C5BD00A9FE5B /* DataBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataBase.xcdatamodel; sourceTree = "<group>"; };
+		3C905F6C1D27C5D000A9FE5B /* TTSCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSCoreDataManager.h; path = DataBase/TTSCoreDataManager.h; sourceTree = "<group>"; };
+		3C905F6D1D27C5D000A9FE5B /* TTSCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSCoreDataManager.m; path = DataBase/TTSCoreDataManager.m; sourceTree = "<group>"; };
+		3C934A711D6152CC00FD8965 /* DeviceSwitchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceSwitchController.h; path = Tabbar/Devices/DeviceControl/DeviceSwitchController.h; sourceTree = "<group>"; };
+		3C934A721D6152CC00FD8965 /* DeviceSwitchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceSwitchController.m; path = Tabbar/Devices/DeviceControl/DeviceSwitchController.m; sourceTree = "<group>"; };
+		3C934A781D61741300FD8965 /* SwtichCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwtichCollectionCell.h; path = Tabbar/Devices/DeviceControl/SwtichCollectionCell.h; sourceTree = "<group>"; };
+		3C934A791D61741300FD8965 /* SwtichCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwtichCollectionCell.m; path = Tabbar/Devices/DeviceControl/SwtichCollectionCell.m; sourceTree = "<group>"; };
+		3C954E701DACBF72008FF504 /* DoorBellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorBellController.h; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellController.h; sourceTree = "<group>"; };
+		3C954E711DACBF72008FF504 /* DoorBellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorBellController.m; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellController.m; sourceTree = "<group>"; };
+		3C999A631D6B16D000E66DCB /* UIColor+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+XLPasswordView.h"; sourceTree = "<group>"; };
+		3C999A641D6B16D000E66DCB /* UIColor+XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+XLPasswordView.m"; sourceTree = "<group>"; };
+		3C999A651D6B16D000E66DCB /* UIImage+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+XLPasswordView.h"; sourceTree = "<group>"; };
+		3C999A661D6B16D000E66DCB /* UIImage+XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+XLPasswordView.m"; sourceTree = "<group>"; };
+		3C999A671D6B16D000E66DCB /* UIView+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XLPasswordView.h"; sourceTree = "<group>"; };
+		3C999A681D6B16D000E66DCB /* UIView+XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XLPasswordView.m"; sourceTree = "<group>"; };
+		3C999A691D6B16D000E66DCB /* XLPasswordInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPasswordInputView.h; sourceTree = "<group>"; };
+		3C999A6A1D6B16D000E66DCB /* XLPasswordInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPasswordInputView.m; sourceTree = "<group>"; };
+		3C999A6B1D6B16D000E66DCB /* XLPasswordView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = XLPasswordView.bundle; sourceTree = "<group>"; };
+		3C999A6C1D6B16D000E66DCB /* XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPasswordView.h; sourceTree = "<group>"; };
+		3C999A6D1D6B16D000E66DCB /* XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPasswordView.m; sourceTree = "<group>"; };
+		3C999A6E1D6B16D000E66DCB /* XLRandomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLRandomKeyboard.h; sourceTree = "<group>"; };
+		3C999A6F1D6B16D000E66DCB /* XLRandomKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLRandomKeyboard.m; sourceTree = "<group>"; };
+		3C999A7A1D6BF60000E66DCB /* LockSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LockSettingController.h; path = Tabbar/Devices/DeviceControl/Lock/LockSettingController.h; sourceTree = "<group>"; };
+		3C999A7B1D6BF60000E66DCB /* LockSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LockSettingController.m; path = Tabbar/Devices/DeviceControl/Lock/LockSettingController.m; sourceTree = "<group>"; };
+		3C99F2D91DBF4E0900614E91 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		3CA37F2B1D5890B900852505 /* ConfirmCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfirmCodeController.h; path = Tabbar/Devices/ConfirmCodeController.h; sourceTree = "<group>"; };
+		3CA37F2C1D5890B900852505 /* ConfirmCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfirmCodeController.m; path = Tabbar/Devices/ConfirmCodeController.m; sourceTree = "<group>"; };
+		3CA485261D93743400BABB60 /* Remote53Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Remote53Controller.h; path = Tabbar/Devices/DeviceControl/Other/Remote/Remote53Controller.h; sourceTree = "<group>"; };
+		3CA485271D93743400BABB60 /* Remote53Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Remote53Controller.m; path = Tabbar/Devices/DeviceControl/Other/Remote/Remote53Controller.m; sourceTree = "<group>"; };
+		3CA485291D93749400BABB60 /* RemoteOneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RemoteOneController.h; path = Tabbar/Devices/DeviceControl/Other/Remote/RemoteOneController.h; sourceTree = "<group>"; };
+		3CA4852A1D93749400BABB60 /* RemoteOneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RemoteOneController.m; path = Tabbar/Devices/DeviceControl/Other/Remote/RemoteOneController.m; sourceTree = "<group>"; };
+		3CA4852D1D93B2BC00BABB60 /* CenterAirController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CenterAirController.h; path = Tabbar/Devices/DeviceControl/Other/CenterAir/CenterAirController.h; sourceTree = "<group>"; };
+		3CA4852E1D93B2BC00BABB60 /* CenterAirController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CenterAirController.m; path = Tabbar/Devices/DeviceControl/Other/CenterAir/CenterAirController.m; sourceTree = "<group>"; };
+		3CA715FC1D548FD70011473A /* NoneTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoneTableView.xib; path = Tabbar/Devices/DeviceCell/NoneTableView.xib; sourceTree = "<group>"; };
+		3CAB77181DAC8A8800F7B73D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Devices_Other.storyboard; sourceTree = "<group>"; };
+		3CAB771A1DAC93D700F7B73D /* MessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageController.h; path = Tabbar/MessageController.h; sourceTree = "<group>"; };
+		3CAB771B1DAC93D700F7B73D /* MessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageController.m; path = Tabbar/MessageController.m; sourceTree = "<group>"; };
+		3CB83BD71D66A2BC003E1ECD /* BlurView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BlurView.xib; path = Tabbar/Devices/DeviceCell/BlurView.xib; sourceTree = "<group>"; };
+		3CB83BDA1D66B813003E1ECD /* AirViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirViewController.h; path = Tabbar/Devices/DeviceControl/Infrared/AirViewController.h; sourceTree = "<group>"; };
+		3CB83BDB1D66B813003E1ECD /* AirViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AirViewController.m; path = Tabbar/Devices/DeviceControl/Infrared/AirViewController.m; sourceTree = "<group>"; };
+		3CB9F5221D7565500027D155 /* RoomAddDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoomAddDeviceController.h; path = Tabbar/Devices/Room/RoomAddDeviceController.h; sourceTree = "<group>"; };
+		3CB9F5231D7565500027D155 /* RoomAddDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoomAddDeviceController.m; path = Tabbar/Devices/Room/RoomAddDeviceController.m; sourceTree = "<group>"; };
+		3CB9F52C1D76EF9D0027D155 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Devices_Switch.storyboard; sourceTree = "<group>"; };
+		3CB9F52F1D76F09C0027D155 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Devices_Infrared.storyboard; sourceTree = "<group>"; };
+		3CB9F5321D76F1300027D155 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Devices_Lock.storyboard; sourceTree = "<group>"; };
+		3CC1FEB61D47532500784AE4 /* NSString+StringOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+StringOperation.h"; path = "Tools/Category/NSString+StringOperation.h"; sourceTree = "<group>"; };
+		3CC1FEB71D47532500784AE4 /* NSString+StringOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+StringOperation.m"; path = "Tools/Category/NSString+StringOperation.m"; sourceTree = "<group>"; };
+		3CC1FEB91D47549500784AE4 /* SwitchThreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwitchThreeCell.h; path = Tabbar/Devices/DeviceCell/SwitchThreeCell.h; sourceTree = "<group>"; };
+		3CC1FEBA1D47549500784AE4 /* SwitchThreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwitchThreeCell.m; path = Tabbar/Devices/DeviceCell/SwitchThreeCell.m; sourceTree = "<group>"; };
+		3CD233451DAF79A800614CED /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = SiderBar/LoginController.h; sourceTree = "<group>"; };
+		3CD233461DAF79A800614CED /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginController.m; path = SiderBar/LoginController.m; sourceTree = "<group>"; };
+		3CD8EA981D7418B000B843C7 /* AddRoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddRoomController.h; path = Tabbar/Devices/Room/AddRoomController.h; sourceTree = "<group>"; };
+		3CD8EA991D7418B000B843C7 /* AddRoomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddRoomController.m; path = Tabbar/Devices/Room/AddRoomController.m; sourceTree = "<group>"; };
+		3CDDD6271DC6E25400F6DDF7 /* EditBellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBellController.h; sourceTree = "<group>"; };
+		3CDDD6281DC6E25400F6DDF7 /* EditBellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBellController.m; sourceTree = "<group>"; };
+		3CDDD62A1DC7228200F6DDF7 /* DoorBellInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoorBellInfoController.h; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellInfoController.h; sourceTree = "<group>"; };
+		3CDDD62B1DC7228200F6DDF7 /* DoorBellInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoorBellInfoController.m; path = Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellInfoController.m; sourceTree = "<group>"; };
+		3CDE29C31D7D71AA00EE90FD /* DeviceForScene+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DeviceForScene+CoreDataProperties.h"; path = "DataBase/DeviceForScene+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3CDE29C41D7D71AA00EE90FD /* DeviceForScene+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DeviceForScene+CoreDataProperties.m"; path = "DataBase/DeviceForScene+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3CDE29C51D7D71AA00EE90FD /* DeviceForScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceForScene.h; path = DataBase/DeviceForScene.h; sourceTree = "<group>"; };
+		3CDE29C61D7D71AA00EE90FD /* DeviceForScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceForScene.m; path = DataBase/DeviceForScene.m; sourceTree = "<group>"; };
+		3CDE29C71D7D71AA00EE90FD /* DeviceInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DeviceInfo+CoreDataProperties.h"; path = "DataBase/DeviceInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3CDE29C81D7D71AA00EE90FD /* DeviceInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DeviceInfo+CoreDataProperties.m"; path = "DataBase/DeviceInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3CDE29C91D7D71AA00EE90FD /* DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceInfo.h; path = DataBase/DeviceInfo.h; sourceTree = "<group>"; };
+		3CDE29CA1D7D71AA00EE90FD /* DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceInfo.m; path = DataBase/DeviceInfo.m; sourceTree = "<group>"; };
+		3CDE29CB1D7D71AA00EE90FD /* RoomInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RoomInfo+CoreDataProperties.h"; path = "DataBase/RoomInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3CDE29CC1D7D71AA00EE90FD /* RoomInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RoomInfo+CoreDataProperties.m"; path = "DataBase/RoomInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3CDE29CD1D7D71AA00EE90FD /* RoomInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoomInfo.h; path = DataBase/RoomInfo.h; sourceTree = "<group>"; };
+		3CDE29CE1D7D71AA00EE90FD /* RoomInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoomInfo.m; path = DataBase/RoomInfo.m; sourceTree = "<group>"; };
+		3CDE29CF1D7D71AA00EE90FD /* SceneInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SceneInfo+CoreDataProperties.h"; path = "DataBase/SceneInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3CDE29D01D7D71AA00EE90FD /* SceneInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SceneInfo+CoreDataProperties.m"; path = "DataBase/SceneInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3CDE29D11D7D71AA00EE90FD /* SceneInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneInfo.h; path = DataBase/SceneInfo.h; sourceTree = "<group>"; };
+		3CDE29D21D7D71AA00EE90FD /* SceneInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneInfo.m; path = DataBase/SceneInfo.m; sourceTree = "<group>"; };
+		3CDF073E1DED0E29004B922C /* UIViewController+Swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Swizzling.h"; path = "Tools/Category/UIViewController+Swizzling.h"; sourceTree = "<group>"; };
+		3CDF073F1DED0E29004B922C /* UIViewController+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Swizzling.m"; path = "Tools/Category/UIViewController+Swizzling.m"; sourceTree = "<group>"; };
+		3CE479841D53420800C26168 /* NSMutableArray+AddDeviceArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+AddDeviceArray.h"; path = "Tools/Category/NSMutableArray+AddDeviceArray.h"; sourceTree = "<group>"; };
+		3CE479851D53420800C26168 /* NSMutableArray+AddDeviceArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+AddDeviceArray.m"; path = "Tools/Category/NSMutableArray+AddDeviceArray.m"; sourceTree = "<group>"; };
+		3CE979F81D9B9B4600D1A288 /* Smart_home.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Smart_home.entitlements; sourceTree = "<group>"; };
+		3CF119741DAA4387002A957D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3CF119761DAA43A2002A957D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		3CF119781DAA43C5002A957D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3CF1197A1DAA43D9002A957D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3CF1197C1DAA43F0002A957D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3CF1197E1DAA4400002A957D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3CF119801DAA441C002A957D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		3CF119821DAA4432002A957D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		3CF992031D644B3200E2FFE8 /* EditDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditDeviceController.h; path = Tabbar/Devices/DeviceControl/EditDeviceController.h; sourceTree = "<group>"; };
+		3CF992041D644B3200E2FFE8 /* EditDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditDeviceController.m; path = Tabbar/Devices/DeviceControl/EditDeviceController.m; sourceTree = "<group>"; };
+		3CF992061D646BD800E2FFE8 /* TableViewBackGround.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableViewBackGround.xib; path = Tabbar/Devices/DeviceCell/TableViewBackGround.xib; sourceTree = "<group>"; };
+		3CF992091D65587700E2FFE8 /* DeviceInfraredController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceInfraredController.h; path = Tabbar/Devices/DeviceControl/Infrared/DeviceInfraredController.h; sourceTree = "<group>"; };
+		3CF9920A1D65587700E2FFE8 /* DeviceInfraredController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceInfraredController.m; path = Tabbar/Devices/DeviceControl/Infrared/DeviceInfraredController.m; sourceTree = "<group>"; };
+		3CF9920C1D655BB400E2FFE8 /* InfraredViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfraredViewCell.h; path = Tabbar/Devices/DeviceControl/Infrared/InfraredViewCell.h; sourceTree = "<group>"; };
+		3CF9920D1D655BB400E2FFE8 /* InfraredViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfraredViewCell.m; path = Tabbar/Devices/DeviceControl/Infrared/InfraredViewCell.m; sourceTree = "<group>"; };
+		92987BD9A3B7CEB0FAB8FA72 /* Pods-Smart_home.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart_home.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smart_home/Pods-Smart_home.debug.xcconfig"; sourceTree = "<group>"; };
+		E65D69A5D7FD52519E23F03D /* libPods-Smart_home.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Smart_home.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3C7ECDD11D23B48500335F75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C99F2DA1DBF4E0900614E91 /* libresolv.tbd in Frameworks */,
+				3C954E731DACE47B008FF504 /* UserNotifications.framework in Frameworks */,
+				3CF119811DAA441C002A957D /* libz.tbd in Frameworks */,
+				3CF1197F1DAA4400002A957D /* Security.framework in Frameworks */,
+				3CF1197D1DAA43F0002A957D /* UIKit.framework in Frameworks */,
+				3CF1197B1DAA43D9002A957D /* Foundation.framework in Frameworks */,
+				3CF119791DAA43C5002A957D /* CoreGraphics.framework in Frameworks */,
+				3CF119771DAA43A2002A957D /* CoreFoundation.framework in Frameworks */,
+				3CF119751DAA4387002A957D /* CFNetwork.framework in Frameworks */,
+				3C0513411D2D088800ED6DA1 /* CoreBluetooth.framework in Frameworks */,
+				3C05133F1D2D086100ED6DA1 /* SystemConfiguration.framework in Frameworks */,
+				3C05133D1D2D085A00ED6DA1 /* AVFoundation.framework in Frameworks */,
+				3C05133B1D2D085200ED6DA1 /* AudioToolbox.framework in Frameworks */,
+				3C0513391D2D084B00ED6DA1 /* CoreMotion.framework in Frameworks */,
+				3C0513371D2D084300ED6DA1 /* OpenGLES.framework in Frameworks */,
+				3C0513351D2D080500ED6DA1 /* CoreTelephony.framework in Frameworks */,
+				3C905F651D27C4CE00A9FE5B /* CoreData.framework in Frameworks */,
+				D3AD2F938BA8C2D629D6DC9B /* libPods-Smart_home.a in Frameworks */,
+				3C491F0A1DBA07C6007DC6A2 /* JFGSDK.framework in Frameworks */,
+				3C1E8B551DBF4BA900900A82 /* jpush-ios-2.2.0.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		160660EC0AD672384AB423ED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				92987BD9A3B7CEB0FAB8FA72 /* Pods-Smart_home.debug.xcconfig */,
+				2474AA86074CB423A58CE2F4 /* Pods-Smart_home.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3C0513301D2CF15300ED6DA1 /* BlueToothCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CC1FEB91D47549500784AE4 /* SwitchThreeCell.h */,
+				3CC1FEBA1D47549500784AE4 /* SwitchThreeCell.m */,
+				3C905F611D27680400A9FE5B /* SwitchOneCell.h */,
+				3C905F621D27680400A9FE5B /* SwitchOneCell.m */,
+				3C7EC80A1D2A4D11003CAAA6 /* SwitchTwoCell.h */,
+				3C7EC80B1D2A4D11003CAAA6 /* SwitchTwoCell.m */,
+				3C7EC8101D2A5313003CAAA6 /* SwitchCommonCell.h */,
+				3C7EC8111D2A5313003CAAA6 /* SwitchCommonCell.m */,
+				3C23FE6E1D2BA5AB00728650 /* SocketCell.h */,
+				3C23FE6F1D2BA5AB00728650 /* SocketCell.m */,
+				3C0513311D2CF18B00ED6DA1 /* CurtainCell.h */,
+				3C0513321D2CF18B00ED6DA1 /* CurtainCell.m */,
+			);
+			name = BlueToothCell;
+			sourceTree = "<group>";
+		};
+		3C056F2D1D81052C00EFB827 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				3C491F091DBA07C6007DC6A2 /* JFGSDK.framework */,
+				3CF119701DAA4354002A957D /* JPushLib */,
+				3C999A611D6B16D000E66DCB /* XLPasswordView */,
+				3C3387751D927E7500577C0D /* HyPopMenuView.h */,
+				3C3387761D927E7500577C0D /* HyPopMenuView.m */,
+				3C3387771D927E7500577C0D /* HyPopMenuViewDelegate.h */,
+				3C3387781D927E7500577C0D /* PopMenuButton.h */,
+				3C3387791D927E7500577C0D /* PopMenuButton.m */,
+				3C33877A1D927E7500577C0D /* PopMenuModel.h */,
+				3C33877B1D927E7500577C0D /* PopMenuModel.m */,
+				3C33877C1D927E7500577C0D /* UIColor+ImageGetColor.h */,
+				3C33877D1D927E7500577C0D /* UIColor+ImageGetColor.m */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		3C056F311D81064500EFB827 /* DeviceView */ = {
+			isa = PBXGroup;
+			children = (
+				3CA715FC1D548FD70011473A /* NoneTableView.xib */,
+				3CF992061D646BD800E2FFE8 /* TableViewBackGround.xib */,
+				3CB83BD71D66A2BC003E1ECD /* BlurView.xib */,
+				3C056F321D81069700EFB827 /* SceneView.h */,
+				3C056F331D81069700EFB827 /* SceneView.m */,
+				3C24E5E61D8170A900E74C24 /* AddView.xib */,
+				3C24E5EB1D82A28B00E74C24 /* PopTopView.xib */,
+				3C24E5ED1D82A75F00E74C24 /* PopTopView.h */,
+				3C24E5EE1D82A75F00E74C24 /* PopTopView.m */,
+			);
+			name = DeviceView;
+			sourceTree = "<group>";
+		};
+		3C212A3C1D8803FE00724EF6 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				3C212A3D1D8804A900724EF6 /* EditSceneController.h */,
+				3C212A3E1D8804A900724EF6 /* EditSceneController.m */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
+		3C23FE711D2BAC2000728650 /* ToolFuntion */ = {
+			isa = PBXGroup;
+			children = (
+				3C70D6961D4F492900D69167 /* Inherit */,
+				3CC1FEB21D474FF800784AE4 /* Category */,
+				3C318B761D47006200359F60 /* TTSUtility.h */,
+				3C318B771D47006200359F60 /* TTSUtility.m */,
+				3C318B731D46FF6300359F60 /* BluetoothManager.h */,
+				3C318B741D46FF6300359F60 /* BluetoothManager.m */,
+				3C3804FB1D4A062E00B1EA72 /* RemoteManger.h */,
+				3C3804FC1D4A062E00B1EA72 /* RemoteManger.m */,
+				3C2C59D41D2E4B12009F5016 /* PrefixHeader.pch */,
+			);
+			name = ToolFuntion;
+			sourceTree = "<group>";
+		};
+		3C33876D1D927D6B00577C0D /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				3C33876E1D927DBD00577C0D /* AutoChooseFuntion.h */,
+				3C33876F1D927DBD00577C0D /* AutoChooseFuntion.m */,
+				3CA485261D93743400BABB60 /* Remote53Controller.h */,
+				3CA485271D93743400BABB60 /* Remote53Controller.m */,
+				3CA485291D93749400BABB60 /* RemoteOneController.h */,
+				3CA4852A1D93749400BABB60 /* RemoteOneController.m */,
+			);
+			name = Remote;
+			sourceTree = "<group>";
+		};
+		3C36FBA41D9292F4002E02C8 /* Door */ = {
+			isa = PBXGroup;
+			children = (
+				3C36FBA51D929326002E02C8 /* DoorLabViewController.h */,
+				3C36FBA61D929326002E02C8 /* DoorLabViewController.m */,
+			);
+			name = Door;
+			sourceTree = "<group>";
+		};
+		3C3EFC4B1D55C24900CE5A89 /* InfraredAdd */ = {
+			isa = PBXGroup;
+			children = (
+				3C1ADD4F1D549FD4009EA027 /* InfrareAddController.h */,
+				3C1ADD501D549FD4009EA027 /* InfrareAddController.m */,
+				3C3EFC4C1D55C27800CE5A89 /* ChooseBrandController.h */,
+				3C3EFC4D1D55C27800CE5A89 /* ChooseBrandController.m */,
+				3CA37F2B1D5890B900852505 /* ConfirmCodeController.h */,
+				3CA37F2C1D5890B900852505 /* ConfirmCodeController.m */,
+			);
+			name = InfraredAdd;
+			sourceTree = "<group>";
+		};
+		3C43622C1D7A6D1000E0170F /* StoreBoard */ = {
+			isa = PBXGroup;
+			children = (
+				3C7ECDE31D23B48500335F75 /* Main.storyboard */,
+				3C1B5E181D2BB0EA00E68797 /* Devices.storyboard */,
+				3CAB77171DAC8A8800F7B73D /* Devices_Other.storyboard */,
+				3CB9F5311D76F1300027D155 /* Devices_Lock.storyboard */,
+				3CB9F52E1D76F09C0027D155 /* Devices_Infrared.storyboard */,
+				3CB9F52B1D76EF9D0027D155 /* Devices_Switch.storyboard */,
+				3C7ECDE81D23B48500335F75 /* LaunchScreen.storyboard */,
+			);
+			name = StoreBoard;
+			sourceTree = "<group>";
+		};
+		3C4771791D8E86BF000284D6 /* SceneCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C47717A1D8E86FA000284D6 /* SceneCellCommon.h */,
+				3C47717B1D8E86FA000284D6 /* SceneCellCommon.m */,
+			);
+			name = SceneCell;
+			sourceTree = "<group>";
+		};
+		3C4771831D8F9789000284D6 /* BathTub */ = {
+			isa = PBXGroup;
+			children = (
+				3C4771841D8F97DB000284D6 /* BathTubController.h */,
+				3C4771851D8F97DB000284D6 /* BathTubController.m */,
+			);
+			name = BathTub;
+			sourceTree = "<group>";
+		};
+		3C4D8A871DAE3E02009B1CDA /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				3C4D8A881DAE3E0E009B1CDA /* door.mp3 */,
+			);
+			name = Music;
+			sourceTree = "<group>";
+		};
+		3C5DBF381D5D8043006A6146 /* SettingBar */ = {
+			isa = PBXGroup;
+			children = (
+				3C5DBF391D5D807F006A6146 /* SettingController.h */,
+				3C5DBF3A1D5D807F006A6146 /* SettingController.m */,
+			);
+			name = SettingBar;
+			sourceTree = "<group>";
+		};
+		3C70D6961D4F492900D69167 /* Inherit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Inherit;
+			sourceTree = "<group>";
+		};
+		3C7C6AC91D24C99E00CEDDEF /* SiderBar */ = {
+			isa = PBXGroup;
+			children = (
+				3C7C6ACA1D24C9B100CEDDEF /* Cell */,
+				3C1B5E1B1D2BBD3400E68797 /* RemoteController.h */,
+				3C1B5E1C1D2BBD3400E68797 /* RemoteController.m */,
+				3C05132D1D2CB4D100ED6DA1 /* InfraredController.h */,
+				3C05132E1D2CB4D100ED6DA1 /* InfraredController.m */,
+				3C784F711D4763BF00FF2F6C /* SideBarController.h */,
+				3C784F721D4763BF00FF2F6C /* SideBarController.m */,
+				3CD233451DAF79A800614CED /* LoginController.h */,
+				3CD233461DAF79A800614CED /* LoginController.m */,
+			);
+			name = SiderBar;
+			sourceTree = "<group>";
+		};
+		3C7C6ACA1D24C9B100CEDDEF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3C7C6ACB1D24C9E700CEDDEF /* SiderNormalCell.h */,
+				3C7C6ACC1D24C9E700CEDDEF /* SiderNormalCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		3C7C6ACE1D25134900CEDDEF /* DevicesTabbar */ = {
+			isa = PBXGroup;
+			children = (
+				3C934A701D61528900FD8965 /* DeviceControl */,
+				3C905F5D1D27655D00A9FE5B /* DeviceCell */,
+				3C7C6ACF1D2514E400CEDDEF /* DevicesController.h */,
+				3C7C6AD01D2514E400CEDDEF /* DevicesController.m */,
+			);
+			name = DevicesTabbar;
+			sourceTree = "<group>";
+		};
+		3C7ECDCB1D23B48500335F75 = {
+			isa = PBXGroup;
+			children = (
+				3C7ECDD61D23B48500335F75 /* Smart_home */,
+				3C7ECDD51D23B48500335F75 /* Products */,
+				160660EC0AD672384AB423ED /* Pods */,
+				C49B8A9B686F137DBA40A2F5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3C7ECDD51D23B48500335F75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3C7ECDD41D23B48500335F75 /* Smart_home.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3C7ECDD61D23B48500335F75 /* Smart_home */ = {
+			isa = PBXGroup;
+			children = (
+				3CE979F81D9B9B4600D1A288 /* Smart_home.entitlements */,
+				3C056F2D1D81052C00EFB827 /* Library */,
+				3C23FE711D2BAC2000728650 /* ToolFuntion */,
+				3C905F5C1D261C8800A9FE5B /* DataBase */,
+				3C7ECDF51D23CA3C00335F75 /* MainFuntion */,
+				3C5DBF381D5D8043006A6146 /* SettingBar */,
+				3C7C6AC91D24C99E00CEDDEF /* SiderBar */,
+				3C7ECDF41D23CA3000335F75 /* Launch */,
+				3C43622C1D7A6D1000E0170F /* StoreBoard */,
+				3C7ECDDA1D23B48500335F75 /* AppDelegate.h */,
+				3C7ECDDB1D23B48500335F75 /* AppDelegate.m */,
+				3C7ECDE61D23B48500335F75 /* Assets.xcassets */,
+				3C7ECDD71D23B48500335F75 /* Supporting Files */,
+			);
+			path = Smart_home;
+			sourceTree = "<group>";
+		};
+		3C7ECDD71D23B48500335F75 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C4D8A871DAE3E02009B1CDA /* Music */,
+				3C7F2DDD1D6B05EF000A85D1 /* Library */,
+				3C7ECDEB1D23B48500335F75 /* Info.plist */,
+				3C7ECDD81D23B48500335F75 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C7ECDF41D23CA3000335F75 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				3C2C59D51D2E51ED009F5016 /* LaunchView.h */,
+				3C2C59D61D2E51ED009F5016 /* LaunchView.m */,
+			);
+			name = Launch;
+			sourceTree = "<group>";
+		};
+		3C7ECDF51D23CA3C00335F75 /* MainFuntion */ = {
+			isa = PBXGroup;
+			children = (
+				3C212A3C1D8803FE00724EF6 /* Scene */,
+				3C7C6ACE1D25134900CEDDEF /* DevicesTabbar */,
+				3C7ECDFC1D23E02600335F75 /* MainLeftController.h */,
+				3C7ECDFD1D23E02600335F75 /* MainLeftController.m */,
+				3C7ECDF61D23CB9F00335F75 /* TTSTabBarController.h */,
+				3C7ECDF71D23CB9F00335F75 /* TTSTabBarController.m */,
+				3CAB771A1DAC93D700F7B73D /* MessageController.h */,
+				3CAB771B1DAC93D700F7B73D /* MessageController.m */,
+			);
+			name = MainFuntion;
+			sourceTree = "<group>";
+		};
+		3C7F2DD91D6AFC14000A85D1 /* Lock */ = {
+			isa = PBXGroup;
+			children = (
+				3C7F2DDA1D6AFC4C000A85D1 /* LockController.h */,
+				3C7F2DDB1D6AFC4C000A85D1 /* LockController.m */,
+				3C999A7A1D6BF60000E66DCB /* LockSettingController.h */,
+				3C999A7B1D6BF60000E66DCB /* LockSettingController.m */,
+				3C3A43E01D6C32A7008EDC47 /* LockAddController.h */,
+				3C3A43E11D6C32A7008EDC47 /* LockAddController.m */,
+			);
+			name = Lock;
+			sourceTree = "<group>";
+		};
+		3C7F2DDD1D6B05EF000A85D1 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		3C905F5C1D261C8800A9FE5B /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				3CDE29C31D7D71AA00EE90FD /* DeviceForScene+CoreDataProperties.h */,
+				3CDE29C41D7D71AA00EE90FD /* DeviceForScene+CoreDataProperties.m */,
+				3CDE29C51D7D71AA00EE90FD /* DeviceForScene.h */,
+				3CDE29C61D7D71AA00EE90FD /* DeviceForScene.m */,
+				3CDE29C71D7D71AA00EE90FD /* DeviceInfo+CoreDataProperties.h */,
+				3CDE29C81D7D71AA00EE90FD /* DeviceInfo+CoreDataProperties.m */,
+				3CDE29C91D7D71AA00EE90FD /* DeviceInfo.h */,
+				3CDE29CA1D7D71AA00EE90FD /* DeviceInfo.m */,
+				3CDE29CB1D7D71AA00EE90FD /* RoomInfo+CoreDataProperties.h */,
+				3CDE29CC1D7D71AA00EE90FD /* RoomInfo+CoreDataProperties.m */,
+				3CDE29CD1D7D71AA00EE90FD /* RoomInfo.h */,
+				3CDE29CE1D7D71AA00EE90FD /* RoomInfo.m */,
+				3CDE29CF1D7D71AA00EE90FD /* SceneInfo+CoreDataProperties.h */,
+				3CDE29D01D7D71AA00EE90FD /* SceneInfo+CoreDataProperties.m */,
+				3CDE29D11D7D71AA00EE90FD /* SceneInfo.h */,
+				3CDE29D21D7D71AA00EE90FD /* SceneInfo.m */,
+				3C3387711D927E5E00577C0D /* DeviceTypeList.plist */,
+				3C3387721D927E5E00577C0D /* InfraredBrandList.plist */,
+				3C905F691D27C5BD00A9FE5B /* DataBase.xcdatamodeld */,
+				3C905F6C1D27C5D000A9FE5B /* TTSCoreDataManager.h */,
+				3C905F6D1D27C5D000A9FE5B /* TTSCoreDataManager.m */,
+			);
+			name = DataBase;
+			sourceTree = "<group>";
+		};
+		3C905F5D1D27655D00A9FE5B /* DeviceCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C4771791D8E86BF000284D6 /* SceneCell */,
+				3C056F311D81064500EFB827 /* DeviceView */,
+				3C0513301D2CF15300ED6DA1 /* BlueToothCell */,
+			);
+			name = DeviceCell;
+			sourceTree = "<group>";
+		};
+		3C934A701D61528900FD8965 /* DeviceControl */ = {
+			isa = PBXGroup;
+			children = (
+				3CFA48811D7FFFF600F2A032 /* Other */,
+				3CD8EA971D74186F00B843C7 /* Room */,
+				3C7F2DD91D6AFC14000A85D1 /* Lock */,
+				3CF992081D65577B00E2FFE8 /* Infrared */,
+				3C934A741D61736800FD8965 /* Switch */,
+			);
+			name = DeviceControl;
+			sourceTree = "<group>";
+		};
+		3C934A741D61736800FD8965 /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+				3C934A711D6152CC00FD8965 /* DeviceSwitchController.h */,
+				3C934A721D6152CC00FD8965 /* DeviceSwitchController.m */,
+				3C934A781D61741300FD8965 /* SwtichCollectionCell.h */,
+				3C934A791D61741300FD8965 /* SwtichCollectionCell.m */,
+				3C08F1AF1D2F40CD0091224F /* AddDevicesController.h */,
+				3C08F1B01D2F40CD0091224F /* AddDevicesController.m */,
+				3C1ECC8E1D30A81500F93FFF /* ManualAddBlueToothController.h */,
+				3C1ECC8F1D30A81500F93FFF /* ManualAddBlueToothController.m */,
+				3CF992031D644B3200E2FFE8 /* EditDeviceController.h */,
+				3CF992041D644B3200E2FFE8 /* EditDeviceController.m */,
+				3C50ED3D1D6D487800FEB855 /* CurtainCollectionCell.h */,
+				3C50ED3E1D6D487800FEB855 /* CurtainCollectionCell.m */,
+			);
+			name = Switch;
+			sourceTree = "<group>";
+		};
+		3C954E6F1DACBEFC008FF504 /* DoorBell */ = {
+			isa = PBXGroup;
+			children = (
+				3C954E701DACBF72008FF504 /* DoorBellController.h */,
+				3C954E711DACBF72008FF504 /* DoorBellController.m */,
+				3C4D8A841DAE33D7009B1CDA /* CallingController.h */,
+				3C4D8A851DAE33D7009B1CDA /* CallingController.m */,
+				3C579ADE1DB4B4FC00E00E08 /* DoorAddController.h */,
+				3C579ADF1DB4B4FC00E00E08 /* DoorAddController.m */,
+				3C579AE11DB4D7FC00E00E08 /* DoorBellStep1.h */,
+				3C579AE21DB4D7FC00E00E08 /* DoorBellStep1.m */,
+				3C579AE71DB5C4BC00E00E08 /* DoorBellStep2.h */,
+				3C579AE81DB5C4BC00E00E08 /* DoorBellStep2.m */,
+				3C579AEA1DB5CED400E00E08 /* DoorBellBinding.h */,
+				3C579AEB1DB5CED400E00E08 /* DoorBellBinding.m */,
+				3C6305161DB7077000218744 /* DoorCheckController.h */,
+				3C6305171DB7077000218744 /* DoorCheckController.m */,
+				3CDDD6271DC6E25400F6DDF7 /* EditBellController.h */,
+				3CDDD6281DC6E25400F6DDF7 /* EditBellController.m */,
+				3CDDD62A1DC7228200F6DDF7 /* DoorBellInfoController.h */,
+				3CDDD62B1DC7228200F6DDF7 /* DoorBellInfoController.m */,
+				3C02B1F81DD1CD4A007CE3BE /* SetBellWifiController.h */,
+				3C02B1F91DD1CD4A007CE3BE /* SetBellWifiController.m */,
+			);
+			name = DoorBell;
+			sourceTree = "<group>";
+		};
+		3C999A611D6B16D000E66DCB /* XLPasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				3C999A621D6B16D000E66DCB /* Category */,
+				3C999A691D6B16D000E66DCB /* XLPasswordInputView.h */,
+				3C999A6A1D6B16D000E66DCB /* XLPasswordInputView.m */,
+				3C999A6B1D6B16D000E66DCB /* XLPasswordView.bundle */,
+				3C999A6C1D6B16D000E66DCB /* XLPasswordView.h */,
+				3C999A6D1D6B16D000E66DCB /* XLPasswordView.m */,
+				3C999A6E1D6B16D000E66DCB /* XLRandomKeyboard.h */,
+				3C999A6F1D6B16D000E66DCB /* XLRandomKeyboard.m */,
+			);
+			path = XLPasswordView;
+			sourceTree = "<group>";
+		};
+		3C999A621D6B16D000E66DCB /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3C999A631D6B16D000E66DCB /* UIColor+XLPasswordView.h */,
+				3C999A641D6B16D000E66DCB /* UIColor+XLPasswordView.m */,
+				3C999A651D6B16D000E66DCB /* UIImage+XLPasswordView.h */,
+				3C999A661D6B16D000E66DCB /* UIImage+XLPasswordView.m */,
+				3C999A671D6B16D000E66DCB /* UIView+XLPasswordView.h */,
+				3C999A681D6B16D000E66DCB /* UIView+XLPasswordView.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		3CA4852C1D93B29200BABB60 /* CenterAir */ = {
+			isa = PBXGroup;
+			children = (
+				3CA4852D1D93B2BC00BABB60 /* CenterAirController.h */,
+				3CA4852E1D93B2BC00BABB60 /* CenterAirController.m */,
+			);
+			name = CenterAir;
+			sourceTree = "<group>";
+		};
+		3CB83BD91D66B7AB003E1ECD /* InfraredControl */ = {
+			isa = PBXGroup;
+			children = (
+				3CB83BDA1D66B813003E1ECD /* AirViewController.h */,
+				3CB83BDB1D66B813003E1ECD /* AirViewController.m */,
+				3C2CB0901D6A9F0400E798C0 /* TVController.h */,
+				3C2CB0911D6A9F0400E798C0 /* TVController.m */,
+				3C24E5E81D82908600E74C24 /* CommonInfraredController.h */,
+				3C24E5E91D82908600E74C24 /* CommonInfraredController.m */,
+			);
+			name = InfraredControl;
+			sourceTree = "<group>";
+		};
+		3CC1FEB21D474FF800784AE4 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3CC1FEB61D47532500784AE4 /* NSString+StringOperation.h */,
+				3CC1FEB71D47532500784AE4 /* NSString+StringOperation.m */,
+				3CE479841D53420800C26168 /* NSMutableArray+AddDeviceArray.h */,
+				3CE479851D53420800C26168 /* NSMutableArray+AddDeviceArray.m */,
+				3CDF073E1DED0E29004B922C /* UIViewController+Swizzling.h */,
+				3CDF073F1DED0E29004B922C /* UIViewController+Swizzling.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		3CD8EA971D74186F00B843C7 /* Room */ = {
+			isa = PBXGroup;
+			children = (
+				3CD8EA981D7418B000B843C7 /* AddRoomController.h */,
+				3CD8EA991D7418B000B843C7 /* AddRoomController.m */,
+				3CB9F5221D7565500027D155 /* RoomAddDeviceController.h */,
+				3CB9F5231D7565500027D155 /* RoomAddDeviceController.m */,
+			);
+			name = Room;
+			sourceTree = "<group>";
+		};
+		3CF119701DAA4354002A957D /* JPushLib */ = {
+			isa = PBXGroup;
+			children = (
+				3C1E8B541DBF4BA900900A82 /* jpush-ios-2.2.0.a */,
+				3C1E8B571DBF4BFF00900A82 /* JPUSHService.h */,
+			);
+			name = JPushLib;
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		3CF992081D65577B00E2FFE8 /* Infrared */ = {
+			isa = PBXGroup;
+			children = (
+				3CB83BD91D66B7AB003E1ECD /* InfraredControl */,
+				3C3EFC4B1D55C24900CE5A89 /* InfraredAdd */,
+				3CF992091D65587700E2FFE8 /* DeviceInfraredController.h */,
+				3CF9920A1D65587700E2FFE8 /* DeviceInfraredController.m */,
+				3CF9920C1D655BB400E2FFE8 /* InfraredViewCell.h */,
+				3CF9920D1D655BB400E2FFE8 /* InfraredViewCell.m */,
+			);
+			name = Infrared;
+			sourceTree = "<group>";
+		};
+		3CFA48811D7FFFF600F2A032 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				3C954E6F1DACBEFC008FF504 /* DoorBell */,
+				3CA4852C1D93B29200BABB60 /* CenterAir */,
+				3C36FBA41D9292F4002E02C8 /* Door */,
+				3C33876D1D927D6B00577C0D /* Remote */,
+				3C4771831D8F9789000284D6 /* BathTub */,
+				3C4771801D8F7AE7000284D6 /* OtherViewController.h */,
+				3C4771811D8F7AE7000284D6 /* OtherViewController.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		C49B8A9B686F137DBA40A2F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C99F2D91DBF4E0900614E91 /* libresolv.tbd */,
+				3CF119821DAA4432002A957D /* UserNotifications.framework */,
+				3CF119801DAA441C002A957D /* libz.tbd */,
+				3CF1197E1DAA4400002A957D /* Security.framework */,
+				3CF1197C1DAA43F0002A957D /* UIKit.framework */,
+				3CF1197A1DAA43D9002A957D /* Foundation.framework */,
+				3CF119781DAA43C5002A957D /* CoreGraphics.framework */,
+				3CF119761DAA43A2002A957D /* CoreFoundation.framework */,
+				3CF119741DAA4387002A957D /* CFNetwork.framework */,
+				3C0513401D2D088800ED6DA1 /* CoreBluetooth.framework */,
+				3C05133E1D2D086100ED6DA1 /* SystemConfiguration.framework */,
+				3C05133C1D2D085A00ED6DA1 /* AVFoundation.framework */,
+				3C05133A1D2D085200ED6DA1 /* AudioToolbox.framework */,
+				3C0513381D2D084B00ED6DA1 /* CoreMotion.framework */,
+				3C0513361D2D084300ED6DA1 /* OpenGLES.framework */,
+				3C0513341D2D080500ED6DA1 /* CoreTelephony.framework */,
+				3C905F641D27C4CE00A9FE5B /* CoreData.framework */,
+				E65D69A5D7FD52519E23F03D /* libPods-Smart_home.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3C7ECDD31D23B48500335F75 /* Smart_home */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C7ECDEE1D23B48500335F75 /* Build configuration list for PBXNativeTarget "Smart_home" */;
+			buildPhases = (
+				1B05BF54951AD3F6E22A1C9A /* [CP] Check Pods Manifest.lock */,
+				3C7ECDD01D23B48500335F75 /* Sources */,
+				3C7ECDD11D23B48500335F75 /* Frameworks */,
+				3C7ECDD21D23B48500335F75 /* Resources */,
+				66BEE68B1C4FA232BBFE5966 /* [CP] Embed Pods Frameworks */,
+				E179D249883B9C5242DE6CEE /* [CP] Copy Pods Resources */,
+				3CFDC4641DC09E7200B60AF8 /* 上传BUGLY的符号表 */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Smart_home;
+			productName = Smart_home;
+			productReference = 3C7ECDD41D23B48500335F75 /* Smart_home.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3C7ECDCC1D23B48500335F75 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "彭子上";
+				TargetAttributes = {
+					3C7ECDD31D23B48500335F75 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 7BLZ9JWB5U;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 3C7ECDCF1D23B48500335F75 /* Build configuration list for PBXProject "Smart_home" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3C7ECDCB1D23B48500335F75;
+			productRefGroup = 3C7ECDD51D23B48500335F75 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3C7ECDD31D23B48500335F75 /* Smart_home */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3C7ECDD21D23B48500335F75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C24E5E71D8170A900E74C24 /* AddView.xib in Resources */,
+				3C7ECDEA1D23B48500335F75 /* LaunchScreen.storyboard in Resources */,
+				3CAB77191DAC8A8800F7B73D /* Devices_Other.storyboard in Resources */,
+				3C1B5E1A1D2BB0EA00E68797 /* Devices.storyboard in Resources */,
+				3CB9F5301D76F09C0027D155 /* Devices_Infrared.storyboard in Resources */,
+				3C7ECDE71D23B48500335F75 /* Assets.xcassets in Resources */,
+				3CB9F5331D76F1300027D155 /* Devices_Lock.storyboard in Resources */,
+				3CA715FD1D548FD70011473A /* NoneTableView.xib in Resources */,
+				3C24E5EC1D82A28B00E74C24 /* PopTopView.xib in Resources */,
+				3CB9F52D1D76EF9D0027D155 /* Devices_Switch.storyboard in Resources */,
+				3C3387741D927E5E00577C0D /* InfraredBrandList.plist in Resources */,
+				3C999A741D6B16D000E66DCB /* XLPasswordView.bundle in Resources */,
+				3C3387731D927E5E00577C0D /* DeviceTypeList.plist in Resources */,
+				3C7ECDE51D23B48500335F75 /* Main.storyboard in Resources */,
+				3C4D8A891DAE3E0E009B1CDA /* door.mp3 in Resources */,
+				3CB83BD81D66A2BC003E1ECD /* BlurView.xib in Resources */,
+				3CF992071D646BD800E2FFE8 /* TableViewBackGround.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B05BF54951AD3F6E22A1C9A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3CFDC4641DC09E7200B60AF8 /* 上传BUGLY的符号表 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "上传BUGLY的符号表";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n#\n# Copyright 2016 Bugly, Tencent. All rights reserved.\n#\n# V1.4.0\n#\n# 2016.08.03\n#\n#\n#\n######################################################\n# 1. 脚本集成到Xcode工程的Target\n######################################################\n#\n# --- Copy the SCRIPT to the Run Script of Build Phases in the Xcode project ---\n#\n# #\nBUGLY_APP_ID=\"b911c456be\"\n# #\nBUGLY_APP_KEY=\"60bf79e6-652e-4423-bc37-7e934a69986b\"\n# #\nBUNDLE_IDENTIFIER=\"com.amj.SmartHome\"\n# #\nUPLOAD_DSYM_ONLY=1\n#\n# # 脚本默认配置的版本格式为CFBundleShortVersionString(CFBundleVersion),  如果你修改默认的版本格式, 请设置此变量, 如果不想修改, 请忽略此设置\n# CUSTOMIZED_APP_VERSION=\"\"\n#\n# # Debug模式编译是否上传，1＝上传 0＝不上传，默认不上传\n UPLOAD_DEBUG_SYMBOLS=1\n#\n# # 模拟器编译是否上传，1=上传 0=不上传，默认不上传\n# UPLOAD_SIMULATOR_SYMBOLS=0\n#\n# #只有Archive操作时上传, 1=支持Archive上传 0=所有Release模式编译都上传\n# UPLOAD_ARCHIVE_ONLY=0\n#\n# #\n# source dSYMUpload.sh\n#\n# --- END OF SCRIPT ---\n#\n#\n#\n#\n#######################################################\n# 2. 脚本根据输入参数处理\n#######################################################\n#\n# #命令行下输入应用基本信息, .dSYM文件的父目录路径, 输出文件目录即可\n#\n# sh dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir>\n#\n# #\n#\n# #注意:\n# # 1. dSYMUpload.sh会调用buglySymboliOS.jar进行.dSYM解析，所以依赖Java运行时环境\n# # 2. dSYMUpload.sh和buglySymboliOS.jar的文件路径需一致\n#\n#\n\n#\n# --- CONTENT OF SCRIPT ---\n#\n\n# Bugly服务域名\nBUGLY_DSYM_UPLOAD_DOMAIN=\"api.bugly.qq.com\"\n\n# 注意jar工具的路径跟dSYMUpload.sh脚本路径一致, 请务必保证jar路径的正确性\nBUGLY_SYMBOL_JAR_PATH=\"dsymtool/buglySymboliOS.jar\"\n# 查找添加到系统目录的jar工具\nif [ ! -f \"${BUGLY_SYMBOL_JAR_PATH}\" ]; then\nBUGLY_SYMBOL_JAR_PATH=\"$HOME/bin/buglySymboliOS.jar\"\nfi\n\n# 打印错误信息\nfunction exitWithMessage(){\n    echo \"--------------------------------\"\n    echo \"${1}\"\n    echo \"--------------------------------\"\n    exit ${2}\n}\n\n# 上传bSYMBOL文件\nfunction dSYMUpload() {\n    P_APP_ID=\"$1\"\n    P_APP_KEY=\"$2\"\n    P_APP_BUNDLE_ID=\"$3\"\n    P_APP_VERSION=\"$4\"\n    P_BSYMBOL_ZIP_FILE=\"$5\"\n    \n    #\n    P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE##*/}\n        P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE_NAME//&/_}\n            P_BSYMBOL_ZIP_FILE_NAME=\"${P_BSYMBOL_ZIP_FILE_NAME// /_}\"\n            \n            DSYM_UPLOAD_URL=\"https://${BUGLY_DSYM_UPLOAD_DOMAIN}/openapi/file/upload/symbol?app_id=${P_APP_ID}&app_key=${P_APP_KEY}\"\n            echo \"dSYM upload url: ${DSYM_UPLOAD_URL}\"\n            \n            echo \"-----------------------------\"\n            STATUS=$(/usr/bin/curl -k \"${DSYM_UPLOAD_URL}\" --form \"api_version=1\" --form \"app_id=${P_APP_ID}\" --form \"app_key=${P_APP_KEY}\" --form \"symbolType=2\"  --form \"bundleId=${BUNDLE_IDENTIFIER}\" --form \"productVersion=${BUGLY_APP_VERSION}\" --form \"fileName=${P_BSYMBOL_ZIP_FILE_NAME}\" --form \"file=@${P_BSYMBOL_ZIP_FILE}\" --verbose)\n            echo \"-----------------------------\"\n            \n            UPLOAD_RESULT=\"FAILTURE\"\n            echo \"Bugly server response: ${STATUS}\"\n            if [ ! \"${STATUS}\" ]; then\n            echo \"Error: Failed to upload the zip archive file.\"\n            elif [[ \"${STATUS}\" == *\"{\\\"reponseCode\\\":\\\"0\\\"}\"* ]]; then\n            echo \"Success to upload the dSYM for the app [${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION}]\"\n            UPLOAD_RESULT=\"SUCCESS\"\n            else\n            echo \"Error: Failed to upload the zip archive file to Bugly.\"\n            fi\n            \n            #Remove temp dSYM archive\n            #echo \"Remove temporary zip archive: ${DSYM_ZIP_FPATH}\"\n            #/bin/rm -f \"${DSYM_ZIP_FPATH}\"\n            \n            if [ \"$?\" -ne 0 ]; then\n            exitWithMessage \"Error: Failed to remove temporary zip archive.\" 0\n            fi\n            \n            echo \"--------------------------------\"\n            echo \"${UPLOAD_RESULT} - dSYM upload complete.\"\n            \n            if [[ \"${UPLOAD_RESULT}\" == \"FAILTURE\" ]]; then\n            echo \"--------------------------------\"\n            echo \"Failed to upload the dSYM\"\n            echo \"Please check the script and try it again.\"\n            fi\n        }\n        \n        # .dSYM解析为bSYMBOL文件\n        function dSYMParse() {\n            DSYM_FILE=\"$1\"\n            DSYM_SYMBOL_FILE=\"$2\"\n            \n            echo \"--------------------------------\"\n            echo \"Extract symbol info from .dSYM file. to ${DSYM_SYMBOL_FILE}\"\n            (/usr/bin/java -Xms512m -Xmx1024m -Dfile.encoding=UTF8 -jar \"${BUGLY_SYMBOL_JAR_PATH}\" -i \"${DSYM_FILE}\" -o \"${DSYM_SYMBOL_FILE}\" ) || exitWithMessage \"Error: Failed to extract symbols.\" 1\n            echo \"--------------------------------\"\n            \n        }\n        \n        # 执行\n        function run() {\n            \n            CONFIG_BUGLY_APP_ID=\"$1\"\n            CONFIG_BUGLY_APP_KEY=\"$2\"\n            \n            CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER=\"$3\"\n            CONFIG_BUGLY_APP_VERSION=\"$4\"\n            CONFIG_DSYM_SOURCE_DIR=\"$5\"\n            CONFIG_DSYM_DEST_DIR=\"$6\"\n            CONFIG_UPLOAD_DSYM_ONLY=\"$7\"\n            \n            # 检查必须参数是否设置\n            if [ ! \"${CONFIG_BUGLY_APP_ID}\" ]; then\n            exitWithMessage \"Error: Bugly App ID not defined. Please set 'BUGLY_APP_ID' \" 0\n            fi\n            \n            if [[ \"${CONFIG_BUGLY_APP_ID}\" == *\"App ID\"* ]]; then\n            exitWithMessage \"Error: Bugly App ID not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_KEY}\" ]; then\n            exitWithMessage \"Error: Bugly App Key not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER}\" ]; then\n            exitWithMessage \"Error: Bundle Identifier not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_VERSION}\" ]; then\n            exitWithMessage \"Error: App Version not defined.\" 0\n            fi\n            \n            if [ ! -e \"${CONFIG_DSYM_SOURCE_DIR}\" ]; then\n            exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_SOURCE_DIR}\" 0\n            fi\n            \n            if [ ! \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n            exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_DEST_DIR}\" 0\n            fi\n            \n            if [ ! -e \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n            mkdir ${CONFIG_DSYM_DEST_DIR}\n            fi\n            \n            DSYM_FOLDER=\"${CONFIG_DSYM_SOURCE_DIR}\"\n            IFS=$'\\n'\n            \n            echo \"Scaning dSYM FOLDER: ${DSYM_FOLDER} ...\"\n            RET=\"F\"\n            \n            #\n            for dsymFile in $(find \"$DSYM_FOLDER\" -name '*.dSYM'); do\n            RET=\"T\"\n            echo \"Found dSYM file: $dsymFile\"\n            \n            DSYM_FILE_NAME=${dsymFile##*/}\n                DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_FILE_NAME}.zip\"\n                DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_SYMBOL_ZIP_FILE_NAME// /_}\"\n                DSYM_SYMBOL_ZIP_FILE=${CONFIG_DSYM_DEST_DIR}/${DSYM_SYMBOL_ZIP_FILE_NAME}\n                \n                if [ $CONFIG_UPLOAD_DSYM_ONLY -eq 1 ]; then\n                if [ -e $DSYM_SYMBOL_ZIP_FILE ]; then\n                rm -f $DSYM_SYMBOL_ZIP_FILE\n                fi\n                # 如果只上传dSYM，直接压缩dSYM目录\n                zip -r -j $DSYM_SYMBOL_ZIP_FILE $dsymFile -x *.plist\n                else\n                # 使用符号表工具来生成Symbol文件\n                dSYMParse $dsymFile $DSYM_SYMBOL_ZIP_FILE\n                fi\n                \n                # 上传\n                dSYMUpload $CONFIG_BUGLY_APP_ID $CONFIG_BUGLY_APP_KEY $CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER $CONFIG_BUGLY_APP_VERSION $DSYM_SYMBOL_ZIP_FILE\n                done\n                \n                if [ $RET = \"F\" ]; then\n                exitWithMessage \"No .dSYM found in ${DSYM_FOLDER}\" 0\n                fi\n            }\n            \n            # 在Xcode工程中执行\n            function runInXcode(){\n                echo \"Uploading dSYM to Bugly in Xcode ...\"\n                \n                echo \"Info.Plist : ${INFOPLIST_FILE}\"\n                \n                BUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleVersion' \"${INFOPLIST_FILE}\")\n                BUNDLE_SHORT_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' \"${INFOPLIST_FILE}\")\n                \n                # 组装Bugly默认识别的版本信息(格式为CFBundleShortVersionString(CFBundleVersion), 例如: 1.0(1))\n                if [ ! \"${CUSTOMIZED_APP_VERSION}\" ]; then\n                BUGLY_APP_VERSION=\"${BUNDLE_SHORT_VERSION}(${BUNDLE_VERSION})\"\n                else\n                BUGLY_APP_VERSION=\"${CUSTOMIZED_APP_VERSION}\"\n                fi\n                \n                echo \"--------------------------------\"\n                echo \"Prepare application information.\"\n                echo \"--------------------------------\"\n                \n                echo \"Product Name: ${PRODUCT_NAME}\"\n                echo \"Bundle Identifier: ${BUNDLE_IDENTIFIER}\"\n                echo \"Version: ${BUNDLE_SHORT_VERSION}\"\n                echo \"Build: ${BUNDLE_VERSION}\"\n                \n                echo \"Bugly App ID: ${BUGLY_APP_ID}\"\n                echo \"Bugly App key: ${BUGLY_APP_KEY}\"\n                echo \"Bugly App Version: ${BUGLY_APP_VERSION}\"\n                \n                echo \"--------------------------------\"\n                echo \"Check the arguments ...\"\n                \n                ##检查模拟器编译是否允许上传符号\n                if [ \"$EFFECTIVE_PLATFORM_NAME\" == \"-iphonesimulator\" ]; then\n                if [ $UPLOAD_SIMULATOR_SYMBOLS -eq 0 ]; then\n                exitWithMessage \"Warning: Build for simulator and skipping to upload. \\nYou can modify 'UPLOAD_SIMULATOR_SYMBOLS' to 1 in the script.\" 0\n                fi\n                fi\n                \n                ##检查是否是Release模式编译\n                if [ \"${CONFIGURATION=}\" == \"Debug\" ]; then\n                if [ $UPLOAD_DEBUG_SYMBOLS -eq 0 ]; then\n                exitWithMessage \"Warning: Build for debug mode and skipping to upload. \\nYou can modify 'UPLOAD_DEBUG_SYMBOLS' to 1 in the script.\" 0\n                fi\n                fi\n                \n                ##检查是否Archive操作\n                if [ $UPLOAD_ARCHIVE_ONLY -eq 1 ]; then\n                if [[ \"$TARGET_BUILD_DIR\" == *\"/Archive\"* ]]; then\n                echo \"Archive the package\"\n                else\n                exitWithMessage \"Warning: Build for NOT Archive mode and skipping to upload. \\nYou can modify 'UPLOAD_ARCHIVE_ONLY' to 0 in the script.\" 0\n                fi\n                fi\n                \n                #\n                run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${BUILD_DIR}/BuglySymbolTemp ${UPLOAD_DSYM_ONLY}\n            }\n            \n            # 根据Xcode的环境变量判断是否处于Xcode环境\n            INFO_PLIST_FILE=\"${INFOPLIST_FILE}\"\n            \n            BuildInXcode=\"F\"\n            if [ -f \"${INFO_PLIST_FILE}\" ]; then\n            BuildInXcode=\"T\"\n            fi\n            \n            if [ $BuildInXcode = \"T\" ]; then\n            runInXcode\n            else\n            echo \"\\nUsage: dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir> [upload_dsym_only]\\n\"\n            # 你可以在此处直接设置BuglyAppID和BuglyAppKey，排除不常变参数的输入\n            BUGLY_APP_ID=\"$1\"\n            BUGLY_APP_KEY=\"$2\"\n            BUNDLE_IDENTIFIER=\"$3\"\n            BUGLY_APP_VERSION=\"$4\"\n            DWARF_DSYM_FOLDER_PATH=\"$5\"\n            SYMBOL_OUTPUT_PATH=\"$6\"\n            UPLOAD_DSYM_ONLY=$7\n            run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${SYMBOL_OUTPUT_PATH} ${UPLOAD_DSYM_ONLY}\n            fi";
+		};
+		66BEE68B1C4FA232BBFE5966 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Smart_home/Pods-Smart_home-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E179D249883B9C5242DE6CEE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Smart_home/Pods-Smart_home-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3C7ECDD01D23B48500335F75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CDE29D91D7D71AA00EE90FD /* SceneInfo+CoreDataProperties.m in Sources */,
+				3CC1FEB81D47532500784AE4 /* NSString+StringOperation.m in Sources */,
+				3C954E721DACBF72008FF504 /* DoorBellController.m in Sources */,
+				3C1B5E1D1D2BBD3400E68797 /* RemoteController.m in Sources */,
+				3C905F6E1D27C5D000A9FE5B /* TTSCoreDataManager.m in Sources */,
+				3C7ECDDC1D23B48500335F75 /* AppDelegate.m in Sources */,
+				3C0513331D2CF18C00ED6DA1 /* CurtainCell.m in Sources */,
+				3CA37F2D1D5890B900852505 /* ConfirmCodeController.m in Sources */,
+				3C3EFC4E1D55C27800CE5A89 /* ChooseBrandController.m in Sources */,
+				3C6305181DB7077000218744 /* DoorCheckController.m in Sources */,
+				3C23FE701D2BA5AB00728650 /* SocketCell.m in Sources */,
+				3C905F6B1D27C5BD00A9FE5B /* DataBase.xcdatamodeld in Sources */,
+				3C7C6ACD1D24C9E700CEDDEF /* SiderNormalCell.m in Sources */,
+				3CDE29D81D7D71AA00EE90FD /* RoomInfo.m in Sources */,
+				3CD233471DAF79A800614CED /* LoginController.m in Sources */,
+				3C784F731D4763BF00FF2F6C /* SideBarController.m in Sources */,
+				3C1ECC901D30A81500F93FFF /* ManualAddBlueToothController.m in Sources */,
+				3CDDD62C1DC7228200F6DDF7 /* DoorBellInfoController.m in Sources */,
+				3C33877F1D927E7500577C0D /* PopMenuButton.m in Sources */,
+				3CDE29D31D7D71AA00EE90FD /* DeviceForScene+CoreDataProperties.m in Sources */,
+				3C999A751D6B16D000E66DCB /* XLPasswordView.m in Sources */,
+				3C934A731D6152CC00FD8965 /* DeviceSwitchController.m in Sources */,
+				3C47717C1D8E86FA000284D6 /* SceneCellCommon.m in Sources */,
+				3C2C59D71D2E51ED009F5016 /* LaunchView.m in Sources */,
+				3CE479861D53420800C26168 /* NSMutableArray+AddDeviceArray.m in Sources */,
+				3C999A711D6B16D000E66DCB /* UIImage+XLPasswordView.m in Sources */,
+				3CF9920E1D655BB400E2FFE8 /* InfraredViewCell.m in Sources */,
+				3C05132F1D2CB4D100ED6DA1 /* InfraredController.m in Sources */,
+				3C3387811D927E7500577C0D /* UIColor+ImageGetColor.m in Sources */,
+				3C999A731D6B16D000E66DCB /* XLPasswordInputView.m in Sources */,
+				3C7ECDFE1D23E02600335F75 /* MainLeftController.m in Sources */,
+				3CA4852B1D93749400BABB60 /* RemoteOneController.m in Sources */,
+				3CA485281D93743400BABB60 /* Remote53Controller.m in Sources */,
+				3CDE29D41D7D71AA00EE90FD /* DeviceForScene.m in Sources */,
+				3C36FBA71D929326002E02C8 /* DoorLabViewController.m in Sources */,
+				3CB9F5241D7565500027D155 /* RoomAddDeviceController.m in Sources */,
+				3C2CB0921D6A9F0500E798C0 /* TVController.m in Sources */,
+				3C579AE91DB5C4BC00E00E08 /* DoorBellStep2.m in Sources */,
+				3C33877E1D927E7500577C0D /* HyPopMenuView.m in Sources */,
+				3CF9920B1D65587700E2FFE8 /* DeviceInfraredController.m in Sources */,
+				3C1ADD511D549FD4009EA027 /* InfrareAddController.m in Sources */,
+				3CDE29D61D7D71AA00EE90FD /* DeviceInfo.m in Sources */,
+				3CF992051D644B3200E2FFE8 /* EditDeviceController.m in Sources */,
+				3C7EC80C1D2A4D11003CAAA6 /* SwitchTwoCell.m in Sources */,
+				3CDE29DA1D7D71AA00EE90FD /* SceneInfo.m in Sources */,
+				3C7F2DDC1D6AFC4C000A85D1 /* LockController.m in Sources */,
+				3C4D8A861DAE33D7009B1CDA /* CallingController.m in Sources */,
+				3CA4852F1D93B2BC00BABB60 /* CenterAirController.m in Sources */,
+				3CDF07401DED0E29004B922C /* UIViewController+Swizzling.m in Sources */,
+				3C02B1FA1DD1CD4A007CE3BE /* SetBellWifiController.m in Sources */,
+				3C50ED3F1D6D487800FEB855 /* CurtainCollectionCell.m in Sources */,
+				3C318B751D46FF6300359F60 /* BluetoothManager.m in Sources */,
+				3C24E5EF1D82A75F00E74C24 /* PopTopView.m in Sources */,
+				3CD8EA9A1D7418B000B843C7 /* AddRoomController.m in Sources */,
+				3CDE29D51D7D71AA00EE90FD /* DeviceInfo+CoreDataProperties.m in Sources */,
+				3C4771861D8F97DB000284D6 /* BathTubController.m in Sources */,
+				3C056F341D81069700EFB827 /* SceneView.m in Sources */,
+				3CB83BDC1D66B813003E1ECD /* AirViewController.m in Sources */,
+				3C3804FD1D4A062E00B1EA72 /* RemoteManger.m in Sources */,
+				3CC1FEBB1D47549500784AE4 /* SwitchThreeCell.m in Sources */,
+				3C905F631D27680400A9FE5B /* SwitchOneCell.m in Sources */,
+				3C5DBF3B1D5D807F006A6146 /* SettingController.m in Sources */,
+				3C579AEC1DB5CED400E00E08 /* DoorBellBinding.m in Sources */,
+				3C999A761D6B16D000E66DCB /* XLRandomKeyboard.m in Sources */,
+				3C7C6AD11D2514E400CEDDEF /* DevicesController.m in Sources */,
+				3C934A7A1D61741400FD8965 /* SwtichCollectionCell.m in Sources */,
+				3C999A701D6B16D000E66DCB /* UIColor+XLPasswordView.m in Sources */,
+				3CAB771C1DAC93D700F7B73D /* MessageController.m in Sources */,
+				3C08F1B11D2F40CD0091224F /* AddDevicesController.m in Sources */,
+				3C3387701D927DBD00577C0D /* AutoChooseFuntion.m in Sources */,
+				3C24E5EA1D82908600E74C24 /* CommonInfraredController.m in Sources */,
+				3C999A721D6B16D000E66DCB /* UIView+XLPasswordView.m in Sources */,
+				3C4771821D8F7AE7000284D6 /* OtherViewController.m in Sources */,
+				3C999A7C1D6BF60000E66DCB /* LockSettingController.m in Sources */,
+				3C7ECDD91D23B48500335F75 /* main.m in Sources */,
+				3CDDD6291DC6E25400F6DDF7 /* EditBellController.m in Sources */,
+				3C3387801D927E7500577C0D /* PopMenuModel.m in Sources */,
+				3C7EC8121D2A5313003CAAA6 /* SwitchCommonCell.m in Sources */,
+				3CDE29D71D7D71AA00EE90FD /* RoomInfo+CoreDataProperties.m in Sources */,
+				3C318B781D47006200359F60 /* TTSUtility.m in Sources */,
+				3C212A3F1D8804A900724EF6 /* EditSceneController.m in Sources */,
+				3C579AE31DB4D7FC00E00E08 /* DoorBellStep1.m in Sources */,
+				3C7ECDF81D23CB9F00335F75 /* TTSTabBarController.m in Sources */,
+				3C579AE01DB4B4FC00E00E08 /* DoorAddController.m in Sources */,
+				3C3A43E21D6C32A7008EDC47 /* LockAddController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3C1B5E181D2BB0EA00E68797 /* Devices.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C1B5E191D2BB0EA00E68797 /* Base */,
+			);
+			name = Devices.storyboard;
+			sourceTree = "<group>";
+		};
+		3C7ECDE31D23B48500335F75 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C7ECDE41D23B48500335F75 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3C7ECDE81D23B48500335F75 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C7ECDE91D23B48500335F75 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3CAB77171DAC8A8800F7B73D /* Devices_Other.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CAB77181DAC8A8800F7B73D /* Base */,
+			);
+			name = Devices_Other.storyboard;
+			sourceTree = "<group>";
+		};
+		3CB9F52B1D76EF9D0027D155 /* Devices_Switch.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CB9F52C1D76EF9D0027D155 /* Base */,
+			);
+			name = Devices_Switch.storyboard;
+			sourceTree = "<group>";
+		};
+		3CB9F52E1D76F09C0027D155 /* Devices_Infrared.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CB9F52F1D76F09C0027D155 /* Base */,
+			);
+			name = Devices_Infrared.storyboard;
+			sourceTree = "<group>";
+		};
+		3CB9F5311D76F1300027D155 /* Devices_Lock.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CB9F5321D76F1300027D155 /* Base */,
+			);
+			name = Devices_Lock.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3C7ECDEC1D23B48500335F75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "/Users/pengzishang/Documents/Smart_home(20160711)/Smart_home/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=0",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3C7ECDED1D23B48500335F75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "/Users/pengzishang/Documents/Smart_home(20160711)/Smart_home/PrefixHeader.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3C7ECDEF1D23B48500335F75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92987BD9A3B7CEB0FAB8FA72 /* Pods-Smart_home.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Smart_home/Smart_home.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7BLZ9JWB5U;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Smart_home",
+				);
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Smart_home/PrefixHeader.pch";
+				INFOPLIST_FILE = Smart_home/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Smart_home/Lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amj.SmartHome;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9d6d2c6a-132e-41c6-8ed7-a5b0f534da3c";
+				PROVISIONING_PROFILE_SPECIFIER = Development_General_Test_2016_09_28;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
+			};
+			name = Debug;
+		};
+		3C7ECDF01D23B48500335F75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2474AA86074CB423A58CE2F4 /* Pods-Smart_home.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Smart_home/Smart_home.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 7BLZ9JWB5U;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Smart_home",
+				);
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Smart_home/PrefixHeader.pch";
+				INFOPLIST_FILE = Smart_home/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Smart_home/Lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amj.SmartHome;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f4e00b6a-6cfd-41e4-8459-f7ada9c51163";
+				PROVISIONING_PROFILE_SPECIFIER = Distribution_SmartHome_2016_07_06;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3C7ECDCF1D23B48500335F75 /* Build configuration list for PBXProject "Smart_home" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C7ECDEC1D23B48500335F75 /* Debug */,
+				3C7ECDED1D23B48500335F75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C7ECDEE1D23B48500335F75 /* Build configuration list for PBXNativeTarget "Smart_home" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C7ECDEF1D23B48500335F75 /* Debug */,
+				3C7ECDF01D23B48500335F75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3C905F691D27C5BD00A9FE5B /* DataBase.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3C4361FC1D79735C00E0170F /* DataBase 2016.9.2.xcdatamodel */,
+				3C905F6A1D27C5BD00A9FE5B /* DataBase.xcdatamodel */,
+			);
+			currentVersion = 3C4361FC1D79735C00E0170F /* DataBase 2016.9.2.xcdatamodel */;
+			name = DataBase.xcdatamodeld;
+			path = DataBase/DataBase.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 3C7ECDCC1D23B48500335F75 /* Project object */;
+}

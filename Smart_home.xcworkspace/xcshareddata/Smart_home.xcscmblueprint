@@ -1,0 +1,48 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++5266" : {
+      "DVTSourceControlWorkingCopyRepositoryBranchesLocationKey" : "branches",
+      "DVTSourceControlWorkingCopyRepositoryTagsLocationKey" : "tags",
+      "DVTSourceControlWorkingCopyRepositoryPrimaryBranchLocationKey" : "trunk"
+    },
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++6322" : {
+
+    },
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++4489" : {
+      "DVTSourceControlWorkingCopyRepositoryBranchesLocationKey" : "branches",
+      "DVTSourceControlWorkingCopyRepositoryTagsLocationKey" : "tags",
+      "DVTSourceControlWorkingCopyRepositoryPrimaryBranchLocationKey" : "trunk"
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++5266" : 9223372036854775807,
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++6322" : 0,
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++4489" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D4F29A77-873D-4ADB-9051-4C4992984EF8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++5266" : "Smart_home1202\/",
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++6322" : "Smart_home\/",
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++4489" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Smart_home",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Smart_home.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.1.6:18081\/svn\/tts_smarthome2016",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "139935ea-1f45-cb4b-ab2b-c0705bf62e01++4489"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.1.6:18081\/svn\/tts_smarthome2016",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "139935ea-1f45-cb4b-ab2b-c0705bf62e01++5266"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.1.6:18081\/svn\/tts_smarthome2016",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "139935ea-1f45-cb4b-ab2b-c0705bf62e01++6322"
+    }
+  ]
+}

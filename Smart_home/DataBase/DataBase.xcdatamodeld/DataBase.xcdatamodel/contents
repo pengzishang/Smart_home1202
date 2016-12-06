@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="16A254g" minimumToolsVersion="Xcode 7.0">
+    <entity name="DeviceInfo" representedClassName="DeviceInfo" syncable="YES">
+        <attribute name="deviceCreateDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deviceCustomName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceInfaredCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceInfraredID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceMacID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceRemoteMac" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceSceneStatus" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="deviceStatus" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="deviceTapCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="deviceType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isCommonDevice" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="roomInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RoomInfo" inverseName="deviceInfo" inverseEntity="RoomInfo" syncable="YES"/>
+        <relationship name="sceneInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SceneInfo" inverseName="deviceInfo" inverseEntity="SceneInfo" syncable="YES"/>
+    </entity>
+    <entity name="RoomInfo" representedClassName="RoomInfo" syncable="YES">
+        <attribute name="isCommonRoom" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="roomCreateDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="roomID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="roomName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="roomTapCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="roomType" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="deviceInfo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeviceInfo" inverseName="roomInfo" inverseEntity="DeviceInfo" syncable="YES"/>
+    </entity>
+    <entity name="SceneInfo" representedClassName="SceneInfo" syncable="YES">
+        <attribute name="sceneCreateDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="sceneID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="sceneName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sceneTapCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="sceneType" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="deviceInfo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeviceInfo" inverseName="sceneInfo" inverseEntity="DeviceInfo" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DeviceInfo" positionX="-378" positionY="-63" width="128" height="240"/>
+        <element name="RoomInfo" positionX="-81" positionY="-90" width="128" height="148"/>
+        <element name="SceneInfo" positionX="-83" positionY="108" width="128" height="133"/>
+    </elements>
+</model>

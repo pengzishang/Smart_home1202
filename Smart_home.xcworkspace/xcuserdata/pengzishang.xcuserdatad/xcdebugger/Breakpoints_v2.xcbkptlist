@@ -1606,11 +1606,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Smart_home/Tabbar/Devices/DeviceControl/Lock/LockController.m"
-            timestampString = "500804268.797306"
+            timestampString = "502687757.090387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "-passwordView:didFinishInput:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2268,6 +2268,22 @@
             startingLineNumber = "351"
             endingLineNumber = "351"
             landmarkName = "-unwindToMainSwitchList:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Smart_home/Tabbar/Devices/DeviceControl/Lock/LockController.m"
+            timestampString = "502687340.872621"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "-unwindToMainLockList:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

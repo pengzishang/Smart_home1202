@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 @interface LockAddController : UITableViewController
 
-@property (nonatomic,strong)DeviceInfo *deviceInfoSendBack;
 @property (nonatomic,strong)RoomInfo *currentRoomInfo;
 @property(nonatomic,strong)NSMutableArray <__kindof DeviceInfo *>*devicesOfRoom;
+@property (nonatomic,strong)RoomInfo *roomInfo;
 
 @end

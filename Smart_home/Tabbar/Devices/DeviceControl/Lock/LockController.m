@@ -45,6 +45,7 @@
 }
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_navItem setTitle:!ISALLROOM?self.roomInfo.roomName:@"全部智能门锁"];
@@ -87,8 +88,8 @@
     [FTPopOverMenuConfiguration defaultConfiguration].menuWidth=200;
     [FTPopOverMenu showFromEvent:event withMenu:@[title1,remoteOnString,remoteId,remoteSync] imageNameArray:@[@"default_add_icon-0",@"setting_switch",@"setting_switch",@"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
         if (selectedIndex==0) {
-            !ISALLROOM?
-            [self performSegueWithIdentifier:@"addRoomLock" sender:self.roomInfo]://有房间信息
+//            !ISALLROOM?
+//            [self performSegueWithIdentifier:@"addRoomLock" sender:self.roomInfo]://有房间信息
             [self performSegueWithIdentifier:@"lockAdd" sender:self.devicesOfRoom];
         }
         else if (selectedIndex==1){
@@ -107,8 +108,6 @@
                     [devicesID addObject:obj];
                 }];
                 [TTSUtility mutiRemoteSave:devicesID remoteMacID:self.roomInfo.roomRemoteID];
-//                [[RemoteManger getInstance]multiSaveRemoteDevices:devicesID successNumberReturn:^(NSUInteger successCount) {
-//                } remoteMac:self.roomInfo.roomRemoteID];
             }
             else
             {
@@ -116,8 +115,6 @@
                     [devicesID addObject:obj];
                 }];
                 [TTSUtility mutiRemoteSave:devicesID remoteMacID:RemoteDefault];
-//                [[RemoteManger getInstance]multiSaveRemoteDevices:devicesID successNumberReturn:^(NSUInteger successCount) {
-//                } remoteMac:RemoteDefault];
             }
         }
     } dismissBlock:^{
@@ -238,14 +235,23 @@
 {
     if ([sender.sourceViewController isKindOfClass:[LockAddController class]]) {
         NSLog(@"%@",self.deviceForAdding);
-        [[TTSCoreDataManager getInstance]insertDataWithObject:self.deviceForAdding];
-        [TTSUtility syncRemoteDevice:self.deviceForAdding remoteMacID:RemoteDefault conditionReturn:^(NSString *statusCode) {
-            
-        }];
-        [self.devicesOfRoom addObject:self.deviceForAdding];
-//        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:self.devicesOfRoom.count-1 inSection:0];
+                    [self.devicesOfRoom addObject:self.deviceForAdding];
+        if (!ISALLROOM) {
+            NSMutableSet *devicesOfRoomInfo=[NSMutableSet setWithSet:self.roomInfo.deviceInfo];
+            [devicesOfRoomInfo addObject:self.deviceForAdding];
+            self.roomInfo.deviceInfo=devicesOfRoomInfo;
+            [[TTSCoreDataManager getInstance]updateData];
+        }
+        else
+        {
+            [self.devices addObject:self.deviceForAdding];
+            [[TTSCoreDataManager getInstance]insertDataWithObject:self.deviceForAdding];
+            [TTSUtility syncRemoteDevice:self.deviceForAdding remoteMacID:RemoteDefault conditionReturn:^(NSString *statusCode) {
+                
+            }];
+
+        }
         [self.tableView cyl_reloadData];
-//        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     else if ([sender.identifier isEqualToString:@"roomAddDevice2mainLock"])
     {
@@ -294,6 +300,7 @@
     {
         LockAddController *target=segue.destinationViewController;
         target.devicesOfRoom=(NSMutableArray *)sender;
+        target.roomInfo=self.roomInfo;
     }
 }
 

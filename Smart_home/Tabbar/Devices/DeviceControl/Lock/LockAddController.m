@@ -17,7 +17,7 @@
 @interface LockAddController ()<CYLTableViewPlaceHolderDelegate>
 
 @property (nonatomic,strong)NSMutableArray *nearbyDevice;
-
+@property (nonatomic,strong)NSMutableArray <NSDictionary *>*deviceInStore;
 @end
 
 @implementation LockAddController
@@ -28,6 +28,14 @@
         _nearbyDevice=[NSMutableArray array];
     }
     return _nearbyDevice;
+}
+
+-(NSMutableArray<NSDictionary *> *)deviceInStore
+{
+    if (!_deviceInStore) {
+        _deviceInStore=[NSMutableArray array];
+    }
+    return _deviceInStore;
 }
 
 - (void)viewDidLoad {
@@ -63,29 +71,50 @@
     [[BluetoothManager getInstance] scanPeriherals:YES AllowPrefix:scanTypeList];
     [BluetoothManager getInstance].detectDevice=^(NSDictionary *deviceInfoDic){
         NSString *deviceBroadcastName= deviceInfoDic[AdvertisementData][@"kCBAdvDataLocalName"];
-        if ([self roomContain:[deviceBroadcastName substringFromIndex:7]]) {
-            return ;
-        }
-        NSUInteger currentIdx= [self.nearbyDevice refreshWithDeviceInfo:deviceInfoDic];
-        if (currentIdx==NSUIntegerMax) {//如果没有这个设备
-            [self.tableView cyl_reloadData];
+        BOOL allDeviceContain=[self roomContain:[deviceBroadcastName substringFromIndex:7] inDevicesOfRoom:self.devicesOfRoom];
+        if (self.roomInfo) {
+            NSSortDescriptor *sortWithDate=[NSSortDescriptor sortDescriptorWithKey:@"deviceCreateDate" ascending:YES];
+            NSArray *roomdevices=[self.roomInfo.deviceInfo sortedArrayUsingDescriptors:@[sortWithDate]];
+            BOOL isRoomContain=[self roomContain:[deviceBroadcastName substringFromIndex:7] inDevicesOfRoom:roomdevices];
+            if (allDeviceContain&&!isRoomContain) {
+                [self refreshWithArr:self.deviceInStore forDic:deviceInfoDic inSection:1];
+            }
+            else if (!allDeviceContain&&!isRoomContain){
+                [self refreshWithArr:self.nearbyDevice forDic:deviceInfoDic inSection:0];
+            }
         }
         else
         {
-            static NSUInteger refreshTime=0;
-            if (++refreshTime==35) {//有这个设备,并且35次刷新后
-                NSIndexPath *idxPath=[NSIndexPath indexPathForRow:currentIdx inSection:0];
-                [self.tableView reloadRowsAtIndexPaths:@[idxPath] withRowAnimation:UITableViewRowAnimationFade];
-                refreshTime=0;
+            if (!allDeviceContain) {
+                
+                [self refreshWithArr:self.nearbyDevice forDic:deviceInfoDic inSection:0];
             }
         }
     };
 }
 
--(BOOL)roomContain:(NSString *)deviceID
+-(void)refreshWithArr:(NSMutableArray *)arr forDic:(NSDictionary *)dic inSection:(NSUInteger)section
+{
+    NSUInteger currentIdx= [arr refreshWithDeviceInfo:dic];
+    if (currentIdx==NSUIntegerMax) {
+        [self.tableView cyl_reloadData];
+    }
+    else
+    {
+        static NSUInteger refreshTime=0;
+        if (++refreshTime==15) {//刷新
+            NSIndexPath *idxPath=[NSIndexPath indexPathForRow:currentIdx inSection:section];
+            [self.tableView reloadRowsAtIndexPaths:@[idxPath] withRowAnimation:UITableViewRowAnimationFade];
+            refreshTime=0;
+        }
+    }
+}
+
+
+-(BOOL)roomContain:(NSString *)deviceID inDevicesOfRoom:(NSArray *)deviceOfRoom
 {
     __block BOOL isContain=NO;
-    [self.devicesOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [deviceOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([deviceID isEqualToString:obj.deviceMacID]) {
             isContain=YES;
             *stop=YES;
@@ -93,6 +122,7 @@
     }];
     return isContain;
 }
+
 
 #pragma mark CYLTableViewPlaceHolderDelegate
 
@@ -106,46 +136,95 @@
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"附近的设备";
+    if(section==0){
+        return @"附近的未添加设备";
+    }
+    else
+    {
+        return @"已经添加的设备";
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    if (self.roomInfo) {
+        return 2;
+    }
+    else
+    {
+        return 1;
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _nearbyDevice.count;
+    if (section==0) {
+        return _nearbyDevice.count;
+    }
+    else
+    {
+        return _deviceInStore.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"deviceNameCell" forIndexPath:indexPath];
-    NSString *deviceFullName = _nearbyDevice[indexPath.row][@"advertisementData"][@"kCBAdvDataLocalName"];
-    NSString *deviceIDstr=[deviceFullName substringFromIndex:7];
-    NSNumber *rssiNum=_nearbyDevice[indexPath.row][RSSI_VALUE];
     UILabel *deviceIDLab=[cell viewWithTag:202];
     UILabel *rssiLab=[cell viewWithTag:203];
-    deviceIDLab.text=deviceIDstr;
-    rssiLab.text=[NSString stringWithFormat:@"信号强度:%@",rssiNum];
+    
+    if (indexPath.section==0) {
+        NSString *deviceFullName = _nearbyDevice[indexPath.row][@"advertisementData"][@"kCBAdvDataLocalName"];
+        NSString *deviceIDstr=[deviceFullName substringFromIndex:7];
+        NSNumber *rssiNum=_nearbyDevice[indexPath.row][RSSI_VALUE];
+        deviceIDLab.text=deviceIDstr;
+        rssiLab.text=[NSString stringWithFormat:@"信号强度:%@",rssiNum];
+    }
+    else if (indexPath.section==1){
+        NSString *deviceFullName = _deviceInStore[indexPath.row][@"advertisementData"][@"kCBAdvDataLocalName"];
+        NSString *deviceIDstr=[deviceFullName substringFromIndex:7];
+        NSNumber *rssiNum=_deviceInStore[indexPath.row][RSSI_VALUE];
+        deviceIDLab.text=deviceIDstr;
+        rssiLab.text=[NSString stringWithFormat:@"信号强度:%@",rssiNum];
+    }
+
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [[BluetoothManager getInstance]stopScan];
-    NSDictionary *infoDic=_nearbyDevice[indexPath.row];
-    NSString *deviceName = infoDic[AdvertisementData][@"kCBAdvDataLocalName"];
-    NSString *deviceIDstr=[deviceName substringFromIndex:7];
-    NSDictionary *devicesInfoDic=@{@"deviceMacID":deviceIDstr,@"deviceCustomName":deviceName,@"deviceType":@"8",@"deviceStatus":@(0)};
-    DeviceInfo *deviceInfo = (DeviceInfo *)[[TTSCoreDataManager getInstance]getNewManagedObjectWithEntiltyName:@"DeviceInfo"];
-    [deviceInfo setValuesForKeysWithDictionary:devicesInfoDic];
+    
+    
+    if (indexPath.section==0) {
+        NSDictionary *infoDic=_nearbyDevice[indexPath.row];
+        NSString *deviceName = infoDic[AdvertisementData][@"kCBAdvDataLocalName"];
+        NSString *deviceIDstr=[deviceName substringFromIndex:7];
+        NSDictionary *devicesInfoDic=@{@"deviceMacID":deviceIDstr,@"deviceCustomName":deviceName,@"deviceType":@"8",@"deviceStatus":@(0)};
+        DeviceInfo *deviceInfo = (DeviceInfo *)[[TTSCoreDataManager getInstance]getNewManagedObjectWithEntiltyName:@"DeviceInfo"];
+        [deviceInfo setValuesForKeysWithDictionary:devicesInfoDic];
         deviceInfo.deviceCustomName=[NSString stringWithFormat:@"%@:%@",[NSString ListNameWithPrefix:[deviceName substringToIndex:7]],[deviceIDstr substringFromIndex:deviceIDstr.length-4]];
-    deviceInfo.deviceCreateDate=[NSDate date];
-    if (RemoteDefault) {
-        deviceInfo.deviceRemoteMac=RemoteDefault;
+        deviceInfo.deviceCreateDate=[NSDate date];
+        if (RemoteDefault) {
+            deviceInfo.deviceRemoteMac=RemoteDefault;
+        }
+        deviceInfo.deviceTapCount=@(0);
+        deviceInfo.isCommonDevice=@(YES);
+        [self performSegueWithIdentifier:@"back2mainLock" sender:deviceInfo];
     }
-    deviceInfo.deviceTapCount=@(0);
-    deviceInfo.isCommonDevice=@(YES);
-    [self performSegueWithIdentifier:@"back2mainLock" sender:deviceInfo];
+    else
+    {
+        NSDictionary *infoDic=_deviceInStore[indexPath.row];
+        NSString *deviceName = infoDic[AdvertisementData][@"kCBAdvDataLocalName"];
+        NSString *deviceID=[deviceName substringFromIndex:7];
+        __block DeviceInfo *deviceInfo=nil;
+        [self.devicesOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj.deviceMacID isEqualToString:deviceID]) {
+                deviceInfo=obj;
+                *stop=YES;
+            }
+        }];
+        [self performSegueWithIdentifier:@"back2mainLock" sender:deviceInfo];
+    }
+
 }
 
 

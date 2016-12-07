@@ -458,9 +458,20 @@
     [[TTSCoreDataManager getInstance]insertDataWithObject:sceneInfo];
     [roomSceneSet addObject:sceneInfo];
     roomInfo.sceneInfo=roomSceneSet;
-    
+    [[TTSCoreDataManager getInstance]updateData];
     return sceneInfo;
 }
+
++ (void)deleteScene:(SceneInfo *)sceneInfo room:(RoomInfo *)roomInfo
+{
+    NSMutableSet *roomSceneSet=[NSMutableSet setWithSet:roomInfo.sceneInfo];
+    [roomSceneSet removeObject:sceneInfo];
+    roomInfo.sceneInfo=roomSceneSet;
+    [[TTSCoreDataManager getInstance]deleteDataWithObject:sceneInfo];
+    [[TTSCoreDataManager getInstance]updateData];
+}
+
+
 
 +(void)newGuideWithPoint:(CGPoint)point title:(NSString *)title
 {

@@ -608,7 +608,11 @@
                                                 <segue destination="SMz-Ck-Er1" kind="unwind" identifier="sceneEdit2main" unwindAction="unwindToMainList:" id="xPT-H8-EOg"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title=" ... " id="5yK-K1-67o"/>
+                                        <barButtonItem key="rightBarButtonItem" title="删除模式" id="5yK-K1-67o">
+                                            <connections>
+                                                <action selector="rightBtn:event:" destination="fO7-Ck-uvH" id="xZR-tm-VI0"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

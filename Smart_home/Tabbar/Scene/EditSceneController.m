@@ -9,6 +9,8 @@
 #import "EditSceneController.h"
 #import "SceneCellCommon.h"
 #import "TTSCoreDataManager.h"
+#import "FTPopOverMenu.h"
+#import "TTSUtility.h"
 @interface EditSceneController ()<SceneCellDelegata>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *mainCollectView;
@@ -38,6 +40,12 @@
 -(void)loadData
 {
     
+}
+- (IBAction)rightBtn:(UIBarButtonItem *)sender event:(UIEvent *)event
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+           [TTSUtility deleteScene:self.sceneInfo room:self.roomInfo];
+    }];
 }
 
 - (IBAction)didSelectBtn:(UIButton *)sender {

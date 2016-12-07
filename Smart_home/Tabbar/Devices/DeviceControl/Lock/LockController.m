@@ -88,8 +88,8 @@
     [FTPopOverMenuConfiguration defaultConfiguration].menuWidth=200;
     [FTPopOverMenu showFromEvent:event withMenu:@[title1,remoteOnString,remoteId,remoteSync] imageNameArray:@[@"default_add_icon-0",@"setting_switch",@"setting_switch",@"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
         if (selectedIndex==0) {
-//            !ISALLROOM?
-//            [self performSegueWithIdentifier:@"addRoomLock" sender:self.roomInfo]://有房间信息
+            //            !ISALLROOM?
+            //            [self performSegueWithIdentifier:@"addRoomLock" sender:self.roomInfo]://有房间信息
             [self performSegueWithIdentifier:@"lockAdd" sender:self.devicesOfRoom];
         }
         else if (selectedIndex==1){
@@ -148,15 +148,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DeviceInfo *device=self.devicesOfRoom[indexPath.row];
-//    BOOL isNearBy=[self isNearby:device];
+    //    BOOL isNearBy=[self isNearby:device];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LockCell" forIndexPath:indexPath];
     UILabel *nameLab=[cell viewWithTag:1001];
     nameLab.text=device.deviceCustomName;
     UILabel *IDLab=[cell viewWithTag:1002];
     IDLab.text=device.deviceMacID;
-//    if (!isNearBy) {
-//        cell.contentView.alpha=0.4;
-//    }
+    //    if (!isNearBy) {
+    //        cell.contentView.alpha=0.4;
+    //    }
     return cell;
 }
 
@@ -227,7 +227,7 @@
     {
         [TTSUtility lockWithDeviceInfo:self.devicesOfRoom[_operationIndex] lockMode:APPLockModeOpen passWord:password validtime:10000];
     }
-
+    
 }
 
 
@@ -235,7 +235,7 @@
 {
     if ([sender.sourceViewController isKindOfClass:[LockAddController class]]) {
         NSLog(@"%@",self.deviceForAdding);
-                    [self.devicesOfRoom addObject:self.deviceForAdding];
+        [self.devicesOfRoom addObject:self.deviceForAdding];
         if (!ISALLROOM) {
             NSMutableSet *devicesOfRoomInfo=[NSMutableSet setWithSet:self.roomInfo.deviceInfo];
             [devicesOfRoomInfo addObject:self.deviceForAdding];
@@ -249,7 +249,7 @@
             [TTSUtility syncRemoteDevice:self.deviceForAdding remoteMacID:RemoteDefault conditionReturn:^(NSString *statusCode) {
                 
             }];
-
+            
         }
         [self.tableView cyl_reloadData];
     }
@@ -294,7 +294,7 @@
         target.devicesOfAll=self.devices;
         target.roomInfo=(RoomInfo *)sender;
         target.enterId=@"addRoomLock";
-
+        
     }
     else if ([segue.identifier isEqualToString:@"lockAdd"])
     {

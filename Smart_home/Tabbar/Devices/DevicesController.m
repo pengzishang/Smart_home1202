@@ -335,20 +335,34 @@
     NSArray <SceneInfo *>*all_Scene=[self.currentRoom.sceneInfo sortedArrayUsingDescriptors:@[sortByDate]];
     if (index==all_Scene.count) {
         //添加情景模式
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"添加情景模式" message:@"输入情景模式的名字" preferredStyle: UIAlertControllerStyleAlert];
-        
-        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            textField.placeholder=@"情景模式名字";
-        }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil];
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSString *roomName=alertController.textFields[0].text;
-            [TTSUtility addSceneWithRoom:self.currentRoom index:self.currentRoom.sceneInfo.count roomName:roomName];
-        }];
-
-        [alertController  addAction:confirmAction];
-        [alertController addAction:cancelAction];
-        [self presentViewController:alertController animated:YES completion:nil];
+        if (index<8) {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"添加情景模式" message:@"输入情景模式的名字" preferredStyle: UIAlertControllerStyleAlert];
+            
+            [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+                textField.placeholder=@"情景模式名字";
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil];
+            UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                NSString *roomName=alertController.textFields[0].text;
+                if (roomName.length==0) {
+                    roomName=alertController.textFields[0].placeholder;
+                }
+                [TTSUtility addSceneWithRoom:self.currentRoom index:self.currentRoom.sceneInfo.count roomName:roomName];
+            }];
+            
+            
+            [alertController addAction:cancelAction];
+            [alertController  addAction:confirmAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+        else
+        {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"此房间情景模式不能超过8个" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:nil];
+            [alertController addAction:cancelAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+ 
         
     }
     else

@@ -86,7 +86,8 @@
         if (isNeed) {
             NSString *tempString=@"";
             for (NSUInteger i=0; i<8; i+=2) {
-                if (temertureDic[[statusString substringWithRange:NSMakeRange(i, 2)]]||[statusString substringWithRange:NSMakeRange(i, 2)]) {
+                if (temertureDic[[statusString substringWithRange:NSMakeRange(i, 2)]]||[statusString substringWithRange:NSMakeRange(i, 2)])
+                {
                     tempString=[tempString stringByAppendingString:i==2?
                                 temertureDic[[statusString substringWithRange:NSMakeRange(i, 2)]]:
                                 [statusString substringWithRange:NSMakeRange(i, 2)]];

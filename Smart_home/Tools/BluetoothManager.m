@@ -470,7 +470,7 @@ NSString * _Nonnull const ScanTypeDescription[] = {
 {
     NSString *deviceIDFromAdv=[advertisementData[@"kCBAdvDataLocalName"] stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *deviceIDFromPeripheral=[peripheral.name stringByReplacingOccurrencesOfString:@" " withString:@""];
-    if([RSSI integerValue]<=-105||[RSSI integerValue]==127)
+    if([RSSI integerValue]<=-115||[RSSI integerValue]==127)
     {
         return;
     }

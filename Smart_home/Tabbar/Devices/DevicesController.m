@@ -29,11 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *lockTitle;
 @property (weak, nonatomic) IBOutlet UILabel *totalInfrared;
-
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *editRoom;
-
-
-
 
 @end
 
@@ -339,22 +335,24 @@
     NSArray <SceneInfo *>*all_Scene=[self.currentRoom.sceneInfo sortedArrayUsingDescriptors:@[sortByDate]];
     if (index==all_Scene.count) {
         //添加情景模式
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle: UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"添加情景模式" message:@"输入情景模式的名字" preferredStyle: UIAlertControllerStyleAlert];
         
         [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            
-        }];
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
+            textField.placeholder=@"情景模式名字";
         }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *roomName=alertController.textFields[0].text;
+            [TTSUtility addSceneWithRoom:self.currentRoom index:self.currentRoom.sceneInfo.count roomName:roomName];
+        }];
+
         [alertController  addAction:confirmAction];
         [alertController addAction:cancelAction];
         [self presentViewController:alertController animated:YES completion:nil];
         
     }
     else
-    {
+    {//点击执行情景模式
         NSSortDescriptor *sortByID=[NSSortDescriptor sortDescriptorWithKey:@"deviceMacID" ascending:YES];
         NSArray *all_devices=[all_Scene[index].devicesInfo sortedArrayUsingDescriptors:@[sortByID]];
         [TTSUtility mutiLocalDeviceControlWithDeviceInfoArr:all_devices result:^(NSArray <NSDictionary *>*resultArr) {

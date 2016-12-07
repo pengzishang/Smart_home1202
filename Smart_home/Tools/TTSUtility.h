@@ -127,7 +127,7 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
 
 + (NSArray *)initScene:(RoomInfo *)roomInfo;
 
-+ (SceneInfo *)addSceneWithRoom:(RoomInfo *)roomInfo;
++ (SceneInfo *)addSceneWithRoom:(RoomInfo *)roomInfo index:(NSUInteger)roomIndex roomName:(NSString *)roomName;
 
 + (void)newGuideWithPoint:(CGPoint)point title:(NSString *)title;
 

@@ -429,18 +429,38 @@
     return sceneReturn;
 }
 
-//+(SceneInfo *)addSceneWithRoom:(RoomInfo *)roomInfo
-//{
-//    NSMutableSet *sceneDeviceSet=[NSMutableSet set];
-//    [roomInfo.deviceInfo enumerateObjectsUsingBlock:^(DeviceInfo * _Nonnull roomDeviceObj, BOOL * _Nonnull stop) {
-//        if ((roomDeviceObj.deviceType.integerValue <=5&&roomDeviceObj.deviceType.integerValue >=0)||(roomDeviceObj.deviceType.integerValue<=23&&roomDeviceObj.deviceType.integerValue>20)) {
-//            [TTSCoreDataManager getInstance]
-//        }
-//    }];
-//    SceneInfo *sceneInfo=(SceneInfo *)[[TTSCoreDataManager getInstance]getNewManagedObjectWithEntiltyName:@"SceneInfo"];
-//
-//    return sceneInfo;
-//}
++(SceneInfo *)addSceneWithRoom:(RoomInfo *)roomInfo index:(NSUInteger)roomIndex roomName:(NSString *)roomName
+{
+    NSMutableSet *roomSceneSet=[NSMutableSet setWithSet:roomInfo.sceneInfo];
+    NSMutableSet *sceneDeviceSet=[NSMutableSet set];
+    [roomInfo.deviceInfo enumerateObjectsUsingBlock:^(DeviceInfo * _Nonnull roomDeviceObj, BOOL * _Nonnull stop) {
+        if ((roomDeviceObj.deviceType.integerValue <=5&&roomDeviceObj.deviceType.integerValue >=0)||(roomDeviceObj.deviceType.integerValue<=23&&roomDeviceObj.deviceType.integerValue>20)) {
+            DeviceForScene *sceneOfDevice= (DeviceForScene *)[[TTSCoreDataManager getInstance]getNewManagedObjectWithEntiltyName:@"DeviceForScene"];
+            sceneOfDevice.deviceType=@(roomDeviceObj.deviceType.integerValue);
+            sceneOfDevice.deviceMacID=roomDeviceObj.deviceMacID;
+            sceneOfDevice.deviceCustomName=roomDeviceObj.deviceCustomName;
+            [sceneDeviceSet addObject:sceneOfDevice];
+            if(sceneOfDevice.deviceType.integerValue==4||sceneOfDevice.deviceType.integerValue==5){
+                sceneOfDevice.deviceSceneStatus=@"2";
+            }
+            else
+            {
+                sceneOfDevice.deviceSceneStatus=@"0";
+            }
+        }
+    }];
+    SceneInfo *sceneInfo=(SceneInfo *)[[TTSCoreDataManager getInstance]getNewManagedObjectWithEntiltyName:@"SceneInfo"];
+    sceneInfo.sceneType=@(roomIndex);
+    sceneInfo.sceneTapCount=@(0);
+    sceneInfo.sceneCreateDate=[NSDate date];
+    sceneInfo.sceneName=roomName;
+    sceneInfo.devicesInfo=sceneDeviceSet;
+    [[TTSCoreDataManager getInstance]insertDataWithObject:sceneInfo];
+    [roomSceneSet addObject:sceneInfo];
+    roomInfo.sceneInfo=roomSceneSet;
+    
+    return sceneInfo;
+}
 
 +(void)newGuideWithPoint:(CGPoint)point title:(NSString *)title
 {

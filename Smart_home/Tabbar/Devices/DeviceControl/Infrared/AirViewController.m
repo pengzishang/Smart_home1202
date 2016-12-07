@@ -90,7 +90,7 @@
                 {
                     tempString=[tempString stringByAppendingString:i==2?
                                 temertureDic[[statusString substringWithRange:NSMakeRange(i, 2)]]:
-                                [statusString substringWithRange:NSMakeRange(i, 2)]];
+                                [statusString substringWithRange:NSMakeRange(i, 2)]];//这一句可能有空值
                 }
             }
             self.deviceInfo.deviceStatus=@(tempString.integerValue);

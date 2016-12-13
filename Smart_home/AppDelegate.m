@@ -48,7 +48,6 @@
 
 -(void)autoScan:(id)sender
 {
-    NSLogMethodArgs(@"autoScan");
     [[BluetoothManager getInstance]scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
 }
 -(void)BugAndUpdate

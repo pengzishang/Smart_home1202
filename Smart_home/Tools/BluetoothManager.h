@@ -14,7 +14,7 @@
 #define Peripheral         @"peripheral"
 #define AdvertisementData  @"advertisementData"
 #define RSSI_VALUE         @"RSSI"
-
+#define Note_Refresh_State  @"Note_Refresh_State"//刷新屏幕上的转动图标
 
 
 /**

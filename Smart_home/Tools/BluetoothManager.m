@@ -531,6 +531,7 @@ NSString * _Nonnull const ScanTypeDescription[] = {
                 {
                     operationIndex=idx;
                     NSLogMethodArgs(@"刷新 %@  强度:%@ 原状态:%@ 现状态:%@",deviceIDFromAdv,RSSI,stateCodeInStore,stateCodeCurrent);
+//                    [[NSNotificationCenter defaultCenter]postNotificationName:Note_Refresh_State object:nil userInfo:nil];
                 }
             }
         }];
@@ -540,16 +541,19 @@ NSString * _Nonnull const ScanTypeDescription[] = {
             
             NSDictionary * peripheralInfo = @{Peripheral : peripheral, AdvertisementData : advertisementData, RSSI_VALUE : RSSI,@"stateCode":stateCodeCurrent};
             [[self mutableArrayValueForKey:@"peripheralsInfo"] addObject:peripheralInfo];//数组,观察者
-            if (_detectDevice) {
-                _detectDevice(peripheralInfo);
-            }
+//            if (_detectDevice) {
+//                _detectDevice(peripheralInfo);
+//            }
             //  刷新数据库
             //                [[NSNotificationCenter defaultCenter]postNotificationName:Note_Refresh_State object:nil userInfo:peripheralInfo];
         }
         else if(isContain&&!isStatusSame)
         {
             //不一样
+            //                    [[NSNotificationCenter defaultCenter]postNotificationName:Note_Refresh_State object:nil userInfo:nil];
+            
             NSDictionary * peripheralInfo = @{Peripheral : peripheral, AdvertisementData : advertisementData, RSSI_VALUE : RSSI,@"stateCode":stateCodeCurrent};
+            [[NSNotificationCenter defaultCenter]postNotificationName:Note_Refresh_State object:nil userInfo:peripheralInfo];
             [self.peripheralsInfo replaceObjectAtIndex:operationIndex withObject:peripheralInfo];
 
         }

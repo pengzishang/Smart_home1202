@@ -9,7 +9,7 @@
 #import "InfrareAddController.h"
 #import "ChooseBrandController.h"
 
-@interface InfrareAddController ()
+@interface InfrareAddController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *mainCollectView;
 @end
 
@@ -63,6 +63,9 @@
 {
     return 1;
 }
+
+
+
 
 //定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath

@@ -105,7 +105,12 @@
             NSMutableDictionary *targetDevice=[NSMutableDictionary dictionaryWithCapacity:3];
             targetDevice[@"remoteName"]=deviceName;
             targetDevice[@"remoteFullID"]=deviceName;
-            [self.remoteList addObject:targetDevice];
+            if (![self.remoteList containsObject:targetDevice]) {
+                [self.remoteList addObject:targetDevice];
+                [[NSUserDefaults standardUserDefaults]setObject:self.remoteList forKey:@"remoteList"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+            }
+
         }
         [_mainTableView reloadData];
     }

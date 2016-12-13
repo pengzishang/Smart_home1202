@@ -54,9 +54,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter ]addObserver:self selector:@selector(backgroundRefreshState:) name:Note_Refresh_State object:nil];
     [_navItem setTitle:ISALLROOM?@"全部开关":self.roomInfo.roomName];
     
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -78,10 +81,26 @@
     }
 }
 
+-(void)backgroundRefreshState:(NSNotification *)sender
+{
+    NSDictionary *peripheralInfo=sender.userInfo[AdvertisementData];
+    NSString *deviceIDFromAdv=[peripheralInfo[@"kCBAdvDataLocalName"]
+                               stringByReplacingOccurrencesOfString:@" " withString:@""];
+        NSString * deviceID=[deviceIDFromAdv substringFromIndex:7];
+    NSString *stateCode=[deviceIDFromAdv substringWithRange:NSMakeRange(6, 1)];
+    [self.devicesOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.deviceMacID isEqualToString:deviceID]) {
+            obj.deviceStatus=@(stateCode.integerValue);
+            [[TTSCoreDataManager getInstance]updateData];
+            NSIndexPath *indexPath=[NSIndexPath indexPathForRow:idx inSection:0];
+            [_mainCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+        }
+    }];
+}
+
 
 -(void)autoScan:(id)sender
 {
-    NSLogMethodArgs(@"autoScan");
     [[BluetoothManager getInstance]scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
 }
 
@@ -435,5 +454,10 @@
     
 }
 
+
+-(void)dealloc
+{
+    
+}
 
 @end

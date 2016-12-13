@@ -406,7 +406,7 @@
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      if ([segue.identifier isEqualToString:@"getcalling"]) {
          CallingController *target=segue.destinationViewController;
-         JFGSDKDoorBellCall *device=[JFGSDKDoorBellCall new];
+//         JFGSDKDoorBellCall *device=[JFGSDKDoorBellCall new];
          target.userInfo=sender;
      }
  // Get the new view controller using [segue destinationViewController].

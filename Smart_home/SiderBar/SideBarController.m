@@ -41,7 +41,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *imageName=@[@"left_sidebar_video_monitoring_icon",@"left_sidebar_space_icon",@"left_sidebar_remote_control_icon",@"left_sidebar_infrared_control_icon",@"left_sidebar_setting_icon",@"left_sidebar_video_monitoring_icon"];
-    NSArray *labTitle=@[@"视频监控",@"一键添加设备",@"远程控制器",@"红外控制器",@"设置",@"消息"];
+    NSArray *labTitle=@[@"视频监控",@"一键添加设备",@"默认远程设定",@"默认红外设定",@"设置",@"消息"];
     SiderNormalCell *cell=[tableView dequeueReusableCellWithIdentifier:@"SiderNormal"];
     cell.SiderNormalLab.text=labTitle[indexPath.row];
     cell.SiderNormalImage.image=[UIImage imageNamed:imageName[indexPath.row]];

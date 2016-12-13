@@ -85,20 +85,36 @@
 {
     __block BOOL isRemote=RemoteOn;
     NSString *remoteOnString=isRemote?@"远程:开":@"远程:关";
-    NSString *title1=!ISALLROOM?@"添加已有红外设备":@"添加新红外设备";
-    [FTPopOverMenu showFromEvent:event withMenu:@[title1,remoteOnString] imageNameArray:@[@"default_add_icon-0",@"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
-        if (selectedIndex==0) {
-            !ISALLROOM?
-            [self performSegueWithIdentifier:@"addRoomInfrared" sender:self.roomInfo]://有房间信息
-            [self performSegueWithIdentifier:@"infaredAdd" sender:nil];
-        }
-        else if (selectedIndex==1){
-            isRemote=!isRemote;
-            [[NSUserDefaults standardUserDefaults]setBool:isRemote forKey:@"RemoteOn"];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-        }
-    } dismissBlock:^{
-    }];
+    if (!ISALLROOM) {
+        [FTPopOverMenu showFromEvent:event withMenu:@[@"新设备",@"已有的设备",remoteOnString] imageNameArray:@[@"default_add_icon-0",@"default_add_icon-0",@"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
+            if (selectedIndex==0) {
+                [self performSegueWithIdentifier:@"infaredAdd" sender:nil];
+            }
+            else if (selectedIndex==1){
+                [self performSegueWithIdentifier:@"addRoomInfrared" sender:self.roomInfo];//有房间信息
+            }else if (selectedIndex==2){
+                isRemote=!isRemote;
+                [[NSUserDefaults standardUserDefaults]setBool:isRemote forKey:@"RemoteOn"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+            }
+        } dismissBlock:^{
+        }];
+    }
+    else
+    {
+        [FTPopOverMenu showFromEvent:event withMenu:@[@"新设备",remoteOnString] imageNameArray:@[@"default_add_icon-0",@"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
+            if (selectedIndex==0) {
+                [self performSegueWithIdentifier:@"infaredAdd" sender:nil];
+            }
+            else if (selectedIndex==1){
+                isRemote=!isRemote;
+                [[NSUserDefaults standardUserDefaults]setBool:isRemote forKey:@"RemoteOn"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+            }
+        } dismissBlock:^{
+        }];
+    }
+ 
 }
 
 #pragma mark CYLTableViewPlaceHolderDelegate
@@ -187,8 +203,14 @@
     NSLog(@"%@",self.deviceForAdding);
     
     if ([sender.identifier isEqualToString:@"infrared2InfraredMain"]) {
-        [[TTSCoreDataManager getInstance]insertDataWithObject:self.deviceForAdding];
         [self.devicesOfRoom addObject:self.deviceForAdding];
+        [self.devices addObject:self.deviceForAdding];
+        if (self.roomInfo) {
+            NSMutableSet *devicesOfRoomInfo=[NSMutableSet setWithSet:self.roomInfo.deviceInfo];
+            [devicesOfRoomInfo addObject:self.deviceForAdding];
+            self.roomInfo.deviceInfo=devicesOfRoomInfo;
+        }
+                [[TTSCoreDataManager getInstance]insertDataWithObject:self.deviceForAdding];
         //        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:self.devicesOfRoom.count-1 inSection:0];
         [_mainTableView cyl_reloadData];
         self.deviceForAdding=nil;

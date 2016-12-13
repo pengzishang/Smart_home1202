@@ -37,7 +37,10 @@
     [IQKeyboardManager sharedManager].enable=YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar=YES;
     [IQKeyboardManager sharedManager].shouldShowTextFieldPlaceholder=YES;
+#if defined (DEBUG)||defined (_DEBUG)//开发环境
+#else
     [self BugAndUpdate];
+#endif
     [self JFGConfig];
     [self JpushConfig:launchOptions];
     return YES;
@@ -50,6 +53,7 @@
 }
 -(void)BugAndUpdate
 {
+    
     [[PgyManager sharedPgyManager] startManagerWithAppId:pgyKey];
     [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:pgyKey];
     [[PgyUpdateManager sharedPgyManager] checkUpdate];
@@ -162,7 +166,7 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     [self setValue:userInfo forKey:@"pushUserInfo"];
     NSLog(@"iOS7及以上系统，收到通知:%@", userInfo);//先在全局储存,再到相应页面推送,设置标识就好
     if (completionHandler) {
-//        [TTSUtility openVideo:userInfo];
+        //        [TTSUtility openVideo:userInfo];
         completionHandler(UIBackgroundFetchResultNewData);
     }
 }
@@ -180,7 +184,7 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSString *body = content.body;    // 推送消息体
     UNNotificationSound *sound = content.sound;  // 推送消息的声音
     NSString *subtitle = content.subtitle;  // 推送消息的副标题
-//    NSString *title = content.title;  // 推送消息的标题
+    //    NSString *title = content.title;  // 推送消息的标题
     NSString *title = @"收到了吗?";
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
@@ -205,7 +209,7 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSString *body = content.body;    // 推送消息体
     UNNotificationSound *sound = content.sound;  // 推送消息的声音
     NSString *subtitle = content.subtitle;  // 推送消息的副标题
-//    NSString *title = content.title;  // 推送消息的标题
+    //    NSString *title = content.title;  // 推送消息的标题
     NSString *title = @"收到了吗?";
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
@@ -229,13 +233,13 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     if (errorType == JFGErrorTypeNone) {
         _isJFGLogin=YES;
         
-//        NSString *deviceTokeStr=[[[[_deviceToken description]
-//                                   stringByReplacingOccurrencesOfString:@"<"withString:@""]
-//                                  stringByReplacingOccurrencesOfString:@">" withString:@""]
-//                                 stringByReplacingOccurrencesOfString:@" " withString:@""];
+        //        NSString *deviceTokeStr=[[[[_deviceToken description]
+        //                                   stringByReplacingOccurrencesOfString:@"<"withString:@""]
+        //                                  stringByReplacingOccurrencesOfString:@">" withString:@""]
+        //                                 stringByReplacingOccurrencesOfString:@" " withString:@""];
         if (_deviceToken) {
             [JFGSDK deviceTokenUpload:_deviceToken];
-//            [JFGSDK uploadDeviceToken:_deviceToken];
+            //            [JFGSDK uploadDeviceToken:_deviceToken];
         }
         else
         {
@@ -272,7 +276,7 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     if ([[TTSUtility getTopVC] isKindOfClass:[DoorBellStep1 class]]) {
         DoorBellStep1 *topView=(DoorBellStep1 *)[TTSUtility getTopVC];
-//        topView.wifiSSID=[TTSUtility fetchSSIDInfo];
+        //        topView.wifiSSID=[TTSUtility fetchSSIDInfo];
         topView.wifiSSID=[JFGSDKToolMethods currentWifiName];
         if([topView.wifiSSID hasPrefix:@"DOG-ML"]){
             topView.nextStep.enabled=YES;

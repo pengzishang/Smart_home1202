@@ -429,11 +429,11 @@
     return sceneReturn;
 }
 
-+(SceneInfo *)addSceneWithRoom:(RoomInfo *)roomInfo index:(NSUInteger)roomIndex roomName:(NSString *)roomName
++ (SceneInfo *)addSceneWithRoom:(RoomInfo *)roomInfo roomDevice:(NSArray <DeviceInfo *>*)roomDevice index:(NSUInteger)roomIndex roomName:(NSString *)roomName
 {
     NSMutableSet *roomSceneSet=[NSMutableSet setWithSet:roomInfo.sceneInfo];
     NSMutableSet *sceneDeviceSet=[NSMutableSet set];
-    [roomInfo.deviceInfo enumerateObjectsUsingBlock:^(DeviceInfo * _Nonnull roomDeviceObj, BOOL * _Nonnull stop) {
+    [roomDevice enumerateObjectsUsingBlock:^(DeviceInfo * _Nonnull roomDeviceObj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ((roomDeviceObj.deviceType.integerValue <=5&&roomDeviceObj.deviceType.integerValue >=0)||(roomDeviceObj.deviceType.integerValue<=23&&roomDeviceObj.deviceType.integerValue>20)) {
             DeviceForScene *sceneOfDevice= (DeviceForScene *)[[TTSCoreDataManager getInstance]getNewManagedObjectWithEntiltyName:@"DeviceForScene"];
             sceneOfDevice.deviceType=@(roomDeviceObj.deviceType.integerValue);
@@ -449,6 +449,22 @@
             }
         }
     }];
+//    [roomInfo.deviceInfo enumerateObjectsUsingBlock:^(DeviceInfo * _Nonnull roomDeviceObj, BOOL * _Nonnull stop) {
+//        if ((roomDeviceObj.deviceType.integerValue <=5&&roomDeviceObj.deviceType.integerValue >=0)||(roomDeviceObj.deviceType.integerValue<=23&&roomDeviceObj.deviceType.integerValue>20)) {
+//            DeviceForScene *sceneOfDevice= (DeviceForScene *)[[TTSCoreDataManager getInstance]getNewManagedObjectWithEntiltyName:@"DeviceForScene"];
+//            sceneOfDevice.deviceType=@(roomDeviceObj.deviceType.integerValue);
+//            sceneOfDevice.deviceMacID=roomDeviceObj.deviceMacID;
+//            sceneOfDevice.deviceCustomName=roomDeviceObj.deviceCustomName;
+//            [sceneDeviceSet addObject:sceneOfDevice];
+//            if(sceneOfDevice.deviceType.integerValue==4||sceneOfDevice.deviceType.integerValue==5){
+//                sceneOfDevice.deviceSceneStatus=@"2";
+//            }
+//            else
+//            {
+//                sceneOfDevice.deviceSceneStatus=@"0";
+//            }
+//        }
+//    }];
     SceneInfo *sceneInfo=(SceneInfo *)[[TTSCoreDataManager getInstance]getNewManagedObjectWithEntiltyName:@"SceneInfo"];
     sceneInfo.sceneType=@(roomIndex);
     sceneInfo.sceneTapCount=@(0);
@@ -752,7 +768,7 @@
     [[BluetoothManager getInstance]sendByteCommandWithString:command deviceID:deviceMacID sendType:SendTypeSingle
                                                      success:^(NSData * _Nullable stateData) {
                                                          failRetryTime=0;
-                                                         [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制成功", @"控制成功") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制反馈代码:%@", @"控制反馈代码:%@"),stateData]];
+                                                         [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制完成", @"控制完成") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制反馈代码:%@", @"控制反馈代码:%@"),stateData]];
                                                          if (getStateCode) {
                                                              getStateCode(stateData);
                                                          }

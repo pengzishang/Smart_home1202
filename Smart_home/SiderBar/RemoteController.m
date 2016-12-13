@@ -12,7 +12,7 @@
 #import "TTSCoreDataManager.h"
 #import "FTPopOverMenu.h"
 #import "TTSUtility.h"
-@interface RemoteController ()
+@interface RemoteController ()<UITableViewDelegate,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 @property (weak, nonatomic) IBOutlet UILabel *currentRemoteController;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
@@ -21,9 +21,19 @@
 @property (strong,nonatomic)NSMutableArray <__kindof NSDictionary *> *nearRemoteController;
 @property (assign,nonatomic)NSUInteger indexIdx;
 @property (assign,nonatomic)NSUInteger selectIdx;
+@property (strong,nonatomic)NSMutableArray <NSMutableDictionary *>*remoteList;
+
 @end
 
 @implementation RemoteController
+
+-(NSMutableArray<NSMutableDictionary *> *)remoteList
+{
+    if (!_remoteList) {
+        _remoteList=[NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"remoteList"]];
+    }
+    return _remoteList;
+}
 
 -(NSMutableArray *)nearRemoteController
 {
@@ -66,7 +76,6 @@
 
 -(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
-    
     if (!_navItem.rightBarButtonItem) {
         UIBarButtonItem *chooseSevice=[[UIBarButtonItem alloc]initWithTitle:@"服务器" style:UIBarButtonItemStylePlain target:self action:@selector(addChange:event:)];
         _navItem.rightBarButtonItem=chooseSevice;
@@ -90,8 +99,14 @@
 {
     NSString *deviceName = infoDic[AdvertisementData][@"kCBAdvDataLocalName"];
     NSLogMethodArgs(@"%@",deviceName);
-    if (![self isContainID:deviceName]) {
+    if (![self isContainID:deviceName inArr:_nearRemoteController]) {
         [_nearRemoteController addObject:infoDic];
+        if (![self isContainID:deviceName inArr:self.remoteList]) {
+            NSMutableDictionary *targetDevice=[NSMutableDictionary dictionaryWithCapacity:3];
+            targetDevice[@"remoteName"]=deviceName;
+            targetDevice[@"remoteFullID"]=deviceName;
+            [self.remoteList addObject:targetDevice];
+        }
         [_mainTableView reloadData];
     }
     else
@@ -105,10 +120,10 @@
     }
 }
 
--(BOOL)isContainID:(NSString *)deviceName
+-(BOOL)isContainID:(NSString *)deviceName inArr:(NSArray *)arr
 {
     __block BOOL isContain=NO;
-    [_nearRemoteController enumerateObjectsUsingBlock:^(__kindof NSDictionary * _Nonnull storeInfo, NSUInteger idx, BOOL * _Nonnull stop) {
+    [arr enumerateObjectsUsingBlock:^(__kindof NSDictionary * _Nonnull storeInfo, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *storeID=storeInfo[AdvertisementData][@"kCBAdvDataLocalName"];
         if ([storeID isEqualToString:deviceName]) {
             isContain=YES;
@@ -118,22 +133,51 @@
     }];
     return isContain;
 }
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section==0) {
+        return @"可选的远程控制器";
+    }
+    else
+    {
+        return @"可设置的控制器";
+    }
+    
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return self.nearRemoteController.count;
+    if (section==0) {
+        return self.nearRemoteController.count;
+    }
+    else
+    {
+        return self.remoteList.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *infoDic=_nearRemoteController[indexPath.row];
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"remoteCell" forIndexPath:indexPath];
     UILabel *deviceIDLab=[cell viewWithTag:1001];
     UILabel *rssiLab=[cell viewWithTag:1002];
     UIImageView *imageView=[cell viewWithTag:1000];
-    imageView.image=[UIImage imageNamed:(indexPath.row==_selectIdx)?@"pressed_select_btn":@"default_unselect_btn"];
+    if (indexPath.section==0) {
+        NSDictionary *infoDic=_nearRemoteController[indexPath.row];
+        imageView.image=[UIImage imageNamed:(indexPath.row==_selectIdx)?@"pressed_select_btn":@"default_unselect_btn"];
+        deviceIDLab.text=infoDic[AdvertisementData][@"kCBAdvDataLocalName"];
+        rssiLab.text=[NSString stringWithFormat:@"信号强度:%@",infoDic[RSSI_VALUE]];
+    }
+    else if(indexPath.section==1){
+        NSDictionary *infoDic=_remoteList[indexPath.row];
+        deviceIDLab.text=infoDic[@"remoteName"];
+        imageView.image=[UIImage imageNamed:(indexPath.row==_selectIdx)?@"pressed_select_btn":@"default_unselect_btn"];
+    }
     
-    deviceIDLab.text=infoDic[AdvertisementData][@"kCBAdvDataLocalName"];
-    rssiLab.text=[NSString stringWithFormat:@"信号强度:%@",infoDic[RSSI_VALUE]];
     return cell;
 }
 
@@ -141,9 +185,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _selectIdx=indexPath.row;
-    NSString *remoteID=[_nearRemoteController[indexPath.row][AdvertisementData][@"kCBAdvDataLocalName"] substringFromIndex:5];
+    NSString *remoteID=nil;
+    NSString *remoteIDNumber=nil;
+    if (indexPath.section==0) {
+        remoteID=[_nearRemoteController[indexPath.row][AdvertisementData][@"kCBAdvDataLocalName"] substringFromIndex:5];
+    }
+    else if (indexPath.section==1){
+        remoteID=[_remoteList[indexPath.row][@"remoteName"] substringFromIndex:5];
+    }
     remoteID=[remoteID stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSString *remoteIDNumber=[NSString translateRemoteID:remoteID];
+    remoteIDNumber=[NSString translateRemoteID:remoteID];
     if (self.roomInfo) {
         self.roomInfo.roomRemoteID=remoteID;
         [[TTSCoreDataManager getInstance]updateData];
@@ -185,7 +236,7 @@
         [TTSUtility mutiRemoteSave:devicesID remoteMacID:RemoteDefault];
     }
     
-
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -92,10 +92,10 @@
                            if (selectedIndex>=0&&selectedIndex<roomNames.count-1) {
                                _currentRoom=self.rooms[selectedIndex];
                                [self.rooms enumerateObjectsUsingBlock:^(__kindof RoomInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                                   if ([obj.isCommonRoom isEqualToNumber:@(YES)]) {
+//                                   if ([obj.isCommonRoom isEqualToNumber:@(YES)]) {
                                        obj.isCommonRoom=@(NO);
-                                       *stop=YES;
-                                   }
+//                                       *stop=YES;
+//                                   }
                                }];
                                if (self.currentRoom) {
                                    self.currentRoom.isCommonRoom=@(YES);
@@ -237,6 +237,7 @@
     _rooms=nil;
     if (self.rooms.count==1) {
         roomInfo=self.rooms[0];
+        self.currentRoom=self.rooms[0];//修复删除房间后不能正确归位
     }
     [_roomTitle setTitle:roomInfo.roomName forState:UIControlStateNormal];
     _editRoom.enabled=[roomInfo.roomType isEqualToNumber:@10]?NO:YES;
@@ -347,7 +348,15 @@
                 if (roomName.length==0) {
                     roomName=alertController.textFields[0].placeholder;
                 }
-                [TTSUtility addSceneWithRoom:self.currentRoom index:self.currentRoom.sceneInfo.count roomName:roomName];
+
+                if ([self.currentRoom.roomType isEqualToNumber:@(10)]) {
+                    [TTSUtility addSceneWithRoom:self.rooms[0] roomDevice:self.deviceOfRoom index:self.currentRoom.sceneInfo.count roomName:roomName];
+                }
+                else
+                {
+                    [TTSUtility addSceneWithRoom:self.currentRoom roomDevice:self.deviceOfRoom index:self.currentRoom.sceneInfo.count roomName:roomName];
+                }
+                
             }];
             
             
@@ -369,16 +378,25 @@
     {//点击执行情景模式
         NSSortDescriptor *sortByID=[NSSortDescriptor sortDescriptorWithKey:@"deviceMacID" ascending:YES];
         NSArray *all_devices=[all_Scene[index].devicesInfo sortedArrayUsingDescriptors:@[sortByID]];
-        [TTSUtility mutiLocalDeviceControlWithDeviceInfoArr:all_devices result:^(NSArray <NSDictionary *>*resultArr) {
-            [resultArr enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull resultObj, NSUInteger idx, BOOL * _Nonnull stop) {
-                [_deviceOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    if ([obj.deviceMacID isEqualToString:resultObj[@"deviceID"]]) {
-                        obj.deviceSceneStatus=resultObj[@"stateCode"];
-                        *stop=YES;
-                    }
+        if (all_devices.count==0) {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"房间内没有设备" preferredStyle: UIAlertControllerStyleActionSheet];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+            [alertController addAction:cancelAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+        else
+        {
+            [TTSUtility mutiLocalDeviceControlWithDeviceInfoArr:all_devices result:^(NSArray <NSDictionary *>*resultArr) {
+                [resultArr enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull resultObj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    [_deviceOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        if ([obj.deviceMacID isEqualToString:resultObj[@"deviceID"]]) {
+                            obj.deviceSceneStatus=resultObj[@"stateCode"];
+                            *stop=YES;
+                        }
+                    }];
                 }];
             }];
-        }];
+        }
     }
 
 }
@@ -470,7 +488,6 @@
 {
     SceneInfo *temp=allScene[0];//目前房间内的Scene
     NSSet <DeviceForScene *>*sceneDevice=temp.devicesInfo;//目前scene设备
-
     NSMutableSet <DeviceInfo *>*roomDevice=[NSMutableSet set];
     //得到room内应有的scene设备
     [self.deviceOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull roomDeviceObj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -487,11 +504,12 @@
         [roomDevice enumerateObjectsUsingBlock:^(DeviceInfo * _Nonnull roomDeviceObj, BOOL * _Nonnull stop) {
             if ([roomDeviceObj.deviceMacID isEqualToString:sceneDeviceObj.deviceMacID]) {
                 isContain=YES;
+
                 *stop=YES;
             }
         }];
         if (!isContain) {
-            [deviceNeedRemove addObject:sceneDeviceObj.deviceMacID];
+                            [deviceNeedRemove addObject:sceneDeviceObj.deviceMacID];
         }
     }];
     
@@ -508,11 +526,12 @@
         }
     }];
     
-    //去除重复的设备,添加新设备
+    //排查,去除重复的设备,添加新设备
     
     [allScene enumerateObjectsUsingBlock:^(SceneInfo *  _Nonnull sceneObj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSSet <DeviceForScene *>*sceneDeviceBefore= sceneObj.devicesInfo;
         NSMutableSet *sceneDeviceAfter=[NSMutableSet setWithSet:sceneDeviceBefore];
+        
         [sceneDeviceBefore enumerateObjectsUsingBlock:^(DeviceForScene * _Nonnull obj, BOOL * _Nonnull stop) {
             [deviceNeedRemove enumerateObjectsUsingBlock:^(NSString * _Nonnull deviceIDStr, BOOL * _Nonnull stop) {
                 if ([obj.deviceMacID isEqualToString:deviceIDStr]) {

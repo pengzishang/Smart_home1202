@@ -127,7 +127,7 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
 
 + (NSArray *)initScene:(RoomInfo *)roomInfo;
 
-+ (SceneInfo *)addSceneWithRoom:(RoomInfo *)roomInfo index:(NSUInteger)roomIndex roomName:(NSString *)roomName;
++ (SceneInfo *)addSceneWithRoom:(RoomInfo *)roomInfo roomDevice:(NSArray <DeviceInfo *>*)roomDevice index:(NSUInteger)roomIndex roomName:(NSString *)roomName;
 
 + (void)deleteScene:(SceneInfo *)sceneInfo room:(RoomInfo *)roomInfo;
 

@@ -329,6 +329,8 @@
     [self setCommonRoom];
 }
 
+#pragma mark 情景模式关联
+
 -(void)didClickSceneIndex:(NSUInteger)index
 {
 
@@ -386,16 +388,31 @@
         }
         else
         {
-            [TTSUtility mutiLocalDeviceControlWithDeviceInfoArr:all_devices result:^(NSArray <NSDictionary *>*resultArr) {
-                [resultArr enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull resultObj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    [_deviceOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        if ([obj.deviceMacID isEqualToString:resultObj[@"deviceID"]]) {
-                            obj.deviceSceneStatus=resultObj[@"stateCode"];
-                            *stop=YES;
-                        }
+            //这里只有蓝牙控制
+            if (RemoteOn) {
+//                [[NSUserDefaults standardUserDefaults]setObject:remoteID forKey:@"RemoteControlID"];
+//                [[NSUserDefaults standardUserDefaults]setObject:remoteIDNumber forKey:@"RemoteIDNumber"];
+//                NSString *remoteID=ISALLROOM?
+                [TTSUtility mutiRemoteControl:all_devices result:^(NSArray *list) {
+                    NSLogMethodArgs(@"%@",list);
+                }];
+            }
+            else
+            {
+                [TTSUtility mutiLocalDeviceControlWithDeviceInfoArr:all_devices result:^(NSArray <NSDictionary *>*resultArr) {
+                    [resultArr enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull resultObj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        [_deviceOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            if ([obj.deviceMacID isEqualToString:resultObj[@"deviceID"]]) {
+                                obj.deviceSceneStatus=resultObj[@"stateCode"];
+                                *stop=YES;
+                            }
+                        }];
                     }];
                 }];
-            }];
+            }
+            
+            
+            
         }
     }
 

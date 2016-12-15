@@ -177,7 +177,7 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
  *  @param remoteMacID <#remoteMacID description#>
  *  @param resultArr   <#resultArr description#>
  */
-+(void)mutiRemoteControl:(NSArray <DeviceInfo *>*)deviceArr remoteMacID:(NSString *)remoteMacID result:(void(^)(NSArray *))resultArr;
++(void)mutiRemoteControl:(NSArray <DeviceInfo *>*)deviceArr result:(void(^)(NSArray *))resultArr;
 
 
 /**

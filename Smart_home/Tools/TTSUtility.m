@@ -810,7 +810,7 @@
         }
         else
         {
-            deviceCommand=[NSString stringWithFormat:@"%zd",commandNum.integerValue+192];
+            deviceCommand=[NSString stringWithFormat:@"%zd",commandNum.integerValue+64];
         }
         
         NSDictionary *deviceTemp=@{@"deviceID":obj.deviceMacID,@"deviceCommand":deviceCommand,@"deviceType":deviceType};
@@ -839,7 +839,7 @@
  *  @param resultArr   <#resultArr description#>
  */
 
-+(void)mutiRemoteControl:(NSArray <DeviceInfo *>*)deviceArr remoteMacID:(NSString *)remoteMacID result:(void (^)(NSArray *))resultArr
++(void)mutiRemoteControl:(NSArray <DeviceInfo *>*)deviceArr result:(void (^)(NSArray *))resultArr
 {
     //将ARR转换
     
@@ -848,12 +848,21 @@
         __block NSMutableArray *commandArr=[NSMutableArray array];
         [deviceArr enumerateObjectsUsingBlock:^(DeviceInfo *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *deviceCommand=[NSString stringWithFormat:@"%@",obj.deviceSceneStatus];
-            if ([deviceCommand integerValue]<40) {
+            if ([obj.deviceType isEqual:@(4)]||[obj.deviceType isEqual:@(5)]) {
+                if ([deviceCommand isEqualToString:@"1"]) {
+                    deviceCommand=@"41";
+                }
+                else if ([deviceCommand isEqualToString:@"2"])
+                {
+                    deviceCommand=@"42";
+                }
+            }
+            else
+            {
                 NSUInteger commandTemp=deviceCommand.integerValue+70;
                 if (commandTemp==70) {
                     commandTemp=67;
                 }
-                
                 deviceCommand=[NSString stringWithFormat:@"%zd",commandTemp];
             }
             NSDictionary *deviceTemp=@{@"deviceID":obj.deviceMacID,@"deviceCommand":deviceCommand};

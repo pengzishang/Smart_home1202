@@ -52,7 +52,6 @@
 }
 -(void)BugAndUpdate
 {
-    
     [[PgyManager sharedPgyManager] startManagerWithAppId:pgyKey];
     [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:pgyKey];
     [[PgyUpdateManager sharedPgyManager] checkUpdate];
@@ -79,7 +78,6 @@
 #else//生产
         [JFGSDK userLogin:userName keyword:pwd vid:VID vkey:VKEY cerType:bundleID];
 #endif
-        
         [[NSUserDefaults standardUserDefaults]setObject:userName forKey:@"JFGUSER"];
         [[NSUserDefaults standardUserDefaults]setObject:pwd forKey:@"JFGPWD"];
     }

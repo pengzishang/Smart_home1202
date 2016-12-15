@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11761" systemVersion="16C53a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,8 +23,8 @@
                         <constraint firstAttribute="width" secondItem="YQ5-Tp-ObX" secondAttribute="height" id="b1t-us-jQf"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未扫描到设备,请尝试" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztV-yA-Bvp">
-                    <rect key="frame" x="78" y="235" width="94" height="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这里没有设备,点击右上角添加" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztV-yA-Bvp">
+                    <rect key="frame" x="23.5" y="235" width="203.5" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -53,7 +53,6 @@
                 <constraint firstItem="lYd-UJ-hq3" firstAttribute="top" secondItem="ztV-yA-Bvp" secondAttribute="bottom" constant="10" id="O7Y-hC-yf7"/>
                 <constraint firstItem="Gl9-4B-6co" firstAttribute="top" secondItem="lYd-UJ-hq3" secondAttribute="bottom" constant="10" id="Rk1-88-xzP"/>
                 <constraint firstItem="Gl9-4B-6co" firstAttribute="leading" secondItem="YQ5-Tp-ObX" secondAttribute="leading" constant="40" id="klF-Ys-VRK"/>
-                <constraint firstItem="ztV-yA-Bvp" firstAttribute="leading" secondItem="YQ5-Tp-ObX" secondAttribute="leading" constant="40" id="nj2-vp-o7O"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="80" y="36.5"/>

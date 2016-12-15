@@ -194,7 +194,7 @@
         //        [tableView resignFirstResponder];
     }];
     edit.backgroundColor=[UIColor blueColor];
-    return @[delete,edit];
+    return @[delete];
 }
 
 

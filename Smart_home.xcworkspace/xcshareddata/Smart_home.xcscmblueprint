@@ -1,12 +1,12 @@
 {
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++6322" : {
-
-    },
     "2D3A390B58DB5618E75F21348848C5BEC5F337B7" : {
       "DVTSourceControlWorkingCopyRepositoryBranchesLocationKey" : "branches",
       "DVTSourceControlWorkingCopyRepositoryTagsLocationKey" : "tags",
       "DVTSourceControlWorkingCopyRepositoryPrimaryBranchLocationKey" : "trunk"
+    },
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++6322" : {
+
     },
     "139935ea-1f45-cb4b-ab2b-c0705bf62e01++4489" : {
       "DVTSourceControlWorkingCopyRepositoryBranchesLocationKey" : "branches",
@@ -15,14 +15,14 @@
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++6322" : 0,
     "2D3A390B58DB5618E75F21348848C5BEC5F337B7" : 9223372036854775807,
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++6322" : 0,
     "139935ea-1f45-cb4b-ab2b-c0705bf62e01++4489" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D4F29A77-873D-4ADB-9051-4C4992984EF8",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++6322" : "Smart_home\/",
     "2D3A390B58DB5618E75F21348848C5BEC5F337B7" : "Smart_home1202\/",
+    "139935ea-1f45-cb4b-ab2b-c0705bf62e01++6322" : "Smart_home\/",
     "139935ea-1f45-cb4b-ab2b-c0705bf62e01++4489" : ""
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Smart_home",

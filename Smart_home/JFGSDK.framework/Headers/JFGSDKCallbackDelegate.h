@@ -125,6 +125,11 @@
  */
 -(void)jfgDevVersionUpgradInfo:(JFGSDKDeviceVersionInfo *)info;
 
+/**
+ *  局域网设备升级回调
+ */
+-(void)jfgDevUpgradeInfo:(JFGSDKDeviceUpgrade *)info;
+
 
 /*!
  *  其他客户端已接听门铃的呼叫
@@ -341,5 +346,7 @@
  *  @param errorType  error type
  */
 -(void)jfgUploadDeviceTokenResult:(JFGErrorType)errorType;
+
+
 
 @end

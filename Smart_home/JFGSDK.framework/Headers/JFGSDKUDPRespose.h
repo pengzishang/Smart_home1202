@@ -103,6 +103,17 @@
 
 @end
 
+@interface JFGSDKDeviceUpgrade : JFGSDKUDPResposeHead
+
+/*
+ 表明是哪一个操作id的升级响应
+ */
+@property (nonatomic,assign)NSInteger ackMsg;
+
+@property (nonatomic,assign)NSInteger ret;
+
+@end
+
 
 @interface JFGSDKUDPResposeWifiStatus : JFGSDKUDPResposeHead
 /*!

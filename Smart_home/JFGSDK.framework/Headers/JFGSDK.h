@@ -498,6 +498,15 @@
 
 
 /**
+ *  局域网内升级设备
+ *  @param ip     设备当前ip地址
+ *  @param url    用于设备升级的本地文件地址
+ */
++(void)deviceUpgreadeForIp:(NSString *)ip
+            upgradeFileUrl:(NSString *)url;
+
+
+/**
  *  获取设备别名
  *
  *  @param cid 设备标示

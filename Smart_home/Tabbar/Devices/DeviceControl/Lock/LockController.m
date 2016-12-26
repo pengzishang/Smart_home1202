@@ -55,7 +55,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [_navItem setTitle:!ISALLROOM?self.roomInfo.roomName:@"全部智能门锁"];
+    [self.tableView reloadData];
     AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication] delegate];
     if (!app.autoScan.valid) {
         app.autoScan=[NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
@@ -91,7 +91,7 @@
         if (selectedIndex==0) {
             //            !ISALLROOM?
             //            [self performSegueWithIdentifier:@"addRoomLock" sender:self.roomInfo]://有房间信息
-            [self performSegueWithIdentifier:@"lockAdd" sender:self.devicesOfRoom];
+            [self performSegueWithIdentifier:@"lockAdd" sender:self.devices];
         }
         else if (selectedIndex==1){
             isRemote=!isRemote;

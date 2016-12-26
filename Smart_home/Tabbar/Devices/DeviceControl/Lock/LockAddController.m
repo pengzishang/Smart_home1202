@@ -72,7 +72,7 @@
     [BluetoothManager getInstance].detectDevice=^(NSDictionary *deviceInfoDic){
         NSString *deviceBroadcastName= deviceInfoDic[AdvertisementData][@"kCBAdvDataLocalName"];
         BOOL allDeviceContain=[self roomContain:[deviceBroadcastName substringFromIndex:7] inDevicesOfRoom:self.devicesOfRoom];
-        if (self.roomInfo) {
+        if (!ISALLROOM) {
             NSSortDescriptor *sortWithDate=[NSSortDescriptor sortDescriptorWithKey:@"deviceCreateDate" ascending:YES];
             NSArray *roomdevices=[self.roomInfo.deviceInfo sortedArrayUsingDescriptors:@[sortWithDate]];
             BOOL isRoomContain=[self roomContain:[deviceBroadcastName substringFromIndex:7] inDevicesOfRoom:roomdevices];

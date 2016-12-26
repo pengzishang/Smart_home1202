@@ -65,7 +65,7 @@
         _rooms=[NSMutableArray arrayWithArray:[[TTSCoreDataManager getInstance]getResultArrWithEntityName:@"RoomInfo" predicate:nil]];
         [_rooms enumerateObjectsUsingBlock:^(__kindof RoomInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj.roomType isEqualToNumber:@(10)]) {
-                *stop=YES;
+                *stop=YES;//将
                 [_rooms insertObject:obj atIndex:0];
                 [_rooms removeObjectAtIndex:idx+1];
             }
@@ -235,9 +235,11 @@
 {
     _deviceOfRoom=nil;
     _rooms=nil;
-    if (self.rooms.count==1) {
+    if (self.rooms.count==1||[roomInfo.roomType isEqualToNumber:@(10)]) {
         roomInfo=self.rooms[0];
         self.currentRoom=self.rooms[0];//修复删除房间后不能正确归位
+        roomInfo.isCommonRoom=@(YES);
+        [[TTSCoreDataManager getInstance]updateData];
     }
     [_roomTitle setTitle:roomInfo.roomName forState:UIControlStateNormal];
     _editRoom.enabled=[roomInfo.roomType isEqualToNumber:@10]?NO:YES;

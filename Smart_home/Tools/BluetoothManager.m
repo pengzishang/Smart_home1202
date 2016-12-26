@@ -541,9 +541,6 @@ NSString * _Nonnull const ScanTypeDescription[] = {
             
             NSDictionary * peripheralInfo = @{Peripheral : peripheral, AdvertisementData : advertisementData, RSSI_VALUE : RSSI,@"stateCode":stateCodeCurrent};
             [[self mutableArrayValueForKey:@"peripheralsInfo"] addObject:peripheralInfo];//数组,观察者
-//            if (_detectDevice) {
-//                _detectDevice(peripheralInfo);
-//            }
             //  刷新数据库
             //                [[NSNotificationCenter defaultCenter]postNotificationName:Note_Refresh_State object:nil userInfo:peripheralInfo];
         }

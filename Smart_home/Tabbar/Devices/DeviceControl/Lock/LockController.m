@@ -55,6 +55,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+//    [_navItem setTitle:!ISALLROOM?self.roomInfo.roomName:@"全部智能门锁"];
     AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication] delegate];
     if (!app.autoScan.valid) {
         app.autoScan=[NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
@@ -285,7 +286,6 @@
         LockSettingController *target=segue.destinationViewController;
         DeviceInfo *device=self.devicesOfRoom[_operationIndex];
         target.deviceInfo=device;
-        self.navItem.title=self.devicesOfRoom[_operationIndex].deviceCustomName;
     }
     else if ([segue.identifier isEqualToString:@"addRoomLock"])
     {

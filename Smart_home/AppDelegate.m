@@ -33,13 +33,14 @@
     _autoScan=[NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
     [_autoScan fire];
     _pushUserInfo=nil;
-    [AvoidCrash becomeEffective];
+
     [IQKeyboardManager sharedManager].enable=YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar=YES;
     [IQKeyboardManager sharedManager].shouldShowTextFieldPlaceholder=YES;
 #if defined (DEBUG)||defined (_DEBUG)//开发环境
 #else
     [self BugAndUpdate];
+        [AvoidCrash becomeEffective];
 #endif
     [self JFGConfig];
     [self JpushConfig:launchOptions];

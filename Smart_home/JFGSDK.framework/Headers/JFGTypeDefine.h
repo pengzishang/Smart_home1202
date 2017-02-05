@@ -119,8 +119,9 @@ typedef NS_ENUM (NSUInteger, JFGErrorType){
     JFGErrorTypeConnect,
 };
 
-typedef NS_ENUM (NSUInteger,JFGFriendResultType){
-    
+//好友相关操作结果
+typedef NS_ENUM (NSUInteger,JFGFriendResultType)
+{
     /// 添加好友请求的发送结果
     JFGFriendResultTypeAddFriend = 8,
     /// 删除好友请求的发送结果
@@ -129,6 +130,21 @@ typedef NS_ENUM (NSUInteger,JFGFriendResultType){
     JFGFriendResultTypeAgreeAddFriend,
     /// 设置好友备注名
     JFGFriendResultTypeSetRemarkName,
+    //删除好友请求
+    JFGFriendResultTypeDelAddFriendRequest = 19,
+};
+
+//账号相关操作结果
+typedef NS_ENUM (NSInteger,JFGAccountResultType)
+{
+    //更新账号操作结果
+    JFGAccountResultTypeUpdataAccount,
+    //忘记密码
+    JFGAccountResultTypeForgetPassworld,
+    //修改密码
+    JFGAccountResultTypeChangedPassworld,
+    //账号是否注册
+    JFGAccountResultTypeIsRegistered,
 };
 
 /*!

@@ -18,8 +18,8 @@
 #import "TTSTabBarController.h"
 #import "CallingController.h"
 #import <CoreBluetooth/CoreBluetooth.h>
-#import <SystemConfiguration/CaptiveNetwork.h>  
-
+#import <SystemConfiguration/CaptiveNetwork.h>
+#import <JFGSDK/JFGSDKDataPoint.h>
 
 
 /**
@@ -122,6 +122,14 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
  @return <#return value description#>
  */
 + (UIViewController *)getTopVC;
+
+/**
+ *  得到当前最顶层VC
+ *
+ *  @return <#return value description#>
+ */
++ (UIViewController *)getCurrentVC;
+
 
 + (NSString *)fetchSSIDInfo;
 

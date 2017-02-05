@@ -212,6 +212,16 @@
                       vkey:(NSString *)vkey
                    cerType:(NSString *)cerType;
 
+/**
+ *  @param loginType  3.QQ Login 4.sina Login 5.user-defined Login
+ */
++(void)openLoginWithOpenId:(NSString *)openId
+               accessToken:(NSString *)accToken
+                       vid:(NSString *)vid
+                      vkey:(NSString *)vkey
+                   cerType:(NSString *)cerType
+                 loginType:(int)loginType;
+
 
 /*!
  *  获取账号属性
@@ -223,6 +233,13 @@
  */
 +(void)getAccount;
 
+/**
+ *  检查账号是否已经注册
+ *  check account is register
+ 
+ *  @param account 被检查账号
+ */
++(void)checkIsRegisteredForAccount:(NSString *)account;
 
 +(void)isOpenPush:(BOOL)push;
 
@@ -296,6 +313,22 @@
  */
 +(void)forgetPasswordWithEmail:(NSString *)email vid:(NSString *)vid;
 
+
+/**
+ *  第三方登录首次绑定手机/邮箱设置密码
+ *
+ *  @param password 密码
+ *  @param type     绑定类型  0-绑定手机 1-绑定邮箱
+ *  @param token    #sendSMSWithPhoneNumber:type 获取的token，如果绑定手机号，需要填充，绑定邮箱不需要
+ 
+ *  Third party login first bind phone / mailbox password
+ *
+ *  @param password password
+ *  @param type     bindType  0-phone 1-email
+ *  @param token    Get token from #sendSMSWithPhoneNumber:type，If the binding phone number, need to fill, bind mailbox does not need
+ */
++(void)setPassword:(NSString *)password forType:(int)type smsToken:(NSString *)token;
+
 #pragma mark- 好友相关
 /**
  *  获取好友列表
@@ -311,6 +344,17 @@
  *  get friend request list
  */
 +(void)getFriendRequestList;
+
+
+/**
+ *  删除某个添加好友请求
+ *
+ *  @param account 请求添加我为好友的账号
+ 
+ *  del add friend request
+ *  request add account
+ */
++(void)delAddRequestForFriendAccount:(NSString *)account;
 
 
 /**

@@ -45,6 +45,7 @@ typedef void(^ok)(void);
     [names enumerateObjectsUsingBlock:^(__kindof NSString * _Nonnull name, NSUInteger idx, BOOL * _Nonnull stop) {
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(idx*Screen_Width, 0, Screen_Width, Screen_Height)];
         imageView.image=[UIImage imageNamed:name];
+        imageView.contentMode=UIViewContentModeScaleAspectFill;
         [self addSubview:imageView];
     }];
 }

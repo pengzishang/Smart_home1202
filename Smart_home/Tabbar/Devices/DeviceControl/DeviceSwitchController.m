@@ -54,6 +54,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [[NSNotificationCenter defaultCenter ]addObserver:self selector:@selector(backgroundRefreshState:) name:Note_Refresh_State object:nil];
     [_navItem setTitle:ISALLROOM?@"全部开关":self.roomInfo.roomName];
     
@@ -256,6 +257,8 @@
 {
     __block DeviceInfo *device=self.devicesOfRoom[cellTag-200];
     if (RemoteOn) {
+//        NSLogMethodArgs(@"///>>>>>%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"SeviceHost"])
+        
         [TTSUtility remoteDeviceControl:device commandStr:[@(btnTag-1000).stringValue fullWithLengthCount:2]  retryTimes:2 conditionReturn:^(NSString *statusCode) {
             NSData *stateData=[[statusCode substringFromIndex:1] dataUsingEncoding:NSUTF8StringEncoding];
             device.deviceStatus=[self returnStateCodeWithData:(NSData *)stateData btnCount:device.deviceType.integerValue];
@@ -312,7 +315,7 @@
         }];
     }
 }
-
+//处理反馈
 -(NSNumber *)returnStateCodeWithData:(NSData *)data btnCount:(NSUInteger)btnCount
 {
     Byte  byte;

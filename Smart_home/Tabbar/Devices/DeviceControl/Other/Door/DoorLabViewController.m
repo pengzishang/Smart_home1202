@@ -112,6 +112,8 @@
     }];
 }
 
+
+//已入住的注意,特殊方法
 - (IBAction)didClickDoorBell:(UIButton *)sender {
     NSString *command=@"023001";
     command=[command fullWithLengthCountBehide:27];

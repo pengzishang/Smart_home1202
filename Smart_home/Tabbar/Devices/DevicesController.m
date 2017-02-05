@@ -17,7 +17,8 @@
 #import "OtherViewController.h"
 #import "EditSceneController.h"
 #import "AppDelegate.h"
-
+#import <sys/utsname.h>
+//#import "UIDevice+DeviceModel.h"
 @interface DevicesController ()<MainDelegate>
 
 
@@ -338,9 +339,19 @@
 
     NSSortDescriptor *sortByDate=[NSSortDescriptor sortDescriptorWithKey:@"sceneCreateDate" ascending:YES];
     NSArray <SceneInfo *>*all_Scene=[self.currentRoom.sceneInfo sortedArrayUsingDescriptors:@[sortByDate]];
+    
     if (index==all_Scene.count) {
         //添加情景模式
-        if (index<8) {
+        NSLogMethodArgs(@"%@",[UIDevice currentDevice].model);
+        struct utsname systemInfo;//识别是否4S
+        uname(&systemInfo);
+        NSString* code = [NSString stringWithCString:systemInfo.machine
+                                            encoding:NSUTF8StringEncoding];
+        NSUInteger maxItem=0;
+        if ([code isEqualToString:@"iPhone4,1"]) {
+            maxItem=5;
+        }
+        if (index<maxItem) {
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"添加情景模式" message:@"输入情景模式的名字" preferredStyle: UIAlertControllerStyleAlert];
             
             [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
@@ -383,6 +394,7 @@
         NSSortDescriptor *sortByID=[NSSortDescriptor sortDescriptorWithKey:@"deviceMacID" ascending:YES];
         NSArray *all_devices=[all_Scene[index].devicesInfo sortedArrayUsingDescriptors:@[sortByID]];
         if (all_devices.count==0) {
+#warning 加入所有设备下的判定
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"房间内没有设备" preferredStyle: UIAlertControllerStyleActionSheet];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
             [alertController addAction:cancelAction];
@@ -392,9 +404,6 @@
         {
             //这里只有蓝牙控制
             if (RemoteOn) {
-//                [[NSUserDefaults standardUserDefaults]setObject:remoteID forKey:@"RemoteControlID"];
-//                [[NSUserDefaults standardUserDefaults]setObject:remoteIDNumber forKey:@"RemoteIDNumber"];
-//                NSString *remoteID=ISALLROOM?
                 [TTSUtility mutiRemoteControl:all_devices result:^(NSArray *list) {
                     NSLogMethodArgs(@"%@",list);
                 }];

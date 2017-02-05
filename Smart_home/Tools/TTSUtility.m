@@ -7,11 +7,6 @@
 //
 
 #import "TTSUtility.h"
-#import "NSString+StringOperation.h"
-
-
-#import <JFGSDK/JFGSDKDataPoint.h>
-
 
 
 @implementation TTSUtility
@@ -810,7 +805,7 @@
         }
         else
         {
-            deviceCommand=[NSString stringWithFormat:@"%zd",commandNum.integerValue+64];
+            deviceCommand=[NSString stringWithFormat:@"%zd",commandNum.integerValue+192];
         }
         
         NSDictionary *deviceTemp=@{@"deviceID":obj.deviceMacID,@"deviceCommand":deviceCommand,@"deviceType":deviceType};

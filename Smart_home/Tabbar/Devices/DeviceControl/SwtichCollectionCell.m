@@ -67,6 +67,12 @@
             else if ([deviceState isEqualToNumber:@(1)]){
                 return @[@"switch1_state_on"];
             }
+            else if ([deviceState isEqualToNumber:@(4)]){//工厂错误
+                return @[@"switch1_state_off"];
+            }
+            else if ([deviceState isEqualToNumber:@(5)]){//工厂错误
+                return @[@"switch1_state_on"];
+            }
             else{
                 return @[@""];
             }

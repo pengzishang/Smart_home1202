@@ -235,7 +235,6 @@ NSString * _Nonnull const ScanTypeDescription[] = {
             NSUInteger failRetryTime=fail(stateCodeStr);
             if (failRetryTime!=0&&[stateCodeStr integerValue]!=404&&[stateCodeStr integerValue]!=403) {
                 CBPeripheral *curPeripheral=[self isAvailableID:deviceID];
-//                [curPeripheral readRSSI];//<<<<<<<
                 if (curPeripheral) {
                     [self connect2Peripheral:curPeripheral];
                 }
@@ -301,7 +300,6 @@ NSString * _Nonnull const ScanTypeDescription[] = {
      {
          
          operationDic=[NSMutableDictionary dictionaryWithDictionary:commandArr[operationIndex]];
-         //         operationDic[@"stateCode"]=@(stateCode.integerValue-192);//待修改
          operationDic[@"stateCode"]=[self returnStateCodeWithData:stateData btnCount:operationDeviceType];
          [requestArr addObject:operationDic];
          
@@ -405,8 +403,7 @@ NSString * _Nonnull const ScanTypeDescription[] = {
     _curPeripheral=peripheral;
     _curPeripheral.delegate=self;
     _dataf = [NSDate date];
-    NSDictionary * options;
-    options = @{CBConnectPeripheralOptionNotifyOnConnectionKey : @YES,
+    NSDictionary * options = @{CBConnectPeripheralOptionNotifyOnConnectionKey : @YES,
                 CBConnectPeripheralOptionNotifyOnDisconnectionKey : @YES,
                 CBConnectPeripheralOptionNotifyOnNotificationKey : @YES};
     [ self.centralManager connectPeripheral:_curPeripheral options:options];
@@ -494,7 +491,7 @@ NSString * _Nonnull const ScanTypeDescription[] = {
             return;
         }
         NSString *stateCode=[deviceIDFromAdv substringWithRange:NSMakeRange(6, 1)];
-                NSString *deviceType=[deviceIDFromAdv substringWithRange:NSMakeRange(5, 1)];
+        NSString *deviceType=[deviceIDFromAdv substringWithRange:NSMakeRange(5, 1)];
         NSInteger stateIndex=[stateCode characterAtIndex:0];
         
         NSNumber *stateCodeCurrent=[[NSNumber alloc]init];
@@ -541,8 +538,6 @@ NSString * _Nonnull const ScanTypeDescription[] = {
             
             NSDictionary * peripheralInfo = @{Peripheral : peripheral, AdvertisementData : advertisementData, RSSI_VALUE : RSSI,@"stateCode":stateCodeCurrent};
             [[self mutableArrayValueForKey:@"peripheralsInfo"] addObject:peripheralInfo];//数组,观察者
-            //  刷新数据库
-            //                [[NSNotificationCenter defaultCenter]postNotificationName:Note_Refresh_State object:nil userInfo:peripheralInfo];
         }
         else if(isContain&&!isStatusSame)
         {

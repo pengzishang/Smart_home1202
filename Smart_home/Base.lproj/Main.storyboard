@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11761" systemVersion="16C63a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -50,13 +50,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="52.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_user" translatesAutoresizingMaskIntoConstraints="NO" id="Q1t-8l-INb">
-                                                <rect key="frame" x="10" y="10" width="32.5" height="32.5"/>
+                                                <rect key="frame" x="10" y="15" width="22.5" height="22.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Q1t-8l-INb" secondAttribute="height" id="HMA-Pj-3mC"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OYH-kM-9Cj">
-                                                <rect key="frame" x="52.5" y="16" width="237.5" height="20"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OYH-kM-9Cj">
+                                                <rect key="frame" x="42.5" y="16" width="247.5" height="20"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -66,7 +66,7 @@
                                         <constraints>
                                             <constraint firstItem="OYH-kM-9Cj" firstAttribute="centerY" secondItem="IBN-MM-4Ar" secondAttribute="centerY" id="5tQ-fz-t8h"/>
                                             <constraint firstItem="OYH-kM-9Cj" firstAttribute="leading" secondItem="Q1t-8l-INb" secondAttribute="trailing" constant="10" id="SmM-oA-rxa"/>
-                                            <constraint firstItem="Q1t-8l-INb" firstAttribute="top" secondItem="IBN-MM-4Ar" secondAttribute="top" constant="10" id="W7I-uj-aPj"/>
+                                            <constraint firstItem="Q1t-8l-INb" firstAttribute="top" secondItem="IBN-MM-4Ar" secondAttribute="top" constant="15" id="W7I-uj-aPj"/>
                                             <constraint firstItem="Q1t-8l-INb" firstAttribute="centerY" secondItem="IBN-MM-4Ar" secondAttribute="centerY" id="XdJ-lv-ELb"/>
                                             <constraint firstAttribute="trailing" secondItem="OYH-kM-9Cj" secondAttribute="trailing" constant="10" id="lNB-1h-zHZ"/>
                                             <constraint firstItem="Q1t-8l-INb" firstAttribute="leading" secondItem="IBN-MM-4Ar" secondAttribute="leading" constant="10" id="qT5-tH-yGW"/>
@@ -76,13 +76,13 @@
                                         <rect key="frame" x="0.0" y="52.5" width="300" height="52.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_pwd" translatesAutoresizingMaskIntoConstraints="NO" id="bmJ-KF-1b5">
-                                                <rect key="frame" x="10" y="10" width="32.5" height="32.5"/>
+                                                <rect key="frame" x="10" y="15" width="22.5" height="22.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="bmJ-KF-1b5" secondAttribute="height" id="bvU-H0-Bk4"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fh1-ln-21T">
-                                                <rect key="frame" x="52.5" y="16" width="237.5" height="20"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fh1-ln-21T">
+                                                <rect key="frame" x="42.5" y="16" width="247.5" height="20"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -95,7 +95,7 @@
                                             <constraint firstItem="bmJ-KF-1b5" firstAttribute="leading" secondItem="Wbt-hh-t72" secondAttribute="leading" constant="10" id="QXS-LF-50S"/>
                                             <constraint firstItem="fh1-ln-21T" firstAttribute="centerY" secondItem="Wbt-hh-t72" secondAttribute="centerY" id="Qqr-G0-uyk"/>
                                             <constraint firstAttribute="trailing" secondItem="fh1-ln-21T" secondAttribute="trailing" constant="10" id="hEh-AH-nuc"/>
-                                            <constraint firstItem="bmJ-KF-1b5" firstAttribute="top" secondItem="Wbt-hh-t72" secondAttribute="top" constant="10" id="z2L-rW-pRE"/>
+                                            <constraint firstItem="bmJ-KF-1b5" firstAttribute="top" secondItem="Wbt-hh-t72" secondAttribute="top" constant="15" id="z2L-rW-pRE"/>
                                         </constraints>
                                     </view>
                                 </subviews>

@@ -40,7 +40,7 @@
 #if defined (DEBUG)||defined (_DEBUG)//开发环境
 #else
     [self BugAndUpdate];
-        [AvoidCrash becomeEffective];
+    [AvoidCrash becomeEffective];
 #endif
     [self JFGConfig];
     [self JpushConfig:launchOptions];
@@ -75,7 +75,7 @@
         NSString *bundleID=[[NSBundle mainBundle]bundleIdentifier];
         
 #if defined (DEBUG)||defined (_DEBUG)//开发环境
-        [JFGSDK userLogin:userName keyword:pwd vid:VID vkey:VKEY cerType:[NSString stringWithFormat:@"%@.Dev",bundleID]];
+        [JFGSDK userLogin:userName keyword:pwd vid:VID vkey:VKEY cerType:[NSString stringWithFormat:@"%@.Dev",bundleID]];//这个大写小写有待确认
 #else//生产
         [JFGSDK userLogin:userName keyword:pwd vid:VID vkey:VKEY cerType:bundleID];
 #endif
@@ -230,14 +230,8 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
 {
     if (errorType == JFGErrorTypeNone) {
         _isJFGLogin=YES;
-        
-        //        NSString *deviceTokeStr=[[[[_deviceToken description]
-        //                                   stringByReplacingOccurrencesOfString:@"<"withString:@""]
-        //                                  stringByReplacingOccurrencesOfString:@">" withString:@""]
-        //                                 stringByReplacingOccurrencesOfString:@" " withString:@""];
         if (_deviceToken) {
             [JFGSDK deviceTokenUpload:_deviceToken];
-            //            [JFGSDK uploadDeviceToken:_deviceToken];
         }
         else
         {

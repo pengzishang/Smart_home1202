@@ -20,7 +20,6 @@
 
 
 #import "MMDrawerVisualState.h"
-#import <QuartzCore/QuartzCore.h>
 
 @implementation MMDrawerVisualState
 +(MMDrawerControllerDrawerVisualStateBlock)slideAndScaleVisualStateBlock{

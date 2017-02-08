@@ -722,7 +722,7 @@ NSString * _Nonnull const ScanTypeDescription[] = {
 }
 
 
-- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+- (void)duperipheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     if (!error) {
         [peripheral readValueForCharacteristic: characteristic];

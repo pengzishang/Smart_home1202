@@ -9,7 +9,6 @@
 
 #import "POPVector.h"
 
-#import "POPDefines.h"
 #import "POPCGUtils.h"
 
 namespace POP

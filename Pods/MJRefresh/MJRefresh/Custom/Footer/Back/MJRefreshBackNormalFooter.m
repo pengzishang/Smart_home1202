@@ -7,7 +7,6 @@
 //
 
 #import "MJRefreshBackNormalFooter.h"
-#import "NSBundle+MJRefresh.h"
 
 @interface MJRefreshBackNormalFooter()
 {

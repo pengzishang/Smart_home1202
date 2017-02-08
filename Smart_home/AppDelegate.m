@@ -20,8 +20,6 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-#import "NSString+StringOperation.h"
-
 @interface AppDelegate ()<JPUSHRegisterDelegate,MainDelegate,JFGSDKCallbackDelegate>
 
 @end

@@ -22,7 +22,6 @@
 // THE SOFTWARE.
 
 #import "IQUIWindow+Hierarchy.h"
-#import <UIKit/UINavigationController.h>
 
 @implementation UIWindow (IQ_UIWindow_Hierarchy)
 

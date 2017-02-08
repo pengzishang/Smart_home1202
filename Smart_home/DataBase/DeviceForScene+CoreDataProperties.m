@@ -9,8 +9,6 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "DeviceForScene+CoreDataProperties.h"
-
 @implementation DeviceForScene (CoreDataProperties)
 
 @dynamic deviceCustomName;

@@ -14,7 +14,6 @@
 #import "FTPopOverMenu.h"
 #import "RoomAddDeviceController.h"
 #import "CYLTableViewPlaceHolder.h"
-#import "BluetoothManager.h"
 #import "AppDelegate.h"
 @interface LockController ()<XLPasswordViewDelegate,CYLTableViewPlaceHolderDelegate>
 @property (nonatomic,assign)NSUInteger operationIndex;

@@ -22,11 +22,7 @@
 // THE SOFTWARE.
 
 #import "IQToolbar.h"
-#import "IQKeyboardManagerConstantsInternal.h"
 #import "IQTitleBarButtonItem.h"
-#import "IQUIView+Hierarchy.h"
-
-#import <UIKit/UIViewController.h>
 
 @implementation IQToolbar
 @synthesize titleFont = _titleFont;

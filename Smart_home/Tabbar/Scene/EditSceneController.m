@@ -9,7 +9,6 @@
 #import "EditSceneController.h"
 #import "SceneCellCommon.h"
 #import "TTSCoreDataManager.h"
-#import "FTPopOverMenu.h"
 #import "TTSUtility.h"
 @interface EditSceneController ()<SceneCellDelegata>
 

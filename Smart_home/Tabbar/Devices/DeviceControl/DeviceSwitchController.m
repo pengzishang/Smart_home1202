@@ -16,7 +16,6 @@
 #import "AddDevicesController.h"
 #import "TTSUtility.h"
 #import "FTPopOverMenu.h"
-#import "BluetoothManager.h"
 #import "AppDelegate.h"
 @class CBPeripheral;
 @interface DeviceSwitchController ()<SwitchDelegate,CurtainDelegate>

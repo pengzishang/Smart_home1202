@@ -21,8 +21,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _userName.text=USERNAME;
-    _pwd.text=USERPASS;
+    
+    NSString *userName=[[NSUserDefaults standardUserDefaults]objectForKey:@"JFGUSER"];
+    NSString *pwd=[[NSUserDefaults standardUserDefaults]objectForKey:@"JFGPWD"];
+    if (!userName||!pwd) {
+        _userName.text=USERNAME;
+        _pwd.text=USERPASS;
+    }
+    else
+    {
+        _userName.text=userName;
+        _pwd.text=pwd;
+    }
+
     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     path = [path stringByAppendingPathComponent:@"jfgworkdic"];
     //SDK初始化

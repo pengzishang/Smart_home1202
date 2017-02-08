@@ -6,10 +6,6 @@
 //  Copyright © 2016年 彭子上. All rights reserved.
 //
 
-#import "RoomInfo.h"
-#import "DeviceInfo.h"
-#import "SceneInfo.h"
-
 @implementation RoomInfo
 
 // Insert code here to add functionality to your managed object subclass

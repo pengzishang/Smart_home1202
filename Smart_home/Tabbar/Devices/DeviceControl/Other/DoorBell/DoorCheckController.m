@@ -8,7 +8,7 @@
 
 #import "DoorCheckController.h"
 #import <JFGSDK/JFGSDKVideoView.h>
-#import <JFGSDK/JFGSDK.h>
+
 @interface DoorCheckController ()<JFGSDKCallbackDelegate,JFGSDKPlayVideoDelegate>
 {
     JFGSDKVideoView *playView;

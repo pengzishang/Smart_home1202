@@ -7,7 +7,6 @@
 //
 
 #import "DoorBellBinding.h"
-#import <JFGSDK/JFGSDK.h>
 #import <JFGSDK/JFGSDKBindingDevice.h>
 @interface DoorBellBinding ()<JFGSDKBindDeviceDelegate>
 {

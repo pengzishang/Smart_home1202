@@ -8,7 +8,6 @@
 //
 
 #import "MJRefreshComponent.h"
-#import "MJRefreshConst.h"
 
 @interface MJRefreshComponent()
 @property (strong, nonatomic) UIPanGestureRecognizer *pan;

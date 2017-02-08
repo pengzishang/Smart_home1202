@@ -8,7 +8,6 @@
 
 #import "InfraredController.h"
 #import "BluetoothManager.h"
-#import "TTSCoreDataManager.h"
 #import "AppDelegate.h"
 @interface InfraredController ()
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;

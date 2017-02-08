@@ -8,7 +8,7 @@
 
 #import "AirViewController.h"
 #import "TTSUtility.h"
-#import "NSString+StringOperation.h"
+
 @interface AirViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationBar *nav_top;
 @property (weak, nonatomic) IBOutlet UILabel *infraredID;

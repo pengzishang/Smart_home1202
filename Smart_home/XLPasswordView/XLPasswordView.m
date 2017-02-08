@@ -10,8 +10,6 @@
 
 #import "XLPasswordInputView.h"
 #import "XLRandomKeyboard.h"
-#import "UIView+XLPasswordView.h"
-#import "UIImage+XLPasswordView.h"
 #import "UIColor+XLPasswordView.h"
 
 #define kPasswordLenght 6

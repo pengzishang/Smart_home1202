@@ -11,7 +11,7 @@
 #import <JFGSDK/JFGSDK.h>
 #import "TTSUtility.h"
 #import "UIImageView+WebCache.h"
-#import "SDWebImageManager.h"
+
 @interface CallingController ()<JFGSDKCallbackDelegate,JFGSDKPlayVideoDelegate,SDWebImageManagerDelegate>
 
 {

@@ -23,18 +23,7 @@
 
 #import "IQUIView+Hierarchy.h"
 
-#import <UIKit/UICollectionView.h>
-
-#import <UIKit/UITableView.h>
-#import <UIKit/UITextView.h>
-#import <UIKit/UITextField.h>
-#import <UIKit/UISearchBar.h>
-#import <UIKit/UIViewController.h>
-#import <UIKit/UIWindow.h>
-
 #import <objc/runtime.h>
-
-#import "IQNSArray+Sort.h"
 
 @implementation UIView (IQ_UIView_Hierarchy)
 

@@ -34,18 +34,6 @@
 #import "IQUIViewController+Additions.h"
 #import "IQPreviousNextView.h"
 
-#import <UIKit/UINavigationBar.h>
-#import <UIKit/UITapGestureRecognizer.h>
-#import <UIKit/UITextField.h>
-#import <UIKit/UITextView.h>
-#import <UIKit/UITableViewController.h>
-#import <UIKit/UINavigationController.h>
-#import <UIKit/UITableView.h>
-#import <UIKit/UITouch.h>
-
-#import <UIKit/UICollectionView.h>
-#import <UIKit/NSLayoutConstraint.h>
-
 NSInteger const kIQDoneButtonToolbarTag             =   -1002;
 NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
 

@@ -9,8 +9,6 @@
 
 #import "POPAnimationTracer.h"
 
-#import <QuartzCore/QuartzCore.h>
-
 #import "POPAnimationEventInternal.h"
 #import "POPAnimationInternal.h"
 #import "POPSpringAnimation.h"

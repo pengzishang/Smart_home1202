@@ -14,16 +14,12 @@
 #import "DevicesController.h"
 #import "PopTopView.h"
 #import "HyPopMenuView.h"
-#import "CallingController.h"
 #import "AppDelegate.h"
-#import <JFGSDK/JFGSDK.h>
-#import <JFGSDK/JFGSDKVideoView.h>
 
 @interface MainLeftController ()<SiderBarDelegate,DeviceDelegate,SettingBarDelegate,HyPopMenuViewDelegate,JFGSDKCallbackDelegate>
 {
     AppDelegate *app;
     BOOL onBackGroundLoad;//用来后台推送的时候的的锁
-    BOOL onBackGroundLock;//后台锁,一次有效
     BOOL onRuningLoad;//用前台推送的锁
 }
 @property (nonatomic, strong) HyPopMenuView* menu;

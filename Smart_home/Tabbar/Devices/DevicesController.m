@@ -9,7 +9,6 @@
 #import "DevicesController.h"
 #import "AddDevicesController.h"
 #import "TTSUtility.h"
-#import "JPUSHService.h"
 #import "DeviceSwitchController.h"
 #import "DeviceInfraredController.h"
 #import "LockController.h"

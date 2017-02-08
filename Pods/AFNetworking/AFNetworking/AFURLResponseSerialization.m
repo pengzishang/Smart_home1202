@@ -21,10 +21,7 @@
 
 #import "AFURLResponseSerialization.h"
 
-#import <TargetConditionals.h>
-
 #if TARGET_OS_IOS
-#import <UIKit/UIKit.h>
 #elif TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
@@ -508,8 +505,6 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
 #pragma mark -
 
 #if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH
-#import <CoreGraphics/CoreGraphics.h>
-#import <UIKit/UIKit.h>
 
 @interface UIImage (AFNetworkingSafeImageLoading)
 + (UIImage *)af_safeImageWithData:(NSData *)data;

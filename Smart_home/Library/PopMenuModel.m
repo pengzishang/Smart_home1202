@@ -7,7 +7,6 @@
 //
 
 #import "PopMenuButton.h"
-#import "PopMenuModel.h"
 
 @implementation PopMenuModel
 

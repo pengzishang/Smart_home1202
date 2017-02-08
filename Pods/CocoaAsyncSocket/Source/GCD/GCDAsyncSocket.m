@@ -11,23 +11,13 @@
 #import "GCDAsyncSocket.h"
 
 #if TARGET_OS_IPHONE
-#import <CFNetwork/CFNetwork.h>
 #endif
 
-#import <TargetConditionals.h>
 #import <arpa/inet.h>
-#import <fcntl.h>
 #import <ifaddrs.h>
 #import <netdb.h>
-#import <netinet/in.h>
-#import <net/if.h>
-#import <sys/socket.h>
-#import <sys/types.h>
-#import <sys/ioctl.h>
 #import <sys/poll.h>
-#import <sys/uio.h>
 #import <sys/un.h>
-#import <unistd.h>
 
 #if ! __has_feature(objc_arc)
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).

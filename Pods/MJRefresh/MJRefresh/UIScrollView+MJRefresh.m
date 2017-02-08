@@ -10,7 +10,6 @@
 #import "UIScrollView+MJRefresh.h"
 #import "MJRefreshHeader.h"
 #import "MJRefreshFooter.h"
-#import <objc/runtime.h>
 
 @implementation NSObject (MJRefresh)
 

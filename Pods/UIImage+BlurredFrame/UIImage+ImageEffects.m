@@ -94,7 +94,6 @@
  5/3/2013
  */
 
-#import <float.h>
 #import <Accelerate/Accelerate.h>
 
 #import "UIImage+ImageEffects.h"

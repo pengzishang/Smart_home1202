@@ -9,7 +9,6 @@
 #import "OtherViewController.h"
 #import "DoorBellController.h"
 #import "AppDelegate.h"
-#import <JFGSDK/JFGSDK.h>
 #import "TTSUtility.h"
 @interface OtherViewController ()<JFGSDKCallbackDelegate>
 @property (nonatomic,strong)NSArray *deviceList;

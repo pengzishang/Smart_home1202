@@ -9,8 +9,6 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "SceneInfo+CoreDataProperties.h"
-
 @implementation SceneInfo (CoreDataProperties)
 
 @dynamic sceneCreateDate;

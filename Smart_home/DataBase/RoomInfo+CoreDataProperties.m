@@ -9,8 +9,6 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "RoomInfo+CoreDataProperties.h"
-
 @implementation RoomInfo (CoreDataProperties)
 
 @dynamic isCommonRoom;

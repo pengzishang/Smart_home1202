@@ -9,18 +9,10 @@
 
 #import "POPAnimationRuntime.h"
 
-#import <objc/objc.h>
-
-#import <QuartzCore/QuartzCore.h>
-
 #if TARGET_OS_IPHONE
-#import <UIKit/UIKit.h>
 #endif
 
 #import "POPCGUtils.h"
-#import "POPDefines.h"
-#import "POPGeometry.h"
-#import "POPVector.h"
 
 static Boolean pointerEqual(const void *ptr1, const void *ptr2) {
   return ptr1 == ptr2;

@@ -11,8 +11,7 @@
 #import "DeviceSwitchController.h"
 #import "BluetoothManager.h"
 #import "TTSCoreDataManager.h"
-#import "NSString+StringOperation.h"
-#import "AppDelegate.h"
+
 @interface AddDevicesController ()
 @property (weak, nonatomic) IBOutlet UIImageView *flashImage;
 @property (weak, nonatomic) IBOutlet UILabel *lab1;

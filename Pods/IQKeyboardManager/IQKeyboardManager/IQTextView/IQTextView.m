@@ -23,9 +23,6 @@
 
 #import "IQTextView.h"
 
-#import <UIKit/UILabel.h>
-#import <UIKit/UINibLoading.h>
-
 @interface IQTextView ()
 
 -(void)refreshPlaceholder;

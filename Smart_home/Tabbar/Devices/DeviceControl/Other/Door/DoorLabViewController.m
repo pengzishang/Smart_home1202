@@ -10,7 +10,7 @@
 #import "FTPopOverMenu.h"
 #import "BluetoothManager.h"
 #import "TTSUtility.h"
-#import "NSString+StringOperation.h"
+
 @interface DoorLabViewController ()
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBtnItem;

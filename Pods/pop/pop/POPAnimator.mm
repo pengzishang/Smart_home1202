@@ -19,8 +19,6 @@
 
 #import <objc/objc-auto.h>
 
-#import <QuartzCore/QuartzCore.h>
-
 #import "POPAnimation.h"
 #import "POPAnimationExtras.h"
 #import "POPBasicAnimationInternal.h"

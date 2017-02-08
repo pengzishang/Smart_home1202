@@ -8,7 +8,6 @@
 //
 
 #import "UIScrollView+MJExtension.h"
-#import <objc/runtime.h>
 
 @implementation UIScrollView (MJExtension)
 

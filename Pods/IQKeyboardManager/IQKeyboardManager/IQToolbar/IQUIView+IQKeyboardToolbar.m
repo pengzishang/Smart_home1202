@@ -26,11 +26,7 @@
 #import "IQToolbar.h"
 #import "IQTitleBarButtonItem.h"
 #import "IQKeyboardManagerConstantsInternal.h"
-#import "IQBarButtonItem.h"
 #import "IQKeyboardManager.h"
-#import <UIKit/UIImage.h>
-#import <UIKit/UILabel.h>
-#import <UIKit/UIAccessibility.h>
 #import <objc/runtime.h>
 
 /*UIKeyboardToolbar Category implementation*/

@@ -22,9 +22,6 @@
 // THE SOFTWARE.
 
 #import "IQNSArray+Sort.h"
-#import "IQUIView+Hierarchy.h"
-
-#import <UIKit/UIView.h>
 
 @implementation NSArray (IQ_NSArray_Sort)
 

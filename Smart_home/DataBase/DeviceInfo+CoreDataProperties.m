@@ -9,8 +9,6 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "DeviceInfo+CoreDataProperties.h"
-
 @implementation DeviceInfo (CoreDataProperties)
 
 @dynamic deviceCreateDate;

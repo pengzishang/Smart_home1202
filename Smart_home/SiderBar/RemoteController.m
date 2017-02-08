@@ -7,7 +7,6 @@
 //
 
 #import "RemoteController.h"
-#import "RemoteManger.h"
 #import "BluetoothManager.h"
 #import "TTSCoreDataManager.h"
 #import "FTPopOverMenu.h"

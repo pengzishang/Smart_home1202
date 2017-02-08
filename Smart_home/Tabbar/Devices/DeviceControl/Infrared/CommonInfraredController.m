@@ -8,7 +8,7 @@
 
 #import "CommonInfraredController.h"
 #import "TTSUtility.h"
-#import "NSString+StringOperation.h"
+
 @interface CommonInfraredController ()
 
 @end

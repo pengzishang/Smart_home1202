@@ -10,7 +10,7 @@
 #import "DeviceSwitchController.h"
 #import "TTSCoreDataManager.h"
 #import "TTSUtility.h"
-#import "NSString+StringOperation.h"
+
 @interface EditDeviceController ()
 @property (weak, nonatomic) IBOutlet UIImageView *switchImage;
 @property (weak, nonatomic) IBOutlet UILabel *macID;

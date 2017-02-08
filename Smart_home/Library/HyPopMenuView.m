@@ -7,7 +7,6 @@
 //
 
 #import "HyPopMenuView.h"
-#import "UIColor+ImageGetColor.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <pop/POP.h>
 

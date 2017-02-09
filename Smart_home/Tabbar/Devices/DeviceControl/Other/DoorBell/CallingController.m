@@ -37,7 +37,6 @@
 //    [player prepareToPlay];//分配播放所需的资源，并将其加入内部播放队列
 //    [player play];//播放
     JFGSDKDoorBellCall *device=self.userInfo;
-    __block BOOL isSuccess=NO;
     [NSThread sleepForTimeInterval:1.0];
 
     if (device.url) {
@@ -46,7 +45,6 @@
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             if (image) {
                 NSLogMethodArgs(@"成功加载");
-                isSuccess=YES;
                 [firstImage setImage:image];
             }
             else
@@ -56,7 +54,6 @@
                 [firstImage sd_setImageWithURL:[NSURL URLWithString:device.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                     if (image) {
                         NSLogMethodArgs(@"成功加载");
-                        isSuccess=YES;
                         [firstImage setImage:image];
                     }
                     else

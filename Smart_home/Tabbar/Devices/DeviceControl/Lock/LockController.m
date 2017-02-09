@@ -43,12 +43,12 @@
     return _devicesOfRoom;
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_navItem setTitle:!ISALLROOM?self.roomInfo.roomName:@"全部智能门锁"];
     self.tableView.tableFooterView=[[UIView alloc]init];
+    
+    [[NSNotificationCenter defaultCenter ]addObserver:self selector:@selector(backgroundRefreshState:) name:Note_Refresh_State object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -121,6 +121,26 @@
     }];
 }
 
+//刷新状态
+-(void)backgroundRefreshState:(NSNotification *)sender
+{
+    NSDictionary *peripheralInfo=sender.userInfo[AdvertisementData];
+//    _opertionDevice=peripheralInfo;
+    NSString *deviceIDFromAdv=[peripheralInfo[@"kCBAdvDataLocalName"]
+                               stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString * deviceID=[deviceIDFromAdv substringFromIndex:11];
+    NSNumber * stateCode=sender.userInfo[@"stateCode"];
+    [self.devicesOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.deviceMacID containsString:deviceID]) {//因为锁的名称只能保留部分ID,爱美家的锅
+            obj.deviceStatus=stateCode;
+            [[TTSCoreDataManager getInstance]updateData];
+            NSIndexPath *indexPath=[NSIndexPath indexPathForRow:idx inSection:0];
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+    }];
+}
+
+
 #pragma mark CYLTableViewPlaceHolderDelegate
 
 - (UIView *)makePlaceHolderView
@@ -148,15 +168,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DeviceInfo *device=self.devicesOfRoom[indexPath.row];
-    //    BOOL isNearBy=[self isNearby:device];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LockCell" forIndexPath:indexPath];
     UILabel *nameLab=[cell viewWithTag:1001];
     nameLab.text=device.deviceCustomName;
     UILabel *IDLab=[cell viewWithTag:1002];
     IDLab.text=device.deviceMacID;
-    //    if (!isNearBy) {
-    //        cell.contentView.alpha=0.4;
-    //    }
+    UIImageView *imageView=[cell viewWithTag:1000];
+    if ([device.deviceStatus isEqualToNumber:@(1)]) {
+        //锁是开的状态
+        imageView.image=[UIImage imageNamed:@"equipment_autodoor_icon"];
+    }
+    else
+    {
+        imageView.image=[UIImage imageNamed:@"equipment_door_lock_icon"];
+    }
     return cell;
 }
 

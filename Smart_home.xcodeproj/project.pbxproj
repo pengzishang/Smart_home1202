@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3C02B1FA1DD1CD4A007CE3BE /* SetBellWifiController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C02B1F91DD1CD4A007CE3BE /* SetBellWifiController.m */; };
 		3C05132F1D2CB4D100ED6DA1 /* InfraredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C05132E1D2CB4D100ED6DA1 /* InfraredController.m */; };
-		3C0513331D2CF18C00ED6DA1 /* CurtainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0513321D2CF18B00ED6DA1 /* CurtainCell.m */; };
 		3C0513351D2D080500ED6DA1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0513341D2D080500ED6DA1 /* CoreTelephony.framework */; };
 		3C0513371D2D084300ED6DA1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0513361D2D084300ED6DA1 /* OpenGLES.framework */; };
 		3C0513391D2D084B00ED6DA1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0513381D2D084B00ED6DA1 /* CoreMotion.framework */; };
@@ -25,7 +24,6 @@
 		3C1E8B551DBF4BA900900A82 /* jpush-ios-2.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1E8B541DBF4BA900900A82 /* jpush-ios-2.2.0.a */; };
 		3C1ECC901D30A81500F93FFF /* ManualAddBlueToothController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1ECC8F1D30A81500F93FFF /* ManualAddBlueToothController.m */; };
 		3C212A3F1D8804A900724EF6 /* EditSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C212A3E1D8804A900724EF6 /* EditSceneController.m */; };
-		3C23FE701D2BA5AB00728650 /* SocketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C23FE6F1D2BA5AB00728650 /* SocketCell.m */; };
 		3C24E5E71D8170A900E74C24 /* AddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C24E5E61D8170A900E74C24 /* AddView.xib */; };
 		3C24E5EA1D82908600E74C24 /* CommonInfraredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E5E91D82908600E74C24 /* CommonInfraredController.m */; };
 		3C24E5EC1D82A28B00E74C24 /* PopTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C24E5EB1D82A28B00E74C24 /* PopTopView.xib */; };
@@ -61,8 +59,6 @@
 		3C784F731D4763BF00FF2F6C /* SideBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C784F721D4763BF00FF2F6C /* SideBarController.m */; };
 		3C7C6ACD1D24C9E700CEDDEF /* SiderNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7C6ACC1D24C9E700CEDDEF /* SiderNormalCell.m */; };
 		3C7C6AD11D2514E400CEDDEF /* DevicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7C6AD01D2514E400CEDDEF /* DevicesController.m */; };
-		3C7EC80C1D2A4D11003CAAA6 /* SwitchTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7EC80B1D2A4D11003CAAA6 /* SwitchTwoCell.m */; };
-		3C7EC8121D2A5313003CAAA6 /* SwitchCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7EC8111D2A5313003CAAA6 /* SwitchCommonCell.m */; };
 		3C7ECDD91D23B48500335F75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7ECDD81D23B48500335F75 /* main.m */; };
 		3C7ECDDC1D23B48500335F75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7ECDDB1D23B48500335F75 /* AppDelegate.m */; };
 		3C7ECDE51D23B48500335F75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C7ECDE31D23B48500335F75 /* Main.storyboard */; };
@@ -71,7 +67,6 @@
 		3C7ECDF81D23CB9F00335F75 /* TTSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7ECDF71D23CB9F00335F75 /* TTSTabBarController.m */; };
 		3C7ECDFE1D23E02600335F75 /* MainLeftController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7ECDFD1D23E02600335F75 /* MainLeftController.m */; };
 		3C7F2DDC1D6AFC4C000A85D1 /* LockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F2DDB1D6AFC4C000A85D1 /* LockController.m */; };
-		3C905F631D27680400A9FE5B /* SwitchOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C905F621D27680400A9FE5B /* SwitchOneCell.m */; };
 		3C905F651D27C4CE00A9FE5B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C905F641D27C4CE00A9FE5B /* CoreData.framework */; };
 		3C905F6B1D27C5BD00A9FE5B /* DataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C905F691D27C5BD00A9FE5B /* DataBase.xcdatamodeld */; };
 		3C905F6E1D27C5D000A9FE5B /* TTSCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C905F6D1D27C5D000A9FE5B /* TTSCoreDataManager.m */; };
@@ -102,7 +97,6 @@
 		3CB9F5301D76F09C0027D155 /* Devices_Infrared.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB9F52E1D76F09C0027D155 /* Devices_Infrared.storyboard */; };
 		3CB9F5331D76F1300027D155 /* Devices_Lock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB9F5311D76F1300027D155 /* Devices_Lock.storyboard */; };
 		3CC1FEB81D47532500784AE4 /* NSString+StringOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC1FEB71D47532500784AE4 /* NSString+StringOperation.m */; };
-		3CC1FEBB1D47549500784AE4 /* SwitchThreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC1FEBA1D47549500784AE4 /* SwitchThreeCell.m */; };
 		3CD233471DAF79A800614CED /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD233461DAF79A800614CED /* LoginController.m */; };
 		3CD8EA9A1D7418B000B843C7 /* AddRoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD8EA991D7418B000B843C7 /* AddRoomController.m */; };
 		3CDDD6291DC6E25400F6DDF7 /* EditBellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDD6281DC6E25400F6DDF7 /* EditBellController.m */; };
@@ -137,8 +131,6 @@
 		3C02B1F91DD1CD4A007CE3BE /* SetBellWifiController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetBellWifiController.m; path = Tabbar/Devices/DeviceControl/Other/DoorBell/SetBellWifiController.m; sourceTree = "<group>"; };
 		3C05132D1D2CB4D100ED6DA1 /* InfraredController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfraredController.h; path = SiderBar/InfraredController.h; sourceTree = "<group>"; };
 		3C05132E1D2CB4D100ED6DA1 /* InfraredController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfraredController.m; path = SiderBar/InfraredController.m; sourceTree = "<group>"; };
-		3C0513311D2CF18B00ED6DA1 /* CurtainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurtainCell.h; path = Tabbar/Devices/DeviceCell/CurtainCell.h; sourceTree = "<group>"; };
-		3C0513321D2CF18B00ED6DA1 /* CurtainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurtainCell.m; path = Tabbar/Devices/DeviceCell/CurtainCell.m; sourceTree = "<group>"; };
 		3C0513341D2D080500ED6DA1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3C0513361D2D084300ED6DA1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		3C0513381D2D084B00ED6DA1 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -161,8 +153,6 @@
 		3C1ECC8F1D30A81500F93FFF /* ManualAddBlueToothController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManualAddBlueToothController.m; path = Tabbar/Devices/ManualAddBlueToothController.m; sourceTree = "<group>"; };
 		3C212A3D1D8804A900724EF6 /* EditSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSceneController.h; path = Tabbar/Scene/EditSceneController.h; sourceTree = "<group>"; };
 		3C212A3E1D8804A900724EF6 /* EditSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditSceneController.m; path = Tabbar/Scene/EditSceneController.m; sourceTree = "<group>"; };
-		3C23FE6E1D2BA5AB00728650 /* SocketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocketCell.h; path = Tabbar/Devices/DeviceCell/SocketCell.h; sourceTree = "<group>"; };
-		3C23FE6F1D2BA5AB00728650 /* SocketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocketCell.m; path = Tabbar/Devices/DeviceCell/SocketCell.m; sourceTree = "<group>"; };
 		3C24E5E61D8170A900E74C24 /* AddView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddView.xib; path = Tabbar/Devices/DeviceCell/AddView.xib; sourceTree = "<group>"; };
 		3C24E5E81D82908600E74C24 /* CommonInfraredController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonInfraredController.h; path = Tabbar/Devices/DeviceControl/Infrared/CommonInfraredController.h; sourceTree = "<group>"; };
 		3C24E5E91D82908600E74C24 /* CommonInfraredController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonInfraredController.m; path = Tabbar/Devices/DeviceControl/Infrared/CommonInfraredController.m; sourceTree = "<group>"; };
@@ -230,10 +220,6 @@
 		3C7C6ACC1D24C9E700CEDDEF /* SiderNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SiderNormalCell.m; path = SiderBar/SiderNormalCell.m; sourceTree = "<group>"; };
 		3C7C6ACF1D2514E400CEDDEF /* DevicesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DevicesController.h; path = Tabbar/Devices/DevicesController.h; sourceTree = "<group>"; };
 		3C7C6AD01D2514E400CEDDEF /* DevicesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DevicesController.m; path = Tabbar/Devices/DevicesController.m; sourceTree = "<group>"; };
-		3C7EC80A1D2A4D11003CAAA6 /* SwitchTwoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwitchTwoCell.h; path = Tabbar/Devices/DeviceCell/SwitchTwoCell.h; sourceTree = "<group>"; };
-		3C7EC80B1D2A4D11003CAAA6 /* SwitchTwoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwitchTwoCell.m; path = Tabbar/Devices/DeviceCell/SwitchTwoCell.m; sourceTree = "<group>"; };
-		3C7EC8101D2A5313003CAAA6 /* SwitchCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwitchCommonCell.h; path = Tabbar/Devices/DeviceCell/SwitchCommonCell.h; sourceTree = "<group>"; };
-		3C7EC8111D2A5313003CAAA6 /* SwitchCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwitchCommonCell.m; path = Tabbar/Devices/DeviceCell/SwitchCommonCell.m; sourceTree = "<group>"; };
 		3C7ECDD41D23B48500335F75 /* Smart_home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smart_home.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C7ECDD81D23B48500335F75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3C7ECDDA1D23B48500335F75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -248,8 +234,6 @@
 		3C7ECDFD1D23E02600335F75 /* MainLeftController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainLeftController.m; path = Tabbar/MainLeftController.m; sourceTree = "<group>"; };
 		3C7F2DDA1D6AFC4C000A85D1 /* LockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LockController.h; path = Tabbar/Devices/DeviceControl/Lock/LockController.h; sourceTree = "<group>"; };
 		3C7F2DDB1D6AFC4C000A85D1 /* LockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LockController.m; path = Tabbar/Devices/DeviceControl/Lock/LockController.m; sourceTree = "<group>"; };
-		3C905F611D27680400A9FE5B /* SwitchOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwitchOneCell.h; path = Tabbar/Devices/DeviceCell/SwitchOneCell.h; sourceTree = "<group>"; };
-		3C905F621D27680400A9FE5B /* SwitchOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwitchOneCell.m; path = Tabbar/Devices/DeviceCell/SwitchOneCell.m; sourceTree = "<group>"; };
 		3C905F641D27C4CE00A9FE5B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3C905F6A1D27C5BD00A9FE5B /* DataBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataBase.xcdatamodel; sourceTree = "<group>"; };
 		3C905F6C1D27C5D000A9FE5B /* TTSCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSCoreDataManager.h; path = DataBase/TTSCoreDataManager.h; sourceTree = "<group>"; };
@@ -298,8 +282,6 @@
 		3CB9F5321D76F1300027D155 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Devices_Lock.storyboard; sourceTree = "<group>"; };
 		3CC1FEB61D47532500784AE4 /* NSString+StringOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+StringOperation.h"; path = "Tools/Category/NSString+StringOperation.h"; sourceTree = "<group>"; };
 		3CC1FEB71D47532500784AE4 /* NSString+StringOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+StringOperation.m"; path = "Tools/Category/NSString+StringOperation.m"; sourceTree = "<group>"; };
-		3CC1FEB91D47549500784AE4 /* SwitchThreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwitchThreeCell.h; path = Tabbar/Devices/DeviceCell/SwitchThreeCell.h; sourceTree = "<group>"; };
-		3CC1FEBA1D47549500784AE4 /* SwitchThreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwitchThreeCell.m; path = Tabbar/Devices/DeviceCell/SwitchThreeCell.m; sourceTree = "<group>"; };
 		3CD233451DAF79A800614CED /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = SiderBar/LoginController.h; sourceTree = "<group>"; };
 		3CD233461DAF79A800614CED /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginController.m; path = SiderBar/LoginController.m; sourceTree = "<group>"; };
 		3CD8EA981D7418B000B843C7 /* AddRoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddRoomController.h; path = Tabbar/Devices/Room/AddRoomController.h; sourceTree = "<group>"; };
@@ -391,18 +373,6 @@
 		3C0513301D2CF15300ED6DA1 /* BlueToothCell */ = {
 			isa = PBXGroup;
 			children = (
-				3CC1FEB91D47549500784AE4 /* SwitchThreeCell.h */,
-				3CC1FEBA1D47549500784AE4 /* SwitchThreeCell.m */,
-				3C905F611D27680400A9FE5B /* SwitchOneCell.h */,
-				3C905F621D27680400A9FE5B /* SwitchOneCell.m */,
-				3C7EC80A1D2A4D11003CAAA6 /* SwitchTwoCell.h */,
-				3C7EC80B1D2A4D11003CAAA6 /* SwitchTwoCell.m */,
-				3C7EC8101D2A5313003CAAA6 /* SwitchCommonCell.h */,
-				3C7EC8111D2A5313003CAAA6 /* SwitchCommonCell.m */,
-				3C23FE6E1D2BA5AB00728650 /* SocketCell.h */,
-				3C23FE6F1D2BA5AB00728650 /* SocketCell.m */,
-				3C0513311D2CF18B00ED6DA1 /* CurtainCell.h */,
-				3C0513321D2CF18B00ED6DA1 /* CurtainCell.m */,
 			);
 			name = BlueToothCell;
 			sourceTree = "<group>";
@@ -1085,11 +1055,9 @@
 				3C1B5E1D1D2BBD3400E68797 /* RemoteController.m in Sources */,
 				3C905F6E1D27C5D000A9FE5B /* TTSCoreDataManager.m in Sources */,
 				3C7ECDDC1D23B48500335F75 /* AppDelegate.m in Sources */,
-				3C0513331D2CF18C00ED6DA1 /* CurtainCell.m in Sources */,
 				3CA37F2D1D5890B900852505 /* ConfirmCodeController.m in Sources */,
 				3C3EFC4E1D55C27800CE5A89 /* ChooseBrandController.m in Sources */,
 				3C6305181DB7077000218744 /* DoorCheckController.m in Sources */,
-				3C23FE701D2BA5AB00728650 /* SocketCell.m in Sources */,
 				3C905F6B1D27C5BD00A9FE5B /* DataBase.xcdatamodeld in Sources */,
 				3C7C6ACD1D24C9E700CEDDEF /* SiderNormalCell.m in Sources */,
 				3CDE29D81D7D71AA00EE90FD /* RoomInfo.m in Sources */,
@@ -1122,7 +1090,6 @@
 				3C1ADD511D549FD4009EA027 /* InfrareAddController.m in Sources */,
 				3CDE29D61D7D71AA00EE90FD /* DeviceInfo.m in Sources */,
 				3CF992051D644B3200E2FFE8 /* EditDeviceController.m in Sources */,
-				3C7EC80C1D2A4D11003CAAA6 /* SwitchTwoCell.m in Sources */,
 				3CDE29DA1D7D71AA00EE90FD /* SceneInfo.m in Sources */,
 				3C7F2DDC1D6AFC4C000A85D1 /* LockController.m in Sources */,
 				3C4D8A861DAE33D7009B1CDA /* CallingController.m in Sources */,
@@ -1138,8 +1105,6 @@
 				3C056F341D81069700EFB827 /* SceneView.m in Sources */,
 				3CB83BDC1D66B813003E1ECD /* AirViewController.m in Sources */,
 				3C3804FD1D4A062E00B1EA72 /* RemoteManger.m in Sources */,
-				3CC1FEBB1D47549500784AE4 /* SwitchThreeCell.m in Sources */,
-				3C905F631D27680400A9FE5B /* SwitchOneCell.m in Sources */,
 				3C5DBF3B1D5D807F006A6146 /* SettingController.m in Sources */,
 				3C579AEC1DB5CED400E00E08 /* DoorBellBinding.m in Sources */,
 				3C999A761D6B16D000E66DCB /* XLRandomKeyboard.m in Sources */,
@@ -1156,7 +1121,6 @@
 				3C7ECDD91D23B48500335F75 /* main.m in Sources */,
 				3CDDD6291DC6E25400F6DDF7 /* EditBellController.m in Sources */,
 				3C3387801D927E7500577C0D /* PopMenuModel.m in Sources */,
-				3C7EC8121D2A5313003CAAA6 /* SwitchCommonCell.m in Sources */,
 				3CDE29D71D7D71AA00EE90FD /* RoomInfo+CoreDataProperties.m in Sources */,
 				3C318B781D47006200359F60 /* TTSUtility.m in Sources */,
 				3C212A3F1D8804A900724EF6 /* EditSceneController.m in Sources */,

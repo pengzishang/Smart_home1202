@@ -19,9 +19,7 @@
 #import "AppDelegate.h"
 @class CBPeripheral;
 @interface DeviceSwitchController ()<SwitchDelegate,CurtainDelegate>
-{
-    NSTimer *curtainTimer;
-}
+
 @property(nonatomic,strong)NSMutableArray <__kindof DeviceInfo *>*devicesOfRoom;
 @property (weak, nonatomic) IBOutlet UICollectionView *mainCollectionView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addItemOnStore;
@@ -81,16 +79,17 @@
     }
 }
 
+//刷新状态
 -(void)backgroundRefreshState:(NSNotification *)sender
 {
     NSDictionary *peripheralInfo=sender.userInfo[AdvertisementData];
     NSString *deviceIDFromAdv=[peripheralInfo[@"kCBAdvDataLocalName"]
                                stringByReplacingOccurrencesOfString:@" " withString:@""];
-        NSString * deviceID=[deviceIDFromAdv substringFromIndex:7];
-    NSString *stateCode=[deviceIDFromAdv substringWithRange:NSMakeRange(6, 1)];
+    NSString * deviceID=[deviceIDFromAdv substringFromIndex:7];
+    NSNumber * stateCode=sender.userInfo[@"stateCode"];
     [self.devicesOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj.deviceMacID isEqualToString:deviceID]) {
-            obj.deviceStatus=@(stateCode.integerValue);
+            obj.deviceStatus=stateCode;
             [[TTSCoreDataManager getInstance]updateData];
             NSIndexPath *indexPath=[NSIndexPath indexPathForRow:idx inSection:0];
             [_mainCollectionView reloadItemsAtIndexPaths:@[indexPath]];
@@ -182,22 +181,6 @@
     {
         CurtainCollectionCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"VCurtain" forIndexPath:indexPath];
         cell.delegate=self;
-        
-//        if (cell.isRuning) {
-//            [cell setStateImageWithDeviceState:deviceInfo.deviceStatus];
-//            curtainTimer =[NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(changeCurtainImage:) userInfo:cell repeats:NO];;
-//            [[NSRunLoop currentRunLoop]addTimer:curtainTimer forMode:NSDefaultRunLoopMode];
-//        }
-//        else if(!cell.isRuning)
-//        {
-//            cell.isRuning=NO;
-            [cell setInformationMac:deviceInfo.deviceMacID name:deviceInfo.deviceCustomName indexPath:indexPath];
-//        }
-//        if (!isNearBy) {
-//            cell.contentView.alpha=0.4;
-//            UILabel *lowRssi=[cell viewWithTag:2001];
-//            lowRssi.hidden=NO;
-//        }
         return cell;
     }
 }
@@ -287,7 +270,6 @@
 
 -(void)didClickCurtainBtnTag:(NSUInteger)btnTag cellTag:(NSUInteger)cellTag cell:(CurtainCollectionCell *)cell
 {
-    //    [curtainTimer invalidate];
     __block DeviceInfo *device=self.devicesOfRoom[cellTag-200];
     if (RemoteOn) {
         [TTSUtility remoteDeviceControl:device commandStr:@(btnTag-1000-24).stringValue retryTimes:3 conditionReturn:^(NSString *statusCode) {

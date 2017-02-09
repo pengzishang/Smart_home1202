@@ -113,17 +113,6 @@
 }
 
 
-//已入住的注意,特殊方法
-- (IBAction)didClickDoorBell:(UIButton *)sender {
-    NSString *command=@"023001";
-    command=[command fullWithLengthCountBehide:27];
-    [TTSUtility localDeviceControl:self.currentDeviceID commandStr:command retryTimes:3 conditionReturn:^(id stateData) {
-        
-    }];
-}
-
-
-
 -(void)dealloc
 {
     [[BluetoothManager getInstance]removeObserver:self forKeyPath:@"peripheralsInfo" context:nil];

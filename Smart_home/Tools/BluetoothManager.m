@@ -491,7 +491,7 @@ NSString * _Nonnull const ScanTypeDescription[] = {
             return;
         }
         NSString *stateCode=[deviceIDFromAdv substringWithRange:NSMakeRange(6, 1)];
-        NSString *deviceType=[deviceIDFromAdv substringWithRange:NSMakeRange(5, 1)];
+        NSString *deviceType=[deviceIDFromAdv substringWithRange:NSMakeRange(5, 1)];//这个以后可能出问题.面对两位的类型
         NSInteger stateIndex=[stateCode characterAtIndex:0];
         
         NSNumber *stateCodeCurrent=[[NSNumber alloc]init];
@@ -521,32 +521,35 @@ NSString * _Nonnull const ScanTypeDescription[] = {
             if ([pIdentiferInStore isEqual:pIdentiferCurrent]) {
                 isContain = YES;
                 NSNumber *stateCodeInStore=@([obj[@"stateCode"] integerValue]);
-                if ([stateCodeCurrent isEqualToNumber:stateCodeInStore]) {
+                if ([stateCodeCurrent isEqualToNumber:stateCodeInStore]&&![deviceIDFromAdv containsString:@"Lock"]) {//含有Lock是开门状态
                     isStatusSame=YES;
                 }
                 else
                 {
                     operationIndex=idx;
                     NSLogMethodArgs(@"刷新 %@  强度:%@ 原状态:%@ 现状态:%@",deviceIDFromAdv,RSSI,stateCodeInStore,stateCodeCurrent);
-//                    [[NSNotificationCenter defaultCenter]postNotificationName:Note_Refresh_State object:nil userInfo:nil];
                 }
+                
             }
         }];
+        
+        
         //如果没有与现有或者新发现的设备重复,那么加入全局的周边设备库
         if (!isContain) {
             NSLog(@"加入 %@  强度:%@  状态:%@",deviceIDFromAdv,RSSI,stateCodeCurrent);
-            
             NSDictionary * peripheralInfo = @{Peripheral : peripheral, AdvertisementData : advertisementData, RSSI_VALUE : RSSI,@"stateCode":stateCodeCurrent};
             [[self mutableArrayValueForKey:@"peripheralsInfo"] addObject:peripheralInfo];//数组,观察者
         }
         else if(isContain&&!isStatusSame)
         {
             //不一样
-            //                    [[NSNotificationCenter defaultCenter]postNotificationName:Note_Refresh_State object:nil userInfo:nil];
-            
+            if ([deviceIDFromAdv containsString:@"Lock"]) {
+                stateCodeCurrent=@(1);//1为开门状态
+            }
             NSDictionary * peripheralInfo = @{Peripheral : peripheral, AdvertisementData : advertisementData, RSSI_VALUE : RSSI,@"stateCode":stateCodeCurrent};
-            [[NSNotificationCenter defaultCenter]postNotificationName:Note_Refresh_State object:nil userInfo:peripheralInfo];
             [self.peripheralsInfo replaceObjectAtIndex:operationIndex withObject:peripheralInfo];
+            [[NSNotificationCenter defaultCenter]postNotificationName:Note_Refresh_State object:nil userInfo:peripheralInfo];
+            
 
         }
     }

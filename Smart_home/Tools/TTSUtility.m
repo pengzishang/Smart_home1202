@@ -264,23 +264,6 @@
     (MainLeftController *)rootVC.presentedViewController;
 }
 
-//根据指定时间的字符串格式和时间 格式例如yyyy-MM-dd HH:mm:ss:SSS
-+ (NSString *) stringDateByFormatString:(NSString *) formatString withDate:(NSDate *)date
-{
-    if (date == nil) {
-        return @"";
-    }
-    NSDateFormatter * dateFromatter=[[NSDateFormatter alloc] init];
-    //[dateFromatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFromatter setTimeStyle:NSDateFormatterLongStyle];
-    if(formatString!=nil)
-    {
-        [dateFromatter setDateFormat:formatString];
-    }
-    NSString * strDate=[dateFromatter stringFromDate:date];
-    return strDate;
-}
-
 /**
  *  震动
  */
@@ -326,37 +309,6 @@
     //        [player play];
     //    }
 }
-//
-////刷新数据库中状态
-//+ (void)refreshDataBaseWithDeviceID:(NSString *)deviceMacID stateCode:(NSNumber *)stateCode
-//{
-//    NSArray *result = [[TTSCoreDataManager getInstance] getResultArrWithEntityName:@"DeviceInfo" predicate:nil];
-//    [result enumerateObjectsUsingBlock:^(DeviceInfo *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        if(obj.roomInfo){
-//            if ([deviceMacID isEqualToString:obj.deviceMacID]) {
-//                obj.deviceSceneStatus=stateCode;
-//            }
-//        }
-//    }];
-//}
-
-//
-//+ (NSString *)fetchSSIDInfo
-//{
-//    NSString *ssid = nil;
-//    NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();
-//    NSLog(@"Supported interfaces: %@", ifs);
-//    id info = nil;
-//    for (NSString *ifname in ifs) {
-//        NSDictionary *info = (__bridge id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifname);
-//        if (info[@"SSID"])
-//        {
-//            ssid = info[@"SSID"];
-//        }
-//    }
-//    return info;
-//}
-
 
 +(NSArray *)initScene:(RoomInfo *)roomInfo
 {

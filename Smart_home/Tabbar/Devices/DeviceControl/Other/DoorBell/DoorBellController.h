@@ -11,7 +11,6 @@
 @interface DoorBellController : UIViewController
 
 @property (nonatomic,strong)NSString *editName;
-@property (nonatomic,strong)NSString *targetCid;
 @property (nonatomic,strong)JFGSDKDevice *editDevice;
 
 @end

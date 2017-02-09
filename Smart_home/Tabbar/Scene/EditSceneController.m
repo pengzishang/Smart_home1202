@@ -36,10 +36,6 @@
 //    [self.mainCollectView reloadData];
 }
 
--(void)loadData
-{
-    
-}
 - (IBAction)rightBtn:(UIBarButtonItem *)sender event:(UIEvent *)event
 {
     [self dismissViewControllerAnimated:YES completion:^{

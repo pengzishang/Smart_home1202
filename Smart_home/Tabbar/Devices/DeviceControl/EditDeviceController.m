@@ -9,7 +9,6 @@
 #import "EditDeviceController.h"
 #import "DeviceSwitchController.h"
 #import "TTSCoreDataManager.h"
-#import "TTSUtility.h"
 
 @interface EditDeviceController ()
 @property (weak, nonatomic) IBOutlet UIImageView *switchImage;
@@ -49,16 +48,7 @@
     self.deviceInfo.deviceCustomName=_nameField.text;
     [[TTSCoreDataManager getInstance]updateData];
 }
-- (IBAction)setRemote:(UIButton *)sender {
-    if (self.deviceInfo.deviceRemoteMac.length==0) {
-        self.deviceInfo.deviceRemoteMac=RemoteDefault;
-        [[TTSCoreDataManager getInstance]updateData];
-        [_remoteBtn setTitle:[NSString stringWithFormat:@"远程控制器:%@",self.deviceInfo.deviceRemoteMac] forState:UIControlStateNormal];
-    }
-    [TTSUtility syncRemoteDevice:self.deviceInfo remoteMacID:self.deviceInfo.deviceRemoteMac conditionReturn:^(NSString *statusCode) {
-        NSLogMethodArgs(@"%@",statusCode);
-    }];
-}
+
 - (IBAction)complete:(UIBarButtonItem *)sender {
     [self performSegueWithIdentifier:@"edit2MainSwitch" sender:self.deviceInfo];
 }

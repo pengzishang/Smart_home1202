@@ -30,7 +30,5 @@
 
 -(void)setNormalImage;
 
--(void)setStateImageWithDeviceState:(NSNumber *)deviceState;
-
 @end
 

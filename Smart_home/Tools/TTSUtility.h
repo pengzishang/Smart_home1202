@@ -52,15 +52,6 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
 + (void)shake;
 
 
-/**
- 日期转字符
-
- @param formatString <#formatString description#>
- @param date <#date description#>
- @return <#return value description#>
- */
-+ (NSString *)stringDateByFormatString:(NSString *) formatString withDate:(NSDate *)date;
-
 + (MainLeftController *)getCurrentDrawerControl;
 
 /**
@@ -130,8 +121,6 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
  */
 + (UIViewController *)getCurrentVC;
 
-
-+ (NSString *)fetchSSIDInfo;
 
 + (NSArray *)initScene:(RoomInfo *)roomInfo;
 

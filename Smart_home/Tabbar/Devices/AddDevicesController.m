@@ -21,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButton;
 
 @property (strong,nonatomic)NSTimer *globalTime;
-@property (assign,nonatomic)BOOL isManualMode;
 @property (strong,nonatomic)NSDictionary *currentDeviceDic;
 
 @end

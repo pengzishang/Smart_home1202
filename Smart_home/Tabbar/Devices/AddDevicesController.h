@@ -11,7 +11,6 @@
 
 @interface AddDevicesController : UIViewController
 
-@property (nonatomic,strong)DeviceInfo *deviceInfoSendBack;
 //@property (nonatomic,strong)RoomInfo *currentRoomInfo;
 @property (strong,nonatomic)NSArray <__kindof DeviceInfo *>*deviceOfRoom;
 

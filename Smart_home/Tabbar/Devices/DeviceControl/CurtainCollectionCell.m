@@ -50,19 +50,5 @@
     [_rightBtn setImage:[UIImage imageNamed:@"curtain_right_status_close"] forState:UIControlStateNormal];
 }
 
--(void)setStateImageWithDeviceState:(NSNumber *)deviceState
-{
-    if ([deviceState isEqualToNumber:@(1)])//关
-    {
-        [_leftBtn setImage:[UIImage imageNamed:@"curtain_left_status_close"] forState:UIControlStateNormal];
-        [_rightBtn setImage:[UIImage imageNamed:@"curtain_right_hold_stop"] forState:UIControlStateNormal];
-    }
-    else if ([deviceState isEqualToNumber:@(2)])//开
-    {
-        [_leftBtn setImage:[UIImage imageNamed:@"curtain_left_hold_stop"] forState:UIControlStateNormal];
-        [_rightBtn setImage:[UIImage imageNamed:@"curtain_right_status_close"] forState:UIControlStateNormal];
-    }
-}
-
 
 @end

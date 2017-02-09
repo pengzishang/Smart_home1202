@@ -30,7 +30,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     _autoScan=[NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
     [_autoScan fire];
-    _pushUserInfo=nil;
 
     [IQKeyboardManager sharedManager].enable=YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar=YES;
@@ -266,7 +265,6 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     if ([[TTSUtility getTopVC] isKindOfClass:[DoorBellStep1 class]]) {
         DoorBellStep1 *topView=(DoorBellStep1 *)[TTSUtility getTopVC];
-        //        topView.wifiSSID=[TTSUtility fetchSSIDInfo];
         topView.wifiSSID=[JFGSDKToolMethods currentWifiName];
         if([topView.wifiSSID hasPrefix:@"DOG-ML"]){
             topView.nextStep.enabled=YES;

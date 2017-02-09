@@ -16,8 +16,8 @@
 
 @interface DoorBellController ()<JFGSDKCallbackDelegate,JFGSDKPlayVideoDelegate>
 {
-    JFGSDKVideoView *playView;
-    JFGSDKDataPoint *dataPoint;
+//    JFGSDKVideoView *playView;
+//    JFGSDKDataPoint *dataPoint;
 }
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 @property (strong,nonatomic)NSMutableArray *deviceList;
@@ -44,9 +44,6 @@
     //    [self.view addSubview:playView];
     //    [playView getHistoryVideoList:@"500000005083"];
     
-}
-- (IBAction)test:(UIBarButtonItem *)sender {
-    [JFGSDK fping:@"255.255.255.255"];
 }
 
 -(void)viewWillAppear:(BOOL)animated

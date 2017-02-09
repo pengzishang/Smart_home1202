@@ -116,42 +116,6 @@
     }];
 }
 
--(void)setUIWithStatusString:(NSString *)statusString
-{
-    if (statusString.length==8||statusString.length==7) {
-        if (statusString.length==7) {
-            statusString=[@"0" stringByAppendingString:statusString];
-        }
-        NSUInteger mode=[statusString substringWithRange:NSMakeRange(0, 2)].integerValue;
-        NSDictionary *temertureDic=@{@"10":@"16",@"11":@"17",@"12":@"18",@"13":@"19",@"14":@"20",@"15":@"21",@"16":@"22",@"17":@"23",@"18":@"24",@"19":@"25",@"1a":@"26",@"1b":@"27",@"1c":@"28",@"1d":@"29",@"1e":@"30"};
-        NSUInteger temperature=[statusString substringWithRange:NSMakeRange(2, 2)].integerValue;
-        temperature=[temertureDic[[statusString substringWithRange:NSMakeRange(2, 2)]] integerValue];
-        NSUInteger direction=[statusString substringWithRange:NSMakeRange(4, 2)].integerValue;
-        NSUInteger speed=[statusString substringWithRange:NSMakeRange(6, 2)].integerValue;
-        NSArray *modeText=@[@"自动",@"制冷",@"加湿",@"送风",@"制暖"];
-        _modeLab.text=modeText[mode];
-        _tempertureLab.text=[NSString stringWithFormat:@"%zd°c",temperature];
-        NSArray *directionText=@[@"静止风",@"扫风1",@"扫风2",@"扫风3",@"扫风4",@"扫风5"];
-        _shaofenLab.text=directionText[direction];
-        NSArray *speedText=@[@"自动",@"风速1",@"风速2",@"风速3"];
-        _speedLab.text=speedText[speed];
-        
-//        if (isNeed) {
-//            NSString *tempString=@"";
-//            for (NSUInteger i=0; i<8; i+=2) {
-//                tempString=[tempString stringByAppendingString:i==2?
-//                            temertureDic[[statusString substringWithRange:NSMakeRange(i, 2)]]:
-//                            [statusString substringWithRange:NSMakeRange(i, 2)]];
-//            }
-//            self.deviceInfo.deviceStatus=@(tempString.integerValue);
-//            [[TTSCoreDataManager getInstance]updateData];
-//        }
-        
-        //            0xAA, 开关状态， 模式， 温度， 风向， 风量， 0x00，0x00，0x00， 校验。
-        //           <  aa     01      01    17    00   03    00     00   00    14 >
-    }
-}
-
 
 -(void)dealloc
 {

@@ -90,6 +90,9 @@
 		3CA715FD1D548FD70011473A /* NoneTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CA715FC1D548FD70011473A /* NoneTableView.xib */; };
 		3CAB77191DAC8A8800F7B73D /* Devices_Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB77171DAC8A8800F7B73D /* Devices_Other.storyboard */; };
 		3CAB771C1DAC93D700F7B73D /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB771B1DAC93D700F7B73D /* MessageController.m */; };
+		3CB4914E1E52FE0500D468F5 /* HiJoine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB4914D1E52FE0500D468F5 /* HiJoine.framework */; };
+		3CB4914F1E53058400D468F5 /* HiJoine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB4914D1E52FE0500D468F5 /* HiJoine.framework */; };
+		3CB491501E53058400D468F5 /* HiJoine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB4914D1E52FE0500D468F5 /* HiJoine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3CB83BD81D66A2BC003E1ECD /* BlurView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB83BD71D66A2BC003E1ECD /* BlurView.xib */; };
 		3CB83BDC1D66B813003E1ECD /* AirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB83BDB1D66B813003E1ECD /* AirViewController.m */; };
 		3CB9F5241D7565500027D155 /* RoomAddDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB9F5231D7565500027D155 /* RoomAddDeviceController.m */; };
@@ -97,6 +100,7 @@
 		3CB9F5301D76F09C0027D155 /* Devices_Infrared.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB9F52E1D76F09C0027D155 /* Devices_Infrared.storyboard */; };
 		3CB9F5331D76F1300027D155 /* Devices_Lock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB9F5311D76F1300027D155 /* Devices_Lock.storyboard */; };
 		3CC1FEB81D47532500784AE4 /* NSString+StringOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC1FEB71D47532500784AE4 /* NSString+StringOperation.m */; };
+		3CC22C8B1E514E8200F2140F /* RemoteSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC22C8A1E514E8200F2140F /* RemoteSetting.m */; };
 		3CD233471DAF79A800614CED /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD233461DAF79A800614CED /* LoginController.m */; };
 		3CD8EA9A1D7418B000B843C7 /* AddRoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD8EA991D7418B000B843C7 /* AddRoomController.m */; };
 		3CDDD6291DC6E25400F6DDF7 /* EditBellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDD6281DC6E25400F6DDF7 /* EditBellController.m */; };
@@ -124,6 +128,20 @@
 		3CF9920E1D655BB400E2FFE8 /* InfraredViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF9920D1D655BB400E2FFE8 /* InfraredViewCell.m */; };
 		D3AD2F938BA8C2D629D6DC9B /* libPods-Smart_home.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E65D69A5D7FD52519E23F03D /* libPods-Smart_home.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3CB491511E53058500D468F5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3CB491501E53058400D468F5 /* HiJoine.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2474AA86074CB423A58CE2F4 /* Pods-Smart_home.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart_home.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smart_home/Pods-Smart_home.release.xcconfig"; sourceTree = "<group>"; };
@@ -272,6 +290,7 @@
 		3CAB77181DAC8A8800F7B73D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Devices_Other.storyboard; sourceTree = "<group>"; };
 		3CAB771A1DAC93D700F7B73D /* MessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageController.h; path = Tabbar/MessageController.h; sourceTree = "<group>"; };
 		3CAB771B1DAC93D700F7B73D /* MessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageController.m; path = Tabbar/MessageController.m; sourceTree = "<group>"; };
+		3CB4914D1E52FE0500D468F5 /* HiJoine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HiJoine.framework; sourceTree = "<group>"; };
 		3CB83BD71D66A2BC003E1ECD /* BlurView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BlurView.xib; path = Tabbar/Devices/DeviceCell/BlurView.xib; sourceTree = "<group>"; };
 		3CB83BDA1D66B813003E1ECD /* AirViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirViewController.h; path = Tabbar/Devices/DeviceControl/Infrared/AirViewController.h; sourceTree = "<group>"; };
 		3CB83BDB1D66B813003E1ECD /* AirViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AirViewController.m; path = Tabbar/Devices/DeviceControl/Infrared/AirViewController.m; sourceTree = "<group>"; };
@@ -282,6 +301,8 @@
 		3CB9F5321D76F1300027D155 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Devices_Lock.storyboard; sourceTree = "<group>"; };
 		3CC1FEB61D47532500784AE4 /* NSString+StringOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+StringOperation.h"; path = "Tools/Category/NSString+StringOperation.h"; sourceTree = "<group>"; };
 		3CC1FEB71D47532500784AE4 /* NSString+StringOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+StringOperation.m"; path = "Tools/Category/NSString+StringOperation.m"; sourceTree = "<group>"; };
+		3CC22C891E514E8200F2140F /* RemoteSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RemoteSetting.h; path = SiderBar/RemoteSetting.h; sourceTree = "<group>"; };
+		3CC22C8A1E514E8200F2140F /* RemoteSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RemoteSetting.m; path = SiderBar/RemoteSetting.m; sourceTree = "<group>"; };
 		3CD233451DAF79A800614CED /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = SiderBar/LoginController.h; sourceTree = "<group>"; };
 		3CD233461DAF79A800614CED /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginController.m; path = SiderBar/LoginController.m; sourceTree = "<group>"; };
 		3CD8EA981D7418B000B843C7 /* AddRoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddRoomController.h; path = Tabbar/Devices/Room/AddRoomController.h; sourceTree = "<group>"; };
@@ -336,10 +357,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C99F2DA1DBF4E0900614E91 /* libresolv.tbd in Frameworks */,
+				3CB4914F1E53058400D468F5 /* HiJoine.framework in Frameworks */,
 				3C954E731DACE47B008FF504 /* UserNotifications.framework in Frameworks */,
 				3CF119811DAA441C002A957D /* libz.tbd in Frameworks */,
 				3CF1197F1DAA4400002A957D /* Security.framework in Frameworks */,
 				3CF1197D1DAA43F0002A957D /* UIKit.framework in Frameworks */,
+				3CB4914E1E52FE0500D468F5 /* HiJoine.framework in Frameworks */,
 				3CF1197B1DAA43D9002A957D /* Foundation.framework in Frameworks */,
 				3CF119791DAA43C5002A957D /* CoreGraphics.framework in Frameworks */,
 				3CF119771DAA43A2002A957D /* CoreFoundation.framework in Frameworks */,
@@ -380,6 +403,7 @@
 		3C056F2D1D81052C00EFB827 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				3CB4914D1E52FE0500D468F5 /* HiJoine.framework */,
 				3C491F091DBA07C6007DC6A2 /* JFGSDK.framework */,
 				3CF119701DAA4354002A957D /* JPushLib */,
 				3C999A611D6B16D000E66DCB /* XLPasswordView */,
@@ -540,6 +564,8 @@
 				3C784F721D4763BF00FF2F6C /* SideBarController.m */,
 				3CD233451DAF79A800614CED /* LoginController.h */,
 				3CD233461DAF79A800614CED /* LoginController.m */,
+				3CC22C891E514E8200F2140F /* RemoteSetting.h */,
+				3CC22C8A1E514E8200F2140F /* RemoteSetting.m */,
 			);
 			name = SiderBar;
 			sourceTree = "<group>";
@@ -903,6 +929,7 @@
 				66BEE68B1C4FA232BBFE5966 /* [CP] Embed Pods Frameworks */,
 				E179D249883B9C5242DE6CEE /* [CP] Copy Pods Resources */,
 				3CFDC4641DC09E7200B60AF8 /* 上传BUGLY的符号表 */,
+				3CB491511E53058500D468F5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1069,6 +1096,7 @@
 				3CDE29D31D7D71AA00EE90FD /* DeviceForScene+CoreDataProperties.m in Sources */,
 				3C999A751D6B16D000E66DCB /* XLPasswordView.m in Sources */,
 				3C934A731D6152CC00FD8965 /* DeviceSwitchController.m in Sources */,
+				3CC22C8B1E514E8200F2140F /* RemoteSetting.m in Sources */,
 				3C47717C1D8E86FA000284D6 /* SceneCellCommon.m in Sources */,
 				3C2C59D71D2E51ED009F5016 /* LaunchView.m in Sources */,
 				3CE479861D53420800C26168 /* NSMutableArray+AddDeviceArray.m in Sources */,

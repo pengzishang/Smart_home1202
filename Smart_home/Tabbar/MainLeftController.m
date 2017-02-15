@@ -264,6 +264,12 @@
                 
             }
                 break;
+            case 3:
+            {
+                [self performSegueWithIdentifier:@"remoteSetting" sender:nil];
+                //加入远程设置
+            }
+                break;
             default:
                 break;
         }

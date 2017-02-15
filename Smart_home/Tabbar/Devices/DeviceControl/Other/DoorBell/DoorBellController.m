@@ -12,7 +12,6 @@
 #import "EditBellController.h"
 #import "MJRefresh.h"
 #import <JFGSDK/JFGSDKVideoView.h>
-#import <JFGSDK/JFGSDKDataPoint.h>
 
 @interface DoorBellController ()<JFGSDKCallbackDelegate,JFGSDKPlayVideoDelegate>
 {

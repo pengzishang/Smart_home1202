@@ -29,7 +29,10 @@ typedef void(^stateValueSuccessReturn)(NSData *);
 
 @property (copy,nonatomic,nonnull)stateValueSuccessReturn successControl;
 @property (copy,nonatomic,nonnull)stateValueFailReturn failControl;
-
+/**
+ 扫描的设备种类
+ */
+@property (strong,nonatomic,nullable)NSMutableArray<__kindof NSString *> *scaningPreFix;
 
 @end
 
@@ -422,8 +425,7 @@ NSString * _Nonnull const ScanTypeDescription[] = {
         NSDictionary *peripheralInfo=perInfo[AdvertisementData];
         NSString *deviceIDFromAdv=[peripheralInfo[@"kCBAdvDataLocalName"] stringByReplacingOccurrencesOfString:@" " withString:@""];
         if (deviceIDFromAdv.length>7) {
-            NSString * deviceID=[deviceIDFromAdv substringFromIndex:7];
-            if ([opeartionDeviceID isEqualToString:deviceID]) {
+            if ([deviceIDFromAdv containsString:opeartionDeviceID]) {
                 curPeripheral = perInfo[Peripheral];
                 isAvailable = YES;
                 break;
@@ -688,6 +690,7 @@ NSString * _Nonnull const ScanTypeDescription[] = {
         {
             NSLog(@"写入1bit数据");
             if (_sendType==SendTypeSingle) {
+                
                 [peripheral writeValue:controlData forCharacteristic:character type:CBCharacteristicWriteWithResponse];
             }
             break;
@@ -725,7 +728,7 @@ NSString * _Nonnull const ScanTypeDescription[] = {
 }
 
 
-- (void)duperipheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     if (!error) {
         [peripheral readValueForCharacteristic: characteristic];

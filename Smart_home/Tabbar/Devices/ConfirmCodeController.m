@@ -7,7 +7,6 @@
 //
 
 #import "ConfirmCodeController.h"
-//#import "DevicesController.h"
 #import "DeviceInfraredController.h"
 #import "NSString+StringOperation.h"
 #import "TTSUtility.h"
@@ -100,14 +99,15 @@
         LowBit=[LowBit fullWithLengthCount:3];
         NSString *deviceTypeCode=[@(self.deviceType.integerValue+4).stringValue fullWithLengthCount:3];
         preFixFull=[NSString stringWithFormat:@"254%@%@%@",deviceTypeCode,HighBit,LowBit];
+        return isTest?[NSString stringWithFormat:@"%@002",preFixFull]:preFixFull;
     }
     else
     {
         
         preFixFull=[NSString stringWithFormat:@"239%@%@",[@(self.deviceInfaredCode.integerValue+1).stringValue fullWithLengthCount:3],[codeStr fullWithLengthCount:3]];
+        return isTest?[NSString stringWithFormat:@"%@001",preFixFull]:preFixFull;
     }
     //默认是电源的命令
-    return isTest?[NSString stringWithFormat:@"%@001",preFixFull]:preFixFull;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(DeviceInfo *)sender {

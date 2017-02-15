@@ -181,6 +181,7 @@
     {
         CurtainCollectionCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"VCurtain" forIndexPath:indexPath];
         cell.delegate=self;
+        [cell setInformationMac:deviceInfo.deviceMacID name:deviceInfo.deviceCustomName indexPath:indexPath];
         return cell;
     }
 }

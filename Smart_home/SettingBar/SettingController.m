@@ -47,7 +47,7 @@
     }
     else if (section==1)
     {
-        return 3;
+        return 4;
     }
     else
     {
@@ -83,8 +83,8 @@
     }
     else if (indexPath.section==1)
     {
-        NSArray *imageName=@[@"setting_clean",@"setting_version",@"setting_switch",@""];
-        NSArray *labTitle=@[@"清理应用数据",[NSString stringWithFormat:@"版本号:%f",[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] floatValue]],@"切换中英文"];
+        NSArray *imageName=@[@"setting_clean",@"setting_version",@"setting_switch",@"setting_switch",@"setting_switch"];
+        NSArray *labTitle=@[@"清理应用数据",[NSString stringWithFormat:@"版本号:%f",[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] floatValue]],@"切换中英文",@"远程内置Wifi设置"];
         
         UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"systemCell"];
         cell.backgroundColor=[UIColor clearColor];

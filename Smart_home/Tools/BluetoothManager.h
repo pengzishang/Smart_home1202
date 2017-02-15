@@ -79,11 +79,6 @@ typedef void(^detectDevice)( NSDictionary * __nullable);
  */
 @property (retain,nonatomic,nullable)NSMutableArray <__kindof NSDictionary *>* peripheralsInfo;
 
-/**
- 扫描的设备种类
- */
-@property (strong,nonatomic,nullable)NSMutableArray<__kindof NSString *> *scaningPreFix;
-
 
 /**
  用这个block触发发现设备

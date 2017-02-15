@@ -712,30 +712,33 @@
         return;
     }
     [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在控制", @"正在控制") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceMacID]];
-    [[BluetoothManager getInstance]sendByteCommandWithString:command deviceID:deviceMacID sendType:SendTypeSingle
-                                                     success:^(NSData * _Nullable stateData) {
-                                                         failRetryTime=0;
-                                                         [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制完成", @"控制完成") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制反馈代码:%@", @"控制反馈代码:%@"),stateData]];
-                                                         if (getStateCode) {
-                                                             getStateCode(stateData);
-                                                         }
-                                                     } fail:^NSUInteger(NSString * _Nullable stateString) {
-                                                         NSLog(@"失败返回数据:%@",stateString);
-                                                         if (++failRetryTime<retryTimes&&[stateString integerValue]!=404&&[stateString integerValue]!=403) {
-                                                             [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在重试", @"正在重试") subTitle:[NSString stringWithFormat:NSLocalizedString(@"第%zd次重试", @"第%zd次重试"), failRetryTime]];
-                                                             return failRetryTime;
-                                                         }
-                                                         else
-                                                         {
-                                                             failRetryTime=0;
-                                                             NSDictionary *errorDetail=@{@"404":@"设备不在范围内,或者信号太弱",@"403":@"蓝牙未开启",@"102":@"连接设备失败,请重试",@"103":@"未能发现服务",@"104":@"数据写入失败",@"107":@"被设备异常断开,设备中途异常端口",@"106":@"控制结果异常"};
-                                                             [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制失败", @"控制失败") subTitle:errorDetail[stateString]];
-                                                             if(getStateCode){
-                                                                 getStateCode(stateString);
-                                                             }
-                                                             return 0;
-                                                         }
-                                                     }];
+    [[BluetoothManager getInstance] sendByteCommandWithString:command
+     deviceID:deviceMacID
+     sendType:SendTypeSingle
+     success:^(NSData * _Nullable stateData) {
+         failRetryTime=0;
+         [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制完成", @"控制完成") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制反馈代码:%@", @"控制反馈代码:%@"),stateData]];
+         if (getStateCode) {
+             getStateCode(stateData);
+         }
+     }
+     fail:^NSUInteger(NSString * _Nullable stateString) {
+         NSLog(@"失败返回数据:%@",stateString);
+         if (++failRetryTime<retryTimes&&[stateString integerValue]!=404&&[stateString integerValue]!=403) {
+             [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在重试", @"正在重试") subTitle:[NSString stringWithFormat:NSLocalizedString(@"第%zd次重试", @"第%zd次重试"), failRetryTime]];
+             return failRetryTime;
+         }
+         else
+         {
+             failRetryTime=0;
+             NSDictionary *errorDetail=@{@"404":@"设备不在范围内,或者信号太弱",@"403":@"蓝牙未开启",@"102":@"连接设备失败,请重试",@"103":@"未能发现服务",@"104":@"数据写入失败",@"107":@"被设备异常断开,设备中途异常端口",@"106":@"控制结果异常"};
+             [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制失败", @"控制失败") subTitle:errorDetail[stateString]];
+             if(getStateCode){
+                 getStateCode(stateString);
+             }
+             return 0;
+         }
+     }];
 }
 
 

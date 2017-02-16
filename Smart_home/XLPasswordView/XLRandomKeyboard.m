@@ -13,11 +13,11 @@
 /**
  *  存放所有的按钮数组
  */
-@property (nonatomic , strong) NSMutableArray  *numberButtons;
+@property(nonatomic, strong) NSMutableArray *numberButtons;
 /**
  *  随机键盘数组
  */
-@property (nonatomic , strong) NSMutableArray  *randomNumbers;
+@property(nonatomic, strong) NSMutableArray *randomNumbers;
 
 @end
 
@@ -28,20 +28,18 @@
 /**
  *  懒加载成员属性
  */
-- (NSMutableArray *)numberButtons
-{
+- (NSMutableArray *)numberButtons {
     if (_numberButtons == nil) {
         _numberButtons = [NSMutableArray array];
     }
-    
+
     return _numberButtons;
 }
 
 /**
  *  懒加载成员属性
  */
-- (NSMutableArray *)randomNumbers
-{
+- (NSMutableArray *)randomNumbers {
     if (_randomNumbers == nil) {
 //        NSMutableArray *randomNumbers = [NSMutableArray array];
 //        NSMutableArray *orderNumbers = [NSMutableArray array];
@@ -54,23 +52,21 @@
 //            [randomNumbers addObject:orderNumbers[i]];
 //            [orderNumbers removeObjectAtIndex:i];
 //        }
-        NSArray *arr=@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"0"];
+        NSArray *arr = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0"];
         _randomNumbers = [NSMutableArray arrayWithArray:arr];
     }
-    
+
     return _randomNumbers;
 }
 
 #pragma mark    -   initialUI
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     [self initial];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self initial];
     }
@@ -80,15 +76,13 @@
 /**
  *  初始化
  */
-- (void)initial
-{
+- (void)initial {
     self.backgroundColor = [UIColor whiteColor];
     /** 添加所有按键 */
     [self setUpAllButtons];
 }
 
-- (void)setUpAllButtons
-{
+- (void)setUpAllButtons {
     for (int i = 0; i < 12; i++) {
         // 创建按钮
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -96,7 +90,7 @@
         [btn setBackgroundImage:[UIImage imageNamed:@"XLPasswordView.bundle/number_bg"] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-        
+
         if (i == 9) {  // 确定按钮
             [btn setTitle:@"隐藏" forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -106,7 +100,7 @@
             btn.titleLabel.font = [UIFont systemFontOfSize:15];
             [btn addTarget:self action:@selector(deleteBtnClick) forControlEvents:UIControlEventTouchUpInside];
         } else if (i == 10) {  // 删除和确定中间的按钮
-            
+
             NSString *number = [self.randomNumbers lastObject];
             [btn setTitle:number forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -126,22 +120,21 @@
 
 #pragma mark - Layout
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
-    
+
     // 定义总列数
     NSInteger totalCol = 3;
-    
+
     // 定义间距
     CGFloat pad = 3.0;
-    
+
     // 定义x y w h
     CGFloat x;
     CGFloat y;
     CGFloat w = (XLScreenW - 4 * pad) / totalCol;
     CGFloat h = (self.xl_height - 5 * pad) / 4.0;
-    
+
     // 列数 行数
     NSInteger row;
     NSInteger col;
@@ -158,8 +151,7 @@
 #pragma mark - Private
 
 /** 删除按钮点击 */
-- (void)deleteBtnClick
-{
+- (void)deleteBtnClick {
     if ([self.delegate respondsToSelector:@selector(randomKeyboardDeleteButtonClick:)]) {
         [self.delegate randomKeyboardDeleteButtonClick:self];
     }
@@ -167,8 +159,7 @@
 }
 
 /** 确定按钮点击 */
-- (void)okBtnClick
-{
+- (void)okBtnClick {
     if ([self.delegate respondsToSelector:@selector(randomKeyboardOKButtonClick:)]) {
         [self.delegate randomKeyboardOKButtonClick:self];
     }
@@ -176,8 +167,7 @@
 }
 
 /** 数字按钮点击 */
-- (void)numBtnClick:(UIButton *)numBtn
-{
+- (void)numBtnClick:(UIButton *)numBtn {
     NSString *number = numBtn.titleLabel.text;
     if ([self.delegate respondsToSelector:@selector(randomKeyboard:clickButtonNumber:)]) {
         [self.delegate randomKeyboard:self clickButtonNumber:number];

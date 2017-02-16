@@ -16,18 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tabBar.tintColor=[UIColor colorWithRed:49.0/255.0 green:202.0/255.0 blue:143.0/255.0 alpha:1.0];
+    self.tabBar.tintColor = [UIColor colorWithRed:49.0 / 255.0 green:202.0 / 255.0 blue:143.0 / 255.0 alpha:1.0];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
+
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 

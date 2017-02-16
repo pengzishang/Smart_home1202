@@ -34,12 +34,12 @@
 /**
  Used for externally driven animator instances.
  */
-@property (assign, nonatomic) BOOL disableDisplayLink;
+@property(assign, nonatomic) BOOL disableDisplayLink;
 
 /**
  Time used when starting animations. Defaults to 0 meaning current media time is used. Exposed for unit testing.
  */
-@property (assign, nonatomic) CFTimeInterval beginTime;
+@property(assign, nonatomic) CFTimeInterval beginTime;
 
 /**
  Exposed for unit testing.
@@ -50,19 +50,23 @@
  Funnel methods for category additions.
  */
 - (void)addAnimation:(POPAnimation *)anim forObject:(id)obj key:(NSString *)key;
+
 - (void)removeAllAnimationsForObject:(id)obj;
+
 - (void)removeAnimationForObject:(id)obj key:(NSString *)key;
+
 - (NSArray *)animationKeysForObject:(id)obj;
+
 - (POPAnimation *)animationForObject:(id)obj key:(NSString *)key;
 
 /**
  @abstract Add an animator observer. Observer will be notified of each subsequent animator advance until removal.
  */
-- (void)addObserver:(id<POPAnimatorObserving>)observer;
+- (void)addObserver:(id <POPAnimatorObserving>)observer;
 
 /**
  @abstract Remove an animator observer.
  */
-- (void)removeObserver:(id<POPAnimatorObserving>)observer;
+- (void)removeObserver:(id <POPAnimatorObserving>)observer;
 
 @end

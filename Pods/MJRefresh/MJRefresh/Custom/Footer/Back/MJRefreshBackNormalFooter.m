@@ -8,17 +8,16 @@
 
 #import "MJRefreshBackNormalFooter.h"
 
-@interface MJRefreshBackNormalFooter()
-{
+@interface MJRefreshBackNormalFooter () {
     __unsafe_unretained UIImageView *_arrowView;
 }
-@property (weak, nonatomic) UIActivityIndicatorView *loadingView;
+@property(weak, nonatomic) UIActivityIndicatorView *loadingView;
 @end
 
 @implementation MJRefreshBackNormalFooter
 #pragma mark - 懒加载子控件
-- (UIImageView *)arrowView
-{
+
+- (UIImageView *)arrowView {
     if (!_arrowView) {
         UIImageView *arrowView = [[UIImageView alloc] initWithImage:[NSBundle mj_arrowImage]];
         [self addSubview:_arrowView = arrowView];
@@ -27,8 +26,7 @@
 }
 
 
-- (UIActivityIndicatorView *)loadingView
-{
+- (UIActivityIndicatorView *)loadingView {
     if (!_loadingView) {
         UIActivityIndicatorView *loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.activityIndicatorViewStyle];
         loadingView.hidesWhenStopped = YES;
@@ -37,25 +35,24 @@
     return _loadingView;
 }
 
-- (void)setActivityIndicatorViewStyle:(UIActivityIndicatorViewStyle)activityIndicatorViewStyle
-{
+- (void)setActivityIndicatorViewStyle:(UIActivityIndicatorViewStyle)activityIndicatorViewStyle {
     _activityIndicatorViewStyle = activityIndicatorViewStyle;
-    
+
     self.loadingView = nil;
     [self setNeedsLayout];
 }
+
 #pragma mark - 重写父类的方法
-- (void)prepare
-{
+
+- (void)prepare {
     [super prepare];
-    
+
     self.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
 }
 
-- (void)placeSubviews
-{
+- (void)placeSubviews {
     [super placeSubviews];
-    
+
     // 箭头的中心点
     CGFloat arrowCenterX = self.mj_w * 0.5;
     if (!self.stateLabel.hidden) {
@@ -63,35 +60,34 @@
     }
     CGFloat arrowCenterY = self.mj_h * 0.5;
     CGPoint arrowCenter = CGPointMake(arrowCenterX, arrowCenterY);
-    
+
     // 箭头
     if (self.arrowView.constraints.count == 0) {
         self.arrowView.mj_size = self.arrowView.image.size;
         self.arrowView.center = arrowCenter;
     }
-    
+
     // 圈圈
     if (self.loadingView.constraints.count == 0) {
         self.loadingView.center = arrowCenter;
     }
-    
+
     self.arrowView.tintColor = self.stateLabel.textColor;
 }
 
-- (void)setState:(MJRefreshState)state
-{
+- (void)setState:(MJRefreshState)state {
     MJRefreshCheckState
-    
+
     // 根据状态做事情
     if (state == MJRefreshStateIdle) {
         if (oldState == MJRefreshStateRefreshing) {
             self.arrowView.transform = CGAffineTransformMakeRotation(0.000001 - M_PI);
             [UIView animateWithDuration:MJRefreshSlowAnimationDuration animations:^{
                 self.loadingView.alpha = 0.0;
-            } completion:^(BOOL finished) {
+            }                completion:^(BOOL finished) {
                 self.loadingView.alpha = 1.0;
                 [self.loadingView stopAnimating];
-                
+
                 self.arrowView.hidden = NO;
             }];
         } else {

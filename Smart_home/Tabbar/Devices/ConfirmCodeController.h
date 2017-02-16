@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface ConfirmCodeController : UIViewController
 
-@property (nonatomic,strong)NSString *deviceInfaredCode;
-@property (nonatomic,strong)NSNumber *deviceType;
-@property (nonatomic,strong)NSString *infraredDeviceID;
+@property(nonatomic, strong) NSString *deviceInfaredCode;
+@property(nonatomic, strong) NSNumber *deviceType;
+@property(nonatomic, strong) NSString *infraredDeviceID;
 
 @end

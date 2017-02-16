@@ -16,39 +16,39 @@
 /*!
  *  账号
  */
-@property (nonatomic,copy) NSString *account;
+@property(nonatomic, copy) NSString *account;
 /*!
  *  别名
  */
-@property (nonatomic,copy) NSString *alias;
+@property(nonatomic, copy) NSString *alias;
 /*!
  *  邮箱
  */
-@property (nonatomic,copy) NSString *email;
+@property(nonatomic, copy) NSString *email;
 /*!
  *  手机
  */
-@property (nonatomic,copy) NSString *phone;
+@property(nonatomic, copy) NSString *phone;
 
 /*!
  *  是否接受消息通知
  */
-@property (nonatomic,assign) BOOL pushEnable;
+@property(nonatomic, assign) BOOL pushEnable;
 /*!
  *  是否开启震动
  */
-@property (nonatomic,assign) BOOL isVibrate;
+@property(nonatomic, assign) BOOL isVibrate;
 /*!
  *  是否开启声音
  */
-@property (nonatomic,assign) BOOL isOpneSound;
+@property(nonatomic, assign) BOOL isOpneSound;
 
 /**
  *  头像url
  */
-@property (nonatomic,copy) NSString *headUrl;
+@property(nonatomic, copy) NSString *headUrl;
 
-@property (nonatomic,assign)int photoVersion;
+@property(nonatomic, assign) int photoVersion;
 
 @end
 
@@ -58,9 +58,9 @@
  */
 @interface JFGSDKFriendInfo : NSObject
 
-@property (nonatomic,copy)NSString *account;
-@property (nonatomic,copy)NSString *remarkName;//备注名
-@property (nonatomic,copy)NSString *alias;//昵称
+@property(nonatomic, copy) NSString *account;
+@property(nonatomic, copy) NSString *remarkName;//备注名
+@property(nonatomic, copy) NSString *alias;//昵称
 
 @end
 
@@ -70,9 +70,9 @@
  */
 @interface JFGSDKFriendRequestInfo : NSObject
 
-@property (nonatomic,copy)NSString *account;
-@property (nonatomic,copy)NSString *alias;
-@property (nonatomic,copy)NSString *additionMsg;
-@property (nonatomic,assign)int64_t requestTime;
+@property(nonatomic, copy) NSString *account;
+@property(nonatomic, copy) NSString *alias;
+@property(nonatomic, copy) NSString *additionMsg;
+@property(nonatomic, assign) int64_t requestTime;
 
 @end

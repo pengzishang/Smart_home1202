@@ -27,7 +27,8 @@
 #import "AFURLSessionManager.h"
 
 @interface AFActivityIndicatorViewNotificationObserver : NSObject
-@property (readonly, nonatomic, weak) UIActivityIndicatorView *activityIndicatorView;
+@property(readonly, nonatomic, weak) UIActivityIndicatorView *activityIndicatorView;
+
 - (instancetype)initWithActivityIndicatorView:(UIActivityIndicatorView *)activityIndicatorView;
 
 - (void)setAnimatingWithStateOfTask:(NSURLSessionTask *)task;
@@ -53,8 +54,7 @@
 
 @implementation AFActivityIndicatorViewNotificationObserver
 
-- (instancetype)initWithActivityIndicatorView:(UIActivityIndicatorView *)activityIndicatorView
-{
+- (instancetype)initWithActivityIndicatorView:(UIActivityIndicatorView *)activityIndicatorView {
     self = [super init];
     if (self) {
         _activityIndicatorView = activityIndicatorView;
@@ -68,10 +68,10 @@
     [notificationCenter removeObserver:self name:AFNetworkingTaskDidResumeNotification object:nil];
     [notificationCenter removeObserver:self name:AFNetworkingTaskDidSuspendNotification object:nil];
     [notificationCenter removeObserver:self name:AFNetworkingTaskDidCompleteNotification object:nil];
-    
+
     if (task) {
         if (task.state != NSURLSessionTaskStateCompleted) {
-            
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wreceiver-is-weak"
 #pragma clang diagnostic ignored "-Warc-repeated-use-of-weak"
@@ -113,7 +113,7 @@
 
 - (void)dealloc {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    
+
     [notificationCenter removeObserver:self name:AFNetworkingTaskDidCompleteNotification object:nil];
     [notificationCenter removeObserver:self name:AFNetworkingTaskDidResumeNotification object:nil];
     [notificationCenter removeObserver:self name:AFNetworkingTaskDidSuspendNotification object:nil];

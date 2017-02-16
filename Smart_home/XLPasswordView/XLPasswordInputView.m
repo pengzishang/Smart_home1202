@@ -15,19 +15,19 @@
 /**
  * 密码框图片
  */
-@property (nonatomic , weak) UIImageView *backgroundImageView;
+@property(nonatomic, weak) UIImageView *backgroundImageView;
 /**
  *  底部的输入框,用来响应用户点击弹出键盘
  */
-@property (nonatomic , weak) UITextField *textField;
+@property(nonatomic, weak) UITextField *textField;
 /**
  *  小圆点图片数组
  */
-@property (nonatomic , strong) NSArray  *dotsArray;
+@property(nonatomic, strong) NSArray *dotsArray;
 /**
  *  每个密码字符占用的label数组
  */
-@property (nonatomic , strong) NSArray  *labelsArray;
+@property(nonatomic, strong) NSArray *labelsArray;
 
 
 @end
@@ -36,19 +36,17 @@
 
 #pragma mark    -   set / get
 
-- (NSString *)password
-{
+- (NSString *)password {
     return self.textField.text;
 }
 
 /**
  *  懒加载成员属性
  */
-- (NSArray *)dotsArray
-{
+- (NSArray *)dotsArray {
     if (_dotsArray == nil) {
         NSMutableArray *dotsArray = [NSMutableArray array];
-        for (int i = 0 ; i < _passwordLength; i ++) {
+        for (int i = 0; i < _passwordLength; i++) {
             UIImageView *imageView = [[UIImageView alloc] init];
             imageView.image = [UIImage xl_circleAndStretchableImageWithColor:self.dotColor size:CGSizeMake(self.dotWidth, self.dotWidth)];
             imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -58,18 +56,17 @@
         }
         _dotsArray = dotsArray;
     }
-    
+
     return _dotsArray;
 }
 
 /**
  *  懒加载成员属性
  */
-- (NSArray *)labelsArray
-{
+- (NSArray *)labelsArray {
     if (_labelsArray == nil) {
         NSMutableArray *array = [NSMutableArray arrayWithCapacity:self.passwordLength];
-        for ( int i = 0 ; i < self.passwordLength; i ++ ) {
+        for (int i = 0; i < self.passwordLength; i++) {
             UILabel *titleLabel = [[UILabel alloc] init];
             titleLabel.backgroundColor = [UIColor clearColor];
             titleLabel.text = @"";
@@ -83,7 +80,7 @@
         }
         _labelsArray = array;
     }
-    
+
     return _labelsArray;
 }
 
@@ -92,101 +89,91 @@
  *
  *  @param inputCount 当前用户输入的密码个数
  */
-- (void)setInputCount:(NSInteger)inputCount
-{
+- (void)setInputCount:(NSInteger)inputCount {
     inputCount = (inputCount > _passwordLength) ? _passwordLength : inputCount;
     _inputCount = inputCount;
     if (self.isSecureTextEntry) {
-        for ( int i = 0 ; i < inputCount; i ++) {
+        for (int i = 0; i < inputCount; i++) {
             UIImageView *dotImageView = self.dotsArray[i];
             dotImageView.hidden = NO;
         }
-        for (NSInteger i = inputCount; i < self.dotsArray.count; i ++) {
+        for (NSInteger i = inputCount; i < self.dotsArray.count; i++) {
             UIImageView *dotImageView = self.dotsArray[i];
             dotImageView.hidden = YES;
         }
-        
-        for (int i = 0 ; i < self.labelsArray.count; i ++) {
+
+        for (int i = 0; i < self.labelsArray.count; i++) {
             UILabel *label = self.labelsArray[i];
             label.hidden = YES;
         }
     } else {
         NSString *password = self.textField.text;
-        for ( int i = 0 ; i < inputCount; i ++) {
+        for (int i = 0; i < inputCount; i++) {
             UILabel *label = self.labelsArray[i];
             label.text = [password substringWithRange:NSMakeRange(i, 1)];
             [label sizeToFit];
             label.hidden = NO;
         }
-        for (NSInteger i = inputCount; i < self.dotsArray.count; i ++) {
+        for (NSInteger i = inputCount; i < self.dotsArray.count; i++) {
             UILabel *label = self.labelsArray[i];
             label.text = nil;
             label.hidden = YES;
         }
-        for (int i = 0 ; i < self.dotsArray.count; i ++) {
+        for (int i = 0; i < self.dotsArray.count; i++) {
             UIImageView *imageView = self.dotsArray[i];
             imageView.hidden = YES;
         }
     }
 }
 
-- (void)setSecureTextEntry:(BOOL)secureTextEntry
-{
+- (void)setSecureTextEntry:(BOOL)secureTextEntry {
     _secureTextEntry = secureTextEntry;
     self.inputCount = self.inputCount;
 }
 
-- (void)setPasswordLength:(NSUInteger)passwordLength
-{
-    _passwordLength  = passwordLength;
+- (void)setPasswordLength:(NSUInteger)passwordLength {
+    _passwordLength = passwordLength;
     [self refreshUI];
 }
 
-- (void)setGridLineColor:(UIColor *)gridLineColor
-{
+- (void)setGridLineColor:(UIColor *)gridLineColor {
     _gridLineColor = gridLineColor;
     [self refreshUI];
 }
 
-- (void)setGridLineWidth:(CGFloat)gridLineWidth
-{
+- (void)setGridLineWidth:(CGFloat)gridLineWidth {
     _gridLineWidth = gridLineWidth;
     [self refreshUI];
 }
 
-- (void)setDotColor:(UIColor *)dotColor
-{
+- (void)setDotColor:(UIColor *)dotColor {
     _dotColor = dotColor;
     [self refreshUI];
 }
 
-- (void)setDotWidth:(CGFloat)dotWidth
-{
+- (void)setDotWidth:(CGFloat)dotWidth {
     _dotWidth = dotWidth;
     [self refreshUI];
 }
 
-- (void)setFont:(UIFont *)font
-{
+- (void)setFont:(UIFont *)font {
     _font = font;
     [self refreshUI];
 }
 
-- (void)setTextColor:(UIColor *)textColor
-{
+- (void)setTextColor:(UIColor *)textColor {
     _textColor = textColor;
     [self refreshUI];
 }
+
 #pragma mark    -   initial
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     [self initial];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self initial];
     }
@@ -196,8 +183,7 @@
 /**
  *  初始化
  */
-- (void)initial
-{
+- (void)initial {
     _passwordLength = 6;
     _gridLineWidth = 1.0f;
     _gridLineColor = [UIColor purpleColor];
@@ -207,7 +193,7 @@
     _inputCount = 0;
     _font = [UIFont systemFontOfSize:15];
     _textColor = [UIColor blackColor];
-    
+
     UITextField *textField = [[UITextField alloc] init];
     [self addSubview:textField];
     self.textField = textField;
@@ -215,28 +201,27 @@
     [textField addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
     textField.tintColor = [UIColor clearColor];
     textField.textColor = [UIColor clearColor];
-    
+
     UIImageView *imageView = [[UIImageView alloc] init];
     self.backgroundImageView = imageView;
     [self addSubview:imageView];
-    
+
     [self refreshUI];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     CGFloat imageWidth = self.dotWidth;
     CGFloat imageHeight = self.dotWidth;
-    CGFloat gridWidth = self.xl_width / self.passwordLength ;
-    for (int i = 0 ; i < self.dotsArray.count; i ++) {
+    CGFloat gridWidth = self.xl_width / self.passwordLength;
+    for (int i = 0; i < self.dotsArray.count; i++) {
         UIImageView *imageView = self.dotsArray[i];
         imageView.xl_width = imageWidth;
         imageView.xl_height = imageHeight;
         imageView.xl_centerY = self.xl_height * 0.5;
         imageView.xl_centerX = gridWidth * 0.5 + i * gridWidth;
     }
-    for (int i = 0 ; i < self.labelsArray.count; i ++) {
+    for (int i = 0; i < self.labelsArray.count; i++) {
         UILabel *label = self.labelsArray[i];
         label.xl_width = imageWidth;
         label.xl_height = imageHeight;
@@ -258,11 +243,11 @@
     }
     // 刷新位数
     self.inputCount = textField.text.length;
-    
+
     if (self.passwordBlock) {
         self.passwordBlock(text);
     }
-    
+
     if ([self.delegate respondsToSelector:@selector(passwordInputView:inputPassword:)]) {
         [self.delegate passwordInputView:self inputPassword:self.password];
     }
@@ -277,19 +262,17 @@
  *
  *  @return XLPasswordInputView实例对象
  */
-+ (instancetype)passwordInputViewWithPasswordLength:(NSInteger)passwordLength;
-{
++ (instancetype)passwordInputViewWithPasswordLength:(NSInteger)passwordLength; {
     XLPasswordInputView *passwordInputView = [[self alloc] init];
     passwordInputView.passwordLength = passwordLength;
-    
+
     return passwordInputView;
 }
 
 /**
  *  清空密码,重置
  */
-- (void)clearPassword
-{
+- (void)clearPassword {
     self.textField.text = nil;
     self.inputCount = 0;
 }
@@ -299,8 +282,7 @@
 /**
  *  刷新UI
  */
-- (void)refreshUI
-{
+- (void)refreshUI {
     [self.dotsArray makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.dotsArray = nil;
     [self.labelsArray makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -308,7 +290,7 @@
     self.backgroundImageView.image = [UIImage xl_passwordInputGridImageWithGridCount:self.passwordLength gridLineColor:self.gridLineColor gridLineWidth:self.gridLineWidth];
     [self dotsArray];
     [self labelsArray];
-    
+
     self.inputCount = self.inputCount;
     [self textChange:self.textField];
 }

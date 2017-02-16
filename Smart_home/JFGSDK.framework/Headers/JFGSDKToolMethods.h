@@ -14,10 +14,10 @@
  *
  *  @return 语言
  */
-+(NSInteger)languageType;
++ (NSInteger)languageType;
 
 
 //获取当前wifi名称
-+(NSString *)currentWifiName;
++ (NSString *)currentWifiName;
 
 @end

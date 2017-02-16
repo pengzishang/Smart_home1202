@@ -10,6 +10,6 @@
 
 @interface RemoteController : UIViewController
 
-@property (nonatomic,strong)RoomInfo *roomInfo;
+@property(nonatomic, strong) RoomInfo *roomInfo;
 
 @end

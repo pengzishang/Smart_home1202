@@ -27,8 +27,10 @@ static NSString *XLRandomKeyboardNumberKey = @"XLRandomKeyboardNumberKey";
 
 /** 数字按钮点击 */
 - (void)randomKeyboard:(XLRandomKeyboard *)keyboard clickButtonNumber:(NSString *)number;
+
 /** 删除按钮点击 */
 - (void)randomKeyboardDeleteButtonClick:(XLRandomKeyboard *)keyboard;
+
 /** 确定按钮点击 */
 - (void)randomKeyboardOKButtonClick:(XLRandomKeyboard *)keyboard;
 
@@ -36,6 +38,6 @@ static NSString *XLRandomKeyboardNumberKey = @"XLRandomKeyboardNumberKey";
 
 @interface XLRandomKeyboard : UIView
 
-@property (nonatomic, weak) id<XLRandomKeyboardDelegate> delegate;
+@property(nonatomic, weak) id <XLRandomKeyboardDelegate> delegate;
 
 @end

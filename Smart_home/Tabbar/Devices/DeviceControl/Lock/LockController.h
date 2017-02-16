@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface LockController : UITableViewController
 
-@property (nonatomic,strong)DeviceInfo *deviceForAdding;
-@property (nonatomic,strong)NSMutableArray *devices;
-@property (nonatomic,strong)RoomInfo *roomInfo;
+@property(nonatomic, strong) DeviceInfo *deviceForAdding;
+@property(nonatomic, strong) NSMutableArray *devices;
+@property(nonatomic, strong) RoomInfo *roomInfo;
 
 @end

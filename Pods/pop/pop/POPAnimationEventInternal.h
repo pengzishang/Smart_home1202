@@ -21,7 +21,7 @@
 /**
  @abstract Readwrite redefinition of public property.
  */
-@property (readwrite, nonatomic, copy) NSString *animationDescription;
+@property(readwrite, nonatomic, copy) NSString *animationDescription;
 
 @end
 
@@ -35,7 +35,7 @@
 /**
  @abstract Readwrite redefinition of public property.
  */
-@property (readwrite, nonatomic, strong) id velocity;
+@property(readwrite, nonatomic, strong) id velocity;
 
 @end
 

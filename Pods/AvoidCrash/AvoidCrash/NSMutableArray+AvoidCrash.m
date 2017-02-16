@@ -14,21 +14,21 @@
 
 + (void)avoidCrashExchangeMethod {
     Class arrayMClass = NSClassFromString(@"__NSArrayM");
-    
-    
+
+
     //get object from array method exchange
     //由于继承于NSArray，所以 objectAtIndexedSubscript已经在NSArray中处理过了，无需处理
-    
+
     //array set object at index
     [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(setObject:atIndexedSubscript:) method2Sel:@selector(avoidCrashSetObject:atIndexedSubscript:)];
-    
-    
+
+
     //removeObjectAtIndex:
     [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(removeObjectAtIndex:) method2Sel:@selector(avoidCrashRemoveObjectAtIndex:)];
-    
+
     //insertObject:atIndex:
     [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(insertObject:atIndex:) method2Sel:@selector(avoidCrashInsertObject:atIndex:)];
-    
+
 }
 
 
@@ -39,7 +39,7 @@
 
 
 - (void)avoidCrashSetObject:(id)obj atIndexedSubscript:(NSUInteger)idx {
-    
+
     @try {
         [self avoidCrashSetObject:obj atIndexedSubscript:idx];
     }
@@ -47,7 +47,7 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:AvoidCrashDefaultIgnore];
     }
     @finally {
-        
+
     }
 }
 
@@ -65,7 +65,7 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:AvoidCrashDefaultIgnore];
     }
     @finally {
-        
+
     }
 }
 
@@ -74,6 +74,7 @@
 //                    insertObject:atIndex:
 //=================================================================
 #pragma mark - set方法
+
 - (void)avoidCrashInsertObject:(id)anObject atIndex:(NSUInteger)index {
     @try {
         [self avoidCrashInsertObject:anObject atIndex:index];
@@ -82,10 +83,9 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:AvoidCrashDefaultIgnore];
     }
     @finally {
-        
+
     }
 }
-
 
 
 @end

@@ -10,7 +10,7 @@
 
 @interface DoorBellBinding : UIViewController
 
-@property (nonatomic,strong)NSString * wifiSSID;
-@property (nonatomic,strong)NSString * wifiPWD;
+@property(nonatomic, strong) NSString *wifiSSID;
+@property(nonatomic, strong) NSString *wifiPWD;
 
 @end

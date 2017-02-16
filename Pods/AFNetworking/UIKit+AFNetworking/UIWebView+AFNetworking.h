@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The session manager used to download all requests.
  */
-@property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
+@property(nonatomic, strong) AFHTTPSessionManager *sessionManager;
 
 /**
  Asynchronously loads the specified request.
@@ -52,8 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param failure A block object to be executed when the data task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a single argument: the error that occurred.
  */
 - (void)loadRequest:(NSURLRequest *)request
-           progress:(NSProgress * _Nullable __autoreleasing * _Nullable)progress
-            success:(nullable NSString * (^)(NSHTTPURLResponse *response, NSString *HTML))success
+           progress:(NSProgress *_Nullable __autoreleasing *_Nullable)progress
+            success:(nullable NSString *(^)(NSHTTPURLResponse *response, NSString *HTML))success
             failure:(nullable void (^)(NSError *error))failure;
 
 /**
@@ -69,8 +69,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadRequest:(NSURLRequest *)request
            MIMEType:(nullable NSString *)MIMEType
    textEncodingName:(nullable NSString *)textEncodingName
-           progress:(NSProgress * _Nullable __autoreleasing * _Nullable)progress
-            success:(nullable NSData * (^)(NSHTTPURLResponse *response, NSData *data))success
+           progress:(NSProgress *_Nullable __autoreleasing *_Nullable)progress
+            success:(nullable NSData *(^)(NSHTTPURLResponse *response, NSData *data))success
             failure:(nullable void (^)(NSError *error))failure;
 
 @end

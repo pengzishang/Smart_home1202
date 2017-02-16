@@ -14,14 +14,14 @@
 /**
  *  绑定代理
  */
-@property (nonatomic,assign)id <JFGSDKBindDeviceDelegate> delegate;
+@property(nonatomic, assign) id <JFGSDKBindDeviceDelegate> delegate;
 
 
 /**
  *  借助设备扫描周边wifi
  *  需在连接设备wifi后执行此操作
  */
--(void)scanWifi;
+- (void)scanWifi;
 
 
 /*!
@@ -32,7 +32,7 @@
  *  @param key   wifi 密码
  *  @note 设置wifi模式
  */
--(void)bindDevWithSn:(NSString *)sn ssid:(NSString *)ssid key:(NSString *)key;
+- (void)bindDevWithSn:(NSString *)sn ssid:(NSString *)ssid key:(NSString *)key;
 
 /**
  *  绑定设备（设备通过蓝牙等方式自定义通信设置设备wifi等配置）
@@ -41,6 +41,6 @@
  *
  *  @return 绑定产生的随机数（需要通知设备）
  */
--(NSString *)bindDevWithSn:(NSString *)sn;
+- (NSString *)bindDevWithSn:(NSString *)sn;
 
 @end

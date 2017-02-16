@@ -10,7 +10,7 @@
 
 @interface Remote53Controller : UIViewController
 
-@property(nonatomic,strong)NSString *remoteDeviceID;
-@property(nonatomic,strong)DeviceInfo *currentDevice;
+@property(nonatomic, strong) NSString *remoteDeviceID;
+@property(nonatomic, strong) DeviceInfo *currentDevice;
 
 @end

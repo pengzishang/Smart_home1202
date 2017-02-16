@@ -25,17 +25,19 @@
 #import <TargetConditionals.h>
 
 #ifndef _AFNETWORKING_
-    #define _AFNETWORKING_
+#define _AFNETWORKING_
 
-    #import "AFURLRequestSerialization.h"
-    #import "AFURLResponseSerialization.h"
-    #import "AFSecurityPolicy.h"
+#import "AFURLRequestSerialization.h"
+#import "AFURLResponseSerialization.h"
+#import "AFSecurityPolicy.h"
 
 #if !TARGET_OS_WATCH
-    #import "AFNetworkReachabilityManager.h"
+
+#import "AFNetworkReachabilityManager.h"
+
 #endif
 
-    #import "AFURLSessionManager.h"
-    #import "AFHTTPSessionManager.h"
+#import "AFURLSessionManager.h"
+#import "AFHTTPSessionManager.h"
 
 #endif /* _AFNETWORKING_ */

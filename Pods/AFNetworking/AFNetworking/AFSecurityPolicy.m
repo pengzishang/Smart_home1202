@@ -42,7 +42,7 @@ _out:
 
 static BOOL AFSecKeyIsEqualToKey(SecKeyRef key1, SecKeyRef key2) {
 #if TARGET_OS_IOS || TARGET_OS_WATCH || TARGET_OS_TV
-    return [(__bridge id)key1 isEqual:(__bridge id)key2];
+    return [(__bridge id) key1 isEqual:(__bridge id) key2];
 #else
     return [AFSecKeyGetData(key1) isEqual:AFSecKeyGetData(key2)];
 #endif
@@ -57,19 +57,19 @@ static id AFPublicKeyForCertificate(NSData *certificate) {
     SecTrustRef allowedTrust = nil;
     SecTrustResultType result;
 
-    allowedCertificate = SecCertificateCreateWithData(NULL, (__bridge CFDataRef)certificate);
+    allowedCertificate = SecCertificateCreateWithData(NULL, (__bridge CFDataRef) certificate);
     __Require_Quiet(allowedCertificate != NULL, _out);
 
     allowedCertificates[0] = allowedCertificate;
-    tempCertificates = CFArrayCreate(NULL, (const void **)allowedCertificates, 1, NULL);
+    tempCertificates = CFArrayCreate(NULL, (const void **) allowedCertificates, 1, NULL);
 
     policy = SecPolicyCreateBasicX509();
     __Require_noErr_Quiet(SecTrustCreateWithCertificates(tempCertificates, policy, &allowedTrust), _out);
     __Require_noErr_Quiet(SecTrustEvaluate(allowedTrust, &result), _out);
 
-    allowedPublicKey = (__bridge_transfer id)SecTrustCopyPublicKey(allowedTrust);
+    allowedPublicKey = (__bridge_transfer id) SecTrustCopyPublicKey(allowedTrust);
 
-_out:
+    _out:
     if (allowedTrust) {
         CFRelease(allowedTrust);
     }
@@ -96,31 +96,31 @@ static BOOL AFServerTrustIsValid(SecTrustRef serverTrust) {
 
     isValid = (result == kSecTrustResultUnspecified || result == kSecTrustResultProceed);
 
-_out:
+    _out:
     return isValid;
 }
 
-static NSArray * AFCertificateTrustChainForServerTrust(SecTrustRef serverTrust) {
+static NSArray *AFCertificateTrustChainForServerTrust(SecTrustRef serverTrust) {
     CFIndex certificateCount = SecTrustGetCertificateCount(serverTrust);
-    NSMutableArray *trustChain = [NSMutableArray arrayWithCapacity:(NSUInteger)certificateCount];
+    NSMutableArray *trustChain = [NSMutableArray arrayWithCapacity:(NSUInteger) certificateCount];
 
     for (CFIndex i = 0; i < certificateCount; i++) {
         SecCertificateRef certificate = SecTrustGetCertificateAtIndex(serverTrust, i);
-        [trustChain addObject:(__bridge_transfer NSData *)SecCertificateCopyData(certificate)];
+        [trustChain addObject:(__bridge_transfer NSData *) SecCertificateCopyData(certificate)];
     }
 
     return [NSArray arrayWithArray:trustChain];
 }
 
-static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
+static NSArray *AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
     SecPolicyRef policy = SecPolicyCreateBasicX509();
     CFIndex certificateCount = SecTrustGetCertificateCount(serverTrust);
-    NSMutableArray *trustChain = [NSMutableArray arrayWithCapacity:(NSUInteger)certificateCount];
+    NSMutableArray *trustChain = [NSMutableArray arrayWithCapacity:(NSUInteger) certificateCount];
     for (CFIndex i = 0; i < certificateCount; i++) {
         SecCertificateRef certificate = SecTrustGetCertificateAtIndex(serverTrust, i);
 
         SecCertificateRef someCertificates[] = {certificate};
-        CFArrayRef certificates = CFArrayCreate(NULL, (const void **)someCertificates, 1, NULL);
+        CFArrayRef certificates = CFArrayCreate(NULL, (const void **) someCertificates, 1, NULL);
 
         SecTrustRef trust;
         __Require_noErr_Quiet(SecTrustCreateWithCertificates(certificates, policy, &trust), _out);
@@ -128,9 +128,9 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
         SecTrustResultType result;
         __Require_noErr_Quiet(SecTrustEvaluate(trust, &result), _out);
 
-        [trustChain addObject:(__bridge_transfer id)SecTrustCopyPublicKey(trust)];
+        [trustChain addObject:(__bridge_transfer id) SecTrustCopyPublicKey(trust)];
 
-    _out:
+        _out:
         if (trust) {
             CFRelease(trust);
         }
@@ -148,9 +148,9 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 
 #pragma mark -
 
-@interface AFSecurityPolicy()
-@property (readwrite, nonatomic, assign) AFSSLPinningMode SSLPinningMode;
-@property (readwrite, nonatomic, strong) NSSet *pinnedPublicKeys;
+@interface AFSecurityPolicy ()
+@property(readwrite, nonatomic, assign) AFSSLPinningMode SSLPinningMode;
+@property(readwrite, nonatomic, strong) NSSet *pinnedPublicKeys;
 @end
 
 @implementation AFSecurityPolicy
@@ -230,8 +230,7 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 #pragma mark -
 
 - (BOOL)evaluateServerTrust:(SecTrustRef)serverTrust
-                  forDomain:(NSString *)domain
-{
+                  forDomain:(NSString *)domain {
     if (domain && self.allowInvalidCertificates && self.validatesDomainName && (self.SSLPinningMode == AFSSLPinningModeNone || [self.pinnedCertificates count] == 0)) {
         // https://developer.apple.com/library/mac/documentation/NetworkingInternet/Conceptual/NetworkingTopics/Articles/OverridingSSLChainValidationCorrectly.html
         //  According to the docs, you should only trust your provided certs for evaluation.
@@ -247,12 +246,12 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 
     NSMutableArray *policies = [NSMutableArray array];
     if (self.validatesDomainName) {
-        [policies addObject:(__bridge_transfer id)SecPolicyCreateSSL(true, (__bridge CFStringRef)domain)];
+        [policies addObject:(__bridge_transfer id) SecPolicyCreateSSL(true, (__bridge CFStringRef) domain)];
     } else {
-        [policies addObject:(__bridge_transfer id)SecPolicyCreateBasicX509()];
+        [policies addObject:(__bridge_transfer id) SecPolicyCreateBasicX509()];
     }
 
-    SecTrustSetPolicies(serverTrust, (__bridge CFArrayRef)policies);
+    SecTrustSetPolicies(serverTrust, (__bridge CFArrayRef) policies);
 
     if (self.SSLPinningMode == AFSSLPinningModeNone) {
         return self.allowInvalidCertificates || AFServerTrustIsValid(serverTrust);
@@ -267,9 +266,9 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
         case AFSSLPinningModeCertificate: {
             NSMutableArray *pinnedCertificates = [NSMutableArray array];
             for (NSData *certificateData in self.pinnedCertificates) {
-                [pinnedCertificates addObject:(__bridge_transfer id)SecCertificateCreateWithData(NULL, (__bridge CFDataRef)certificateData)];
+                [pinnedCertificates addObject:(__bridge_transfer id) SecCertificateCreateWithData(NULL, (__bridge CFDataRef) certificateData)];
             }
-            SecTrustSetAnchorCertificates(serverTrust, (__bridge CFArrayRef)pinnedCertificates);
+            SecTrustSetAnchorCertificates(serverTrust, (__bridge CFArrayRef) pinnedCertificates);
 
             if (!AFServerTrustIsValid(serverTrust)) {
                 return NO;
@@ -277,13 +276,13 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 
             // obtain the chain after being validated, which *should* contain the pinned certificate in the last position (if it's the Root CA)
             NSArray *serverCertificates = AFCertificateTrustChainForServerTrust(serverTrust);
-            
+
             for (NSData *trustChainCertificate in [serverCertificates reverseObjectEnumerator]) {
                 if ([self.pinnedCertificates containsObject:trustChainCertificate]) {
                     return YES;
                 }
             }
-            
+
             return NO;
         }
         case AFSSLPinningModePublicKey: {
@@ -292,7 +291,7 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 
             for (id trustChainPublicKey in publicKeys) {
                 for (id pinnedPublicKey in self.pinnedPublicKeys) {
-                    if (AFSecKeyIsEqualToKey((__bridge SecKeyRef)trustChainPublicKey, (__bridge SecKeyRef)pinnedPublicKey)) {
+                    if (AFSecKeyIsEqualToKey((__bridge SecKeyRef) trustChainPublicKey, (__bridge SecKeyRef) pinnedPublicKey)) {
                         trustedPublicKeyCount += 1;
                     }
                 }
@@ -300,7 +299,7 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
             return trustedPublicKeyCount > 0;
         }
     }
-    
+
     return NO;
 }
 

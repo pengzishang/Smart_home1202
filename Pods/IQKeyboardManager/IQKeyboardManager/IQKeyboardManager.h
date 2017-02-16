@@ -48,7 +48,6 @@ extern NSInteger const kIQDoneButtonToolbarTag;
 extern NSInteger const kIQPreviousNextButtonToolbarTag;
 
 
-
 /**
  Codeless drop-in universal library allows to prevent issues of keyboard sliding up and cover UITextField/UITextView. Neither need to write any code nor any setup required and much more. A generic version of KeyboardManagement. https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html
  */
@@ -86,7 +85,7 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
 /** 
  Boolean to know if keyboard is showing.
  */
-@property(nonatomic, assign, readonly, getter = isKeyboardShowing) BOOL  keyboardShowing;
+@property(nonatomic, assign, readonly, getter = isKeyboardShowing) BOOL keyboardShowing;
 
 /**
  moved distance to the top used to maintain distance between keyboard and textField. Most of the time this will be a positive value.
@@ -179,12 +178,12 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
 /**
  Returns YES if can navigate to previous responder textField/textView, otherwise NO.
  */
-@property (nonatomic, readonly) BOOL canGoPrevious;
+@property(nonatomic, readonly) BOOL canGoPrevious;
 
 /**
  Returns YES if can navigate to next responder textField/textView, otherwise NO.
  */
-@property (nonatomic, readonly) BOOL canGoNext;
+@property(nonatomic, readonly) BOOL canGoNext;
 
 /**
  Navigate to previous responder textField/textView.
@@ -273,9 +272,9 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
  @param didBeginEditingNotificationName This should be identical to UITextViewTextDidBeginEditingNotification
  @param didEndEditingNotificationName This should be identical to UITextViewTextDidEndEditingNotification
  */
--(void)registerTextFieldViewClass:(nonnull Class)aClass
-  didBeginEditingNotificationName:(nonnull NSString *)didBeginEditingNotificationName
-    didEndEditingNotificationName:(nonnull NSString *)didEndEditingNotificationName;
+- (void)registerTextFieldViewClass:(nonnull Class)aClass
+   didBeginEditingNotificationName:(nonnull NSString *)didBeginEditingNotificationName
+     didEndEditingNotificationName:(nonnull NSString *)didEndEditingNotificationName;
 
 ///----------------------------------------
 /// @name Debugging.
@@ -290,7 +289,7 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
 /**
  Unavailable. Please use sharedManager method
  */
--(nonnull instancetype)init NS_UNAVAILABLE;
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 /**
  Unavailable. Please use sharedManager method
@@ -300,7 +299,7 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
 @end
 
 
-@interface IQKeyboardManager(IQKeyboardManagerDeprecated)
+@interface IQKeyboardManager (IQKeyboardManagerDeprecated)
 
 @end
 

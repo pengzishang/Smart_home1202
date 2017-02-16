@@ -50,15 +50,15 @@ extern NSString *const GCDAsyncSocketSSLDiffieHellmanParameters;
 
 
 typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
-	GCDAsyncSocketNoError = 0,           // Never used
-	GCDAsyncSocketBadConfigError,        // Invalid configuration
-	GCDAsyncSocketBadParamError,         // Invalid parameter was passed
-	GCDAsyncSocketConnectTimeoutError,   // A connect operation timed out
-	GCDAsyncSocketReadTimeoutError,      // A read operation timed out
-	GCDAsyncSocketWriteTimeoutError,     // A write operation timed out
-	GCDAsyncSocketReadMaxedOutError,     // Reached set maxLength without completing
-	GCDAsyncSocketClosedError,           // The remote peer closed the connection
-	GCDAsyncSocketOtherError,            // Description provided in userInfo
+    GCDAsyncSocketNoError = 0,           // Never used
+    GCDAsyncSocketBadConfigError,        // Invalid configuration
+    GCDAsyncSocketBadParamError,         // Invalid parameter was passed
+    GCDAsyncSocketConnectTimeoutError,   // A connect operation timed out
+    GCDAsyncSocketReadTimeoutError,      // A read operation timed out
+    GCDAsyncSocketWriteTimeoutError,     // A write operation timed out
+    GCDAsyncSocketReadMaxedOutError,     // Reached set maxLength without completing
+    GCDAsyncSocketClosedError,           // The remote peer closed the connection
+    GCDAsyncSocketOtherError,            // Description provided in userInfo
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -85,29 +85,35 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * The delegate queue and socket queue can optionally be the same.
 **/
 - (instancetype)init;
+
 - (instancetype)initWithSocketQueue:(nullable dispatch_queue_t)sq;
-- (instancetype)initWithDelegate:(nullable id<GCDAsyncSocketDelegate>)aDelegate delegateQueue:(nullable dispatch_queue_t)dq;
-- (instancetype)initWithDelegate:(nullable id<GCDAsyncSocketDelegate>)aDelegate delegateQueue:(nullable dispatch_queue_t)dq socketQueue:(nullable dispatch_queue_t)sq;
+
+- (instancetype)initWithDelegate:(nullable id <GCDAsyncSocketDelegate>)aDelegate delegateQueue:(nullable dispatch_queue_t)dq;
+
+- (instancetype)initWithDelegate:(nullable id <GCDAsyncSocketDelegate>)aDelegate delegateQueue:(nullable dispatch_queue_t)dq socketQueue:(nullable dispatch_queue_t)sq;
 
 #pragma mark Configuration
 
-@property (atomic, weak, readwrite, nullable) id<GCDAsyncSocketDelegate> delegate;
+@property(atomic, weak, readwrite, nullable) id <GCDAsyncSocketDelegate> delegate;
 #if OS_OBJECT_USE_OBJC
-@property (atomic, strong, readwrite, nullable) dispatch_queue_t delegateQueue;
+@property(atomic, strong, readwrite, nullable) dispatch_queue_t delegateQueue;
 #else
 @property (atomic, assign, readwrite, nullable) dispatch_queue_t delegateQueue;
 #endif
 
-- (void)getDelegate:(id<GCDAsyncSocketDelegate> __nullable * __nullable)delegatePtr delegateQueue:(dispatch_queue_t __nullable * __nullable)delegateQueuePtr;
-- (void)setDelegate:(nullable id<GCDAsyncSocketDelegate>)delegate delegateQueue:(nullable dispatch_queue_t)delegateQueue;
+- (void)getDelegate:(id <GCDAsyncSocketDelegate> __nullable *__nullable)delegatePtr delegateQueue:(dispatch_queue_t __nullable *__nullable)delegateQueuePtr;
+
+- (void)setDelegate:(nullable id <GCDAsyncSocketDelegate>)delegate delegateQueue:(nullable dispatch_queue_t)delegateQueue;
 
 /**
  * If you are setting the delegate to nil within the delegate's dealloc method,
  * you may need to use the synchronous versions below.
 **/
-- (void)synchronouslySetDelegate:(nullable id<GCDAsyncSocketDelegate>)delegate;
+- (void)synchronouslySetDelegate:(nullable id <GCDAsyncSocketDelegate>)delegate;
+
 - (void)synchronouslySetDelegateQueue:(nullable dispatch_queue_t)delegateQueue;
-- (void)synchronouslySetDelegate:(nullable id<GCDAsyncSocketDelegate>)delegate delegateQueue:(nullable dispatch_queue_t)delegateQueue;
+
+- (void)synchronouslySetDelegate:(nullable id <GCDAsyncSocketDelegate>)delegate delegateQueue:(nullable dispatch_queue_t)delegateQueue;
 
 /**
  * By default, both IPv4 and IPv6 are enabled.
@@ -122,10 +128,10 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * By default, the preferred protocol is IPv4, but may be configured as desired.
 **/
 
-@property (atomic, assign, readwrite, getter=isIPv4Enabled) BOOL IPv4Enabled;
-@property (atomic, assign, readwrite, getter=isIPv6Enabled) BOOL IPv6Enabled;
+@property(atomic, assign, readwrite, getter=isIPv4Enabled) BOOL IPv4Enabled;
+@property(atomic, assign, readwrite, getter=isIPv6Enabled) BOOL IPv6Enabled;
 
-@property (atomic, assign, readwrite, getter=isIPv4PreferredOverIPv6) BOOL IPv4PreferredOverIPv6;
+@property(atomic, assign, readwrite, getter=isIPv4PreferredOverIPv6) BOOL IPv4PreferredOverIPv6;
 
 /** 
  * When connecting to both IPv4 and IPv6 using Happy Eyeballs (RFC 6555) https://tools.ietf.org/html/rfc6555
@@ -133,13 +139,13 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  *
  * Defaults to 300ms.
 **/
-@property (atomic, assign, readwrite) NSTimeInterval alternateAddressDelay;
+@property(atomic, assign, readwrite) NSTimeInterval alternateAddressDelay;
 
 /**
  * User data allows you to associate arbitrary information with the socket.
  * This data is not used internally by socket in any way.
 **/
-@property (atomic, strong, readwrite, nullable) id userData;
+@property(atomic, strong, readwrite, nullable) id userData;
 
 #pragma mark Accepting
 
@@ -294,6 +300,7 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
             viaInterface:(nullable NSString *)interface
              withTimeout:(NSTimeInterval)timeout
                    error:(NSError **)errPtr;
+
 /**
  * Connects to the unix domain socket at the given url, using the specified timeout.
  */
@@ -352,19 +359,19 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * 
  * If a socket is in the process of connecting, it may be neither disconnected nor connected.
 **/
-@property (atomic, readonly) BOOL isDisconnected;
-@property (atomic, readonly) BOOL isConnected;
+@property(atomic, readonly) BOOL isDisconnected;
+@property(atomic, readonly) BOOL isConnected;
 
 /**
  * Returns the local or remote host and port to which this socket is connected, or nil and 0 if not connected.
  * The host will be an IP address.
 **/
-@property (atomic, readonly, nullable) NSString *connectedHost;
-@property (atomic, readonly) uint16_t  connectedPort;
-@property (atomic, readonly, nullable) NSURL    *connectedUrl;
+@property(atomic, readonly, nullable) NSString *connectedHost;
+@property(atomic, readonly) uint16_t connectedPort;
+@property(atomic, readonly, nullable) NSURL *connectedUrl;
 
-@property (atomic, readonly, nullable) NSString *localHost;
-@property (atomic, readonly) uint16_t  localPort;
+@property(atomic, readonly, nullable) NSString *localHost;
+@property(atomic, readonly) uint16_t localPort;
 
 /**
  * Returns the local or remote address to which this socket is connected,
@@ -375,22 +382,22 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * @seealso localHost
  * @seealso localPort
 **/
-@property (atomic, readonly, nullable) NSData *connectedAddress;
-@property (atomic, readonly, nullable) NSData *localAddress;
+@property(atomic, readonly, nullable) NSData *connectedAddress;
+@property(atomic, readonly, nullable) NSData *localAddress;
 
 /**
  * Returns whether the socket is IPv4 or IPv6.
  * An accepting socket may be both.
 **/
-@property (atomic, readonly) BOOL isIPv4;
-@property (atomic, readonly) BOOL isIPv6;
+@property(atomic, readonly) BOOL isIPv4;
+@property(atomic, readonly) BOOL isIPv6;
 
 /**
  * Returns whether or not the socket has been secured via SSL/TLS.
  * 
  * See also the startTLS method.
 **/
-@property (atomic, readonly) BOOL isSecure;
+@property(atomic, readonly) BOOL isSecure;
 
 #pragma mark Reading
 
@@ -431,9 +438,9 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * the method [NSData dataWithBytesNoCopy:length:freeWhenDone:NO].
 **/
 - (void)readDataWithTimeout:(NSTimeInterval)timeout
-					 buffer:(nullable NSMutableData *)buffer
-			   bufferOffset:(NSUInteger)offset
-						tag:(long)tag;
+                     buffer:(nullable NSMutableData *)buffer
+               bufferOffset:(NSUInteger)offset
+                        tag:(long)tag;
 
 /**
  * Reads the first available bytes that become available on the socket.
@@ -788,7 +795,7 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * 
  * You can also perform additional validation in socketDidSecure.
 **/
-- (void)startTLS:(nullable NSDictionary <NSString*,NSObject*>*)tlsSettings;
+- (void)startTLS:(nullable NSDictionary <NSString *, NSObject *> *)tlsSettings;
 
 #pragma mark Advanced
 
@@ -822,7 +829,7 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * 
  * The default value is YES.
 **/
-@property (atomic, assign, readwrite) BOOL autoDisconnectOnClosedReadStream;
+@property(atomic, assign, readwrite) BOOL autoDisconnectOnClosedReadStream;
 
 /**
  * GCDAsyncSocket maintains thread safety by using an internal serial dispatch_queue.
@@ -897,6 +904,7 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * This is often NOT the case, as such queues are used solely for execution shaping.
 **/
 - (void)markSocketQueueTargetQueue:(dispatch_queue_t)socketQueuesPreConfiguredTargetQueue;
+
 - (void)unmarkSocketQueueTargetQueue:(dispatch_queue_t)socketQueuesPreviouslyConfiguredTargetQueue;
 
 /**
@@ -938,7 +946,9 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * it might actually have multiple internal socket file descriptors - one for IPv4 and one for IPv6.
 **/
 - (int)socketFD;
+
 - (int)socket4FD;
+
 - (int)socket6FD;
 
 #if TARGET_OS_IPHONE
@@ -963,6 +973,7 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * See also: (BOOL)enableBackgroundingOnSocket
 **/
 - (nullable CFReadStreamRef)readStream;
+
 - (nullable CFWriteStreamRef)writeStream;
 
 /**
@@ -1022,14 +1033,16 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
 **/
 
 + (nullable NSString *)hostFromAddress:(NSData *)address;
+
 + (uint16_t)portFromAddress:(NSData *)address;
 
 + (BOOL)isIPv4Address:(NSData *)address;
+
 + (BOOL)isIPv6Address:(NSData *)address;
 
-+ (BOOL)getHost:( NSString * __nullable * __nullable)hostPtr port:(nullable uint16_t *)portPtr fromAddress:(NSData *)address;
++ (BOOL)getHost:(NSString *__nullable *__nullable)hostPtr port:(nullable uint16_t *)portPtr fromAddress:(NSData *)address;
 
-+ (BOOL)getHost:(NSString * __nullable * __nullable)hostPtr port:(nullable uint16_t *)portPtr family:(nullable sa_family_t *)afPtr fromAddress:(NSData *)address;
++ (BOOL)getHost:(NSString *__nullable *__nullable)hostPtr port:(nullable uint16_t *)portPtr family:(nullable sa_family_t *)afPtr fromAddress:(NSData *)address;
 
 /**
  * A few common line separators, for use with the readDataToData:... methods.
@@ -1128,8 +1141,8 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * Note that this method may be called multiple times for a single read if you return positive numbers.
 **/
 - (NSTimeInterval)socket:(GCDAsyncSocket *)sock shouldTimeoutReadWithTag:(long)tag
-                                                                 elapsed:(NSTimeInterval)elapsed
-                                                               bytesDone:(NSUInteger)length;
+                 elapsed:(NSTimeInterval)elapsed
+               bytesDone:(NSUInteger)length;
 
 /**
  * Called if a write operation has reached its timeout without completing.
@@ -1143,8 +1156,8 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * Note that this method may be called multiple times for a single write if you return positive numbers.
 **/
 - (NSTimeInterval)socket:(GCDAsyncSocket *)sock shouldTimeoutWriteWithTag:(long)tag
-                                                                  elapsed:(NSTimeInterval)elapsed
-                                                                bytesDone:(NSUInteger)length;
+                 elapsed:(NSTimeInterval)elapsed
+               bytesDone:(NSUInteger)length;
 
 /**
  * Conditionally called if the read stream closes, but the write stream may still be writeable.
@@ -1203,8 +1216,9 @@ typedef NS_ENUM(NSInteger, GCDAsyncSocketError) {
  * The completionHandler block is thread-safe, and may be invoked from a background queue/thread.
  * It is safe to invoke the completionHandler block even if the socket has been closed.
 **/
-- (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust
-                                    completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler;
+- (void)   socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust
+completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler;
 
 @end
+
 NS_ASSUME_NONNULL_END

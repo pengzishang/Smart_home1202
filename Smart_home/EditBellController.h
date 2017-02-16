@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <JFGSDK/JFGSDK.h>
+
 @interface EditBellController : UITableViewController
 
 
-@property (strong,nonatomic)JFGSDKDevice *device;
+@property(strong, nonatomic) JFGSDKDevice *device;
 @end

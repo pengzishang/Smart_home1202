@@ -10,6 +10,6 @@
 
 @interface CallingController : UIViewController
 
-@property (nonatomic,strong)id userInfo;
+@property(nonatomic, strong) id userInfo;
 
 @end

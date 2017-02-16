@@ -17,6 +17,7 @@
  *  @param sucess 返回的mac
  */
 - (void)HiJoineWiFiSucceed:(NSString *)succeed;
+
 /**
  *  HiJoine 失败的代理
  *
@@ -35,7 +36,7 @@
 
 @interface HiJoine : NSObject
 
-@property (nonatomic, weak) id<HiJoineDelegate>delegate;
+@property(nonatomic, weak) id <HiJoineDelegate> delegate;
 
 /**
  *  获取手机 ssid
@@ -45,12 +46,10 @@
 - (id)fetchSSIDInfo;
 
 
-
-
 /**
  *  发送数据
  *  @param pwd      Wi-Fi密码
  *  @param complete 回调block －1 超时  －2  ssid 空   1 成功，message 为mac地址
  */
-- (void) setBoardDataWithPassword:(NSString *)pwd withBackBlock:(void(^)(NSInteger result,NSString * message))complete;
+- (void)setBoardDataWithPassword:(NSString *)pwd withBackBlock:(void (^)(NSInteger result, NSString *message))complete;
 @end

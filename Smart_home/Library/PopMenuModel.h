@@ -15,28 +15,28 @@ typedef enum : NSUInteger {
 
 @interface PopMenuModel : NSObject
 
-@property (nonatomic, assign) BOOL automaticIdentificationColor;
+@property(nonatomic, assign) BOOL automaticIdentificationColor;
 
-@property (nonatomic, copy, nonnull) NSString* imageNameString;
+@property(nonatomic, copy, nonnull) NSString *imageNameString;
 
-@property (nonatomic, copy, nonnull) NSString* titleString;
+@property(nonatomic, copy, nonnull) NSString *titleString;
 
-@property (nonatomic, weak, nullable) UIColor* transitionRenderingColor;
+@property(nonatomic, weak, nullable) UIColor *transitionRenderingColor;
 
-@property (nonatomic, weak, nullable) UIColor* textColor;
+@property(nonatomic, weak, nullable) UIColor *textColor;
 
-@property (nonatomic, assign) PopMenuTransitionType transitionType;
+@property(nonatomic, assign) PopMenuTransitionType transitionType;
 
-@property (nonatomic, readonly, retain, nonnull) UIView* customView;
+@property(nonatomic, readonly, retain, nonnull) UIView *customView;
 
-+ (instancetype __nonnull)allocPopMenuModelWithImageNameString:(NSString* __nonnull)imageNameString
++ (instancetype __nonnull)allocPopMenuModelWithImageNameString:(NSString *__nonnull)imageNameString
 
-                                                 AtTitleString:(NSString* __nonnull)titleString
+                                                 AtTitleString:(NSString *__nonnull)titleString
 
-                                                   AtTextColor:(UIColor* __nonnull)textColor
+                                                   AtTextColor:(UIColor *__nonnull)textColor
 
                                               AtTransitionType:(PopMenuTransitionType)transitionType
 
-                                    AtTransitionRenderingColor:(UIColor* __nullable)transitionRenderingColor;
+                                    AtTransitionRenderingColor:(UIColor *__nullable)transitionRenderingColor;
 
 @end

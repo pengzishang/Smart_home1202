@@ -50,7 +50,7 @@ static char TAG_ACTIVITY_SHOW;
             self.image = placeholder;
         });
     }
-    
+
     if (url) {
 
         // check if activityView is enabled or not
@@ -58,18 +58,16 @@ static char TAG_ACTIVITY_SHOW;
             [self addActivityIndicator];
         }
 
-        __weak __typeof(self)wself = self;
+        __weak __typeof(self) wself = self;
         id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options:options progress:progressBlock completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             [wself removeActivityIndicator];
             if (!wself) return;
             dispatch_main_sync_safe(^{
                 if (!wself) return;
-                if (image && (options & SDWebImageAvoidAutoSetImage) && completedBlock)
-                {
+                if (image && (options & SDWebImageAvoidAutoSetImage) && completedBlock) {
                     completedBlock(image, error, cacheType, url);
                     return;
-                }
-                else if (image) {
+                } else if (image) {
                     wself.image = image;
                     [wself setNeedsLayout];
                 } else {
@@ -88,7 +86,7 @@ static char TAG_ACTIVITY_SHOW;
         dispatch_main_async_safe(^{
             [self removeActivityIndicator];
             if (completedBlock) {
-                NSError *error = [NSError errorWithDomain:SDWebImageErrorDomain code:-1 userInfo:@{NSLocalizedDescriptionKey : @"Trying to load a nil url"}];
+                NSError *error = [NSError errorWithDomain:SDWebImageErrorDomain code:-1 userInfo:@{NSLocalizedDescriptionKey: @"Trying to load a nil url"}];
                 completedBlock(nil, error, SDImageCacheTypeNone, url);
             }
         });
@@ -98,8 +96,8 @@ static char TAG_ACTIVITY_SHOW;
 - (void)sd_setImageWithPreviousCachedImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletionBlock)completedBlock {
     NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:url];
     UIImage *lastPreviousCachedImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:key];
-    
-    [self sd_setImageWithURL:url placeholderImage:lastPreviousCachedImage ?: placeholder options:options progress:progressBlock completed:completedBlock];    
+
+    [self sd_setImageWithURL:url placeholderImage:lastPreviousCachedImage ?: placeholder options:options progress:progressBlock completed:completedBlock];
 }
 
 - (NSURL *)sd_imageURL {
@@ -108,7 +106,7 @@ static char TAG_ACTIVITY_SHOW;
 
 - (void)sd_setAnimationImagesWithURLs:(NSArray *)arrayOfURLs {
     [self sd_cancelCurrentAnimationImagesLoad];
-    __weak __typeof(self)wself = self;
+    __weak __typeof(self) wself = self;
 
     NSMutableArray *operationsArray = [[NSMutableArray alloc] init];
 
@@ -147,27 +145,28 @@ static char TAG_ACTIVITY_SHOW;
 
 
 #pragma mark -
+
 - (UIActivityIndicatorView *)activityIndicator {
-    return (UIActivityIndicatorView *)objc_getAssociatedObject(self, &TAG_ACTIVITY_INDICATOR);
+    return (UIActivityIndicatorView *) objc_getAssociatedObject(self, &TAG_ACTIVITY_INDICATOR);
 }
 
 - (void)setActivityIndicator:(UIActivityIndicatorView *)activityIndicator {
     objc_setAssociatedObject(self, &TAG_ACTIVITY_INDICATOR, activityIndicator, OBJC_ASSOCIATION_RETAIN);
 }
 
-- (void)setShowActivityIndicatorView:(BOOL)show{
+- (void)setShowActivityIndicatorView:(BOOL)show {
     objc_setAssociatedObject(self, &TAG_ACTIVITY_SHOW, [NSNumber numberWithBool:show], OBJC_ASSOCIATION_RETAIN);
 }
 
-- (BOOL)showActivityIndicatorView{
+- (BOOL)showActivityIndicatorView {
     return [objc_getAssociatedObject(self, &TAG_ACTIVITY_SHOW) boolValue];
 }
 
-- (void)setIndicatorStyle:(UIActivityIndicatorViewStyle)style{
+- (void)setIndicatorStyle:(UIActivityIndicatorViewStyle)style {
     objc_setAssociatedObject(self, &TAG_ACTIVITY_STYLE, [NSNumber numberWithInt:style], OBJC_ASSOCIATION_RETAIN);
 }
 
-- (int)getIndicatorStyle{
+- (int)getIndicatorStyle {
     return [objc_getAssociatedObject(self, &TAG_ACTIVITY_STYLE) intValue];
 }
 

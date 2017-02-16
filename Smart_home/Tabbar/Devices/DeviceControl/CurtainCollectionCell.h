@@ -7,28 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class CurtainCollectionCell;
+
 @protocol CurtainDelegate <NSObject>
 
--(void)didClickCurtainBtnTag:(NSUInteger)btnTag cellTag:(NSUInteger)cellTag cell:(CurtainCollectionCell *)cell;
+- (void)didClickCurtainBtnTag:(NSUInteger)btnTag cellTag:(NSUInteger)cellTag cell:(CurtainCollectionCell *)cell;
 
--(void)didClickEditCellTag:(NSUInteger)cellTag;
+- (void)didClickEditCellTag:(NSUInteger)cellTag;
 
 @end
 
 @interface CurtainCollectionCell : UICollectionViewCell
 
-@property (assign,nonatomic)id <CurtainDelegate>delegate;
+@property(assign, nonatomic) id <CurtainDelegate> delegate;
 
-@property (assign,nonatomic)BOOL isRuning;
+@property(assign, nonatomic) BOOL isRuning;
 
-@property (strong,nonatomic)NSNumber *status;
+@property(strong, nonatomic) NSNumber *status;
 
-@property (strong,nonatomic)NSIndexPath *indexPath;
+@property(strong, nonatomic) NSIndexPath *indexPath;
 
--(void)setInformationMac:(NSString *)macID name:(NSString *)name indexPath:(NSIndexPath *)indexPath;
+- (void)setInformationMac:(NSString *)macID name:(NSString *)name indexPath:(NSIndexPath *)indexPath;
 
--(void)setNormalImage;
+- (void)setNormalImage;
 
 @end
 

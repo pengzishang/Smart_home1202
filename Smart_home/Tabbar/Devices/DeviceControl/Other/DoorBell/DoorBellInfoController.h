@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <JFGSDK/JFGSDK.h>
+
 @interface DoorBellInfoController : UIViewController
 
-@property (strong,nonatomic)JFGSDKDevice *targetDevice;
+@property(strong, nonatomic) JFGSDKDevice *targetDevice;
 
 @end

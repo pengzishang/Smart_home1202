@@ -12,9 +12,9 @@
 
 @protocol HyPopMenuViewDelegate <NSObject>
 
-- (void)popMenuView:(HyPopMenuView*)popMenuView didSelectItemAtIndex:(NSUInteger)index;
+- (void)popMenuView:(HyPopMenuView *)popMenuView didSelectItemAtIndex:(NSUInteger)index;
 
 
-- (void)popMenuView:(HyPopMenuView*)popMenuView didLongSelectItemAtIndex:(NSUInteger)index;
+- (void)popMenuView:(HyPopMenuView *)popMenuView didLongSelectItemAtIndex:(NSUInteger)index;
 //....
 @end

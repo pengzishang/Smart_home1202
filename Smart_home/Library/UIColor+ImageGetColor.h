@@ -11,19 +11,19 @@
 
 @interface UIView (GetImgae)
 
--(UIImage *)imageRepresentation;
+- (UIImage *)imageRepresentation;
 
 @end
 
 @interface UIColor (ImageGetColor)
 
-+ (UIColor*) getPixelColorAtLocation:(CGPoint)point inImage:(UIImage *)image;
++ (UIColor *)getPixelColorAtLocation:(CGPoint)point inImage:(UIImage *)image;
 
 @end
 
 
 @interface UIImage (Tint)
 
-- (UIImage *) imageWithTintColor:(UIColor *)tintColor;
+- (UIImage *)imageWithTintColor:(UIColor *)tintColor;
 
 @end

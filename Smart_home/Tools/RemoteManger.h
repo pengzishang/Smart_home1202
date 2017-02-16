@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GCDAsyncSocket.h"
 
-@interface RemoteManger : NSObject<GCDAsyncSocketDelegate>
+@interface RemoteManger : NSObject <GCDAsyncSocketDelegate>
 
 
 /**
@@ -28,8 +28,7 @@
  @param success     <#success description#>
  @param fail        <#fail description#>
  */
--(void)sendRemoteCommand:(NSString *)commandCode deviceID:(NSString *)deviceID success:(void(^)(NSString *))success fail:(NSUInteger(^)(NSString *))fail;
-
+- (void)sendRemoteCommand:(NSString *)commandCode deviceID:(NSString *)deviceID success:(void (^)(NSString *))success fail:(NSUInteger(^)(NSString *))fail;
 
 
 /**
@@ -39,9 +38,9 @@
  @param lockID   <#lockID description#>
  @param methods  <#methods description#>
  */
--(void)sendLockRemotePassword:(NSString *)password lockID:(NSString *)lockID Methods:(NSUInteger)methods
-                      success:(void(^)(NSString *statusCode))success
-                         fail:(NSUInteger(^)(NSString *statusCode))fail;
+- (void)sendLockRemotePassword:(NSString *)password lockID:(NSString *)lockID Methods:(NSUInteger)methods
+                       success:(void (^)(NSString *statusCode))success
+                          fail:(NSUInteger(^)(NSString *statusCode))fail;
 
 /**
  同步,写入远程控制器地址
@@ -51,7 +50,7 @@
  @param success         <#success description#>
  @param fail            <#fail description#>
  */
--(void)syncRemoteDevice:(NSString *)remoteDeviceMac deviceID:(NSString *)deviceID success:(void(^)(NSString *))success fail:(NSUInteger(^)(NSString *))fail;
+- (void)syncRemoteDevice:(NSString *)remoteDeviceMac deviceID:(NSString *)deviceID success:(void (^)(NSString *))success fail:(NSUInteger(^)(NSString *))fail;
 
 
 /**
@@ -61,7 +60,7 @@
  @param number           <#number description#>
  @param remoteMacAddress <#remoteMacAddress description#>
  */
--(void)multiSaveRemoteDevices:(NSArray *)deviceIDs successNumberReturn:(void(^)(NSUInteger))number remoteMac:(NSString *)remoteMacAddress;
+- (void)multiSaveRemoteDevices:(NSArray *)deviceIDs successNumberReturn:(void (^)(NSUInteger))number remoteMac:(NSString *)remoteMacAddress;
 
 
 /**
@@ -70,8 +69,8 @@
  *  @param deviceInfoArr <#deviceInfoArr description#>
  *  @param resultArr     <#resultArr description#>
  */
--(void)multRemoteControlWithDeviceInfoArr:(NSArray *)deviceInfoArr result:(void(^)(NSArray *))resultArr;
+- (void)multRemoteControlWithDeviceInfoArr:(NSArray *)deviceInfoArr result:(void (^)(NSArray *))resultArr;
 
--(void)cutOffSocket;
+- (void)cutOffSocket;
 
 @end

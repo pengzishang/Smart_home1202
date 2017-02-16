@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface InfrareAddController : UIViewController
 
-@property(nonatomic,strong)NSMutableArray <__kindof DeviceInfo *>*devices;
-@property(nonatomic,strong)RoomInfo *roomInfo;
+@property(nonatomic, strong) NSMutableArray <__kindof DeviceInfo *> *devices;
+@property(nonatomic, strong) RoomInfo *roomInfo;
 
 @end

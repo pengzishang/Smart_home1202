@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DeviceForScene (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *deviceCustomName;
-@property (nullable, nonatomic, retain) NSString *deviceInfaredCode;
-@property (nullable, nonatomic, retain) NSString *deviceMacID;
-@property (nullable, nonatomic, retain) NSString *deviceSceneStatus;
-@property (nullable, nonatomic, retain) NSNumber *deviceType;
-@property (nullable, nonatomic, retain) SceneInfo *sceneInfo;
+@property(nullable, nonatomic, retain) NSString *deviceCustomName;
+@property(nullable, nonatomic, retain) NSString *deviceInfaredCode;
+@property(nullable, nonatomic, retain) NSString *deviceMacID;
+@property(nullable, nonatomic, retain) NSString *deviceSceneStatus;
+@property(nullable, nonatomic, retain) NSNumber *deviceType;
+@property(nullable, nonatomic, retain) SceneInfo *sceneInfo;
 
 @end
 

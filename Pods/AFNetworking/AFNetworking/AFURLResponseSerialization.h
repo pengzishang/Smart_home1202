@@ -41,8 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
  @return The object decoded from the specified response data.
  */
 - (nullable id)responseObjectForResponse:(nullable NSURLResponse *)response
-                           data:(nullable NSData *)data
-                          error:(NSError * _Nullable __autoreleasing *)error NS_SWIFT_NOTHROW;
+                                    data:(nullable NSData *)data
+                                   error:(NSError *_Nullable __autoreleasing *)error NS_SWIFT_NOTHROW;
 
 @end
 
@@ -60,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The string encoding used to serialize data received from the server, when no string encoding is specified by the response. `NSUTF8StringEncoding` by default.
  */
-@property (nonatomic, assign) NSStringEncoding stringEncoding;
+@property(nonatomic, assign) NSStringEncoding stringEncoding;
 
 /**
  Creates and returns a serializer with default configuration.
@@ -76,12 +76,12 @@ NS_ASSUME_NONNULL_BEGIN
 
  See http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
  */
-@property (nonatomic, copy, nullable) NSIndexSet *acceptableStatusCodes;
+@property(nonatomic, copy, nullable) NSIndexSet *acceptableStatusCodes;
 
 /**
  The acceptable MIME types for responses. When non-`nil`, responses with a `Content-Type` with MIME types that do not intersect with the set will result in an error during validation.
  */
-@property (nonatomic, copy, nullable) NSSet <NSString *> *acceptableContentTypes;
+@property(nonatomic, copy, nullable) NSSet <NSString *> *acceptableContentTypes;
 
 /**
  Validates the specified response and data.
@@ -96,7 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)validateResponse:(nullable NSHTTPURLResponse *)response
                     data:(nullable NSData *)data
-                   error:(NSError * _Nullable __autoreleasing *)error;
+                   error:(NSError *_Nullable __autoreleasing *)error;
 
 @end
 
@@ -119,12 +119,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Options for reading the response JSON data and creating the Foundation objects. For possible values, see the `NSJSONSerialization` documentation section "NSJSONReadingOptions". `0` by default.
  */
-@property (nonatomic, assign) NSJSONReadingOptions readingOptions;
+@property(nonatomic, assign) NSJSONReadingOptions readingOptions;
 
 /**
  Whether to remove keys with `NSNull` values from response JSON. Defaults to `NO`.
  */
-@property (nonatomic, assign) BOOL removesKeysWithNullValues;
+@property(nonatomic, assign) BOOL removesKeysWithNullValues;
 
 /**
  Creates and returns a JSON serializer with specified reading and writing options.
@@ -197,12 +197,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The property list format. Possible values are described in "NSPropertyListFormat".
  */
-@property (nonatomic, assign) NSPropertyListFormat format;
+@property(nonatomic, assign) NSPropertyListFormat format;
 
 /**
  The property list reading options. Possible values are described in "NSPropertyListMutabilityOptions."
  */
-@property (nonatomic, assign) NSPropertyListReadOptions readOptions;
+@property(nonatomic, assign) NSPropertyListReadOptions readOptions;
 
 /**
  Creates and returns a property list serializer with a specified format, read options, and write options.
@@ -239,12 +239,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The scale factor used when interpreting the image data to construct `responseImage`. Specifying a scale factor of 1.0 results in an image whose size matches the pixel-based dimensions of the image. Applying a different scale factor changes the size of the image as reported by the size property. This is set to the value of scale of the main screen by default, which automatically scales images for retina displays, for instance.
  */
-@property (nonatomic, assign) CGFloat imageScale;
+@property(nonatomic, assign) CGFloat imageScale;
 
 /**
  Whether to automatically inflate response image data for compressed formats (such as PNG or JPEG). Enabling this can significantly improve drawing performance on iOS when used with `setCompletionBlockWithSuccess:failure:`, as it allows a bitmap representation to be constructed in the background rather than on the main thread. `YES` by default.
  */
-@property (nonatomic, assign) BOOL automaticallyInflatesResponseImage;
+@property(nonatomic, assign) BOOL automaticallyInflatesResponseImage;
 #endif
 
 @end
@@ -259,14 +259,14 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The component response serializers.
  */
-@property (readonly, nonatomic, copy) NSArray <id<AFURLResponseSerialization>> *responseSerializers;
+@property(readonly, nonatomic, copy) NSArray <id <AFURLResponseSerialization>> *responseSerializers;
 
 /**
  Creates and returns a compound serializer comprised of the specified response serializers.
 
  @warning Each response serializer specified must be a subclass of `AFHTTPResponseSerializer`, and response to `-validateResponse:data:error:`.
  */
-+ (instancetype)compoundSerializerWithResponseSerializers:(NSArray <id<AFURLResponseSerialization>> *)responseSerializers;
++ (instancetype)compoundSerializerWithResponseSerializers:(NSArray <id <AFURLResponseSerialization>> *)responseSerializers;
 
 @end
 
@@ -286,7 +286,7 @@ NS_ASSUME_NONNULL_BEGIN
  `AFURLResponseSerializationErrorDomain`
  AFURLResponseSerializer errors. Error codes for `AFURLResponseSerializationErrorDomain` correspond to codes in `NSURLErrorDomain`.
  */
-FOUNDATION_EXPORT NSString * const AFURLResponseSerializationErrorDomain;
+FOUNDATION_EXPORT NSString *const AFURLResponseSerializationErrorDomain;
 
 /**
  ## User info dictionary keys
@@ -304,8 +304,8 @@ FOUNDATION_EXPORT NSString * const AFURLResponseSerializationErrorDomain;
  `AFNetworkingOperationFailingURLResponseDataErrorKey`
  The corresponding value is an `NSData` containing the original data of the operation associated with an error. This key is only present in the `AFURLResponseSerializationErrorDomain`.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingOperationFailingURLResponseErrorKey;
+FOUNDATION_EXPORT NSString *const AFNetworkingOperationFailingURLResponseErrorKey;
 
-FOUNDATION_EXPORT NSString * const AFNetworkingOperationFailingURLResponseDataErrorKey;
+FOUNDATION_EXPORT NSString *const AFNetworkingOperationFailingURLResponseDataErrorKey;
 
 NS_ASSUME_NONNULL_END

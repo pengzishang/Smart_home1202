@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface RoomAddDeviceController : UITableViewController
 
-@property (nonatomic,strong)RoomInfo *roomInfo;
-@property (nonatomic,strong)NSMutableArray <__kindof DeviceInfo *>*devicesOfRoom;
-@property (nonatomic,strong)NSMutableArray *devicesOfAll;
-@property (nonatomic,strong)NSString *enterId;//进入此Control的视图ID
+@property(nonatomic, strong) RoomInfo *roomInfo;
+@property(nonatomic, strong) NSMutableArray <__kindof DeviceInfo *> *devicesOfRoom;
+@property(nonatomic, strong) NSMutableArray *devicesOfAll;
+@property(nonatomic, strong) NSString *enterId;//进入此Control的视图ID
 
 @end

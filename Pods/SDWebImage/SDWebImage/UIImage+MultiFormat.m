@@ -21,17 +21,17 @@
     if (!data) {
         return nil;
     }
-    
+
     UIImage *image;
     NSString *imageContentType = [NSData sd_contentTypeForImageData:data];
     if ([imageContentType isEqualToString:@"image/gif"]) {
         image = [UIImage sd_animatedGIFWithData:data];
     }
 #ifdef SD_WEBP
-    else if ([imageContentType isEqualToString:@"image/webp"])
-    {
-        image = [UIImage sd_imageWithWebPData:data];
-    }
+        else if ([imageContentType isEqualToString:@"image/webp"])
+        {
+            image = [UIImage sd_imageWithWebPData:data];
+        }
 #endif
     else {
         image = [[UIImage alloc] initWithData:data];
@@ -48,9 +48,9 @@
 }
 
 
-+(UIImageOrientation)sd_imageOrientationFromImageData:(NSData *)imageData {
++ (UIImageOrientation)sd_imageOrientationFromImageData:(NSData *)imageData {
     UIImageOrientation result = UIImageOrientationUp;
-    CGImageSourceRef imageSource = CGImageSourceCreateWithData((__bridge CFDataRef)imageData, NULL);
+    CGImageSourceRef imageSource = CGImageSourceCreateWithData((__bridge CFDataRef) imageData, NULL);
     if (imageSource) {
         CFDictionaryRef properties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL);
         if (properties) {
@@ -71,9 +71,10 @@
 }
 
 #pragma mark EXIF orientation tag converter
+
 // Convert an EXIF image orientation to an iOS one.
 // reference see here: http://sylvana.net/jpegcrop/exif_orientation.html
-+ (UIImageOrientation) sd_exifOrientationToiOSOrientation:(int)exifOrientation {
++ (UIImageOrientation)sd_exifOrientationToiOSOrientation:(int)exifOrientation {
     UIImageOrientation orientation = UIImageOrientationUp;
     switch (exifOrientation) {
         case 1:
@@ -112,7 +113,6 @@
     }
     return orientation;
 }
-
 
 
 @end

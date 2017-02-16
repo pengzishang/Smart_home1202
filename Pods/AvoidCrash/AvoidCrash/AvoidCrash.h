@@ -30,7 +30,6 @@
 #define AvoidCrashDefaultIgnore     @"This framework default is to ignore this operation to avoid crash."
 
 
-
 @interface AvoidCrash : NSObject
 
 

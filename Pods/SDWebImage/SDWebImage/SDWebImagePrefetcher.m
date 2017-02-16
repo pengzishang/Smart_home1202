@@ -10,14 +10,14 @@
 
 @interface SDWebImagePrefetcher ()
 
-@property (strong, nonatomic) SDWebImageManager *manager;
-@property (strong, nonatomic) NSArray *prefetchURLs;
-@property (assign, nonatomic) NSUInteger requestedCount;
-@property (assign, nonatomic) NSUInteger skippedCount;
-@property (assign, nonatomic) NSUInteger finishedCount;
-@property (assign, nonatomic) NSTimeInterval startedTime;
-@property (copy, nonatomic) SDWebImagePrefetcherCompletionBlock completionBlock;
-@property (copy, nonatomic) SDWebImagePrefetcherProgressBlock progressBlock;
+@property(strong, nonatomic) SDWebImageManager *manager;
+@property(strong, nonatomic) NSArray *prefetchURLs;
+@property(assign, nonatomic) NSUInteger requestedCount;
+@property(assign, nonatomic) NSUInteger skippedCount;
+@property(assign, nonatomic) NSUInteger finishedCount;
+@property(assign, nonatomic) NSTimeInterval startedTime;
+@property(copy, nonatomic) SDWebImagePrefetcherCompletionBlock completionBlock;
+@property(copy, nonatomic) SDWebImagePrefetcherProgressBlock progressBlock;
 
 @end
 
@@ -63,12 +63,11 @@
 
         if (image) {
             if (self.progressBlock) {
-                self.progressBlock(self.finishedCount,[self.prefetchURLs count]);
+                self.progressBlock(self.finishedCount, [self.prefetchURLs count]);
             }
-        }
-        else {
+        } else {
             if (self.progressBlock) {
-                self.progressBlock(self.finishedCount,[self.prefetchURLs count]);
+                self.progressBlock(self.finishedCount, [self.prefetchURLs count]);
             }
             // Add last failed
             self.skippedCount++;
@@ -78,7 +77,7 @@
                             didPrefetchURL:self.prefetchURLs[index]
                              finishedCount:self.finishedCount
                                 totalCount:self.prefetchURLs.count
-             ];
+            ];
         }
         if (self.prefetchURLs.count > self.requestedCount) {
             dispatch_async(self.prefetcherQueue, ^{
@@ -101,7 +100,7 @@
         [self.delegate imagePrefetcher:self
                didFinishWithTotalCount:(total - self.skippedCount)
                           skippedCount:self.skippedCount
-         ];
+        ];
     }
 }
 
@@ -118,7 +117,7 @@
 
     if (urls.count == 0) {
         if (completionBlock) {
-            completionBlock(0,0);
+            completionBlock(0, 0);
         }
     } else {
         // Starts prefetching from the very first image on the list with the max allowed concurrency

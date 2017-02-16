@@ -7,22 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class DeviceInfo;
 
 @protocol DeviceDelegate <NSObject>
 
--(void)didClickLeftDrawer;
+- (void)didClickLeftDrawer;
 
--(void)didClickSceneIcon:(RoomInfo *)roomInfo;
+- (void)didClickSceneIcon:(RoomInfo *)roomInfo;
 
 @end
 
 @interface DevicesController : UITableViewController
 
-@property(nonatomic,strong) RoomInfo *currentRoom;
+@property(nonatomic, strong) RoomInfo *currentRoom;
 
-@property (nonatomic,strong)id<DeviceDelegate>delegate;
+@property(nonatomic, strong) id <DeviceDelegate> delegate;
 
--(void)setCommonRoom;
+- (void)setCommonRoom;
 
 @end

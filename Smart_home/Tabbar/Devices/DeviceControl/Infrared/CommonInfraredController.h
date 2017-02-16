@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CommonInfraredController : UIViewController
-@property(nonatomic,strong)DeviceInfo *deviceInfo;
+@property(nonatomic, strong) DeviceInfo *deviceInfo;
 @end

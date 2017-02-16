@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface InfraredViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *deviceName;
-@property (weak, nonatomic) IBOutlet UIImageView *iconImage;
-@property (weak, nonatomic) IBOutlet UILabel *deviceTypeLab;
-@property (weak, nonatomic) IBOutlet UILabel *infraredID;
+@property(weak, nonatomic) IBOutlet UILabel *deviceName;
+@property(weak, nonatomic) IBOutlet UIImageView *iconImage;
+@property(weak, nonatomic) IBOutlet UILabel *deviceTypeLab;
+@property(weak, nonatomic) IBOutlet UILabel *infraredID;
 
--(void)setInfoWithDeviceInfo:(DeviceInfo *)deviceInfo;
+- (void)setInfoWithDeviceInfo:(DeviceInfo *)deviceInfo;
 
 @end

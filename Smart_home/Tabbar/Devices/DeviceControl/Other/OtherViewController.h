@@ -10,8 +10,8 @@
 
 @interface OtherViewController : UIViewController
 
-@property (nonatomic,strong)RoomInfo *roomInfo;
-@property (nonatomic,strong)NSArray *devices;
+@property(nonatomic, strong) RoomInfo *roomInfo;
+@property(nonatomic, strong) NSArray *devices;
 
 
 @end

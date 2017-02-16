@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, InfrareDeviceType) {
-    InfrareDeviceTypeAir    =   0,
+    InfrareDeviceTypeAir = 0,
     InfrareDeviceTypeTV,
     InfrareDeviceTypeDVD,
     InfrareDeviceTypeAMP,
@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, InfrareDeviceType) {
 @interface ChooseBrandController : UIViewController
 
 
-@property(nonatomic,strong)NSMutableArray *resourseArr;
-@property(nonatomic,assign)InfrareDeviceType deviceType;
+@property(nonatomic, strong) NSMutableArray *resourseArr;
+@property(nonatomic, assign) InfrareDeviceType deviceType;
 
 @end

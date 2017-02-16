@@ -21,7 +21,7 @@ BLY_START_NONNULL
  *
  *  @param appId 注册Bugly分配的应用唯一标识
  */
-+ (void)startWithAppId:(NSString * BLY_NULLABLE)appId;
++ (void)startWithAppId:(NSString *BLY_NULLABLE)appId;
 
 /**
  *  使用指定配置初始化Bugly
@@ -29,8 +29,8 @@ BLY_START_NONNULL
  *  @param appId 注册Bugly分配的应用唯一标识
  *  @param config 传入配置的 BuglyConfig
  */
-+ (void)startWithAppId:(NSString * BLY_NULLABLE)appId
-                config:(BuglyConfig * BLY_NULLABLE)config;
++ (void)startWithAppId:(NSString *BLY_NULLABLE)appId
+                config:(BuglyConfig *BLY_NULLABLE)config;
 
 /**
  *  使用指定配置初始化Bugly
@@ -39,9 +39,9 @@ BLY_START_NONNULL
  *  @param developmentDevice 是否开发设备
  *  @param config 传入配置的 BuglyConfig
  */
-+ (void)startWithAppId:(NSString * BLY_NULLABLE)appId
++ (void)startWithAppId:(NSString *BLY_NULLABLE)appId
      developmentDevice:(BOOL)development
-                config:(BuglyConfig * BLY_NULLABLE)config;
+                config:(BuglyConfig *BLY_NULLABLE)config;
 
 /**
  *  设置用户标识
@@ -71,7 +71,7 @@ BLY_START_NONNULL
  *
  *  @return 关键数据
  */
-+ (NSDictionary * BLY_NULLABLE)allUserValues;
++ (NSDictionary *BLY_NULLABLE)allUserValues;
 
 /**
  *  设置标签

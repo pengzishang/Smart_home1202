@@ -19,13 +19,14 @@
 @optional
 
 #pragma mark - Account And connect
+
 /*!
  *  登录结果
  *
  *  @param ssession  用户登录session,只在登录成功时有效
  *  @param errorType  可能的值为 JFGErrorTypeNone(登录成功), JFGErrorTypeLoginInvalidPass, JFGErrorTypeLoginInvalidSession
  */
--(void)jfgLoginResult:(JFGErrorType)errorType;
+- (void)jfgLoginResult:(JFGErrorType)errorType;
 
 
 /**
@@ -33,7 +34,7 @@
  *
  *  @param errorType 注册错误类型
  */
--(void)jfgRegisterResult:(JFGErrorType)errorType;
+- (void)jfgRegisterResult:(JFGErrorType)errorType;
 
 
 /**
@@ -41,14 +42,14 @@
  *
  *  @param errorType 错误码
  */
--(void)jfgSendSMSResult:(JFGErrorType)errorType token:(NSString *)token;
+- (void)jfgSendSMSResult:(JFGErrorType)errorType token:(NSString *)token;
 
 /**
  *  校验验证码结果
  *
  *  @param errorType 错误码
  */
--(void)jfgVerifySMSResult:(JFGErrorType)errorType;
+- (void)jfgVerifySMSResult:(JFGErrorType)errorType;
 
 
 /**
@@ -56,7 +57,7 @@
  *
  *  @param errorType 错误码
  */
--(void)jfgSetPasswordForOpenLoginResult:(JFGErrorType)errorType;
+- (void)jfgSetPasswordForOpenLoginResult:(JFGErrorType)errorType;
 
 
 /**
@@ -65,7 +66,7 @@
  *  @param email     被修改邮箱
  *  @param errorType 错误码
  */
--(void)jfgForgetPassByEmail:(NSString *)email errorType:(JFGErrorType)errorType;
+- (void)jfgForgetPassByEmail:(NSString *)email errorType:(JFGErrorType)errorType;
 
 
 /**
@@ -73,7 +74,7 @@
  *
  *  @param online 在线状态
  */
--(void)jfgAccountOnline:(BOOL)online;
+- (void)jfgAccountOnline:(BOOL)online;
 
 
 /**
@@ -81,47 +82,48 @@
  *
  *  @param errorType 退出原因
  */
--(void)jfgLoginOutByServerWithCause:(JFGErrorType)errorType;
+- (void)jfgLoginOutByServerWithCause:(JFGErrorType)errorType;
 
 /*!
  *  用户账号属性更新
  *
  *  @param account 账户信息
  */
--(void)jfgUpdateAccount:(JFGSDKAcount *)account;
+- (void)jfgUpdateAccount:(JFGSDKAcount *)account;
 
 #pragma mark - Device Message
+
 /*!
  *  设备列表
  *
  *  @param deviceList 设备列表
  */
--(void)jfgDeviceList:(NSArray <JFGSDKDevice *> *)deviceList;
+- (void)jfgDeviceList:(NSArray <JFGSDKDevice *> *)deviceList;
 
 /**
  *  解除绑定结果
  *
  *  @param errorType 错误码
  */
--(void)jfgDeviceUnBind:(JFGErrorType)errorType;
+- (void)jfgDeviceUnBind:(JFGErrorType)errorType;
 
 /**
  *  设备版本信息
  *
  *  @param info 版本信息
  */
--(void)jfgDevVersionUpgradInfo:(JFGSDKDeviceVersionInfo *)info;
+- (void)jfgDevVersionUpgradInfo:(JFGSDKDeviceVersionInfo *)info;
 
 /**
  *  局域网设备升级回调
  */
--(void)jfgDevUpgradeInfo:(JFGSDKDeviceUpgrade *)info;
+- (void)jfgDevUpgradeInfo:(JFGSDKDeviceUpgrade *)info;
 
 
 /*!
  *  其他客户端已接听门铃的呼叫
  */
--(void)jfgOtherClientAnswerDoorbellCall;
+- (void)jfgOtherClientAnswerDoorbellCall;
 
 
 /*!
@@ -129,7 +131,7 @@
  *
  *  @param call 呼叫门铃信息
  */
--(void)jfgDoorbellCall:(JFGSDKDoorBellCall *)call;
+- (void)jfgDoorbellCall:(JFGSDKDoorBellCall *)call;
 
 
 /**
@@ -138,7 +140,7 @@
  *  @param alias     别名
  *  @param errorType 错误码
  */
--(void)jfgDeviceAlias:(NSString *)alias errorType:(JFGErrorType)errorType;
+- (void)jfgDeviceAlias:(NSString *)alias errorType:(JFGErrorType)errorType;
 
 
 /**
@@ -146,9 +148,10 @@
  *
  *  @param errorType 错误码
  */
--(void)jfgSetDeviceAliasResult:(JFGErrorType)errorType;
+- (void)jfgSetDeviceAliasResult:(JFGErrorType)errorType;
 
 #pragma mark - Server Message
+
 /*!
  *  Http请求回调
  *
@@ -156,42 +159,44 @@
  *  @param requestID 请求标示,和 #HttpGet 或 #HttpPostFile 返回值对应
  *  @param result    服务器返回消息, 仅在 JFGMsgHttpResult::ret 为200时有效
  */
--(void)jfgHttpResposeRet:(int)ret requestID:(int)requestID result:(NSString *)result;
+- (void)jfgHttpResposeRet:(int)ret requestID:(int)requestID result:(NSString *)result;
 
 
 #pragma mark- UDP通信
+
 /*!
  *  fping 回调
  */
--(void)jfgFpingRespose:(JFGSDKUDPResposeFping *)ask;
+- (void)jfgFpingRespose:(JFGSDKUDPResposeFping *)ask;
 
 /**
  *  ping respose
  *
  *  @param ask ping msg
  */
--(void)jfgPingRespose:(JFGSDKUDPResposePing *)ask;
+- (void)jfgPingRespose:(JFGSDKUDPResposePing *)ask;
 
 /**
  *  set wifi
  *
  *  @param ask setwifi msg
  */
--(void)jfgSetWifiRespose:(JFGSDKUDPResposeSetWifi *)ask;
+- (void)jfgSetWifiRespose:(JFGSDKUDPResposeSetWifi *)ask;
 
 
 #pragma mark- robot
+
 /*!
  *  收到萝卜头透传的消息
  */
--(void)jfgOnRobotTransmitMsg:(JFGSDKRobotMessage *)message;
+- (void)jfgOnRobotTransmitMsg:(JFGSDKRobotMessage *)message;
 
 /*!
  *  萝卜头消息应答
  *
  *  @param sn 消息序列号
  */
--(void)jfgOnRobotMsgAck:(int)sn;
+- (void)jfgOnRobotMsgAck:(int)sn;
 
 
 /**
@@ -200,7 +205,7 @@
  *  @param peer    对端设备标示
  *  @param msgList 消息列表（最终数据类型DataPointSeg）
  */
--(void)jfgRobotPushMsgForPeer:(NSString *)peer msgList:(NSArray <NSArray <DataPointSeg *>*>*)msgList;
+- (void)jfgRobotPushMsgForPeer:(NSString *)peer msgList:(NSArray <NSArray <DataPointSeg *> *> *)msgList;
 
 
 /**
@@ -210,7 +215,7 @@
  *  @param isDev   YES:同步来自设备，NO:来自APP操作触发
  *  @param msgList DP数据列表
  */
--(void)jfgRobotSyncDataForPeer:(NSString *)peer fromDev:(BOOL)isDev msgList:(NSArray <DataPointSeg *> *)msgList;
+- (void)jfgRobotSyncDataForPeer:(NSString *)peer fromDev:(BOOL)isDev msgList:(NSArray <DataPointSeg *> *)msgList;
 
 
 /**
@@ -218,7 +223,7 @@
  *
  *  @param netType 网络类型（WWAN网络,返回3G）
  */
--(void)jfgNetworkChanged:(JFGNetType)netType;
+- (void)jfgNetworkChanged:(JFGNetType)netType;
 
 /**
  *  加好友请求列表
@@ -226,7 +231,7 @@
  *  @param list      列表数据
  *  @param errorType 错误码
  */
--(void)jfgFriendRequestList:(NSArray <JFGSDKFriendRequestInfo *>*)list error:(JFGErrorType)errorType;
+- (void)jfgFriendRequestList:(NSArray <JFGSDKFriendRequestInfo *> *)list error:(JFGErrorType)errorType;
 
 /**
  *  好友列表
@@ -234,7 +239,7 @@
  *  @param list      列表数据
  *  @param errorType 错误码
  */
--(void)jfgFriendList:(NSArray *)list error:(JFGErrorType)errorType;
+- (void)jfgFriendList:(NSArray *)list error:(JFGErrorType)errorType;
 
 /**
  *  获取好友备注
@@ -242,7 +247,7 @@
  *  @param remark  备注名
  *  @param account 好友账号
  */
--(void)jfgGetFriendInfo:(JFGSDKFriendInfo *)info error:(JFGErrorType)errorType;
+- (void)jfgGetFriendInfo:(JFGSDKFriendInfo *)info error:(JFGErrorType)errorType;
 
 /**
  *  好友请求相关回调
@@ -250,7 +255,7 @@
  *  @param type      返回类型
  *  @param errorType 结果
  */
--(void)jfgResultIsRelatedToFriendWithType:(JFGFriendResultType)type error:(JFGErrorType)errorType;
+- (void)jfgResultIsRelatedToFriendWithType:(JFGFriendResultType)type error:(JFGErrorType)errorType;
 
 /**
  *  账号请求相关回调
@@ -258,7 +263,7 @@
  *  @param type      返回类型
  *  @param errorType 结果
  */
--(void)jfgResultIsRelatedToAccountWithType:(JFGAccountResultType)type error:(JFGErrorType)errorType;
+- (void)jfgResultIsRelatedToAccountWithType:(JFGAccountResultType)type error:(JFGErrorType)errorType;
 
 
 /**
@@ -268,8 +273,7 @@
  *  @param isExist 是否是好友
  *  @param errorType 账号是否注册（0：已注册  240：未注册）
  */
--(void)jfgCheckAccount:(NSString *)account alias:(NSString *)alias isExist:(BOOL)isExist errorType:(JFGErrorType)errorType;
-
+- (void)jfgCheckAccount:(NSString *)account alias:(NSString *)alias isExist:(BOOL)isExist errorType:(JFGErrorType)errorType;
 
 
 /**
@@ -279,7 +283,7 @@
  *  @param cid     分享的设备标示
  *  @param account 分享给的账号
  */
--(void)jfgShareResult:(JFGErrorType)ret device:(NSString *)cid forAccount:(NSString *)account;
+- (void)jfgShareResult:(JFGErrorType)ret device:(NSString *)cid forAccount:(NSString *)account;
 
 /**
  *  取消分享
@@ -288,7 +292,7 @@
  *  @param cid     同上
  *  @param account 同上
  */
--(void)jfgUnshareResult:(JFGErrorType)ret device:(NSString *)cid forAccount:(NSString *)account;
+- (void)jfgUnshareResult:(JFGErrorType)ret device:(NSString *)cid forAccount:(NSString *)account;
 
 
 /**
@@ -296,7 +300,7 @@
  *
  *  @param friendList 分享列表
  */
--(void)jfgDeviceShareList:(NSDictionary <NSString *,NSArray <JFGSDKFriendInfo *>*> *)friendList;
+- (void)jfgDeviceShareList:(NSDictionary <NSString *, NSArray <JFGSDKFriendInfo *> *> *)friendList;
 
 /**
  *  某设备未分享好友列表
@@ -304,14 +308,14 @@
  *  @param errorType 结果
  *  @param list      好友列表
  */
--(void)jfgUnshareFriendListByCidResult:(JFGErrorType)errorType list:(NSArray <JFGSDKFriendInfo *>*)list;
+- (void)jfgUnshareFriendListByCidResult:(JFGErrorType)errorType list:(NSArray <JFGSDKFriendInfo *> *)list;
 
 /**
  *  NTP时间更新
  *
  *  @param unixTimestamp unix时间戳
  */
--(void)jfgOnUpdateNTP:(uint32_t)unixTimestamp;
+- (void)jfgOnUpdateNTP:(uint32_t)unixTimestamp;
 
 
 /**
@@ -319,7 +323,7 @@
  *
  *  @param msg msgpack解析后消息
  */
--(void)jfgEfamilyMsg:(id)msg;
+- (void)jfgEfamilyMsg:(id)msg;
 
 
 /**
@@ -328,7 +332,7 @@
  *  @param infoList  消息列表
  *  @param errorType 错误码
  */
--(void)jfgFeedBackWithInfoList:(NSArray <JFGSDKFeedBackInfo *> *)infoList errorType:(JFGErrorType)errorType;
+- (void)jfgFeedBackWithInfoList:(NSArray <JFGSDKFeedBackInfo *> *)infoList errorType:(JFGErrorType)errorType;
 
 
 /**
@@ -336,7 +340,7 @@
  *
  *  @param errorType 错误码
  */
--(void)jfgSendFeedBackResult:(JFGErrorType)errorType;
+- (void)jfgSendFeedBackResult:(JFGErrorType)errorType;
 
 
 /**
@@ -344,8 +348,7 @@
  *
  *  @param errorType  error type
  */
--(void)jfgUploadDeviceTokenResult:(JFGErrorType)errorType;
-
+- (void)jfgUploadDeviceTokenResult:(JFGErrorType)errorType;
 
 
 @end

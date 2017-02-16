@@ -16,75 +16,66 @@
 
 #pragma mark - Lifecycle
 
-+ (instancetype)animation
-{
-  return [[self alloc] init];
++ (instancetype)animation {
+    return [[self alloc] init];
 }
 
-+ (instancetype)animationWithPropertyNamed:(NSString *)aName
-{
-  POPBasicAnimation *anim = [self animation];
-  anim.property = [POPAnimatableProperty propertyWithName:aName];
-  return anim;
++ (instancetype)animationWithPropertyNamed:(NSString *)aName {
+    POPBasicAnimation *anim = [self animation];
+    anim.property = [POPAnimatableProperty propertyWithName:aName];
+    return anim;
 }
 
-- (void)_initState
-{
-  _state = new POPBasicAnimationState(self);
+- (void)_initState {
+    _state = new POPBasicAnimationState(self);
 }
 
-+ (instancetype)linearAnimation
-{
-  POPBasicAnimation *anim = [self animation];
-  anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-  return anim;
++ (instancetype)linearAnimation {
+    POPBasicAnimation *anim = [self animation];
+    anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    return anim;
 }
 
-+ (instancetype)easeInAnimation
-{
-  POPBasicAnimation *anim = [self animation];
-  anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-  return anim;
++ (instancetype)easeInAnimation {
+    POPBasicAnimation *anim = [self animation];
+    anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    return anim;
 }
 
-+ (instancetype)easeOutAnimation
-{
-  POPBasicAnimation *anim = [self animation];
-  anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-  return anim;
++ (instancetype)easeOutAnimation {
+    POPBasicAnimation *anim = [self animation];
+    anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    return anim;
 }
 
-+ (instancetype)easeInEaseOutAnimation
-{
-  POPBasicAnimation *anim = [self animation];
-  anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-  return anim;
++ (instancetype)easeInEaseOutAnimation {
+    POPBasicAnimation *anim = [self animation];
+    anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    return anim;
 }
 
-+ (instancetype)defaultAnimation
-{
-  POPBasicAnimation *anim = [self animation];
-  anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
-  return anim;
++ (instancetype)defaultAnimation {
+    POPBasicAnimation *anim = [self animation];
+    anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
+    return anim;
 }
 
-- (id)init
-{
-  return [self _init];
+- (id)init {
+    return [self _init];
 }
 
 #pragma mark - Properties
 
 DEFINE_RW_PROPERTY(POPBasicAnimationState, duration, setDuration:, CFTimeInterval);
+
 DEFINE_RW_PROPERTY_OBJ(POPBasicAnimationState, timingFunction, setTimingFunction:, CAMediaTimingFunction*, __state->updatedTimingFunction(););
 
 #pragma mark - Utility
 
-- (void)_appendDescription:(NSMutableString *)s debug:(BOOL)debug
-{
-  [super _appendDescription:s debug:debug];
-  if (__state->duration)
-    [s appendFormat:@"; duration = %f", __state->duration];
+- (void)_appendDescription:(NSMutableString *)s debug:(BOOL)debug {
+    [super _appendDescription:s debug:debug];
+    if (__state->duration)
+        [s appendFormat:@"; duration = %f", __state->duration];
 }
 
 @end
@@ -92,15 +83,15 @@ DEFINE_RW_PROPERTY_OBJ(POPBasicAnimationState, timingFunction, setTimingFunction
 @implementation POPBasicAnimation (NSCopying)
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-  
-  POPBasicAnimation *copy = [super copyWithZone:zone];
-  
-  if (copy) {
-    copy.duration = self.duration;
-    copy.timingFunction = self.timingFunction; // not a 'copy', but timing functions are publicly immutable.
-  }
-  
-  return copy;
+
+    POPBasicAnimation *copy = [super copyWithZone:zone];
+
+    if (copy) {
+        copy.duration = self.duration;
+        copy.timingFunction = self.timingFunction; // not a 'copy', but timing functions are publicly immutable.
+    }
+
+    return copy;
 }
 
 @end

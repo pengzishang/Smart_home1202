@@ -20,23 +20,23 @@ typedef NS_ENUM(NSUInteger, HyPopMenuViewAnimationType) {
      *  仿新浪App弹出菜单。
      *  Sina App fake pop-up menu
      */
-    HyPopMenuViewAnimationTypeSina,
+            HyPopMenuViewAnimationTypeSina,
     /**
      *  带有粘性的动画
      *  Animation with viscous
      */
-    HyPopMenuViewAnimationTypeViscous,
+            HyPopMenuViewAnimationTypeViscous,
     /**
      *  底部中心点弹出动画
      *  The bottom of the pop-up animation center
      */
-    HyPopMenuViewAnimationTypeCenter,
-    
+            HyPopMenuViewAnimationTypeCenter,
+
     /**
      *  左和右弹出动画
      *  Left and right pop Anime
      */
-    HyPopMenuViewAnimationTypeLeftAndRight,
+            HyPopMenuViewAnimationTypeLeftAndRight,
 };
 
 typedef enum : NSUInteger {
@@ -44,31 +44,31 @@ typedef enum : NSUInteger {
      *  light模糊背景类型。
      *  light blurred background type.
      */
-    HyPopMenuViewBackgroundTypeLightBlur,
+            HyPopMenuViewBackgroundTypeLightBlur,
 
     /**
      *  dark模糊背景类型。
      *  dark blurred background type.
      */
-    HyPopMenuViewBackgroundTypeDarkBlur,
+            HyPopMenuViewBackgroundTypeDarkBlur,
 
     /**
      *  偏白半透明背景类型。
      *  Partial white translucent background type.
      */
-    HyPopMenuViewBackgroundTypeLightTranslucent,
+            HyPopMenuViewBackgroundTypeLightTranslucent,
 
     /**
      *  偏黑半透明背景类型。
      *  Partial translucent black background type.
      */
-    HyPopMenuViewBackgroundTypeDarkTranslucent,
+            HyPopMenuViewBackgroundTypeDarkTranslucent,
 
     /**
      *  白~黑渐变色。
      *  Gradient color.
      */
-    HyPopMenuViewBackgroundTypeGradient,
+            HyPopMenuViewBackgroundTypeGradient,
 
 } HyPopMenuViewBackgroundType; //背景类型
 //Background type
@@ -77,41 +77,41 @@ typedef enum : NSUInteger {
 
 /*=====================================================================================*/
 
-@property (nonatomic, retain) NSArray<PopMenuModel*>* dataSource;
+@property(nonatomic, retain) NSArray<PopMenuModel *> *dataSource;
 
 /**
  *  背景类型默认为 'HyPopMenuViewBackgroundTypeLightBlur'
  *  The default is 'HyPopMenuViewBackgroundTypeLightBlur'
 */
-@property (nonatomic, assign) HyPopMenuViewBackgroundType backgroundType;
+@property(nonatomic, assign) HyPopMenuViewBackgroundType backgroundType;
 
 /**
  *  动画类型
  *  animation Type
  */
-@property (nonatomic, assign) HyPopMenuViewAnimationType animationType;
+@property(nonatomic, assign) HyPopMenuViewAnimationType animationType;
 
 /**
  *  自动识别颜色主题，默认为关闭。
  *  The default is false.
  */
-@property (nonatomic, assign) BOOL automaticIdentificationColor;
+@property(nonatomic, assign) BOOL automaticIdentificationColor;
 
 /**
  *  HyPopMenuViewDelegate
  */
-@property (nonatomic, assign) id<HyPopMenuViewDelegate> delegate;
+@property(nonatomic, assign) id <HyPopMenuViewDelegate> delegate;
 
 /**
  *  默认为 10.0f         取值范围: 0.0f ~ 20.0f
  *  default is 10.0f    Range: 0 ~ 20
  */
-@property (nonatomic, assign) CGFloat popMenuSpeed;
+@property(nonatomic, assign) CGFloat popMenuSpeed;
 
 /**
  *  顶部自定义View
  */
-@property (nonatomic, strong) UIView* topView;
+@property(nonatomic, strong) UIView *topView;
 
 + (instancetype)sharedPopMenuManager;
 
@@ -123,7 +123,7 @@ typedef enum : NSUInteger {
 
 @end
 
-UIKIT_EXTERN NSString* const HyPopMenuViewWillShowNotification;
-UIKIT_EXTERN NSString* const HyPopMenuViewDidShowNotification;
-UIKIT_EXTERN NSString* const HyPopMenuViewWillHideNotification;
-UIKIT_EXTERN NSString* const HyPopMenuViewDidHideNotification;
+UIKIT_EXTERN NSString *const HyPopMenuViewWillShowNotification;
+UIKIT_EXTERN NSString *const HyPopMenuViewDidShowNotification;
+UIKIT_EXTERN NSString *const HyPopMenuViewWillHideNotification;
+UIKIT_EXTERN NSString *const HyPopMenuViewDidHideNotification;

@@ -8,15 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "CoreData/CoreData.h"
+
 @class DeviceInfo;
 @class RoomInfo;
 @class SceneInfo;
 
 @interface TTSCoreDataManager : NSObject
 
-@property(retain,nonatomic)NSManagedObjectContext * managedObjectContext;
-@property(retain,nonatomic)NSManagedObjectModel * managedObjectModel;
-@property(retain,nonatomic)NSPersistentStoreCoordinator * persistentStoreCoordinator;
+@property(retain, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property(retain, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property(retain, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 + (TTSCoreDataManager *)getInstance;
 

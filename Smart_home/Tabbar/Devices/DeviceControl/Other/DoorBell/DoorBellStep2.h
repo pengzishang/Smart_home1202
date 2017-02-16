@@ -10,6 +10,6 @@
 
 @interface DoorBellStep2 : UITableViewController
 
-@property (nonatomic,copy)NSString *wifiSSID;
+@property(nonatomic, copy) NSString *wifiSSID;
 
 @end

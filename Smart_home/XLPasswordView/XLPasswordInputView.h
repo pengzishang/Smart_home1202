@@ -29,31 +29,31 @@
 /**
  *  密码长度 默认6
  */
-@property (nonatomic , assign ) NSUInteger passwordLength;
+@property(nonatomic, assign) NSUInteger passwordLength;
 /**
  *  grid line color 默认紫色
  */
-@property (nonatomic , strong) UIColor  *gridLineColor;
+@property(nonatomic, strong) UIColor *gridLineColor;
 /**
  *  grid line width 默认1.0f
  */
-@property (nonatomic , assign) CGFloat  gridLineWidth;
+@property(nonatomic, assign) CGFloat gridLineWidth;
 /**
  *  dot color 默认紫色
  */
-@property (nonatomic , strong) UIColor  *dotColor;
+@property(nonatomic, strong) UIColor *dotColor;
 /**
  *  dot width 默认12.0f
  */
-@property (nonatomic , assign) CGFloat  dotWidth;
+@property(nonatomic, assign) CGFloat dotWidth;
 /**
  *  label text color 默认 黑色
  */
-@property (nonatomic , strong) UIColor  *textColor;
+@property(nonatomic, strong) UIColor *textColor;
 /**
  *  label text font 默认 15
  */
-@property (nonatomic , strong) UIFont *font;
+@property(nonatomic, strong) UIFont *font;
 /**
  *  明文 / 密文 , 默认密文(YES)
  */
@@ -61,19 +61,19 @@
 /**
  *  用户当前输入的密码个数 , 设置这个值,可以修改圆点显示
  */
-@property (nonatomic , assign) NSInteger inputCount;
+@property(nonatomic, assign) NSInteger inputCount;
 /**
  *  传递到外界用户输入的字符串
  */
-@property (nonatomic, copy) void(^passwordBlock)(NSString *password);
+@property(nonatomic, copy) void (^passwordBlock)(NSString *password);
 /**
  *  用户输入的密码
  */
-@property (nonatomic , strong , readonly) NSString  *password;
+@property(nonatomic, strong, readonly) NSString *password;
 /**
  *  delegate
  */
-@property (nonatomic , weak) id <XLPasswordInputViewDelegate>delegate;
+@property(nonatomic, weak) id <XLPasswordInputViewDelegate> delegate;
 
 /**
  *  快速创建对象,
@@ -83,6 +83,7 @@
  *  @return XLPasswordInputView实例对象
  */
 + (instancetype)passwordInputViewWithPasswordLength:(NSInteger)passwordLength;
+
 /**
  *  清空密码,重置
  */

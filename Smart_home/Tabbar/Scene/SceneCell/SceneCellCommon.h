@@ -10,19 +10,19 @@
 
 @protocol SceneCellDelegata <NSObject>
 
--(void)didClickSceneBtnTag:(NSUInteger)tag index:(NSIndexPath *)index;
+- (void)didClickSceneBtnTag:(NSUInteger)tag index:(NSIndexPath *)index;
 
 @end
 
 @interface SceneCellCommon : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *btn1;
-@property (weak, nonatomic) IBOutlet UIButton *btn2;
-@property (weak, nonatomic) IBOutlet UIButton *btn3;
-@property (weak, nonatomic) IBOutlet UILabel *nameLab;
-@property (weak, nonatomic) IBOutlet UIImageView *iconImage;
-@property (assign,nonatomic)id<SceneCellDelegata>delegate;
+@property(weak, nonatomic) IBOutlet UIButton *btn1;
+@property(weak, nonatomic) IBOutlet UIButton *btn2;
+@property(weak, nonatomic) IBOutlet UIButton *btn3;
+@property(weak, nonatomic) IBOutlet UILabel *nameLab;
+@property(weak, nonatomic) IBOutlet UIImageView *iconImage;
+@property(assign, nonatomic) id <SceneCellDelegata> delegate;
 
--(void)setImageWithStatus:(NSUInteger)deviceStatus deviceType:(NSUInteger)deviceType index:(NSIndexPath *)index;
+- (void)setImageWithStatus:(NSUInteger)deviceStatus deviceType:(NSUInteger)deviceType index:(NSIndexPath *)index;
 
 @end

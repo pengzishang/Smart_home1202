@@ -11,6 +11,6 @@
 @interface PopTopView : UIView
 
 
-+(instancetype)popTopViewInit;
++ (instancetype)popTopViewInit;
 
 @end

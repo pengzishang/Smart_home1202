@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <JFGSDK/JFGSDK.h>
+
 @interface DoorBellController : UIViewController
 
-@property (nonatomic,strong)NSString *editName;
-@property (nonatomic,strong)JFGSDKDevice *editDevice;
+@property(nonatomic, strong) NSString *editName;
+@property(nonatomic, strong) JFGSDKDevice *editDevice;
 
 @end

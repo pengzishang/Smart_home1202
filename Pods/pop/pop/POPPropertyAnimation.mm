@@ -16,90 +16,87 @@
 #undef __state
 #define __state ((POPPropertyAnimationState *)_state)
 
-- (void)_initState
-{
-  _state = new POPPropertyAnimationState(self);
+- (void)_initState {
+    _state = new POPPropertyAnimationState(self);
 }
 
 #pragma mark - Properties
 
 DEFINE_RW_FLAG(POPPropertyAnimationState, additive, isAdditive, setAdditive:);
+
 DEFINE_RW_PROPERTY(POPPropertyAnimationState, roundingFactor, setRoundingFactor:, CGFloat);
+
 DEFINE_RW_PROPERTY(POPPropertyAnimationState, clampMode, setClampMode:, NSUInteger);
-DEFINE_RW_PROPERTY_OBJ(POPPropertyAnimationState, property, setProperty:, POPAnimatableProperty*, ((POPPropertyAnimationState*)_state)->updatedDynamicsThreshold(););
-DEFINE_RW_PROPERTY_OBJ_COPY(POPPropertyAnimationState, progressMarkers, setProgressMarkers:, NSArray*, ((POPPropertyAnimationState*)_state)->updatedProgressMarkers(););
 
-- (id)fromValue
-{
-  return POPBox(__state->fromVec, __state->valueType);
+DEFINE_RW_PROPERTY_OBJ(POPPropertyAnimationState, property, setProperty:, POPAnimatableProperty*, ((POPPropertyAnimationState *) _state)->updatedDynamicsThreshold(););
+
+DEFINE_RW_PROPERTY_OBJ_COPY(POPPropertyAnimationState, progressMarkers, setProgressMarkers:, NSArray*, ((POPPropertyAnimationState *) _state)->updatedProgressMarkers(););
+
+- (id)fromValue {
+    return POPBox(__state->fromVec, __state->valueType);
 }
 
-- (void)setFromValue:(id)aValue
-{
-  POPPropertyAnimationState *s = __state;
-  VectorRef vec = POPUnbox(aValue, s->valueType, s->valueCount, YES);
-  if (!vec_equal(vec, s->fromVec)) {
-    s->fromVec = vec;
+- (void)setFromValue:(id)aValue {
+    POPPropertyAnimationState *s = __state;
+    VectorRef vec = POPUnbox(aValue, s->valueType, s->valueCount, YES);
+    if (!vec_equal(vec, s->fromVec)) {
+        s->fromVec = vec;
 
-    if (s->tracing) {
-      [s->tracer updateFromValue:aValue];
+        if (s->tracing) {
+            [s->tracer updateFromValue:aValue];
+        }
     }
-  }
 }
 
-- (id)toValue
-{
-  return POPBox(__state->toVec, __state->valueType);
+- (id)toValue {
+    return POPBox(__state->toVec, __state->valueType);
 }
 
-- (void)setToValue:(id)aValue
-{
-  POPPropertyAnimationState *s = __state;
-  VectorRef vec = POPUnbox(aValue, s->valueType, s->valueCount, YES);
+- (void)setToValue:(id)aValue {
+    POPPropertyAnimationState *s = __state;
+    VectorRef vec = POPUnbox(aValue, s->valueType, s->valueCount, YES);
 
-  if (!vec_equal(vec, s->toVec)) {
-    s->toVec = vec;
+    if (!vec_equal(vec, s->toVec)) {
+        s->toVec = vec;
 
-    // invalidate to dependent state
-    s->didReachToValue = false;
-    s->distanceVec = NULL;
+        // invalidate to dependent state
+        s->didReachToValue = false;
+        s->distanceVec = NULL;
 
-    if (s->tracing) {
-      [s->tracer updateToValue:aValue];
+        if (s->tracing) {
+            [s->tracer updateToValue:aValue];
+        }
+
+        // automatically unpause active animations
+        if (s->active && s->paused) {
+            s->setPaused(false);
+        }
     }
-
-    // automatically unpause active animations
-    if (s->active && s->paused) {
-      s->setPaused(false);
-    }
-  }
 }
 
-- (id)currentValue
-{
-  return POPBox(__state->currentValue(), __state->valueType);
+- (id)currentValue {
+    return POPBox(__state->currentValue(), __state->valueType);
 }
 
 #pragma mark - Utility
 
-- (void)_appendDescription:(NSMutableString *)s debug:(BOOL)debug
-{
-  [s appendFormat:@"; from = %@; to = %@", describe(__state->fromVec), describe(__state->toVec)];
+- (void)_appendDescription:(NSMutableString *)s debug:(BOOL)debug {
+    [s appendFormat:@"; from = %@; to = %@", describe(__state->fromVec), describe(__state->toVec)];
 
-  if (_state->active)
-    [s appendFormat:@"; currentValue = %@", describe(__state->currentValue())];
+    if (_state->active)
+        [s appendFormat:@"; currentValue = %@", describe(__state->currentValue())];
 
-  if (__state->velocityVec && 0 != __state->velocityVec->norm())
-    [s appendFormat:@"; velocity = %@", describe(__state->velocityVec)];
+    if (__state->velocityVec && 0 != __state->velocityVec->norm())
+        [s appendFormat:@"; velocity = %@", describe(__state->velocityVec)];
 
-  if (!self.removedOnCompletion)
-    [s appendFormat:@"; removedOnCompletion = %@", POPStringFromBOOL(self.removedOnCompletion)];
+    if (!self.removedOnCompletion)
+        [s appendFormat:@"; removedOnCompletion = %@", POPStringFromBOOL(self.removedOnCompletion)];
 
-  if (__state->progressMarkers)
-    [s appendFormat:@"; progressMarkers = [%@]", [__state->progressMarkers componentsJoinedByString:@", "]];
+    if (__state->progressMarkers)
+        [s appendFormat:@"; progressMarkers = [%@]", [__state->progressMarkers componentsJoinedByString:@", "]];
 
-  if (_state->active)
-    [s appendFormat:@"; progress = %f", __state->progress];
+    if (_state->active)
+        [s appendFormat:@"; progress = %f", __state->progress];
 }
 
 @end
@@ -107,19 +104,19 @@ DEFINE_RW_PROPERTY_OBJ_COPY(POPPropertyAnimationState, progressMarkers, setProgr
 @implementation POPPropertyAnimation (NSCopying)
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-  
-  POPPropertyAnimation *copy = [super copyWithZone:zone];
-  
-  if (copy) {
-    copy.property = [self.property copyWithZone:zone];
-    copy.fromValue = self.fromValue;
-    copy.toValue = self.toValue;
-    copy.roundingFactor = self.roundingFactor;
-    copy.clampMode = self.clampMode;
-    copy.additive = self.additive;
-  }
-  
-  return copy;
+
+    POPPropertyAnimation *copy = [super copyWithZone:zone];
+
+    if (copy) {
+        copy.property = [self.property copyWithZone:zone];
+        copy.fromValue = self.fromValue;
+        copy.toValue = self.toValue;
+        copy.roundingFactor = self.roundingFactor;
+        copy.clampMode = self.clampMode;
+        copy.additive = self.additive;
+    }
+
+    return copy;
 }
 
 @end

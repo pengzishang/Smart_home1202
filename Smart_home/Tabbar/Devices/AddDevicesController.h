@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class DeviceInfo;
 
 @interface AddDevicesController : UIViewController
 
 //@property (nonatomic,strong)RoomInfo *currentRoomInfo;
-@property (strong,nonatomic)NSArray <__kindof DeviceInfo *>*deviceOfRoom;
+@property(strong, nonatomic) NSArray <__kindof DeviceInfo *> *deviceOfRoom;
 
-@property (strong,nonatomic)RoomInfo *roomInfo;
+@property(strong, nonatomic) RoomInfo *roomInfo;
 
 @end

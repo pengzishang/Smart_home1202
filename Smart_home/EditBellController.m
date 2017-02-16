@@ -10,9 +10,10 @@
 #import "DoorBellController.h"
 #import "TTSUtility.h"
 #import "SetBellWifiController.h"
-@interface EditBellController ()<UITextFieldDelegate,UITableViewDelegate,UIGestureRecognizerDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *namePad;
-@property (weak, nonatomic) IBOutlet UILabel *ssidLab;
+
+@interface EditBellController () <UITextFieldDelegate, UITableViewDelegate, UIGestureRecognizerDelegate>
+@property(weak, nonatomic) IBOutlet UITextField *namePad;
+@property(weak, nonatomic) IBOutlet UILabel *ssidLab;
 
 @end
 
@@ -20,18 +21,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.namePad.delegate=self;
-    self.namePad.text=self.device.alias;
-    
-    
+    self.namePad.delegate = self;
+    self.namePad.text = self.device.alias;
+
+
     [TTSUtility getVideoWifiInfoWithCid:self.device.uuid success:^(NSString *wifiSSID) {
-        _ssidLab.text=[NSString stringWithFormat:@"当前:%@",wifiSSID];
-    } failure:^(NSInteger type) {
-        
+        _ssidLab.text = [NSString stringWithFormat:@"当前:%@", wifiSSID];
+    }                           failure:^(NSInteger type) {
+
     }];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -43,13 +44,11 @@
 }
 
 
-
 #pragma mark - Table view data source
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView endEditing:YES];
-    if (indexPath.section==0&&indexPath.row==3) {
+    if (indexPath.section == 0 && indexPath.row == 3) {
         [self performSegueWithIdentifier:@"door2Wifi" sender:self.device];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -115,15 +114,13 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"editbell2mainBell"]) {
-        DoorBellController *target=segue.destinationViewController;
-        target.editName=self.namePad.text;
-        target.editDevice=self.device;
-    }
-    else if ([segue.identifier isEqualToString:@"door2Wifi"])
-    {
-        SetBellWifiController *target=segue.destinationViewController;
-        target.device=self.device;
-        target.ssid=_ssidLab.text;
+        DoorBellController *target = segue.destinationViewController;
+        target.editName = self.namePad.text;
+        target.editDevice = self.device;
+    } else if ([segue.identifier isEqualToString:@"door2Wifi"]) {
+        SetBellWifiController *target = segue.destinationViewController;
+        target.device = self.device;
+        target.ssid = _ssidLab.text;
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

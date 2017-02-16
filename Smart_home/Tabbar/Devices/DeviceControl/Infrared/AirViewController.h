@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface AirViewController : UIViewController
 
-@property(nonatomic,strong)DeviceInfo *deviceInfo;
+@property(nonatomic, strong) DeviceInfo *deviceInfo;
 //-(instancetype)initWithDeviceInfo:(DeviceInfo *)deviceInfo;
 @end

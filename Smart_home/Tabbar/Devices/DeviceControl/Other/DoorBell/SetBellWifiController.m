@@ -8,12 +8,12 @@
 
 #import "SetBellWifiController.h"
 #import "TTSUtility.h"
-@interface SetBellWifiController ()<JFGSDKCallbackDelegate>
-{
+
+@interface SetBellWifiController () <JFGSDKCallbackDelegate> {
     NSTimer *timer;
 }
-@property (weak, nonatomic) IBOutlet UITextField *wifiField;
-@property (weak, nonatomic) IBOutlet UITextField *pwdField;
+@property(weak, nonatomic) IBOutlet UITextField *wifiField;
+@property(weak, nonatomic) IBOutlet UITextField *pwdField;
 
 @end
 
@@ -21,32 +21,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _wifiField.placeholder=_ssid;
+    _wifiField.placeholder = _ssid;
     [JFGSDK addDelegate:self];
-    self.tableView.tableFooterView=[[UIView alloc]init];
+    self.tableView.tableFooterView = [[UIView alloc] init];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 - (IBAction)saveWifi:(UIBarButtonItem *)sender {
     [TTSUtility startAnimationWithMainTitle:@"读取数据中" subTitle:@""];
     timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
     [timer fire];
-    
+
 }
 
--(void)timerFired:(id)sender
-{
+- (void)timerFired:(id)sender {
     [JFGSDK fping:@"255.255.255.255"];
 }
 
--(void)jfgFpingRespose:(JFGSDKUDPResposeFping *)ask
-{
+- (void)jfgFpingRespose:(JFGSDKUDPResposeFping *)ask {
     [timer invalidate];
     [TTSUtility stopAnimationWithMainTitle:@"保存完成" subTitle:@""];
-    NSLog(@"mac:%@  ver:%@ address:%@ cid:%@",ask.mac,ask.ver,ask.address,ask.cid);
+    NSLog(@"mac:%@  ver:%@ address:%@ cid:%@", ask.mac, ask.ver, ask.address, ask.cid);
     [JFGSDK wifiSetWithSSid:_wifiField.text keyword:_pwdField.text cid:ask.cid ipAddr:ask.address mac:ask.mac];
     [self.navigationController popViewControllerAnimated:YES];
 }

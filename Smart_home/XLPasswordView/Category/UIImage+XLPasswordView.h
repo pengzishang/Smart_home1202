@@ -20,6 +20,7 @@
  *  @return 网格图片
  */
 + (instancetype)xl_passwordInputGridImageWithGridCount:(NSInteger)gridCount gridLineColor:(UIColor *)gridLineColor gridLineWidth:(CGFloat)gridLineWidth;
+
 /**
  *  返回一张指定size的指定颜色的圆形拉伸保护的纯色图片
  */

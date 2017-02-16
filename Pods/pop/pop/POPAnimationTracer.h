@@ -37,13 +37,13 @@
  @abstract Property representing all recorded events.
  @discussion Events are returned in order of occurence.
  */
-@property (nonatomic, assign, readonly) NSArray *allEvents;
+@property(nonatomic, assign, readonly) NSArray *allEvents;
 
 /**
  @abstract Property representing all recorded write events for convenience.
  @discussion Events are returned in order of occurence.
  */
-@property (nonatomic, assign, readonly) NSArray *writeEvents;
+@property(nonatomic, assign, readonly) NSArray *writeEvents;
 
 /**
  @abstract Queries for events of specified type.
@@ -55,6 +55,6 @@
 /**
  @abstract Property indicating whether tracer should automatically log events and reset collection on animation completion.
  */
-@property (nonatomic, assign) BOOL shouldLogAndResetOnCompletion;
+@property(nonatomic, assign) BOOL shouldLogAndResetOnCompletion;
 
 @end

@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface DeviceInfraredController : UIViewController
 
-@property(nonatomic,strong)RoomInfo *roomInfo;
-@property(nonatomic,strong)NSMutableArray <__kindof DeviceInfo *>*devices;
-@property (nonatomic,strong)DeviceInfo *deviceForAdding;
-@property (nonatomic,strong)DeviceInfo *deviceForChanging;
-@property (nonatomic,strong)DeviceInfo *deviceForDelete;
+@property(nonatomic, strong) RoomInfo *roomInfo;
+@property(nonatomic, strong) NSMutableArray <__kindof DeviceInfo *> *devices;
+@property(nonatomic, strong) DeviceInfo *deviceForAdding;
+@property(nonatomic, strong) DeviceInfo *deviceForChanging;
+@property(nonatomic, strong) DeviceInfo *deviceForDelete;
 
 @end

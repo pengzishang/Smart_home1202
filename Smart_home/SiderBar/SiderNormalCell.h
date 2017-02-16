@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface SiderNormalCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *SiderNormalImage;
+@property(weak, nonatomic) IBOutlet UIImageView *SiderNormalImage;
 
-@property (weak, nonatomic) IBOutlet UILabel *SiderNormalLab;
-
+@property(weak, nonatomic) IBOutlet UILabel *SiderNormalLab;
 
 
 @end

@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 
 
+@interface LaunchView : UIScrollView <UIScrollViewDelegate>
 
-@interface LaunchView : UIScrollView<UIScrollViewDelegate>
-
--(instancetype)initWithFrame:(CGRect)frame images:(NSArray <__kindof NSString *>*)imgNames complete:(void(^)(void))complete;
+- (instancetype)initWithFrame:(CGRect)frame images:(NSArray <__kindof NSString *> *)imgNames complete:(void (^)(void))complete;
 
 @end

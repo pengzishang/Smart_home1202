@@ -23,13 +23,13 @@
 @end
 
 //全景摄像头悬挂模式
-typedef NS_ENUM(NSInteger,PanoramaCameraMode){
+typedef NS_ENUM(NSInteger, PanoramaCameraMode) {
     PanoramaLiveModeTop,
     PanoramaLiveModeWall,
 };
 
 //全景摄像头参数设置
-typedef NS_ENUM(NSInteger,PanoramaCameraParam){
+typedef NS_ENUM(NSInteger, PanoramaCameraParam) {
     PanoramaCameraParamTopPreset,
     PanoramaCameraParamWallPreset,
 };
@@ -40,16 +40,17 @@ typedef NS_ENUM(NSInteger,PanoramaCameraParam){
 /**
  *  视频回调代理
  */
-@property (nonatomic,assign)id <JFGSDKPlayVideoDelegate> delegate;
+@property(nonatomic, assign) id <JFGSDKPlayVideoDelegate> delegate;
 
 
 #pragma mark- 视频播放相关
+
 /**
  *  播放直播（普通摄像头）
  *
  *  @param cid            设备标示
  */
--(void)startLiveRemoteVideo:(NSString *)cid;
+- (void)startLiveRemoteVideo:(NSString *)cid;
 
 
 /**
@@ -59,15 +60,16 @@ typedef NS_ENUM(NSInteger,PanoramaCameraParam){
  *  @param time 历史视频开始时间戳
  *  @param panoramic 是否是加载全景视图
  */
--(void)startHistoryVideo:(NSString *)cid beginTime:(int64_t)time;
+- (void)startHistoryVideo:(NSString *)cid beginTime:(int64_t)time;
 
 
 /**
  *  停止播放视频
  */
--(void)stopVideo;
+- (void)stopVideo;
 
 #pragma mark- 本地摄像头图像
+
 /**
  *  开始渲染本地摄像头画面
  *
@@ -75,21 +77,22 @@ typedef NS_ENUM(NSInteger,PanoramaCameraParam){
  *  @param tag       本地渲染视图tag
  *  @param front     是否使用前置摄像头 YES：前置  NO：后置
  */
--(void)startRenderLocalView:(UIView *)superView localViewTag:(NSInteger)tag forFrontCamera:(BOOL)front;
+- (void)startRenderLocalView:(UIView *)superView localViewTag:(NSInteger)tag forFrontCamera:(BOOL)front;
 
 
 /**
  *  停止渲染本地视图
  */
--(void)stopRenderLocalView;
+- (void)stopRenderLocalView;
 
 #pragma mark- 功能性API
+
 /**
  *  获取历史视频列表
  *
  *  @param cid 设备标示
  */
--(void)getHistoryVideoList:(NSString *)cid;
+- (void)getHistoryVideoList:(NSString *)cid;
 
 
 /**
@@ -99,7 +102,7 @@ typedef NS_ENUM(NSInteger,PanoramaCameraParam){
  *
  *  @return 截图
  */
--(UIImage *)videoScreenshotForLocal:(BOOL)local;
+- (UIImage *)videoScreenshotForLocal:(BOOL)local;
 
 
 /**
@@ -111,30 +114,38 @@ typedef NS_ENUM(NSInteger,PanoramaCameraParam){
  *  @param return
  *  @note 音视频操作要确保在音视频建立连接后进行
  */
--(void)setAudioForLocal:(BOOL)local
-                openMic:(BOOL)openMic
-            openSpeaker:(BOOL)openSpeaker;
+- (void)setAudioForLocal:(BOOL)local
+                 openMic:(BOOL)openMic
+             openSpeaker:(BOOL)openSpeaker;
 
 
 #pragma mark- 全景摄像头相关（持续完善中）
+
 /**
  *  播放直播（全景摄像头,此功能暂时不完善）
  *
  *  @param cid 设备标示
  */
 - (void)startPanoramaLiveRemoteVideoForCid:(NSString *)cid;
+
 // 设置悬挂模式
 - (void)setMountMode:(PanoramaCameraMode)mode;
+
 //cx:圆心X  cy:圆心Y  r:圆半径  w:图片width  h:图片height  fov:field of view
--(void)configV360WithCx:(int)cx cy:(int)cy r:(int)r w:(int)w h:(int)h fov:(int)fov;
+- (void)configV360WithCx:(int)cx cy:(int)cy r:(int)r w:(int)w h:(int)h fov:(int)fov;
+
 // 开启陀螺仪
 - (void)enableGyro:(BOOL)enable;
+
 // 开启VR分屏
 - (void)enableVRMode:(BOOL)enable;
+
 // 载入图片
-- (BOOL)loadImage:(NSString*)imgPath;
+- (BOOL)loadImage:(NSString *)imgPath;
+
 // 获取双击的手势对象
-- (UITapGestureRecognizer*)getDoubleTapRecognizer;
+- (UITapGestureRecognizer *)getDoubleTapRecognizer;
+
 // 通知view方向变化
 - (void)detectOrientationChange;
 

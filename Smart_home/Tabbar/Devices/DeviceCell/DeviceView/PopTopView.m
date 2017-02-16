@@ -10,24 +10,20 @@
 
 @implementation PopTopView
 
-+(instancetype)popTopViewInit
-{
-    return [[[NSBundle mainBundle]loadNibNamed:@"PopTopView" owner:self options:nil] firstObject];
++ (instancetype)popTopViewInit {
+    return [[[NSBundle mainBundle] loadNibNamed:@"PopTopView" owner:self options:nil] firstObject];
 
 }
 
--(instancetype)initWithCoder:(NSCoder *)aDecoder
-{
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    if (self)
-    {
+    if (self) {
     }
     return self;
 }
 
--(void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
-    
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+
 }
 /*
 // Only override drawRect: if you perform custom drawing.

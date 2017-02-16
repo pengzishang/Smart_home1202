@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface ManualAddBlueToothController : UITableViewController
-@property (strong,nonatomic)NSArray <__kindof DeviceInfo *>*deviceOfRoom;
-@property (strong,nonatomic)RoomInfo *roomInfo;
+@property(strong, nonatomic) NSArray <__kindof DeviceInfo *> *deviceOfRoom;
+@property(strong, nonatomic) RoomInfo *roomInfo;
 
 
 @end

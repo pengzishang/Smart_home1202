@@ -23,6 +23,7 @@
 #import <Foundation/Foundation.h>
 
 #if TARGET_OS_IOS || TARGET_OS_TV
+
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -111,17 +112,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The total memory capacity of the cache in bytes.
  */
-@property (nonatomic, assign) UInt64 memoryCapacity;
+@property(nonatomic, assign) UInt64 memoryCapacity;
 
 /**
  The preferred memory usage after purge in bytes. During a purge, images will be purged until the memory capacity drops below this limit.
  */
-@property (nonatomic, assign) UInt64 preferredMemoryUsageAfterPurge;
+@property(nonatomic, assign) UInt64 preferredMemoryUsageAfterPurge;
 
 /**
  The current total memory usage in bytes of all images stored within the cache.
  */
-@property (nonatomic, assign, readonly) UInt64 memoryUsage;
+@property(nonatomic, assign, readonly) UInt64 memoryUsage;
 
 /**
  Initialies the `AutoPurgingImageCache` instance with default values for memory capacity and preferred memory usage after purge limit. `memoryCapcity` defaults to `100 MB`. `preferredMemoryUsageAfterPurge` defaults to `60 MB`.

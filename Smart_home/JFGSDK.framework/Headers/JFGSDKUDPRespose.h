@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JFGTypeDefine.h"
+
 /*!
  *  udp通信回应
  */
@@ -17,18 +18,18 @@
 /*!
  *  设备标示
  */
-@property(nonatomic,copy)NSString *cid;
+@property(nonatomic, copy) NSString *cid;
 /*!
  *  IP地址
  */
-@property(nonatomic,copy)NSString *address;
+@property(nonatomic, copy) NSString *address;
 /*!
  *  端口
  */
-@property(nonatomic,assign)unsigned short port;
+@property(nonatomic, assign) unsigned short port;
 
 
--(instancetype)initWithCid:(NSString *)cid post:(int)post addr:(NSString *)addr;
+- (instancetype)initWithCid:(NSString *)cid post:(int)post addr:(NSString *)addr;
 
 @end
 
@@ -38,7 +39,7 @@
 /*!
  *  设备网络类型
  */
-@property(nonatomic,assign)JFGNetType net;
+@property(nonatomic, assign) JFGNetType net;
 
 
 @end
@@ -49,11 +50,11 @@
 /*!
  *  mac地址
  */
-@property (nonatomic,copy)NSString *mac;
+@property(nonatomic, copy) NSString *mac;
 /*!
  *  版本号
  */
-@property (nonatomic,copy)NSString *ver;
+@property(nonatomic, copy) NSString *ver;
 
 
 @end
@@ -63,7 +64,7 @@
 /*!
  *  设置是否成功
  */
-@property (nonatomic,assign)BOOL success;
+@property(nonatomic, assign) BOOL success;
 
 @end
 
@@ -72,23 +73,23 @@
 /*!
  *  wifi列表序号
  */
-@property (nonatomic,assign)int index;
+@property(nonatomic, assign) int index;
 /*!
  *  wifi列表总数
  */
-@property (nonatomic,assign)int total;
+@property(nonatomic, assign) int total;
 /*!
  *  wifi信号强度
  */
-@property (nonatomic,assign)int rssi;
+@property(nonatomic, assign) int rssi;
 /*!
  *  安全级别
  */
-@property (nonatomic,assign)int security;
+@property(nonatomic, assign) int security;
 /*!
  *  ssid
  */
-@property (nonatomic,copy)NSString *ssid;
+@property(nonatomic, copy) NSString *ssid;
 
 @end
 
@@ -98,7 +99,7 @@
 /*!
  *  0标示成功 ，其他失败
  */
-@property (nonatomic,assign)int ret;
+@property(nonatomic, assign) int ret;
 
 
 @end
@@ -108,9 +109,9 @@
 /*
  表明是哪一个操作id的升级响应
  */
-@property (nonatomic,assign)NSInteger ackMsg;
+@property(nonatomic, assign) NSInteger ackMsg;
 
-@property (nonatomic,assign)NSInteger ret;
+@property(nonatomic, assign) NSInteger ret;
 
 @end
 
@@ -119,8 +120,7 @@
 /*!
  *  0标示成功 ，其他失败
  */
-@property (nonatomic,assign)int ret;
-
+@property(nonatomic, assign) int ret;
 
 
 @end

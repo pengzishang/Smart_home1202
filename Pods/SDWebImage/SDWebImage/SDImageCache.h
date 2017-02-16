@@ -13,15 +13,15 @@ typedef NS_ENUM(NSInteger, SDImageCacheType) {
     /**
      * The image wasn't available the SDWebImage caches, but was downloaded from the web.
      */
-    SDImageCacheTypeNone,
+            SDImageCacheTypeNone,
     /**
      * The image was obtained from the disk cache.
      */
-    SDImageCacheTypeDisk,
+            SDImageCacheTypeDisk,
     /**
      * The image was obtained from the memory cache.
      */
-    SDImageCacheTypeMemory
+            SDImageCacheTypeMemory
 };
 
 typedef void(^SDWebImageQueryCompletedBlock)(UIImage *image, SDImageCacheType cacheType);
@@ -40,37 +40,37 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  * Decompressing images that are downloaded and cached can improve performance but can consume lot of memory.
  * Defaults to YES. Set this to NO if you are experiencing a crash due to excessive memory consumption.
  */
-@property (assign, nonatomic) BOOL shouldDecompressImages;
+@property(assign, nonatomic) BOOL shouldDecompressImages;
 
 /**
  *  disable iCloud backup [defaults to YES]
  */
-@property (assign, nonatomic) BOOL shouldDisableiCloud;
+@property(assign, nonatomic) BOOL shouldDisableiCloud;
 
 /**
  * use memory cache [defaults to YES]
  */
-@property (assign, nonatomic) BOOL shouldCacheImagesInMemory;
+@property(assign, nonatomic) BOOL shouldCacheImagesInMemory;
 
 /**
  * The maximum "total cost" of the in-memory image cache. The cost function is the number of pixels held in memory.
  */
-@property (assign, nonatomic) NSUInteger maxMemoryCost;
+@property(assign, nonatomic) NSUInteger maxMemoryCost;
 
 /**
  * The maximum number of objects the cache should hold.
  */
-@property (assign, nonatomic) NSUInteger maxMemoryCountLimit;
+@property(assign, nonatomic) NSUInteger maxMemoryCountLimit;
 
 /**
  * The maximum length of time to keep an image in the cache, in seconds
  */
-@property (assign, nonatomic) NSInteger maxCacheAge;
+@property(assign, nonatomic) NSInteger maxCacheAge;
 
 /**
  * The maximum size of the cache, in bytes.
  */
-@property (assign, nonatomic) NSUInteger maxCacheSize;
+@property(assign, nonatomic) NSUInteger maxCacheSize;
 
 /**
  * Returns global shared cache instance
@@ -94,7 +94,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 - (id)initWithNamespace:(NSString *)ns diskCacheDirectory:(NSString *)directory;
 
--(NSString *)makeDiskCachePath:(NSString*)fullNamespace;
+- (NSString *)makeDiskCachePath:(NSString *)fullNamespace;
 
 /**
  * Add a read-only cache path to search for images pre-cached by SDImageCache

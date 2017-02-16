@@ -10,8 +10,8 @@
 
 @interface EditSceneController : UIViewController
 
-@property (nonatomic,strong)NSMutableArray *devices;
-@property (nonatomic,strong)RoomInfo *roomInfo;
-@property (nonatomic,strong)SceneInfo *sceneInfo;
+@property(nonatomic, strong) NSMutableArray *devices;
+@property(nonatomic, strong) RoomInfo *roomInfo;
+@property(nonatomic, strong) SceneInfo *sceneInfo;
 
 @end

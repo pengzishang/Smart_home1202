@@ -17,48 +17,42 @@
 #ifdef __cplusplus
 
 namespace POP {
-  
-  /**
-   @abstract Disables Core Animation actions using RAII.
-   @discussion The disablement of actions is scoped to the current transaction.
-   */
-  class ActionDisabler
-  {
-    BOOL state;
-    
-  public:
-    ActionDisabler() POP_NOTHROW
-    {
-      state = [CATransaction disableActions];
-      [CATransaction setDisableActions:YES];
-    }
-    
-    ~ActionDisabler()
-    {
-      [CATransaction setDisableActions:state];
-    }
-  };
-  
-  /**
-   @abstract Enables Core Animation actions using RAII.
-   @discussion The enablement of actions is scoped to the current transaction.
-   */
-  class ActionEnabler
-  {
-    BOOL state;
-    
-  public:
-    ActionEnabler() POP_NOTHROW
-    {
-      state = [CATransaction disableActions];
-      [CATransaction setDisableActions:NO];
-    }
-    
-    ~ActionEnabler()
-    {
-      [CATransaction setDisableActions:state];
-    }
-  };
+
+    /**
+     @abstract Disables Core Animation actions using RAII.
+     @discussion The disablement of actions is scoped to the current transaction.
+     */
+    class ActionDisabler {
+        BOOL state;
+
+    public:
+        ActionDisabler() POP_NOTHROW {
+            state = [CATransaction disableActions];
+            [CATransaction setDisableActions:YES];
+        }
+
+        ~ActionDisabler() {
+            [CATransaction setDisableActions:state];
+        }
+    };
+
+    /**
+     @abstract Enables Core Animation actions using RAII.
+     @discussion The enablement of actions is scoped to the current transaction.
+     */
+    class ActionEnabler {
+        BOOL state;
+
+    public:
+        ActionEnabler() POP_NOTHROW {
+            state = [CATransaction disableActions];
+            [CATransaction setDisableActions:NO];
+        }
+
+        ~ActionEnabler() {
+            [CATransaction setDisableActions:state];
+        }
+    };
 
 }
 

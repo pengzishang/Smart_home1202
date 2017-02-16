@@ -22,6 +22,7 @@
 #import "AFNetworkActivityIndicatorManager.h"
 
 #if TARGET_OS_IOS
+
 #import "AFURLSessionManager.h"
 
 typedef NS_ENUM(NSInteger, AFNetworkActivityManagerState) {
@@ -34,9 +35,9 @@ typedef NS_ENUM(NSInteger, AFNetworkActivityManagerState) {
 static NSTimeInterval const kDefaultAFNetworkActivityManagerActivationDelay = 1.0;
 static NSTimeInterval const kDefaultAFNetworkActivityManagerCompletionDelay = 0.17;
 
-static NSURLRequest * AFNetworkRequestFromNotification(NSNotification *notification) {
+static NSURLRequest *AFNetworkRequestFromNotification(NSNotification *notification) {
     if ([[notification object] respondsToSelector:@selector(originalRequest)]) {
-        return [(NSURLSessionTask *)[notification object] originalRequest];
+        return [(NSURLSessionTask *) [notification object] originalRequest];
     } else {
         return nil;
     }
@@ -45,13 +46,13 @@ static NSURLRequest * AFNetworkRequestFromNotification(NSNotification *notificat
 typedef void (^AFNetworkActivityActionBlock)(BOOL networkActivityIndicatorVisible);
 
 @interface AFNetworkActivityIndicatorManager ()
-@property (readwrite, nonatomic, assign) NSInteger activityCount;
-@property (readwrite, nonatomic, strong) NSTimer *activationDelayTimer;
-@property (readwrite, nonatomic, strong) NSTimer *completionDelayTimer;
-@property (readonly, nonatomic, getter = isNetworkActivityOccurring) BOOL networkActivityOccurring;
-@property (nonatomic, copy) AFNetworkActivityActionBlock networkActivityActionBlock;
-@property (nonatomic, assign) AFNetworkActivityManagerState currentState;
-@property (nonatomic, assign, getter=isNetworkActivityIndicatorVisible) BOOL networkActivityIndicatorVisible;
+@property(readwrite, nonatomic, assign) NSInteger activityCount;
+@property(readwrite, nonatomic, strong) NSTimer *activationDelayTimer;
+@property(readwrite, nonatomic, strong) NSTimer *completionDelayTimer;
+@property(readonly, nonatomic, getter = isNetworkActivityOccurring) BOOL networkActivityOccurring;
+@property(nonatomic, copy) AFNetworkActivityActionBlock networkActivityActionBlock;
+@property(nonatomic, assign) AFNetworkActivityManagerState currentState;
+@property(nonatomic, assign, getter=isNetworkActivityIndicatorVisible) BOOL networkActivityIndicatorVisible;
 
 - (void)updateCurrentStateForNetworkActivityChange;
 @end
@@ -102,7 +103,7 @@ typedef void (^AFNetworkActivityActionBlock)(BOOL networkActivityIndicatorVisibl
 }
 
 - (BOOL)isNetworkActivityOccurring {
-    @synchronized(self) {
+    @synchronized (self) {
         return self.activityCount > 0;
     }
 }
@@ -110,8 +111,8 @@ typedef void (^AFNetworkActivityActionBlock)(BOOL networkActivityIndicatorVisibl
 - (void)setNetworkActivityIndicatorVisible:(BOOL)networkActivityIndicatorVisible {
     if (_networkActivityIndicatorVisible != networkActivityIndicatorVisible) {
         [self willChangeValueForKey:@"networkActivityIndicatorVisible"];
-        @synchronized(self) {
-             _networkActivityIndicatorVisible = networkActivityIndicatorVisible;
+        @synchronized (self) {
+            _networkActivityIndicatorVisible = networkActivityIndicatorVisible;
         }
         [self didChangeValueForKey:@"networkActivityIndicatorVisible"];
         if (self.networkActivityActionBlock) {
@@ -123,9 +124,9 @@ typedef void (^AFNetworkActivityActionBlock)(BOOL networkActivityIndicatorVisibl
 }
 
 - (void)setActivityCount:(NSInteger)activityCount {
-	@synchronized(self) {
-		_activityCount = activityCount;
-	}
+    @synchronized (self) {
+        _activityCount = activityCount;
+    }
 
     dispatch_async(dispatch_get_main_queue(), ^{
         [self updateCurrentStateForNetworkActivityChange];
@@ -134,9 +135,9 @@ typedef void (^AFNetworkActivityActionBlock)(BOOL networkActivityIndicatorVisibl
 
 - (void)incrementActivityCount {
     [self willChangeValueForKey:@"activityCount"];
-	@synchronized(self) {
-		_activityCount++;
-	}
+    @synchronized (self) {
+        _activityCount++;
+    }
     [self didChangeValueForKey:@"activityCount"];
 
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -146,12 +147,12 @@ typedef void (^AFNetworkActivityActionBlock)(BOOL networkActivityIndicatorVisibl
 
 - (void)decrementActivityCount {
     [self willChangeValueForKey:@"activityCount"];
-	@synchronized(self) {
+    @synchronized (self) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wgnu"
-		_activityCount = MAX(_activityCount - 1, 0);
+        _activityCount = MAX(_activityCount - 1, 0);
 #pragma clang diagnostic pop
-	}
+    }
     [self didChangeValueForKey:@"activityCount"];
 
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -172,8 +173,9 @@ typedef void (^AFNetworkActivityActionBlock)(BOOL networkActivityIndicatorVisibl
 }
 
 #pragma mark - Internal State Management
+
 - (void)setCurrentState:(AFNetworkActivityManagerState)currentState {
-    @synchronized(self) {
+    @synchronized (self) {
         if (_currentState != currentState) {
             [self willChangeValueForKey:@"currentState"];
             _currentState = currentState;
@@ -226,7 +228,7 @@ typedef void (^AFNetworkActivityActionBlock)(BOOL networkActivityIndicatorVisibl
 
 - (void)startActivationDelayTimer {
     self.activationDelayTimer = [NSTimer
-                                 timerWithTimeInterval:self.activationDelay target:self selector:@selector(activationDelayTimerFired) userInfo:nil repeats:NO];
+            timerWithTimeInterval:self.activationDelay target:self selector:@selector(activationDelayTimerFired) userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:self.activationDelayTimer forMode:NSRunLoopCommonModes];
 }
 

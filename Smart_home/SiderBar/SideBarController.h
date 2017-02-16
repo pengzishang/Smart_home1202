@@ -11,12 +11,13 @@
 
 @protocol SiderBarDelegate <NSObject>
 
--(void)didClickTableItem:(NSUInteger)index;
--(void)didClickLogin;
+- (void)didClickTableItem:(NSUInteger)index;
+
+- (void)didClickLogin;
 
 @end
 
 @interface SideBarController : UIViewController
 
-@property(nonatomic,assign)id <SiderBarDelegate> delegate;
+@property(nonatomic, assign) id <SiderBarDelegate> delegate;
 @end

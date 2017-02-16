@@ -25,17 +25,17 @@
 
 @interface AFCachedImage : NSObject
 
-@property (nonatomic, strong) UIImage *image;
-@property (nonatomic, strong) NSString *identifier;
-@property (nonatomic, assign) UInt64 totalBytes;
-@property (nonatomic, strong) NSDate *lastAccessDate;
-@property (nonatomic, assign) UInt64 currentMemoryUsage;
+@property(nonatomic, strong) UIImage *image;
+@property(nonatomic, strong) NSString *identifier;
+@property(nonatomic, assign) UInt64 totalBytes;
+@property(nonatomic, strong) NSDate *lastAccessDate;
+@property(nonatomic, assign) UInt64 currentMemoryUsage;
 
 @end
 
 @implementation AFCachedImage
 
--(instancetype)initWithImage:(UIImage *)image identifier:(NSString *)identifier {
+- (instancetype)initWithImage:(UIImage *)image identifier:(NSString *)identifier {
     if (self = [self init]) {
         self.image = image;
         self.identifier = identifier;
@@ -43,13 +43,13 @@
         CGSize imageSize = CGSizeMake(image.size.width * image.scale, image.size.height * image.scale);
         CGFloat bytesPerPixel = 4.0;
         CGFloat bytesPerSize = imageSize.width * imageSize.height;
-        self.totalBytes = (UInt64)bytesPerPixel * (UInt64)bytesPerSize;
+        self.totalBytes = (UInt64) bytesPerPixel * (UInt64) bytesPerSize;
         self.lastAccessDate = [NSDate date];
     }
     return self;
 }
 
-- (UIImage*)accessImage {
+- (UIImage *)accessImage {
     self.lastAccessDate = [NSDate date];
     return self.image;
 }
@@ -63,9 +63,9 @@
 @end
 
 @interface AFAutoPurgingImageCache ()
-@property (nonatomic, strong) NSMutableDictionary <NSString* , AFCachedImage*> *cachedImages;
-@property (nonatomic, assign) UInt64 currentMemoryUsage;
-@property (nonatomic, strong) dispatch_queue_t synchronizationQueue;
+@property(nonatomic, strong) NSMutableDictionary <NSString *, AFCachedImage *> *cachedImages;
+@property(nonatomic, assign) UInt64 currentMemoryUsage;
+@property(nonatomic, strong) dispatch_queue_t synchronizationQueue;
 @end
 
 @implementation AFAutoPurgingImageCache
@@ -84,10 +84,10 @@
         self.synchronizationQueue = dispatch_queue_create([queueName cStringUsingEncoding:NSASCIIStringEncoding], DISPATCH_QUEUE_CONCURRENT);
 
         [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(removeAllImages)
-         name:UIApplicationDidReceiveMemoryWarningNotification
-         object:nil];
+                addObserver:self
+                   selector:@selector(removeAllImages)
+                       name:UIApplicationDidReceiveMemoryWarningNotification
+                     object:nil];
 
     }
     return self;
@@ -121,7 +121,7 @@
     dispatch_barrier_async(self.synchronizationQueue, ^{
         if (self.currentMemoryUsage > self.memoryCapacity) {
             UInt64 bytesToPurge = self.currentMemoryUsage - self.preferredMemoryUsageAfterPurge;
-            NSMutableArray <AFCachedImage*> *sortedImages = [NSMutableArray arrayWithArray:self.cachedImages.allValues];
+            NSMutableArray <AFCachedImage *> *sortedImages = [NSMutableArray arrayWithArray:self.cachedImages.allValues];
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastAccessDate"
                                                                            ascending:YES];
             [sortedImages sortUsingDescriptors:@[sortDescriptor]];
@@ -132,7 +132,7 @@
                 [self.cachedImages removeObjectForKey:cachedImage.identifier];
                 bytesPurged += cachedImage.totalBytes;
                 if (bytesPurged >= bytesToPurge) {
-                    break ;
+                    break;
                 }
             }
             self.currentMemoryUsage -= bytesPurged;

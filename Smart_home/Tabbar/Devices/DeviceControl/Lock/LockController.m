@@ -15,28 +15,26 @@
 #import "RoomAddDeviceController.h"
 #import "CYLTableViewPlaceHolder.h"
 #import "AppDelegate.h"
-@interface LockController ()<XLPasswordViewDelegate,CYLTableViewPlaceHolderDelegate>
-@property (nonatomic,assign)NSUInteger operationIndex;
-@property(nonatomic,strong)NSMutableArray <__kindof DeviceInfo *>*devicesOfRoom;
-@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+
+@interface LockController () <XLPasswordViewDelegate, CYLTableViewPlaceHolderDelegate>
+@property(nonatomic, assign) NSUInteger operationIndex;
+@property(nonatomic, strong) NSMutableArray <__kindof DeviceInfo *> *devicesOfRoom;
+@property(weak, nonatomic) IBOutlet UINavigationItem *navItem;
 
 @end
 
 @implementation LockController
 
--(NSMutableArray<DeviceInfo *> *)devicesOfRoom
-{
+- (NSMutableArray<DeviceInfo *> *)devicesOfRoom {
     if (!_devicesOfRoom) {
-        _devicesOfRoom=[NSMutableArray array];
+        _devicesOfRoom = [NSMutableArray array];
         if (!ISALLROOM) {
-            [self.roomInfo.deviceInfo enumerateObjectsUsingBlock:^(DeviceInfo * _Nonnull objItem, BOOL * _Nonnull stop) {
-                if (objItem.deviceType.integerValue ==8) {
+            [self.roomInfo.deviceInfo enumerateObjectsUsingBlock:^(DeviceInfo *_Nonnull objItem, BOOL *_Nonnull stop) {
+                if (objItem.deviceType.integerValue == 8) {
                     [_devicesOfRoom addObject:objItem];
                 }
             }];
-        }
-        else
-        {
+        } else {
             [_devicesOfRoom addObjectsFromArray:self.devices];
         }
     }
@@ -45,96 +43,86 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_navItem setTitle:!ISALLROOM?self.roomInfo.roomName:@"全部智能门锁"];
-    self.tableView.tableFooterView=[[UIView alloc]init];
-    
-    [[NSNotificationCenter defaultCenter ]addObserver:self selector:@selector(backgroundRefreshState:) name:Note_Refresh_State object:nil];
+    [_navItem setTitle:!ISALLROOM ? self.roomInfo.roomName : @"全部智能门锁"];
+    self.tableView.tableFooterView = [[UIView alloc] init];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backgroundRefreshState:) name:Note_Refresh_State object:nil];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
-    AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     if (!app.autoScan.valid) {
-        app.autoScan=[NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
+        app.autoScan = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
         [app.autoScan fire];
     }
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     if (app.autoScan.valid) {
         [app.autoScan invalidate];
     }
 }
 
 
--(void)autoScan:(id)sender
-{
+- (void)autoScan:(id)sender {
     NSLogMethodArgs(@"autoScan");
-    [[BluetoothManager getInstance]scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
+    [[BluetoothManager getInstance] scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
 }
 
-- (IBAction)addLock:(UIBarButtonItem *)sender  event:(UIEvent *)event
-{
-    __block BOOL isRemote=RemoteOn;
-    NSString *remoteOnString=isRemote?@"远程:开":@"远程:关";
-    NSString *title1=!ISALLROOM?@"添加已有智能门锁":@"添加新智能门锁";
-    NSString *remoteId=!ISALLROOM?@"设置默认远程":@"设置房间远程";
-    NSString *remoteSync=!ISALLROOM?@"同步房间内的远程":@"同步所有设备远程";
-    [FTPopOverMenuConfiguration defaultConfiguration].menuWidth=200;
-    [FTPopOverMenu showFromEvent:event withMenu:@[title1,remoteOnString,remoteId,remoteSync] imageNameArray:@[@"default_add_icon-0",@"setting_switch",@"setting_switch",@"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
-        if (selectedIndex==0) {
+- (IBAction)addLock:(UIBarButtonItem *)sender event:(UIEvent *)event {
+    __block BOOL isRemote = RemoteOn;
+    NSString *remoteOnString = isRemote ? @"远程:开" : @"远程:关";
+    NSString *title1 = !ISALLROOM ? @"添加已有智能门锁" : @"添加新智能门锁";
+    NSString *remoteId = !ISALLROOM ? @"设置默认远程" : @"设置房间远程";
+    NSString *remoteSync = !ISALLROOM ? @"同步房间内的远程" : @"同步所有设备远程";
+    [FTPopOverMenuConfiguration defaultConfiguration].menuWidth = 200;
+    [FTPopOverMenu showFromEvent:event withMenu:@[title1, remoteOnString, remoteId, remoteSync] imageNameArray:@[@"default_add_icon-0", @"setting_switch", @"setting_switch", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
+        if (selectedIndex == 0) {
             //            !ISALLROOM?
             //            [self performSegueWithIdentifier:@"addRoomLock" sender:self.roomInfo]://有房间信息
             [self performSegueWithIdentifier:@"lockAdd" sender:self.devices];
-        }
-        else if (selectedIndex==1){
-            isRemote=!isRemote;
-            [[NSUserDefaults standardUserDefaults]setBool:isRemote forKey:@"RemoteOn"];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-        }
-        else if (selectedIndex==2){
+        } else if (selectedIndex == 1) {
+            isRemote = !isRemote;
+            [[NSUserDefaults standardUserDefaults] setBool:isRemote forKey:@"RemoteOn"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        } else if (selectedIndex == 2) {
             [self performSegueWithIdentifier:@"room2addRemote" sender:self.roomInfo];
-        }
-        else if (selectedIndex==3){
+        } else if (selectedIndex == 3) {
             //远程同步房间
-            NSMutableArray *devicesID=[NSMutableArray array];
+            NSMutableArray *devicesID = [NSMutableArray array];
             if (!ISALLROOM) {
-                [self.roomInfo.deviceInfo enumerateObjectsUsingBlock:^(DeviceInfo * _Nonnull obj, BOOL * _Nonnull stop) {
+                [self.roomInfo.deviceInfo enumerateObjectsUsingBlock:^(DeviceInfo *_Nonnull obj, BOOL *_Nonnull stop) {
                     [devicesID addObject:obj];
                 }];
                 [TTSUtility mutiRemoteSave:devicesID remoteMacID:self.roomInfo.roomRemoteID];
-            }
-            else
-            {
-                [self.devices enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            } else {
+                [self.devices enumerateObjectsUsingBlock:^(__kindof DeviceInfo *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
                     [devicesID addObject:obj];
                 }];
                 [TTSUtility mutiRemoteSave:devicesID remoteMacID:RemoteDefault];
             }
         }
-    } dismissBlock:^{
+    }               dismissBlock:^{
     }];
 }
 
 //刷新状态
--(void)backgroundRefreshState:(NSNotification *)sender
-{
-    NSDictionary *peripheralInfo=sender.userInfo[AdvertisementData];
+- (void)backgroundRefreshState:(NSNotification *)sender {
+    NSDictionary *peripheralInfo = sender.userInfo[AdvertisementData];
 //    _opertionDevice=peripheralInfo;
-    NSString *deviceIDFromAdv=[peripheralInfo[@"kCBAdvDataLocalName"]
-                               stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSString * deviceID=[deviceIDFromAdv substringFromIndex:11];
-    NSNumber * stateCode=sender.userInfo[@"stateCode"];
-    [self.devicesOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSString *deviceIDFromAdv = [peripheralInfo[@"kCBAdvDataLocalName"]
+            stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *deviceID = [deviceIDFromAdv substringFromIndex:11];
+    NSNumber *stateCode = sender.userInfo[@"stateCode"];
+    [self.devicesOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
         if ([obj.deviceMacID containsString:deviceID]) {//因为锁的名称只能保留部分ID,爱美家的锅
-            obj.deviceStatus=stateCode;
-            [[TTSCoreDataManager getInstance]updateData];
-            NSIndexPath *indexPath=[NSIndexPath indexPathForRow:idx inSection:0];
+            obj.deviceStatus = stateCode;
+            [[TTSCoreDataManager getInstance] updateData];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
     }];
@@ -143,9 +131,8 @@
 
 #pragma mark CYLTableViewPlaceHolderDelegate
 
-- (UIView *)makePlaceHolderView
-{
-    return [[NSBundle mainBundle]loadNibNamed:@"NoneTableView" owner:self options:nil][0];
+- (UIView *)makePlaceHolderView {
+    return [[NSBundle mainBundle] loadNibNamed:@"NoneTableView" owner:self options:nil][0];
 }
 
 
@@ -156,9 +143,8 @@
     return self.devicesOfRoom.count;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    _operationIndex=indexPath.row;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    _operationIndex = indexPath.row;
     XLPasswordView *passwordView = [XLPasswordView passwordView];
     passwordView.delegate = self;
     [passwordView showPasswordInView:self.view.window];
@@ -167,41 +153,37 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DeviceInfo *device=self.devicesOfRoom[indexPath.row];
+    DeviceInfo *device = self.devicesOfRoom[indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LockCell" forIndexPath:indexPath];
-    UILabel *nameLab=[cell viewWithTag:1001];
-    nameLab.text=device.deviceCustomName;
-    UILabel *IDLab=[cell viewWithTag:1002];
-    IDLab.text=device.deviceMacID;
-    UIImageView *imageView=[cell viewWithTag:1000];
+    UILabel *nameLab = [cell viewWithTag:1001];
+    nameLab.text = device.deviceCustomName;
+    UILabel *IDLab = [cell viewWithTag:1002];
+    IDLab.text = device.deviceMacID;
+    UIImageView *imageView = [cell viewWithTag:1000];
     if ([device.deviceStatus isEqualToNumber:@(1)]) {
         //锁是开的状态
-        imageView.image=[UIImage imageNamed:@"equipment_autodoor_icon"];
-    }
-    else
-    {
-        imageView.image=[UIImage imageNamed:@"equipment_door_lock_icon"];
+        imageView.image = [UIImage imageNamed:@"equipment_autodoor_icon"];
+    } else {
+        imageView.image = [UIImage imageNamed:@"equipment_door_lock_icon"];
     }
     return cell;
 }
 
--(BOOL)isNearby:(DeviceInfo *)device
-{
-    __block BOOL isNearBy=NO;
-    [[BluetoothManager getInstance].peripheralsInfo enumerateObjectsUsingBlock:^(__kindof NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        CBPeripheral *peripheral=obj[Peripheral];
-        if ([[peripheral.name substringFromIndex:7]isEqualToString:device.deviceMacID]&&[obj[RSSI_VALUE] integerValue]>-90) {
-            *stop=YES;
-            isNearBy=YES;
+- (BOOL)isNearby:(DeviceInfo *)device {
+    __block BOOL isNearBy = NO;
+    [[BluetoothManager getInstance].peripheralsInfo enumerateObjectsUsingBlock:^(__kindof NSDictionary *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+        CBPeripheral *peripheral = obj[Peripheral];
+        if ([[peripheral.name substringFromIndex:7] isEqualToString:device.deviceMacID] && [obj[RSSI_VALUE] integerValue] > -90) {
+            *stop = YES;
+            isNearBy = YES;
         }
     }];
     return isNearBy;
 }
 
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    _operationIndex=indexPath.row;
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    _operationIndex = indexPath.row;
     [self performSegueWithIdentifier:@"lockmain2detail" sender:nil];
 }
 
@@ -212,17 +194,15 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        DeviceInfo *device_del=self.devicesOfRoom[indexPath.row];
+        DeviceInfo *device_del = self.devicesOfRoom[indexPath.row];
         if (!ISALLROOM) {//存在房间信息
-            NSMutableSet *devicesOfRoomInfo=[NSMutableSet setWithSet:self.roomInfo.deviceInfo];
+            NSMutableSet *devicesOfRoomInfo = [NSMutableSet setWithSet:self.roomInfo.deviceInfo];
             [devicesOfRoomInfo removeObject:device_del];
-            self.roomInfo.deviceInfo=devicesOfRoomInfo;
+            self.roomInfo.deviceInfo = devicesOfRoomInfo;
             [self.devicesOfRoom removeObject:device_del];
-            [[TTSCoreDataManager getInstance]updateData];
-        }
-        else
-        {
-            [[TTSCoreDataManager getInstance]deleteDataWithObject:self.devicesOfRoom[indexPath.row]];
+            [[TTSCoreDataManager getInstance] updateData];
+        } else {
+            [[TTSCoreDataManager getInstance] deleteDataWithObject:self.devicesOfRoom[indexPath.row]];
             [self.devices removeObject:device_del];
             [self.devicesOfRoom removeObject:device_del];
         }
@@ -234,53 +214,45 @@
 
 #pragma mark XLPasswordView
 
-- (void)passwordView:(XLPasswordView *)passwordView passwordTextDidChange:(NSString *)password
-{
-    
+- (void)passwordView:(XLPasswordView *)passwordView passwordTextDidChange:(NSString *)password {
+
 }
+
 /**
  *  输入密码位数已满时调用
  */
-- (void)passwordView:(XLPasswordView *)passwordView didFinishInput:(NSString *)password
-{
+- (void)passwordView:(XLPasswordView *)passwordView didFinishInput:(NSString *)password {
     [passwordView hidePasswordView];
     if (RemoteOn) {
-        
+
         [TTSUtility lockWithRemoteInfo:self.devicesOfRoom[_operationIndex] lockMode:APPLockModeOpen passWord:password validtime:10000];
-    }
-    else
-    {
+    } else {
         [TTSUtility lockWithDeviceInfo:self.devicesOfRoom[_operationIndex] lockMode:APPLockModeOpen passWord:password validtime:10000];
     }
-    
+
 }
 
 
--(IBAction)unwindToMainLockList:(UIStoryboardSegue *)sender
-{
+- (IBAction)unwindToMainLockList:(UIStoryboardSegue *)sender {
     if ([sender.sourceViewController isKindOfClass:[LockAddController class]]) {
-        NSLog(@"%@",self.deviceForAdding);
+        NSLog(@"%@", self.deviceForAdding);
         [self.devicesOfRoom addObject:self.deviceForAdding];
         if (!ISALLROOM) {
-            NSMutableSet *devicesOfRoomInfo=[NSMutableSet setWithSet:self.roomInfo.deviceInfo];
+            NSMutableSet *devicesOfRoomInfo = [NSMutableSet setWithSet:self.roomInfo.deviceInfo];
             [devicesOfRoomInfo addObject:self.deviceForAdding];
-            self.roomInfo.deviceInfo=devicesOfRoomInfo;
-            [[TTSCoreDataManager getInstance]updateData];
-        }
-        else
-        {
+            self.roomInfo.deviceInfo = devicesOfRoomInfo;
+            [[TTSCoreDataManager getInstance] updateData];
+        } else {
             [self.devices addObject:self.deviceForAdding];
-            [[TTSCoreDataManager getInstance]insertDataWithObject:self.deviceForAdding];
+            [[TTSCoreDataManager getInstance] insertDataWithObject:self.deviceForAdding];
             [TTSUtility syncRemoteDevice:self.deviceForAdding remoteMacID:RemoteDefault conditionReturn:^(NSString *statusCode) {
-                
+
             }];
-            
+
         }
         [self.tableView cyl_reloadData];
-    }
-    else if ([sender.identifier isEqualToString:@"roomAddDevice2mainLock"])
-    {
-        _devicesOfRoom=nil;
+    } else if ([sender.identifier isEqualToString:@"roomAddDevice2mainLock"]) {
+        _devicesOfRoom = nil;
         [self.tableView cyl_reloadData];
     }
 }
@@ -307,24 +279,20 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"lockmain2detail"]) {
-        LockSettingController *target=segue.destinationViewController;
-        DeviceInfo *device=self.devicesOfRoom[_operationIndex];
-        target.deviceInfo=device;
-    }
-    else if ([segue.identifier isEqualToString:@"addRoomLock"])
-    {
-        RoomAddDeviceController *target=segue.destinationViewController;
-        target.devicesOfRoom=self.devicesOfRoom;
-        target.devicesOfAll=self.devices;
-        target.roomInfo=(RoomInfo *)sender;
-        target.enterId=@"addRoomLock";
-        
-    }
-    else if ([segue.identifier isEqualToString:@"lockAdd"])
-    {
-        LockAddController *target=segue.destinationViewController;
-        target.devicesOfRoom=(NSMutableArray *)sender;
-        target.roomInfo=self.roomInfo;
+        LockSettingController *target = segue.destinationViewController;
+        DeviceInfo *device = self.devicesOfRoom[_operationIndex];
+        target.deviceInfo = device;
+    } else if ([segue.identifier isEqualToString:@"addRoomLock"]) {
+        RoomAddDeviceController *target = segue.destinationViewController;
+        target.devicesOfRoom = self.devicesOfRoom;
+        target.devicesOfAll = self.devices;
+        target.roomInfo = (RoomInfo *) sender;
+        target.enterId = @"addRoomLock";
+
+    } else if ([segue.identifier isEqualToString:@"lockAdd"]) {
+        LockAddController *target = segue.destinationViewController;
+        target.devicesOfRoom = (NSMutableArray *) sender;
+        target.roomInfo = self.roomInfo;
     }
 }
 

@@ -22,10 +22,10 @@
  *  @param frameRate    帧率
  *  @param timesTamp    设备发送的时间戳,用于在查看历史录像时同步本地进度,看实时画面时此参数为0
  */
--(void)jfgRTCPNotifyBitRate:(int)bitRate
-                videoRecved:(int)videoRecved
-                  frameRate:(int)frameRate
-                  timesTamp:(int)timesTamp;
+- (void)jfgRTCPNotifyBitRate:(int)bitRate
+                 videoRecved:(int)videoRecved
+                   frameRate:(int)frameRate
+                   timesTamp:(int)timesTamp;
 
 
 /*!
@@ -34,10 +34,9 @@
  *  @param width  宽度
  *  @param height 高度
  */
--(void)jfgResolutionNotifyWidth:(int)width
-                         height:(int)height
-                           peer:(NSString *)peer;
-
+- (void)jfgResolutionNotifyWidth:(int)width
+                          height:(int)height
+                            peer:(NSString *)peer;
 
 
 /*!
@@ -46,8 +45,8 @@
  *  @param remoteID  对端标示
  *  @param errorCode 错误码
  */
--(void)jfgTransportFail:(NSString *)remoteID
-                  error:(JFGErrorType)errorType;
+- (void)jfgTransportFail:(NSString *)remoteID
+                   error:(JFGErrorType)errorType;
 
 
 /*!
@@ -55,7 +54,7 @@
  *
  *  @param list 录像信息集合
  */
--(void)jfgHistoryVideoList:(NSArray <JFGSDKHistoryVideoInfo *>*)list;
+- (void)jfgHistoryVideoList:(NSArray <JFGSDKHistoryVideoInfo *> *)list;
 
 
 /*!
@@ -63,8 +62,7 @@
  *
  *  @param errorInfo 错误信息详情
  */
--(void)jfgHistoryVideoErrorInfo:(JFGSDKHistoryVideoErrorInfo *)errorInfo;
-
+- (void)jfgHistoryVideoErrorInfo:(JFGSDKHistoryVideoErrorInfo *)errorInfo;
 
 
 @end

@@ -18,49 +18,49 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageDownloaderOptions) {
      * By default, request prevent the use of NSURLCache. With this flag, NSURLCache
      * is used with default policies.
      */
-    SDWebImageDownloaderUseNSURLCache = 1 << 2,
+            SDWebImageDownloaderUseNSURLCache = 1 << 2,
 
     /**
      * Call completion block with nil image/imageData if the image was read from NSURLCache
      * (to be combined with `SDWebImageDownloaderUseNSURLCache`).
      */
 
-    SDWebImageDownloaderIgnoreCachedResponse = 1 << 3,
+            SDWebImageDownloaderIgnoreCachedResponse = 1 << 3,
     /**
      * In iOS 4+, continue the download of the image if the app goes to background. This is achieved by asking the system for
      * extra time in background to let the request finish. If the background task expires the operation will be cancelled.
      */
 
-    SDWebImageDownloaderContinueInBackground = 1 << 4,
+            SDWebImageDownloaderContinueInBackground = 1 << 4,
 
     /**
      * Handles cookies stored in NSHTTPCookieStore by setting 
      * NSMutableURLRequest.HTTPShouldHandleCookies = YES;
      */
-    SDWebImageDownloaderHandleCookies = 1 << 5,
+            SDWebImageDownloaderHandleCookies = 1 << 5,
 
     /**
      * Enable to allow untrusted SSL certificates.
      * Useful for testing purposes. Use with caution in production.
      */
-    SDWebImageDownloaderAllowInvalidSSLCertificates = 1 << 6,
+            SDWebImageDownloaderAllowInvalidSSLCertificates = 1 << 6,
 
     /**
      * Put the image in the high priority queue.
      */
-    SDWebImageDownloaderHighPriority = 1 << 7,
+            SDWebImageDownloaderHighPriority = 1 << 7,
 };
 
 typedef NS_ENUM(NSInteger, SDWebImageDownloaderExecutionOrder) {
     /**
      * Default value. All download operations will execute in queue style (first-in-first-out).
      */
-    SDWebImageDownloaderFIFOExecutionOrder,
+            SDWebImageDownloaderFIFOExecutionOrder,
 
     /**
      * All download operations will execute in stack style (last-in-first-out).
      */
-    SDWebImageDownloaderLIFOExecutionOrder
+            SDWebImageDownloaderLIFOExecutionOrder
 };
 
 extern NSString *const SDWebImageDownloadStartNotification;
@@ -81,26 +81,26 @@ typedef NSDictionary *(^SDWebImageDownloaderHeadersFilterBlock)(NSURL *url, NSDi
  * Decompressing images that are downloaded and cached can improve performance but can consume lot of memory.
  * Defaults to YES. Set this to NO if you are experiencing a crash due to excessive memory consumption.
  */
-@property (assign, nonatomic) BOOL shouldDecompressImages;
+@property(assign, nonatomic) BOOL shouldDecompressImages;
 
-@property (assign, nonatomic) NSInteger maxConcurrentDownloads;
+@property(assign, nonatomic) NSInteger maxConcurrentDownloads;
 
 /**
  * Shows the current amount of downloads that still need to be downloaded
  */
-@property (readonly, nonatomic) NSUInteger currentDownloadCount;
+@property(readonly, nonatomic) NSUInteger currentDownloadCount;
 
 
 /**
  *  The timeout value (in seconds) for the download operation. Default: 15.0.
  */
-@property (assign, nonatomic) NSTimeInterval downloadTimeout;
+@property(assign, nonatomic) NSTimeInterval downloadTimeout;
 
 
 /**
  * Changes download operations execution order. Default value is `SDWebImageDownloaderFIFOExecutionOrder`.
  */
-@property (assign, nonatomic) SDWebImageDownloaderExecutionOrder executionOrder;
+@property(assign, nonatomic) SDWebImageDownloaderExecutionOrder executionOrder;
 
 /**
  *  Singleton method, returns the shared instance
@@ -112,17 +112,17 @@ typedef NSDictionary *(^SDWebImageDownloaderHeadersFilterBlock)(NSURL *url, NSDi
 /**
  *  Set the default URL credential to be set for request operations.
  */
-@property (strong, nonatomic) NSURLCredential *urlCredential;
+@property(strong, nonatomic) NSURLCredential *urlCredential;
 
 /**
  * Set username
  */
-@property (strong, nonatomic) NSString *username;
+@property(strong, nonatomic) NSString *username;
 
 /**
  * Set password
  */
-@property (strong, nonatomic) NSString *password;
+@property(strong, nonatomic) NSString *password;
 
 /**
  * Set filter to pick headers for downloading image HTTP request.
@@ -130,7 +130,7 @@ typedef NSDictionary *(^SDWebImageDownloaderHeadersFilterBlock)(NSURL *url, NSDi
  * This block will be invoked for each downloading image request, returned
  * NSDictionary will be used as headers in corresponding HTTP request.
  */
-@property (nonatomic, copy) SDWebImageDownloaderHeadersFilterBlock headersFilter;
+@property(nonatomic, copy) SDWebImageDownloaderHeadersFilterBlock headersFilter;
 
 /**
  * Set a value for a HTTP header to be appended to each download HTTP request.

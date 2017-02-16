@@ -28,13 +28,13 @@
 #import "AFHTTPSessionManager.h"
 
 @interface UIWebView (_AFNetworking)
-@property (readwrite, nonatomic, strong, setter = af_setURLSessionTask:) NSURLSessionDataTask *af_URLSessionTask;
+@property(readwrite, nonatomic, strong, setter = af_setURLSessionTask:) NSURLSessionDataTask *af_URLSessionTask;
 @end
 
 @implementation UIWebView (_AFNetworking)
 
 - (NSURLSessionDataTask *)af_URLSessionTask {
-    return (NSURLSessionDataTask *)objc_getAssociatedObject(self, @selector(af_URLSessionTask));
+    return (NSURLSessionDataTask *) objc_getAssociatedObject(self, @selector(af_URLSessionTask));
 }
 
 - (void)af_setURLSessionTask:(NSURLSessionDataTask *)af_URLSessionTask {
@@ -47,7 +47,7 @@
 
 @implementation UIWebView (AFNetworking)
 
-- (AFHTTPSessionManager  *)sessionManager {
+- (AFHTTPSessionManager *)sessionManager {
     static AFHTTPSessionManager *_af_defaultHTTPSessionManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -79,21 +79,20 @@
 #pragma clang diagnostic pop
 }
 
-- (void)setResponseSerializer:(AFHTTPResponseSerializer<AFURLResponseSerialization> *)responseSerializer {
+- (void)setResponseSerializer:(AFHTTPResponseSerializer <AFURLResponseSerialization> *)responseSerializer {
     objc_setAssociatedObject(self, @selector(responseSerializer), responseSerializer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 #pragma mark -
 
 - (void)loadRequest:(NSURLRequest *)request
-           progress:(NSProgress * _Nullable __autoreleasing * _Nullable)progress
-            success:(NSString * (^)(NSHTTPURLResponse *response, NSString *HTML))success
-            failure:(void (^)(NSError *error))failure
-{
+           progress:(NSProgress *_Nullable __autoreleasing *_Nullable)progress
+            success:(NSString *(^)(NSHTTPURLResponse *response, NSString *HTML))success
+            failure:(void (^)(NSError *error))failure {
     [self loadRequest:request MIMEType:nil textEncodingName:nil progress:progress success:^NSData *(NSHTTPURLResponse *response, NSData *data) {
         NSStringEncoding stringEncoding = NSUTF8StringEncoding;
         if (response.textEncodingName) {
-            CFStringEncoding encoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef)response.textEncodingName);
+            CFStringEncoding encoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef) response.textEncodingName);
             if (encoding != kCFStringEncodingInvalidId) {
                 stringEncoding = CFStringConvertEncodingToNSStringEncoding(encoding);
             }
@@ -105,16 +104,15 @@
         }
 
         return [string dataUsingEncoding:stringEncoding];
-    } failure:failure];
+    }         failure:failure];
 }
 
 - (void)loadRequest:(NSURLRequest *)request
            MIMEType:(NSString *)MIMEType
    textEncodingName:(NSString *)textEncodingName
-           progress:(NSProgress * _Nullable __autoreleasing * _Nullable)progress
-            success:(NSData * (^)(NSHTTPURLResponse *response, NSData *data))success
-            failure:(void (^)(NSError *error))failure
-{
+           progress:(NSProgress *_Nullable __autoreleasing *_Nullable)progress
+            success:(NSData *(^)(NSHTTPURLResponse *response, NSData *data))success
+            failure:(void (^)(NSError *error))failure {
     NSParameterAssert(request);
 
     if (self.af_URLSessionTask.state == NSURLSessionTaskStateRunning || self.af_URLSessionTask.state == NSURLSessionTaskStateSuspended) {
@@ -122,28 +120,28 @@
     }
     self.af_URLSessionTask = nil;
 
-    __weak __typeof(self)weakSelf = self;
+    __weak __typeof(self) weakSelf = self;
     NSURLSessionDataTask *dataTask;
     dataTask = [self.sessionManager
             GET:request.URL.absoluteString
-            parameters:nil
-            progress:nil
-            success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-                __strong __typeof(weakSelf) strongSelf = weakSelf;
-                if (success) {
-                    success((NSHTTPURLResponse *)task.response, responseObject);
-                }
-                [strongSelf loadData:responseObject MIMEType:MIMEType textEncodingName:textEncodingName baseURL:[task.currentRequest URL]];
-
-                if ([strongSelf.delegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
-                    [strongSelf.delegate webViewDidFinishLoad:strongSelf];
-                }
+     parameters:nil
+       progress:nil
+        success:^(NSURLSessionDataTask *_Nonnull task, id _Nonnull responseObject) {
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+            if (success) {
+                success((NSHTTPURLResponse *) task.response, responseObject);
             }
-            failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
-                if (failure) {
-                    failure(error);
-                }
-            }];
+            [strongSelf loadData:responseObject MIMEType:MIMEType textEncodingName:textEncodingName baseURL:[task.currentRequest URL]];
+
+            if ([strongSelf.delegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
+                [strongSelf.delegate webViewDidFinishLoad:strongSelf];
+            }
+        }
+        failure:^(NSURLSessionDataTask *_Nonnull task, NSError *_Nonnull error) {
+            if (failure) {
+                failure(error);
+            }
+        }];
     self.af_URLSessionTask = dataTask;
     if (progress != nil) {
         *progress = [self.sessionManager downloadProgressForTask:dataTask];

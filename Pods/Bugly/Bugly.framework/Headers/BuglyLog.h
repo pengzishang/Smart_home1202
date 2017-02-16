@@ -8,11 +8,11 @@
 
 // Log level for Bugly Log
 typedef NS_ENUM(NSUInteger, BuglyLogLevel) {
-    BuglyLogLevelSilent  = 0,
-    BuglyLogLevelError   = 1,
-    BuglyLogLevelWarn    = 2,
-    BuglyLogLevelInfo    = 3,
-    BuglyLogLevelDebug   = 4,
+    BuglyLogLevelSilent = 0,
+    BuglyLogLevelError = 1,
+    BuglyLogLevelWarn = 2,
+    BuglyLogLevelInfo = 3,
+    BuglyLogLevelDebug = 4,
     BuglyLogLevelVerbose = 5,
 };
 
@@ -32,6 +32,7 @@ FOUNDATION_EXPORT void BLYLogv(BuglyLogLevel level, NSString *format, va_list ar
 #define BLYLogVerbose(fmt, ...) BUGLY_LOG_MACRO(BuglyLogLevelVerbose, fmt, ##__VA_ARGS__)
 
 #pragma mark - Interface
+
 @interface BuglyLog : NSObject
 
 /**
@@ -41,7 +42,7 @@ FOUNDATION_EXPORT void BLYLogv(BuglyLogLevel level, NSString *format, va_list ar
  *
  *    @param printConsole 是否打印到控制台，默认NO
  */
-+ (void)initLogger:(BuglyLogLevel) level consolePrint:(BOOL) printConsole;
++ (void)initLogger:(BuglyLogLevel)level consolePrint:(BOOL)printConsole;
 
 /**
  *    @brief 打印BLYLogLevelInfo日志
@@ -56,7 +57,7 @@ FOUNDATION_EXPORT void BLYLogv(BuglyLogLevel level, NSString *format, va_list ar
  *    @param level 日志级别
  *    @param fmt   日志内容 总日志大小限制为：字符串长度30k，条数200
  */
-+ (void)level:(BuglyLogLevel) level logs:(NSString *)message;
++ (void)level:(BuglyLogLevel)level logs:(NSString *)message;
 
 /**
  *    @brief  打印日志
@@ -64,7 +65,7 @@ FOUNDATION_EXPORT void BLYLogv(BuglyLogLevel level, NSString *format, va_list ar
  *    @param level 日志级别
  *    @param fmt   日志内容 总日志大小限制为：字符串长度30k，条数200
  */
-+ (void)level:(BuglyLogLevel) level log:(NSString *)format, ...;
++ (void)level:(BuglyLogLevel)level log:(NSString *)format, ...;
 
 /**
  *    @brief  打印日志
@@ -73,6 +74,6 @@ FOUNDATION_EXPORT void BLYLogv(BuglyLogLevel level, NSString *format, va_list ar
  *    @param tag    日志模块分类
  *    @param fmt   日志内容 总日志大小限制为：字符串长度30k，条数200
  */
-+ (void)level:(BuglyLogLevel) level tag:(NSString *) tag log:(NSString *)format, ...;
++ (void)level:(BuglyLogLevel)level tag:(NSString *)tag log:(NSString *)format, ...;
 
 @end

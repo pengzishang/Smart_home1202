@@ -10,6 +10,6 @@
 
 @interface EditDeviceController : UIViewController
 
-@property (nonatomic,strong)DeviceInfo *deviceInfo;
+@property(nonatomic, strong) DeviceInfo *deviceInfo;
 
 @end

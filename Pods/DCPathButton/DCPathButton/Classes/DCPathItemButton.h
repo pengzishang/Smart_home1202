@@ -29,12 +29,12 @@
 /*!
  *  The location of the `DCPathItemButton` object in a `DCPathButton` object.
  */
-@property (assign, nonatomic) NSUInteger index;
+@property(assign, nonatomic) NSUInteger index;
 
 /*!
  *  The object that acts as the delegate of the `DCPathItemButton` object.
  */
-@property (weak, nonatomic) id<DCPathItemButtonDelegate> delegate;
+@property(weak, nonatomic) id <DCPathItemButtonDelegate> delegate;
 
 /*!
  *  Creates a `DCPathItemButton` with normal and highlighted foreground and background images of the button.

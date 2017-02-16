@@ -10,7 +10,7 @@
 
 @interface DoorAddController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *mainImage;
+@property(weak, nonatomic) IBOutlet UIImageView *mainImage;
 
 @end
 
@@ -18,15 +18,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSArray *imgSet=@[[UIImage imageNamed:@"device_door_add"],[UIImage imageNamed:@"device_door_add_down"]];
-    
+
+    NSArray *imgSet = @[[UIImage imageNamed:@"device_door_add"], [UIImage imageNamed:@"device_door_add_down"]];
+
     [self.mainImage setAnimationImages:imgSet];
     [self.mainImage setAnimationRepeatCount:0];
-    [self.mainImage setAnimationDuration:2*0.74];
-    
-     [self.mainImage startAnimating];
-    
+    [self.mainImage setAnimationDuration:2 * 0.74];
+
+    [self.mainImage startAnimating];
+
     // Do any additional setup after loading the view.
 }
 

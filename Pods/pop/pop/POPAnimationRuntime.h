@@ -13,21 +13,20 @@
 
 #import "POPVector.h"
 
-enum POPValueType
-{
-  kPOPValueUnknown = 0,
-  kPOPValueInteger,
-  kPOPValueFloat,
-  kPOPValuePoint,
-  kPOPValueSize,
-  kPOPValueRect,
-  kPOPValueEdgeInsets,
-  kPOPValueAffineTransform,
-  kPOPValueTransform,
-  kPOPValueRange,
-  kPOPValueColor,
-  kPOPValueSCNVector3,
-  kPOPValueSCNVector4,
+enum POPValueType {
+    kPOPValueUnknown = 0,
+    kPOPValueInteger,
+    kPOPValueFloat,
+    kPOPValuePoint,
+    kPOPValueSize,
+    kPOPValueRect,
+    kPOPValueEdgeInsets,
+    kPOPValueAffineTransform,
+    kPOPValueTransform,
+    kPOPValueRange,
+    kPOPValueColor,
+    kPOPValueSCNVector3,
+    kPOPValueSCNVector4,
 };
 
 using namespace POP;
@@ -81,23 +80,22 @@ extern VectorRef POPUnbox(id value, POPValueType &type, NSUInteger &count, bool 
  Read/write block typedefs for convenience.
  */
 typedef void(^pop_animatable_read_block)(id obj, CGFloat *value);
+
 typedef void(^pop_animatable_write_block)(id obj, const CGFloat *value);
 
 /**
  Read object value and return a Vector4r.
  */
-NS_INLINE Vector4r read_values(pop_animatable_read_block read, id obj, size_t count)
-{
-  Vector4r vec = Vector4r::Zero();
-  if (0 == count)
+NS_INLINE Vector4r read_values(pop_animatable_read_block read, id obj, size_t count) {
+    Vector4r vec = Vector4r::Zero();
+    if (0 == count)
+        return vec;
+
+    read(obj, vec.data());
+
     return vec;
-
-  read(obj, vec.data());
-
-  return vec;
 }
 
-NS_INLINE NSString *POPStringFromBOOL(BOOL value)
-{
-  return value ? @"YES" : @"NO";
+NS_INLINE NSString *POPStringFromBOOL(BOOL value) {
+    return value ? @"YES" : @"NO";
 }

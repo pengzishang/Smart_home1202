@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface TVController : UIViewController
 
-@property(nonatomic,strong)DeviceInfo *deviceInfo;
+@property(nonatomic, strong) DeviceInfo *deviceInfo;
 
 @end

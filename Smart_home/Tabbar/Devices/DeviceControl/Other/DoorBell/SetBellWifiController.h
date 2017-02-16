@@ -12,7 +12,7 @@
 
 @interface SetBellWifiController : UITableViewController
 
-@property (strong,nonatomic)JFGSDKDevice *device;
-@property (strong,nonatomic)NSString *ssid;
+@property(strong, nonatomic) JFGSDKDevice *device;
+@property(strong, nonatomic) NSString *ssid;
 
 @end

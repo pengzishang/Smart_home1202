@@ -18,22 +18,21 @@
 
 @interface HyPopMenuView () {
 @private
-    UIWindow* window;
+    UIWindow *window;
 }
 
-@property (nonatomic, weak) UIView* backgroundView;
-@property (nonatomic, weak) UIButton* disappearButton;
-@property (nonatomic, weak) UIView* bottomView;
-@property (nonatomic, assign) BOOL isOpen;
+@property(nonatomic, weak) UIView *backgroundView;
+@property(nonatomic, weak) UIButton *disappearButton;
+@property(nonatomic, weak) UIView *bottomView;
+@property(nonatomic, assign) BOOL isOpen;
 
 @end
 
 @implementation HyPopMenuView
 
-static HyPopMenuView* _popMenuObject;
+static HyPopMenuView *_popMenuObject;
 
-+ (instancetype)allocWithZone:(struct _NSZone*)zone
-{
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _popMenuObject = [super allocWithZone:zone];
@@ -41,8 +40,7 @@ static HyPopMenuView* _popMenuObject;
     return _popMenuObject;
 }
 
-+ (instancetype)sharedPopMenuManager
-{
++ (instancetype)sharedPopMenuManager {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _popMenuObject = [[self alloc] sharedPopMenuManager];
@@ -50,13 +48,11 @@ static HyPopMenuView* _popMenuObject;
     return _popMenuObject;
 }
 
-- (id)copyWithZone:(NSZone*)zone
-{
+- (id)copyWithZone:(NSZone *)zone {
     return _popMenuObject;
 }
 
-- (instancetype)sharedPopMenuManager
-{
+- (instancetype)sharedPopMenuManager {
     if (self == [super init]) {
         [self setFrame:[UIScreen mainScreen].bounds];
         _animationType = HyPopMenuViewAnimationTypeSina;
@@ -67,10 +63,9 @@ static HyPopMenuView* _popMenuObject;
     return self;
 }
 
-- (void)initUIsize
-{
+- (void)initUIsize {
     [[UIButton appearance] setExclusiveTouch:true];
-    UIView* bottomView = [_backgroundView viewWithTag:2];
+    UIView *bottomView = [_backgroundView viewWithTag:2];
     if (!bottomView) {
         bottomView = [UIView new];
         [_backgroundView addSubview:bottomView];
@@ -85,7 +80,7 @@ static HyPopMenuView* _popMenuObject;
         [bottomView setBackgroundColor:[UIColor colorWithRed:90.f / 225.f green:90.f / 225.f blue:90.f / 225.f alpha:0.9f]];
     }
 
-    UIButton* disappearButton = [_backgroundView viewWithTag:3];
+    UIButton *disappearButton = [_backgroundView viewWithTag:3];
     if (!disappearButton) {
         disappearButton = [UIButton buttonWithType:UIButtonTypeCustom];
         disappearButton.adjustsImageWhenHighlighted = NO;
@@ -94,11 +89,11 @@ static HyPopMenuView* _popMenuObject;
         _disappearButton = disappearButton;
     }
     [disappearButton setBackgroundImage:[UIImage imageNamed:CancelStrImgaeName] forState:UIControlStateNormal];
-    [disappearButton addTarget:self  action:@selector(closeMenu) forControlEvents:UIControlEventTouchUpInside];
+    [disappearButton addTarget:self action:@selector(closeMenu) forControlEvents:UIControlEventTouchUpInside];
     CGFloat CANCELw = 35;
     disappearButton.bounds = CGRectMake(0, 0, CANCELw, CANCELw);
-    disappearButton.center = CGPointMake(Screen_Width-40, bottomView.center.y-5)  ;//XX的位置
-    
+    disappearButton.center = CGPointMake(Screen_Width - 40, bottomView.center.y - 5);//XX的位置
+
 //    UILabel *tipLab=[_backgroundView viewWithTag:4];
 //    if (!tipLab) {
 //        tipLab.text=@"长按编辑情景模式";
@@ -113,14 +108,13 @@ static HyPopMenuView* _popMenuObject;
 //    CGFloat tipW=60.0f;
 //    tipLab.bounds = CGRectMake(0, 0, tipW, tipH);
 //    tipLab.center=CGPointMake(Screen_Width/2, bottomView.center.y-5);
-    
+
 }
 
-- (void)openMenu
-{
+- (void)openMenu {
     [self addNotificationAtNotificationName:HyPopMenuViewWillShowNotification];
-    _delegate = (id)[self currentViewController];
-    UIView* backgroundView = [self effectsViewWithType:_backgroundType];
+    _delegate = (id) [self currentViewController];
+    UIView *backgroundView = [self effectsViewWithType:_backgroundType];
     _backgroundView = backgroundView;
     if (_topView) {
         [_backgroundView addSubview:_topView];
@@ -131,10 +125,9 @@ static HyPopMenuView* _popMenuObject;
     [self show];
 }
 
-- (void)closeMenu
-{
+- (void)closeMenu {
     [self addNotificationAtNotificationName:HyPopMenuViewWillHideNotification];
-    __weak HyPopMenuView* weakView = self;
+    __weak HyPopMenuView *weakView = self;
     [self disappearPopMenuViewAnimate];
     [UIView animateWithDuration:0.3 animations:^{
         weakView.bottomView.backgroundColor = [UIColor clearColor];
@@ -143,19 +136,18 @@ static HyPopMenuView* _popMenuObject;
     }];
     double d = (weakView.dataSource.count * 0.04) + 0.3;
     [UIView animateKeyframesWithDuration:Duration delay:d options:0 animations:^{
-        weakView.backgroundView.alpha = 0.0;
-    }
-        completion:^(BOOL finished) {
-            [weakView addNotificationAtNotificationName:HyPopMenuViewDidHideNotification];
-            [weakView.backgroundView removeFromSuperview];
-            [window setHidden:finished];
-            weakView.isOpen = false;
-        }];
+                weakView.backgroundView.alpha = 0.0;
+            }
+                              completion:^(BOOL finished) {
+                                  [weakView addNotificationAtNotificationName:HyPopMenuViewDidHideNotification];
+                                  [weakView.backgroundView removeFromSuperview];
+                                  [window setHidden:finished];
+                                  weakView.isOpen = false;
+                              }];
 }
 
-- (void)backgroundAnimate
-{
-    __weak HyPopMenuView* weakView = self;
+- (void)backgroundAnimate {
+    __weak HyPopMenuView *weakView = self;
     [UIView animateWithDuration:Duration animations:^{
         [weakView.backgroundView setAlpha:1];
         weakView.disappearButton.transform = CGAffineTransformMakeRotation((M_PI / 2) / 2);
@@ -163,15 +155,14 @@ static HyPopMenuView* _popMenuObject;
     [self showItemAnimate];
 }
 
-- (void)showItemAnimate
-{
-    __weak HyPopMenuView* weakView = self;
+- (void)showItemAnimate {
+    __weak HyPopMenuView *weakView = self;
     double d = (self.dataSource.count * 0.04) + 0.3;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(d * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (d * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [weakView addNotificationAtNotificationName:HyPopMenuViewDidShowNotification];
     });
-    [_dataSource enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL* _Nonnull stop) {
-        PopMenuModel* model = obj;
+    [_dataSource enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+        PopMenuModel *model = obj;
         model.automaticIdentificationColor = weakView.automaticIdentificationColor;
         [model.customView removeFromSuperview];
         model.customView.alpha = 0.0f;
@@ -183,36 +174,36 @@ static HyPopMenuView* _popMenuObject;
         CFTimeInterval delay = dy + CACurrentMediaTime();
 
         switch (_animationType) {
-        case HyPopMenuViewAnimationTypeSina:
-            toRect = [weakView getFrameAtIndex:idx];
-            fromRect = CGRectMake(CGRectGetMinX(toRect),
-                CGRectGetMinY(toRect) + 130,
-                toRect.size.width,
-                toRect.size.height);
-            break;
-        case HyPopMenuViewAnimationTypeCenter:
-            toRect = [weakView getFrameAtIndex:idx];
-            fromRect = CGRectMake(CGRectGetMidX(weakView.frame) - CGRectGetWidth(fromRect) / 2,
-                (CGRectGetMinY(toRect) + (kH - CGRectGetMinY(toRect))) - 25,
-                toRect.size.width,
-                toRect.size.height);
-            break;
-        case HyPopMenuViewAnimationTypeViscous:
-            toRect = [weakView getFrameAtIndex:idx];
-            fromRect = CGRectMake(CGRectGetMinX(toRect),
-                CGRectGetMinY(toRect) + (kH - CGRectGetMinY(toRect)),
-                toRect.size.width,
-                toRect.size.height);
-            break;
-        case HyPopMenuViewAnimationTypeLeftAndRight:
-            toRect = [weakView getFrameAtIndex:idx];
-            CGFloat d = (idx % 2) == 0 ? 0:CGRectGetWidth(toRect);
-            CGFloat x = ((idx % 2) * kW) - d;
-            fromRect = CGRectMake(x,
-                                  CGRectGetMinY(toRect) + (kH - CGRectGetMinY(toRect)),
-                                  toRect.size.width,
-                                  toRect.size.height);
-            break;
+            case HyPopMenuViewAnimationTypeSina:
+                toRect = [weakView getFrameAtIndex:idx];
+                fromRect = CGRectMake(CGRectGetMinX(toRect),
+                        CGRectGetMinY(toRect) + 130,
+                        toRect.size.width,
+                        toRect.size.height);
+                break;
+            case HyPopMenuViewAnimationTypeCenter:
+                toRect = [weakView getFrameAtIndex:idx];
+                fromRect = CGRectMake(CGRectGetMidX(weakView.frame) - CGRectGetWidth(fromRect) / 2,
+                        (CGRectGetMinY(toRect) + (kH - CGRectGetMinY(toRect))) - 25,
+                        toRect.size.width,
+                        toRect.size.height);
+                break;
+            case HyPopMenuViewAnimationTypeViscous:
+                toRect = [weakView getFrameAtIndex:idx];
+                fromRect = CGRectMake(CGRectGetMinX(toRect),
+                        CGRectGetMinY(toRect) + (kH - CGRectGetMinY(toRect)),
+                        toRect.size.width,
+                        toRect.size.height);
+                break;
+            case HyPopMenuViewAnimationTypeLeftAndRight:
+                toRect = [weakView getFrameAtIndex:idx];
+                CGFloat d = (idx % 2) == 0 ? 0 : CGRectGetWidth(toRect);
+                CGFloat x = ((idx % 2) * kW) - d;
+                fromRect = CGRectMake(x,
+                        CGRectGetMinY(toRect) + (kH - CGRectGetMinY(toRect)),
+                        toRect.size.width,
+                        toRect.size.height);
+                break;
         }
         [self classAnimationWithfromRect:fromRect
                                   toRect:toRect
@@ -220,23 +211,22 @@ static HyPopMenuView* _popMenuObject;
                                    views:model.customView
                                   isHidd:false];
 
-        PopMenuButton* button = (id)model.customView;
+        PopMenuButton *button = (id) model.customView;
         [button addTarget:self action:@selector(selectedFunc:) forControlEvents:UIControlEventTouchUpInside];
-        if (idx!=_dataSource.count-1) {
-            UILongPressGestureRecognizer *longTap=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longTapFunc:)];
+        if (idx != _dataSource.count - 1) {
+            UILongPressGestureRecognizer *longTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapFunc:)];
             [button addGestureRecognizer:longTap];
         }
-        
+
     }];
 }
 
 - (void)classAnimationWithfromRect:(CGRect)age1
                             toRect:(CGRect)age2
                             deleay:(CFTimeInterval)age3
-                             views:(UIView*)age4
-                            isHidd:(BOOL)age5
-{
-    __weak HyPopMenuView* weakView = self;
+                             views:(UIView *)age4
+                            isHidd:(BOOL)age5 {
+    __weak HyPopMenuView *weakView = self;
     if (_animationType == HyPopMenuViewAnimationTypeSina) {
 
         [self startSinaAnimationfromValue:age1
@@ -247,8 +237,7 @@ static HyPopMenuView* _popMenuObject;
                               [weakView addTap];
                           }
                               hideDisplay:age5];
-    }
-    else if (_animationType == HyPopMenuViewAnimationTypeViscous) {
+    } else if (_animationType == HyPopMenuViewAnimationTypeViscous) {
 
         [self startViscousAnimationFormValue:age1
                                      ToValue:age2
@@ -258,8 +247,7 @@ static HyPopMenuView* _popMenuObject;
                                  [weakView addTap];
                              }
                                  HideDisplay:age5];
-    }
-    else if (_animationType == HyPopMenuViewAnimationTypeCenter) {
+    } else if (_animationType == HyPopMenuViewAnimationTypeCenter) {
 
         [self startSinaAnimationfromValue:age1
                                   toValue:age2
@@ -281,94 +269,90 @@ static HyPopMenuView* _popMenuObject;
     }
 }
 
-- (void)addTap
-{
-    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+- (void)addTap {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(closeMenu)];
     [_backgroundView addGestureRecognizer:tap];
     _isOpen = true;
 }
 
-- (CGFloat)maxItemsMinY
-{
+- (CGFloat)maxItemsMinY {
     CGRect rect = [self getFrameAtIndex:0];
     return CGRectGetMinY(rect);
 }
 
-- (CGRect)getFrameAtIndex:(NSUInteger)index;
-{
+- (CGRect)getFrameAtIndex:(NSUInteger)index; {
     NSInteger column = 3;//行,每行3个
     CGFloat buttonViewWidth = MIN(CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)) / column;
     CGFloat buttonViewHeight = (buttonViewWidth - 10);
     CGFloat margin = (self.frame.size.width - column * buttonViewWidth) / (column + 1);
     NSInteger colnumIndex = index % column;
     NSInteger rowIndex = index / column;
-    NSUInteger toRows = (_dataSource.count / column+1);//这里我加了个例外,为了防止 数量为1 2 4 5 7 8
-    
-    if(_dataSource.count%3==0){
-        toRows-=1;
+    NSUInteger toRows = (_dataSource.count / column + 1);//这里我加了个例外,为了防止 数量为1 2 4 5 7 8
+
+    if (_dataSource.count % 3 == 0) {
+        toRows -= 1;
     }
-    if (_dataSource.count>=7) {
-        toRows=2;
+    if (_dataSource.count >= 7) {
+        toRows = 2;
     }
 
     CGFloat toHeight = toRows * buttonViewHeight;
 
     CGFloat buttonViewX = (colnumIndex + 1) * margin + colnumIndex * buttonViewWidth;
-    CGFloat buttonViewY = ((rowIndex + 1) * margin + rowIndex * buttonViewHeight) + (kH - toHeight) - Screen_Height*0.1-110;
+    CGFloat buttonViewY = ((rowIndex + 1) * margin + rowIndex * buttonViewHeight) + (kH - toHeight) - Screen_Height * 0.1 - 110;
     CGRect rect = CGRectMake(buttonViewX, buttonViewY, buttonViewWidth, buttonViewHeight);
     return rect;
 }
 
-- (void)disappearPopMenuViewAnimate
-{
-    __weak HyPopMenuView* weakView = self;
-    [_dataSource enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL* _Nonnull stop) {
+- (void)disappearPopMenuViewAnimate {
+    __weak HyPopMenuView *weakView = self;
+    [_dataSource enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
         double d = weakView.dataSource.count * 0.04;
         double dy = d - idx * 0.04;
-        PopMenuModel* model = obj;
+        PopMenuModel *model = obj;
         CFTimeInterval delay = dy + CACurrentMediaTime();
 
         CGRect toRect;
         CGRect fromRect;
 
         switch (_animationType) {
-        case HyPopMenuViewAnimationTypeSina:
+            case HyPopMenuViewAnimationTypeSina:
 
-            fromRect = [weakView getFrameAtIndex:idx];
-            toRect = CGRectMake(CGRectGetMinX(fromRect),
-                kH,
-                CGRectGetWidth(fromRect),
-                CGRectGetHeight(fromRect));
-
-            break;
-        case HyPopMenuViewAnimationTypeCenter:
-
-            fromRect = [weakView getFrameAtIndex:idx];
-            toRect = CGRectMake(CGRectGetMidX(weakView.frame) - CGRectGetWidth(fromRect) / 2,
-                (CGRectGetMinY(toRect) + (kH - CGRectGetMinY(toRect))) - 25,
-                fromRect.size.width,
-                fromRect.size.height);
-
-            break;
-        case HyPopMenuViewAnimationTypeViscous:
-
-            fromRect = [weakView getFrameAtIndex:idx];
-            toRect = CGRectMake(CGRectGetMinX(fromRect),
-                CGRectGetMinY(fromRect) + (kH - CGRectGetMinY(fromRect)),
-                fromRect.size.width,
-                fromRect.size.height);
-
-            break;
-        case HyPopMenuViewAnimationTypeLeftAndRight:
                 fromRect = [weakView getFrameAtIndex:idx];
-                CGFloat d = (idx % 2) == 0 ? 0:CGRectGetWidth(fromRect);
+                toRect = CGRectMake(CGRectGetMinX(fromRect),
+                        kH,
+                        CGRectGetWidth(fromRect),
+                        CGRectGetHeight(fromRect));
+
+                break;
+            case HyPopMenuViewAnimationTypeCenter:
+
+                fromRect = [weakView getFrameAtIndex:idx];
+                toRect = CGRectMake(CGRectGetMidX(weakView.frame) - CGRectGetWidth(fromRect) / 2,
+                        (CGRectGetMinY(toRect) + (kH - CGRectGetMinY(toRect))) - 25,
+                        fromRect.size.width,
+                        fromRect.size.height);
+
+                break;
+            case HyPopMenuViewAnimationTypeViscous:
+
+                fromRect = [weakView getFrameAtIndex:idx];
+                toRect = CGRectMake(CGRectGetMinX(fromRect),
+                        CGRectGetMinY(fromRect) + (kH - CGRectGetMinY(fromRect)),
+                        fromRect.size.width,
+                        fromRect.size.height);
+
+                break;
+            case HyPopMenuViewAnimationTypeLeftAndRight:
+                fromRect = [weakView getFrameAtIndex:idx];
+                CGFloat d = (idx % 2) == 0 ? 0 : CGRectGetWidth(fromRect);
                 CGFloat x = ((idx % 2) * kW) - d;
 
                 toRect = CGRectMake(x,
-                                    CGRectGetMinY(fromRect) + (kH - CGRectGetMinY(fromRect)),
-                                    fromRect.size.width,
-                                    fromRect.size.height);
+                        CGRectGetMinY(fromRect) + (kH - CGRectGetMinY(fromRect)),
+                        fromRect.size.width,
+                        fromRect.size.height);
                 break;
         }
         [self classAnimationWithfromRect:fromRect
@@ -379,44 +363,41 @@ static HyPopMenuView* _popMenuObject;
     }];
 }
 
-- (__kindof UIView*)effectsViewWithType:(HyPopMenuViewBackgroundType)type
-{
+- (__kindof UIView *)effectsViewWithType:(HyPopMenuViewBackgroundType)type {
     if (_backgroundView) {
         [_backgroundView removeFromSuperview];
         _backgroundView = nil;
     }
 
-    UIView* effectView = nil;
-    UIBlurEffect* effectBlur = nil;
-    CAGradientLayer* gradientLayer = nil;
+    UIView *effectView = nil;
+    UIBlurEffect *effectBlur = nil;
+    CAGradientLayer *gradientLayer = nil;
     switch (type) {
-    case HyPopMenuViewBackgroundTypeDarkBlur:
-        effectBlur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-        break;
-    case HyPopMenuViewBackgroundTypeDarkTranslucent:
+        case HyPopMenuViewBackgroundTypeDarkBlur:
+            effectBlur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+            break;
+        case HyPopMenuViewBackgroundTypeDarkTranslucent:
 
-        break;
-    case HyPopMenuViewBackgroundTypeLightBlur:
-        effectBlur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-        break;
-    case HyPopMenuViewBackgroundTypeLightTranslucent:
+            break;
+        case HyPopMenuViewBackgroundTypeLightBlur:
+            effectBlur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+            break;
+        case HyPopMenuViewBackgroundTypeLightTranslucent:
 
-        break;
-    case HyPopMenuViewBackgroundTypeGradient:
-        gradientLayer = [self gradientLayerWithColor1:[UIColor colorWithWhite:1 alpha:0.1f] AtColor2:[UIColor colorWithWhite:0.0f alpha:1.0f]];
-        break;
+            break;
+        case HyPopMenuViewBackgroundTypeGradient:
+            gradientLayer = [self gradientLayerWithColor1:[UIColor colorWithWhite:1 alpha:0.1f] AtColor2:[UIColor colorWithWhite:0.0f alpha:1.0f]];
+            break;
     }
 
     if (effectBlur) {
         effectView = [[UIVisualEffectView alloc] initWithEffect:effectBlur];
-    }
-    else {
+    } else {
         effectView = [UIView new];
         if (gradientLayer) {
             [effectView.layer addSublayer:gradientLayer];
-        }
-        else {
-            effectView.backgroundColor = [UIColor colorWithWhite:(CGFloat)(type == HyPopMenuViewBackgroundTypeLightTranslucent) alpha:0.7];
+        } else {
+            effectView.backgroundColor = [UIColor colorWithWhite:(CGFloat) (type == HyPopMenuViewBackgroundTypeLightTranslucent) alpha:0.7];
         }
     }
     effectView.frame = self.bounds;
@@ -425,10 +406,9 @@ static HyPopMenuView* _popMenuObject;
     return effectView;
 }
 
-- (CAGradientLayer*)gradientLayerWithColor1:(UIColor*)color1 AtColor2:(UIColor*)color2
-{
-    CAGradientLayer* layer = [CAGradientLayer new];
-    layer.colors = @[ (__bridge id)color1.CGColor, (__bridge id)color2.CGColor ];
+- (CAGradientLayer *)gradientLayerWithColor1:(UIColor *)color1 AtColor2:(UIColor *)color2 {
+    CAGradientLayer *layer = [CAGradientLayer new];
+    layer.colors = @[(__bridge id) color1.CGColor, (__bridge id) color2.CGColor];
     layer.startPoint = CGPointMake(0.5f, -0.5);
     layer.endPoint = CGPointMake(0.5, 1);
     layer.frame = self.bounds;
@@ -436,34 +416,31 @@ static HyPopMenuView* _popMenuObject;
 }
 
 
-- (void)longTapFunc:(UILongPressGestureRecognizer *)tap
-{
-    PopMenuButton *sender=(PopMenuButton *)tap.view;
-    if (tap.state==UIGestureRecognizerStateBegan) {
-        __weak HyPopMenuView* weakView = self;
-        [_dataSource enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL* _Nonnull stop) {
-            PopMenuModel* model = obj;
-            PopMenuButton* button = (id)model.customView;
+- (void)longTapFunc:(UILongPressGestureRecognizer *)tap {
+    PopMenuButton *sender = (PopMenuButton *) tap.view;
+    if (tap.state == UIGestureRecognizerStateBegan) {
+        __weak HyPopMenuView *weakView = self;
+        [_dataSource enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+            PopMenuModel *model = obj;
+            PopMenuButton *button = (id) model.customView;
             if (sender == button) {
-                sender.model.transitionType=PopMenuTransitionTypeCustomizeApi;
+                sender.model.transitionType = PopMenuTransitionTypeCustomizeApi;
                 [sender selectdAnimation];
-            }
-            else {
+            } else {
                 [button cancelAnimation];
             }
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [model performSelector:@selector(_obj)];
             });
         }];
         NSUInteger idx = [_dataSource indexOfObject:sender.model];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (0.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (weakView.delegate) {
                 if ([weakView.delegate isKindOfClass:[[weakView currentViewController] class]]) {
                     if ([weakView.delegate respondsToSelector:@selector(popMenuView:didLongSelectItemAtIndex:)]) {//长按
                         [weakView.delegate popMenuView:weakView didLongSelectItemAtIndex:idx];
                     }
-                }
-                else {
+                } else {
                     NSLog(@"不在同一个控制器");
                 }
             }
@@ -473,50 +450,46 @@ static HyPopMenuView* _popMenuObject;
             weakView.disappearButton.transform = CGAffineTransformMakeRotation(0);
             [weakView.disappearButton setAlpha:0.1f];
         }];
-        
+
         [UIView animateKeyframesWithDuration:0.5 delay:0.2f options:0 animations:^{
-            weakView.backgroundView.alpha = 0.0;
-        }
+                    weakView.backgroundView.alpha = 0.0;
+                }
                                   completion:^(BOOL finished) {
-                                      
+
                                       [weakView.backgroundView removeFromSuperview];
                                       [window setHidden:finished];
                                   }];
     }
-    
+
 }
 
 
-- (void)selectedFunc:(PopMenuButton*)sender
-{
-    __weak HyPopMenuView* weakView = self;
-    [_dataSource enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL* _Nonnull stop) {
-        PopMenuModel* model = obj;
-        PopMenuButton* button = (id)model.customView;
+- (void)selectedFunc:(PopMenuButton *)sender {
+    __weak HyPopMenuView *weakView = self;
+    [_dataSource enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+        PopMenuModel *model = obj;
+        PopMenuButton *button = (id) model.customView;
         if (sender == button) {
-            sender.model.transitionType=PopMenuTransitionTypeSystemApi;
-            
+            sender.model.transitionType = PopMenuTransitionTypeSystemApi;
+
             [sender selectdAnimation];
-        }
-        else {
+        } else {
             [button cancelAnimation];
         }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [model performSelector:@selector(_obj)];
         });
     }];
     NSUInteger idx = [_dataSource indexOfObject:sender.model];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (0.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (weakView.delegate) {
             if ([weakView.delegate isKindOfClass:[[weakView currentViewController] class]]) {
                 if ([weakView.delegate respondsToSelector:@selector(popMenuView:didSelectItemAtIndex:)]) {//短按
                     [weakView.delegate popMenuView:weakView didSelectItemAtIndex:idx];
-                }
-                else{
+                } else {
                     NSLog(@"1未实现");
                 }
-            }
-            else {
+            } else {
                 NSLog(@"不在同一个控制器");
             }
         }
@@ -528,52 +501,46 @@ static HyPopMenuView* _popMenuObject;
     }];
 
     [UIView animateKeyframesWithDuration:0.5 delay:0.2f options:0 animations:^{
-        weakView.backgroundView.alpha = 0.0;
-    }
-        completion:^(BOOL finished) {
+                weakView.backgroundView.alpha = 0.0;
+            }
+                              completion:^(BOOL finished) {
 
-            [weakView.backgroundView removeFromSuperview];
-            [window setHidden:finished];
-        }];
+                                  [weakView.backgroundView removeFromSuperview];
+                                  [window setHidden:finished];
+                              }];
 }
 
-- (UIViewController*)appRootViewController
-{
-    UIViewController* appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-    UIViewController* topVC = appRootVC;
+- (UIViewController *)appRootViewController {
+    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *topVC = appRootVC;
     while (topVC.presentedViewController) {
         topVC = topVC.presentedViewController;
     }
     return topVC;
 }
 
-- (UIViewController*)currentViewController
-{
-    UIViewController* vc = [self appRootViewController];
+- (UIViewController *)currentViewController {
+    UIViewController *vc = [self appRootViewController];
     if ([vc isKindOfClass:[UITabBarController class]]) {
-        UITabBarController* tab = (UITabBarController*)vc;
+        UITabBarController *tab = (UITabBarController *) vc;
         if ([tab.selectedViewController isKindOfClass:[UINavigationController class]]) {
-            UINavigationController* nav = (UINavigationController*)tab.selectedViewController;
+            UINavigationController *nav = (UINavigationController *) tab.selectedViewController;
             return [nav.viewControllers lastObject];
-        }
-        else {
+        } else {
             return tab.selectedViewController;
         }
-    }
-    else if ([vc isKindOfClass:[UINavigationController class]]) {
-        UINavigationController* nav = (UINavigationController*)vc;
+    } else if ([vc isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *nav = (UINavigationController *) vc;
         return [nav.viewControllers lastObject];
-    }
-    else {
+    } else {
         return vc;
     }
     return nil;
 }
 
-- (void)setDataSource:(NSArray*)dataSource
-{
-    NSMutableArray* tepmArr = [NSMutableArray arrayWithCapacity:MIN(9, dataSource.count)];
-    [dataSource enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL* _Nonnull stop) {
+- (void)setDataSource:(NSArray *)dataSource {
+    NSMutableArray *tepmArr = [NSMutableArray arrayWithCapacity:MIN(9, dataSource.count)];
+    [dataSource enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
         if (idx == 9) {
             *stop = true;
             return;
@@ -586,17 +553,16 @@ static HyPopMenuView* _popMenuObject;
 - (void)startViscousAnimationFormValue:(CGRect)fromValue
                                ToValue:(CGRect)toValue
                                  Delay:(CFTimeInterval)delay
-                                Object:(UIView*)obj
+                                Object:(UIView *)obj
                        CompletionBlock:(void (^)(BOOL CompletionBlock))completionBlock
-                           HideDisplay:(BOOL)hideDisplay
-{
+                           HideDisplay:(BOOL)hideDisplay {
     CGFloat toV, fromV;
     CGFloat springBounciness = 8.f;
     toV = !hideDisplay;
     fromV = hideDisplay;
 
     if (hideDisplay) {
-        POPBasicAnimation* basicAnimationCenter = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
+        POPBasicAnimation *basicAnimationCenter = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
         basicAnimationCenter.toValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(toValue), CGRectGetMidY(toValue))];
         basicAnimationCenter.fromValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(fromValue), CGRectGetMidY(fromValue))];
         basicAnimationCenter.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
@@ -604,7 +570,7 @@ static HyPopMenuView* _popMenuObject;
         basicAnimationCenter.duration = 0.18;
         [obj pop_addAnimation:basicAnimationCenter forKey:basicAnimationCenter.name];
 
-        POPBasicAnimation* basicAnimationScale = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleX];
+        POPBasicAnimation *basicAnimationScale = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleX];
         basicAnimationScale.removedOnCompletion = YES;
         basicAnimationScale.beginTime = delay;
         basicAnimationScale.toValue = @(0.7);
@@ -612,16 +578,15 @@ static HyPopMenuView* _popMenuObject;
         basicAnimationScale.duration = 0.18;
         basicAnimationScale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
         [obj.layer pop_addAnimation:basicAnimationScale forKey:basicAnimationScale.name];
-    }
-    else {
-        POPSpringAnimation* basicAnimationCenter = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+    } else {
+        POPSpringAnimation *basicAnimationCenter = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
         basicAnimationCenter.beginTime = delay;
         basicAnimationCenter.springSpeed = _popMenuSpeed;
         basicAnimationCenter.springBounciness = springBounciness;
         basicAnimationCenter.toValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(toValue), CGRectGetMidY(toValue))];
         basicAnimationCenter.fromValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(fromValue), CGRectGetMidY(fromValue))];
 
-        POPBasicAnimation* basicAnimationScale = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleX];
+        POPBasicAnimation *basicAnimationScale = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleX];
         basicAnimationScale.beginTime = delay;
         basicAnimationScale.toValue = @(1);
         basicAnimationScale.fromValue = @(0.7);
@@ -629,7 +594,7 @@ static HyPopMenuView* _popMenuObject;
         basicAnimationScale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
         [obj.layer pop_addAnimation:basicAnimationScale forKey:basicAnimationScale.name];
 
-        POPBasicAnimation* basicAnimationAlpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+        POPBasicAnimation *basicAnimationAlpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
         basicAnimationAlpha.removedOnCompletion = YES;
         basicAnimationAlpha.duration = 0.1f;
         basicAnimationAlpha.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -639,7 +604,7 @@ static HyPopMenuView* _popMenuObject;
 
         [obj pop_addAnimation:basicAnimationAlpha forKey:basicAnimationAlpha.name];
         [obj pop_addAnimation:basicAnimationCenter forKey:basicAnimationCenter.name];
-        [basicAnimationCenter setCompletionBlock:^(POPAnimation* spring, BOOL Completion) {
+        [basicAnimationCenter setCompletionBlock:^(POPAnimation *spring, BOOL Completion) {
             if (!completionBlock) {
                 return;
             }
@@ -653,10 +618,9 @@ static HyPopMenuView* _popMenuObject;
 - (void)startSinaAnimationfromValue:(CGRect)fromValue
                             toValue:(CGRect)toValue
                               delay:(CFTimeInterval)delay
-                             object:(UIView*)obj
+                             object:(UIView *)obj
                     completionBlock:(void (^)(BOOL CompletionBlock))completionBlock
-                        hideDisplay:(BOOL)hideDisplay
-{
+                        hideDisplay:(BOOL)hideDisplay {
 
     CGFloat toV, fromV;
     CGFloat springBounciness = 10.f;
@@ -664,7 +628,7 @@ static HyPopMenuView* _popMenuObject;
     fromV = hideDisplay;
 
     if (hideDisplay) {
-        POPBasicAnimation* basicAnimationCenter = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
+        POPBasicAnimation *basicAnimationCenter = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
         basicAnimationCenter.toValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(toValue), CGRectGetMidY(toValue))];
         basicAnimationCenter.fromValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(fromValue), CGRectGetMidY(fromValue))];
         basicAnimationCenter.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
@@ -672,7 +636,7 @@ static HyPopMenuView* _popMenuObject;
         basicAnimationCenter.duration = 0.18;
         [obj pop_addAnimation:basicAnimationCenter forKey:basicAnimationCenter.name];
 
-        POPBasicAnimation* basicAnimationScale = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+        POPBasicAnimation *basicAnimationScale = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
         basicAnimationScale.removedOnCompletion = YES;
         basicAnimationScale.beginTime = delay;
         basicAnimationScale.toValue = [NSValue valueWithCGPoint:CGPointMake(0.7, 0.7)];
@@ -680,13 +644,12 @@ static HyPopMenuView* _popMenuObject;
         basicAnimationScale.duration = 0.18;
         basicAnimationScale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
         [obj.layer pop_addAnimation:basicAnimationScale forKey:basicAnimationScale.name];
-        [basicAnimationScale setCompletionBlock:^(POPAnimation* s, BOOL b) {
-            PopMenuButton* btn = (id)obj;
+        [basicAnimationScale setCompletionBlock:^(POPAnimation *s, BOOL b) {
+            PopMenuButton *btn = (id) obj;
             [btn.model performSelector:@selector(_obj)];
         }];
-    }
-    else {
-        POPSpringAnimation* springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+    } else {
+        POPSpringAnimation *springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
         springAnimation.removedOnCompletion = YES;
         springAnimation.beginTime = delay;
         springAnimation.springBounciness = springBounciness; // value between 0-20
@@ -694,7 +657,7 @@ static HyPopMenuView* _popMenuObject;
         springAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(toValue), CGRectGetMidY(toValue))];
         springAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(fromValue), CGRectGetMidY(fromValue))];
 
-        POPBasicAnimation* basicAnimationAlpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+        POPBasicAnimation *basicAnimationAlpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
         basicAnimationAlpha.removedOnCompletion = YES;
         basicAnimationAlpha.duration = 0.2;
         basicAnimationAlpha.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -703,7 +666,7 @@ static HyPopMenuView* _popMenuObject;
         basicAnimationAlpha.fromValue = @(fromV);
         [obj pop_addAnimation:basicAnimationAlpha forKey:basicAnimationAlpha.name];
         [obj pop_addAnimation:springAnimation forKey:springAnimation.name];
-        [springAnimation setCompletionBlock:^(POPAnimation* spring, BOOL Completion) {
+        [springAnimation setCompletionBlock:^(POPAnimation *spring, BOOL Completion) {
             if (!completionBlock) {
                 return;
             }
@@ -714,28 +677,24 @@ static HyPopMenuView* _popMenuObject;
     }
 }
 
-- (void)animationDidStop:(CAAnimation*)anim finished:(BOOL)flag
-{
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
 
-    CABasicAnimation* cab = (CABasicAnimation*)anim;
+    CABasicAnimation *cab = (CABasicAnimation *) anim;
     if ([cab.keyPath isEqualToString:@"transform.scale"]) {
     }
 }
 
-- (void)playSoundName:(NSString*)name
-              ForType:(NSString*)type
-
-{
-    NSString* AudioName = [NSString stringWithFormat:@"%@.%@", name, type];
-    NSURL* url = [[NSBundle mainBundle] URLForResource:AudioName withExtension:nil];
+- (void)playSoundName:(NSString *)name
+              ForType:(NSString *)type {
+    NSString *AudioName = [NSString stringWithFormat:@"%@.%@", name, type];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:AudioName withExtension:nil];
 
     SystemSoundID soundID = 0;
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef) url, &soundID);
     AudioServicesPlaySystemSound(soundID);
 }
 
-- (void)show
-{
+- (void)show {
     if (!window) {
         window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     }
@@ -746,30 +705,28 @@ static HyPopMenuView* _popMenuObject;
     [window addSubview:self];
 }
 
-- (BOOL)isOpenMenu
-{
+- (BOOL)isOpenMenu {
     return _isOpen;
 }
 
-- (void)addNotificationAtNotificationName:(NSString*)notificationNmae
-{
-    NSNotification* broadcastMessage = [NSNotification notificationWithName:notificationNmae object:nil];
-    NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
+- (void)addNotificationAtNotificationName:(NSString *)notificationNmae {
+    NSNotification *broadcastMessage = [NSNotification notificationWithName:notificationNmae object:nil];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter postNotification:broadcastMessage];
 }
 
-- (void)setTopView:(UIView*)topView
-{
+- (void)setTopView:(UIView *)topView {
     if (_topView) {
         [_topView removeFromSuperview];
     }
     _topView = topView;
 }
 
-- (void)_obj {}
+- (void)_obj {
+}
 @end
 
-NSString* const HyPopMenuViewWillShowNotification = @"HyPopMenuViewWillShowNotification";
-NSString* const HyPopMenuViewDidShowNotification = @"HyPopMenuViewDidShowNotification";
-NSString* const HyPopMenuViewWillHideNotification = @"HyPopMenuViewWillHideNotification";
-NSString* const HyPopMenuViewDidHideNotification = @"HyPopMenuViewDidHideNotification";
+NSString *const HyPopMenuViewWillShowNotification = @"HyPopMenuViewWillShowNotification";
+NSString *const HyPopMenuViewDidShowNotification = @"HyPopMenuViewDidShowNotification";
+NSString *const HyPopMenuViewWillHideNotification = @"HyPopMenuViewWillHideNotification";
+NSString *const HyPopMenuViewDidHideNotification = @"HyPopMenuViewDidHideNotification";

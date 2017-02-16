@@ -10,14 +10,14 @@
 
 @protocol SettingBarDelegate <NSObject>
 
--(void)didClickRemoteSwitch:(UISwitch *)remoteSwitch;
+- (void)didClickRemoteSwitch:(UISwitch *)remoteSwitch;
 
--(void)didClickSettingTableItem:(NSUInteger)index;
+- (void)didClickSettingTableItem:(NSUInteger)index;
 
 @end
 
 @interface SettingController : UIViewController
 
-@property(nonatomic,assign)id<SettingBarDelegate>delegate;
+@property(nonatomic, assign) id <SettingBarDelegate> delegate;
 
 @end

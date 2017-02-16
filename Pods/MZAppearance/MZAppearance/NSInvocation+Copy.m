@@ -28,35 +28,34 @@
 @interface NSString (Encoding)
 
 - (BOOL)mz_isFirstCharacterEqual:(NSString *)string;
+
 - (BOOL)mz_isFirstCharacterCaseInsensitiveEqual:(NSString *)string;
+
 - (NSString *)mz_stringByRemovingMethodEnodingQualifiers;
 
 @end
 
 @implementation NSString (Encoding)
 
-- (BOOL)mz_isFirstCharacterEqual:(NSString *)string
-{
+- (BOOL)mz_isFirstCharacterEqual:(NSString *)string {
     if (self.length < 1 || string.length < 1) {
         return NO;
     }
     return [[self substringToIndex:1] isEqualToString:[string substringToIndex:1]];
 }
 
-- (BOOL)mz_isFirstCharacterCaseInsensitiveEqual:(NSString *)string
-{
+- (BOOL)mz_isFirstCharacterCaseInsensitiveEqual:(NSString *)string {
     if (self.length < 1 || string.length < 1) {
         return NO;
     }
     return [[self substringToIndex:1] caseInsensitiveCompare:[string substringToIndex:1]] == NSOrderedSame;
 }
 
-- (NSString *)mz_stringByRemovingMethodEnodingQualifiers
-{
+- (NSString *)mz_stringByRemovingMethodEnodingQualifiers {
     if ([self mz_isFirstCharacterCaseInsensitiveEqual:@"r"] ||
-        [self mz_isFirstCharacterCaseInsensitiveEqual:@"n"] ||
-        [self mz_isFirstCharacterCaseInsensitiveEqual:@"o"] ||
-        [self mz_isFirstCharacterEqual:@"V"]) {
+            [self mz_isFirstCharacterCaseInsensitiveEqual:@"n"] ||
+            [self mz_isFirstCharacterCaseInsensitiveEqual:@"o"] ||
+            [self mz_isFirstCharacterEqual:@"V"]) {
         return [self substringFromIndex:1];
     } else {
         return self;
@@ -75,8 +74,7 @@ BOOL mz_areObjCTypesEqual(NSString *argmuentType, const char *encodingType) {
 
 // http://stackoverflow.com/questions/15732885/uiappearance-proxy-for-custom-objects
 
-- (id)copy
-{
+- (id)copy {
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:self.methodSignature];
     NSUInteger numberOfArguments = [[self methodSignature] numberOfArguments];
 
@@ -85,7 +83,7 @@ BOOL mz_areObjCTypesEqual(NSString *argmuentType, const char *encodingType) {
 
     if (numberOfArguments > 2) {
         for (int i = 0; i < (numberOfArguments - 2); i++) {
-            NSInteger index = i+2;
+            NSInteger index = i + 2;
 
             NSString *argumentType = [NSString stringWithUTF8String:[self.methodSignature getArgumentTypeAtIndex:index]];
 
@@ -143,8 +141,8 @@ BOOL mz_areObjCTypesEqual(NSString *argmuentType, const char *encodingType) {
                 [invocation setArgument:&arg atIndex:index];
             } else if (mz_areObjCTypesEqual(argumentType, @encode(id))) {
                 char buffer[sizeof(intmax_t)];
-                [self getArgument:(void *)&buffer atIndex:i + 2];
-                [invocation setArgument:(void *)&buffer atIndex:i + 2];
+                [self getArgument:(void *) &buffer atIndex:i + 2];
+                [invocation setArgument:(void *) &buffer atIndex:i + 2];
             } else if (mz_areObjCTypesEqual(argumentType, @encode(SEL))) {
                 SEL arg;
                 [self getArgument:&arg atIndex:index];

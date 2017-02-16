@@ -35,16 +35,15 @@
  - APPLockModeQuery: 开锁记录
  */
 typedef NS_ENUM(NSUInteger, APPLockMode) {
-    APPLockModeOpen         =   1,
-    APPLockModeChange       =   2,
-    APPLockModeCleanAll     =   3,
-    APPLockModeSync         =   8,
-    APPLockModeLinkage      =   16,
-    APPLockModeLowPower     =   17,
-    APPLockModePowerValue   =   18,
-    APPLockModeQuery        =   19,
+    APPLockModeOpen = 1,
+    APPLockModeChange = 2,
+    APPLockModeCleanAll = 3,
+    APPLockModeSync = 8,
+    APPLockModeLinkage = 16,
+    APPLockModeLowPower = 17,
+    APPLockModePowerValue = 18,
+    APPLockModeQuery = 19,
 };
-
 
 
 @interface TTSUtility : NSObject
@@ -96,7 +95,7 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
 
  @param finish <#finish description#>
  */
-+ (void)addMutiDeviceAnimationFinish:(void(^)(void))finish;
++ (void)addMutiDeviceAnimationFinish:(void (^)(void))finish;
 
 
 /**
@@ -124,7 +123,7 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
 
 + (NSArray *)initScene:(RoomInfo *)roomInfo;
 
-+ (SceneInfo *)addSceneWithRoom:(RoomInfo *)roomInfo roomDevice:(NSArray <DeviceInfo *>*)roomDevice index:(NSUInteger)roomIndex roomName:(NSString *)roomName;
++ (SceneInfo *)addSceneWithRoom:(RoomInfo *)roomInfo roomDevice:(NSArray <DeviceInfo *> *)roomDevice index:(NSUInteger)roomIndex roomName:(NSString *)roomName;
 
 + (void)deleteScene:(SceneInfo *)sceneInfo room:(RoomInfo *)roomInfo;
 
@@ -142,10 +141,10 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
  *  本地蓝牙封装
  */
 
-+(void)localDeviceControl:(NSString *)deviceID commandStr:(NSString *)command retryTimes:(NSUInteger)retryTimes conditionReturn:(void(^)(id stateData))getStateCode;
++ (void)localDeviceControl:(NSString *)deviceID commandStr:(NSString *)command retryTimes:(NSUInteger)retryTimes conditionReturn:(void (^)(id stateData))getStateCode;
 
 
-+(void)mutiLocalDeviceControlWithDeviceInfoArr:(NSArray *)deviceArr result:(void (^)(NSArray * resultArr))resultArr;
++ (void)mutiLocalDeviceControlWithDeviceInfoArr:(NSArray *)deviceArr result:(void (^)(NSArray *resultArr))resultArr;
 
 
 /**
@@ -156,7 +155,7 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
  *  @param retryTimes   重试时间
  *  @param getStateCode 返回码
  */
-+(void)remoteDeviceControl:(DeviceInfo *)deviceInfo commandStr:(NSString *)command retryTimes:(NSUInteger)retryTimes conditionReturn:(void(^)(NSString *))getStateCode;
++ (void)remoteDeviceControl:(DeviceInfo *)deviceInfo commandStr:(NSString *)command retryTimes:(NSUInteger)retryTimes conditionReturn:(void (^)(NSString *))getStateCode;
 
 /**
  *  同步状态
@@ -165,7 +164,7 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
  *  @param remoteMacID  <#remoteMacID description#>
  *  @param getStateCode <#getStateCode description#>
  */
-+(void)syncRemoteDevice:(DeviceInfo *)deviceInfo remoteMacID:(NSString *)remoteMacID conditionReturn:(void(^)(NSString *))getStateCode;
++ (void)syncRemoteDevice:(DeviceInfo *)deviceInfo remoteMacID:(NSString *)remoteMacID conditionReturn:(void (^)(NSString *))getStateCode;
 
 /**
  *  批量控制
@@ -174,7 +173,7 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
  *  @param remoteMacID <#remoteMacID description#>
  *  @param resultArr   <#resultArr description#>
  */
-+(void)mutiRemoteControl:(NSArray <DeviceInfo *>*)deviceArr result:(void(^)(NSArray *))resultArr;
++ (void)mutiRemoteControl:(NSArray <DeviceInfo *> *)deviceArr result:(void (^)(NSArray *))resultArr;
 
 
 /**
@@ -183,10 +182,10 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
  @param devices     即将同步的设备
  @param remoteMacID 远程控制ID
  */
-+(void)mutiRemoteSave:(NSArray <DeviceInfo *>*)devices remoteMacID:(NSString *)remoteMacID;
++ (void)mutiRemoteSave:(NSArray <DeviceInfo *> *)devices remoteMacID:(NSString *)remoteMacID;
 
 
-+(RoomInfo *)addRoomWithName:(NSString *)roomName roomType:(NSNumber *)roomType;
++ (RoomInfo *)addRoomWithName:(NSString *)roomName roomType:(NSNumber *)roomType;
 
 //锁功能
 
@@ -199,32 +198,32 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
  @param passWord   <#passWord description#>
  @param validtime  <#validtime description#>
  */
-+(void)lockWithDeviceInfo:(DeviceInfo *)deviceInfo lockMode:(APPLockMode)lockMode passWord:(NSString *)passWord validtime:(NSTimeInterval)validtime;
++ (void)lockWithDeviceInfo:(DeviceInfo *)deviceInfo lockMode:(APPLockMode)lockMode passWord:(NSString *)passWord validtime:(NSTimeInterval)validtime;
 
-+(void)lockWithRemoteInfo:(DeviceInfo *)lockInfo lockMode:(APPLockMode)lockMode passWord:(NSString *)passWord validtime:(NSTimeInterval)validtime;
++ (void)lockWithRemoteInfo:(DeviceInfo *)lockInfo lockMode:(APPLockMode)lockMode passWord:(NSString *)passWord validtime:(NSTimeInterval)validtime;
 
-+(void)lockWithLinkDevice:(NSString *)deviceID lockInfo:(DeviceInfo *)lockInfo command:(NSString *)command;
++ (void)lockWithLinkDevice:(NSString *)deviceID lockInfo:(DeviceInfo *)lockInfo command:(NSString *)command;
 
-+(void)lockWithPowerLockInfo:(DeviceInfo *)lockInfo lockMode:(APPLockMode)lockMode powerWarning:(NSInteger)val;
++ (void)lockWithPowerLockInfo:(DeviceInfo *)lockInfo lockMode:(APPLockMode)lockMode powerWarning:(NSInteger)val;
 
-+(void)lockWithQueryLogLockInfo:(DeviceInfo *)lockInfo;
++ (void)lockWithQueryLogLockInfo:(DeviceInfo *)lockInfo;
 
-+(void)lockWithSystemInfo:(DeviceInfo *)lockInfo codeReturn:(void(^)(NSData *data))codeReturn;
++ (void)lockWithSystemInfo:(DeviceInfo *)lockInfo codeReturn:(void (^)(NSData *data))codeReturn;
 
 //遥控器绑定
 
-+(void)switchWithBinding:(DeviceInfo *)deviceInfo ctrlNum:(NSUInteger)ctrlNum remoteID:(NSString *)remoteID;
++ (void)switchWithBinding:(DeviceInfo *)deviceInfo ctrlNum:(NSUInteger)ctrlNum remoteID:(NSString *)remoteID;
 
-+(void)remoteBind:(DeviceInfo *)deviceInfo remoteCommand:(NSInteger)remoteCommand switchCommand:(NSInteger)switchCommand remoteID:(NSString *)remoteID;
++ (void)remoteBind:(DeviceInfo *)deviceInfo remoteCommand:(NSInteger)remoteCommand switchCommand:(NSInteger)switchCommand remoteID:(NSString *)remoteID;
 
 //可视对讲相关
-+(void)getVideoHistoryListWithCid:(NSString *)cid
-                          success:(void(^)(NSArray *historyList))success
-                          failure:(void (^)(NSInteger type))fail;
++ (void)getVideoHistoryListWithCid:(NSString *)cid
+                           success:(void (^)(NSArray *historyList))success
+                           failure:(void (^)(NSInteger type))fail;
 
 //可视对讲获得Wifi信息
-+(void)getVideoWifiInfoWithCid:(NSString *)cid
-                       success:(void(^)(NSString *wifiSSID))success
-                       failure:(void (^)(NSInteger type))fail;
++ (void)getVideoWifiInfoWithCid:(NSString *)cid
+                        success:(void (^)(NSString *wifiSSID))success
+                        failure:(void (^)(NSInteger type))fail;
 
 @end

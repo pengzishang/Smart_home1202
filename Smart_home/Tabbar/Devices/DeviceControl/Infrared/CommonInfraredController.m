@@ -20,11 +20,10 @@
     // Do any additional setup after loading the view.
 }
 
--(IBAction)pressBtn:(UIButton *)sender
-{
-    NSLogMethodArgs(@"....%@",self.deviceInfo);
-    NSString *btnString=[@(sender.tag-100).stringValue fullWithLengthCount:3];
-    NSString *commandString=[[_deviceInfo.deviceInfaredCode stringByAppendingString:btnString]fullWithLengthCountBehide:27];
+- (IBAction)pressBtn:(UIButton *)sender {
+    NSLogMethodArgs(@"....%@", self.deviceInfo);
+    NSString *btnString = [@(sender.tag - 100).stringValue fullWithLengthCount:3];
+    NSString *commandString = [[_deviceInfo.deviceInfaredCode stringByAppendingString:btnString] fullWithLengthCountBehide:27];
     [TTSUtility localDeviceControl:_deviceInfo.deviceInfraredID commandStr:commandString retryTimes:0 conditionReturn:^(id stateData) {
     }];
 }

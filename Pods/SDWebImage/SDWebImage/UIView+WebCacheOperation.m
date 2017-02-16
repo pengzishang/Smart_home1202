@@ -40,8 +40,8 @@ static char loadOperationKey;
                     [operation cancel];
                 }
             }
-        } else if ([operations conformsToProtocol:@protocol(SDWebImageOperation)]){
-            [(id<SDWebImageOperation>) operations cancel];
+        } else if ([operations conformsToProtocol:@protocol(SDWebImageOperation)]) {
+            [(id <SDWebImageOperation>) operations cancel];
         }
         [operationDictionary removeObjectForKey:key];
     }

@@ -28,7 +28,8 @@
 #import "AFURLSessionManager.h"
 
 @interface AFRefreshControlNotificationObserver : NSObject
-@property (readonly, nonatomic, weak) UIRefreshControl *refreshControl;
+@property(readonly, nonatomic, weak) UIRefreshControl *refreshControl;
+
 - (instancetype)initWithActivityRefreshControl:(UIRefreshControl *)refreshControl;
 
 - (void)setRefreshingWithStateOfTask:(NSURLSessionTask *)task;
@@ -54,8 +55,7 @@
 
 @implementation AFRefreshControlNotificationObserver
 
-- (instancetype)initWithActivityRefreshControl:(UIRefreshControl *)refreshControl
-{
+- (instancetype)initWithActivityRefreshControl:(UIRefreshControl *)refreshControl {
     self = [super init];
     if (self) {
         _refreshControl = refreshControl;
@@ -111,7 +111,7 @@
 
 - (void)dealloc {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    
+
     [notificationCenter removeObserver:self name:AFNetworkingTaskDidCompleteNotification object:nil];
     [notificationCenter removeObserver:self name:AFNetworkingTaskDidResumeNotification object:nil];
     [notificationCenter removeObserver:self name:AFNetworkingTaskDidSuspendNotification object:nil];

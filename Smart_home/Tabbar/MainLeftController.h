@@ -12,18 +12,18 @@
 
 @optional
 
--(void)didFinishAdding;
+- (void)didFinishAdding;
 
--(void)didClickSceneIndex:(NSUInteger)index;
+- (void)didClickSceneIndex:(NSUInteger)index;
 
--(void)willEditSceneIndex:(NSUInteger)index;
+- (void)willEditSceneIndex:(NSUInteger)index;
 
--(void)willOpenVideo:(NSDictionary *)userinfo;
+- (void)willOpenVideo:(NSDictionary *)userinfo;
 
 @end
 
 @interface MainLeftController : MMDrawerController
 
-@property(nonatomic,assign)BOOL isLeftOpen;
-@property(assign,nonatomic)id<MainDelegate>delegate;
+@property(nonatomic, assign) BOOL isLeftOpen;
+@property(assign, nonatomic) id <MainDelegate> delegate;
 @end

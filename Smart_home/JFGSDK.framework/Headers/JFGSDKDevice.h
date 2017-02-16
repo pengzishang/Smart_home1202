@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JFGTypeDefine.h"
+
 /*!
  *  加菲狗设备属性
  *  这些属性一般情况不会发生改变
@@ -17,23 +18,23 @@
 /*!
  *  设备别名
  */
-@property (nonatomic,copy) NSString *alias;
+@property(nonatomic, copy) NSString *alias;
 /*!
  *  设备系统类型
  */
-@property (nonatomic,copy) NSString *pid;
+@property(nonatomic, copy) NSString *pid;
 /**
  *  设备序列号
  */
-@property (nonatomic,copy) NSString *sn;
+@property(nonatomic, copy) NSString *sn;
 /**
  *  设备唯一标示
  */
-@property (nonatomic,copy) NSString *uuid;
+@property(nonatomic, copy) NSString *uuid;
 /**
  *  不为空标识设备是来自于分享
  */
-@property (nonatomic,copy) NSString *shareAccount;
+@property(nonatomic, copy) NSString *shareAccount;
 
 
 @end
@@ -53,26 +54,26 @@
 
 @interface JFGSDKDeviceVersionInfo : NSObject
 
-@property (nonatomic,assign)BOOL hasNewPkg;
+@property(nonatomic, assign) BOOL hasNewPkg;
 
 /**
  *  null if hasNewpkg is false, else this is a http url which we can directly download a upgrade file.
  */
-@property (nonatomic,copy)NSString *url;
+@property(nonatomic, copy) NSString *url;
 
 /**
  *  new version of this upgrade
  */
-@property (nonatomic,copy)NSString *version;
+@property(nonatomic, copy) NSString *version;
 
 /**
  *  show upgradeTips to user interface
  */
-@property (nonatomic,copy)NSString *upgradeTips;
+@property(nonatomic, copy) NSString *upgradeTips;
 
 /**
  *  file md5 checksum
  */
-@property (nonatomic,copy)NSString *md5;
+@property(nonatomic, copy) NSString *md5;
 
 @end

@@ -10,14 +10,12 @@
 #import "DoorBellBinding.h"
 #import <JFGSDK/JFGSDKBindingDevice.h>
 
-@interface DoorBellStep2 ()<JFGSDKBindDeviceDelegate>
-
-{
+@interface DoorBellStep2 () <JFGSDKBindDeviceDelegate> {
     JFGSDKBindingDevice *bindDevice;
 }
-@property (weak, nonatomic) IBOutlet UITextField *ssid;
-@property (weak, nonatomic) IBOutlet UITextField *password;
-@property (weak, nonatomic) IBOutlet UITextField *deviceName;
+@property(weak, nonatomic) IBOutlet UITextField *ssid;
+@property(weak, nonatomic) IBOutlet UITextField *password;
+@property(weak, nonatomic) IBOutlet UITextField *deviceName;
 
 @end
 
@@ -25,14 +23,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (_wifiSSID.length>=1) {
-        _ssid.text=_wifiSSID;
+    if (_wifiSSID.length >= 1) {
+        _ssid.text = _wifiSSID;
     }
 //    bindDevice.delegate = self;
 //    [bindDevice scanWifi];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -41,13 +39,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)nextStep:(UIBarButtonItem *)sender {
-    if (_ssid.text.length>0) {
+    if (_ssid.text.length > 0) {
         [self performSegueWithIdentifier:@"doorBinding" sender:nil];
-    }
-    else
-    {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误" message:@"WiFi名称不能为空" preferredStyle: UIAlertControllerStyleActionSheet];
+    } else {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误" message:@"WiFi名称不能为空" preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:cancelAction];
         [self presentViewController:alertController animated:YES completion:nil];
@@ -55,26 +52,22 @@
 }
 
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
 
 
--(void)jfgBindDeviceProgressStatus:(JFGSDKBindindProgressStatus)status
-{
+- (void)jfgBindDeviceProgressStatus:(JFGSDKBindindProgressStatus)status {
     if (status == JFGSDKBindindProgressStatusSuccess) {
         NSLog(@"bind-Result:success");
-    }
-    else{
-        NSLog(@"%zd",status);
+    } else {
+        NSLog(@"%zd", status);
     }
 }
 
 //绑定失败
--(void)jfgBindDeviceFailed:(JFGSDKBindindProgressStatus)errorType;
-{
-    NSLog(@"bind-Result:fail:%zd",errorType);
+- (void)jfgBindDeviceFailed:(JFGSDKBindindProgressStatus)errorType; {
+    NSLog(@"bind-Result:fail:%zd", errorType);
 }
 
 #pragma mark - Table view data source
@@ -139,9 +132,9 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"doorBinding"]) {
-        DoorBellBinding *target=segue.destinationViewController;
-        target.wifiPWD=_password.text;
-        target.wifiSSID=_ssid.text;
+        DoorBellBinding *target = segue.destinationViewController;
+        target.wifiPWD = _password.text;
+        target.wifiSSID = _ssid.text;
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

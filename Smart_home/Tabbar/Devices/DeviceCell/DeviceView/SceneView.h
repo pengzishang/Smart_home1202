@@ -10,6 +10,6 @@
 
 @interface SceneView : UIView
 
--(instancetype)initWithFrame:(CGRect)frame target:(UIViewController *)target;
+- (instancetype)initWithFrame:(CGRect)frame target:(UIViewController *)target;
 
 @end

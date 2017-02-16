@@ -13,12 +13,12 @@
 @implementation NSMutableAttributedString (AvoidCrash)
 
 + (void)avoidCrashExchangeMethod {
-    
+
     Class NSConcreteMutableAttributedString = NSClassFromString(@"NSConcreteMutableAttributedString");
-    
+
     //initWithString:
     [AvoidCrash exchangeInstanceMethod:NSConcreteMutableAttributedString method1Sel:@selector(initWithString:) method2Sel:@selector(avoidCrashInitWithString:)];
-    
+
     //initWithString:attributes:
     [AvoidCrash exchangeInstanceMethod:NSConcreteMutableAttributedString method1Sel:@selector(initWithString:attributes:) method2Sel:@selector(avoidCrashInitWithString:attributes:)];
 }
@@ -31,7 +31,7 @@
 
 - (instancetype)avoidCrashInitWithString:(NSString *)str {
     id object = nil;
-    
+
     @try {
         object = [self avoidCrashInitWithString:str];
     }
@@ -51,9 +51,9 @@
 #pragma mark - initWithString:attributes:
 
 
-- (instancetype)avoidCrashInitWithString:(NSString *)str attributes:(NSDictionary<NSString *,id> *)attrs {
+- (instancetype)avoidCrashInitWithString:(NSString *)str attributes:(NSDictionary<NSString *, id> *)attrs {
     id object = nil;
-    
+
     @try {
         object = [self avoidCrashInitWithString:str attributes:attrs];
     }

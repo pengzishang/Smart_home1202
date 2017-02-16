@@ -40,10 +40,10 @@
 #endif
 
 #if OS_OBJECT_USE_OBJC
-    #undef SDDispatchQueueRelease
-    #undef SDDispatchQueueSetterSementics
-    #define SDDispatchQueueRelease(q)
-    #define SDDispatchQueueSetterSementics strong
+#undef SDDispatchQueueRelease
+#undef SDDispatchQueueSetterSementics
+#define SDDispatchQueueRelease(q)
+#define SDDispatchQueueSetterSementics strong
 #else
 #undef SDDispatchQueueRelease
 #undef SDDispatchQueueSetterSementics

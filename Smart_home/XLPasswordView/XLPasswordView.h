@@ -19,6 +19,7 @@
  *  @param password     输入的密码文本
  */
 - (void)passwordView:(XLPasswordView *)passwordView passwordTextDidChange:(NSString *)password;
+
 /**
  *  输入密码位数已满时调用
  */
@@ -37,12 +38,13 @@
 /**
  *  delegate
  */
-@property (nonatomic , weak) id <XLPasswordViewDelegate>delegate;
+@property(nonatomic, weak) id <XLPasswordViewDelegate> delegate;
 
 /**
  *  快速创建方法
  */
 + (instancetype)passwordView;
+
 /**
  *  展示
  *
@@ -54,6 +56,7 @@
  *  隐藏
  */
 - (void)hidePasswordView;
+
 /**
  *  清除
  */

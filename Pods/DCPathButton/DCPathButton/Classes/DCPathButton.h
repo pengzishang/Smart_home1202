@@ -21,35 +21,35 @@ typedef NS_ENUM(NSUInteger, kDCPathButtonBloomDirection) {
     /*!
      *  Bloom animation gose to the top of the `DCPathButton` object.
      */
-    kDCPathButtonBloomDirectionTop = 1,
+            kDCPathButtonBloomDirectionTop = 1,
     /*!
      *  Bloom animation gose to top left of the `DCPathButton` object.
      */
-    kDCPathButtonBloomDirectionTopLeft = 2,
+            kDCPathButtonBloomDirectionTopLeft = 2,
     /*!
      *  Bloom animation gose to the left of the `DCPathButton` object.
      */
-    kDCPathButtonBloomDirectionLeft = 3,
+            kDCPathButtonBloomDirectionLeft = 3,
     /*!
      *  Bloom animation gose to bottom left of the `DCPathButton` object.
      */
-    kDCPathButtonBloomDirectionBottomLeft = 4,
+            kDCPathButtonBloomDirectionBottomLeft = 4,
     /*!
      *  Bloom animation gose to the bottom of the `DCPathButton` object.
      */
-    kDCPathButtonBloomDirectionBottom = 5,
+            kDCPathButtonBloomDirectionBottom = 5,
     /*!
      *  Bloom animation gose to bottom right of the `DCPathButton` object.
      */
-    kDCPathButtonBloomDirectionBottomRight = 6,
+            kDCPathButtonBloomDirectionBottomRight = 6,
     /*!
      *  Bloom animation gose to the right of the `DCPathButton` object.
      */
-    kDCPathButtonBloomDirectionRight = 7,
+            kDCPathButtonBloomDirectionRight = 7,
     /*!
      *  Bloom animation gose around the `DCPathButton` object.
      */
-    kDCPathButtonBloomDirectionTopRight = 8,
+            kDCPathButtonBloomDirectionTopRight = 8,
 };
 
 /*!
@@ -73,6 +73,7 @@ typedef NS_ENUM(NSUInteger, kDCPathButtonBloomDirection) {
  *  @param dcPathButton A `DCPathButton` object that is about to present its items.
  */
 - (void)willPresentDCPathButtonItems:(DCPathButton *)dcPathButton;
+
 /*!
  *  Tells the delegate that the `DCPathButton` object has already presented its items.
  *
@@ -86,6 +87,7 @@ typedef NS_ENUM(NSUInteger, kDCPathButtonBloomDirection) {
  *  @param dcPathButton A `DCPathButton` object that is about to dismiss its items
  */
 - (void)willDismissDCPathButtonItems:(DCPathButton *)dcPathButton;
+
 /*!
  *  Tells the delegate that the `DCPathButton` object has already dismissed its items.
  *
@@ -100,66 +102,66 @@ typedef NS_ENUM(NSUInteger, kDCPathButtonBloomDirection) {
 /*!
  *  The object that acts as the delegate of the `DCPathButton` object.
  */
-@property (weak, nonatomic) id<DCPathButtonDelegate> delegate;
+@property(weak, nonatomic) id <DCPathButtonDelegate> delegate;
 
 /*!
  *  `DCPathButton` object's bloom animation's duration.
  */
-@property (assign, nonatomic) NSTimeInterval basicDuration;
+@property(assign, nonatomic) NSTimeInterval basicDuration;
 /*!
  *  `YES` if allows `DCPathButton` object's sub items to rotate. Otherwise `NO`.
  */
-@property (assign, nonatomic) BOOL allowSubItemRotation;
+@property(assign, nonatomic) BOOL allowSubItemRotation;
 
 /*!
  *  `DCPathButton` object's bloom radius. The default value is 105.0f.
  */
-@property (assign, nonatomic) CGFloat bloomRadius;
+@property(assign, nonatomic) CGFloat bloomRadius;
 
 /*!
  *  `DCPathButton` object's bloom angle.
  */
-@property (assign, nonatomic) CGFloat bloomAngel;
+@property(assign, nonatomic) CGFloat bloomAngel;
 
 /*!
  *  The center of a `DCPathButton` object's position. The default value positions the `DCPathButton` object in bottom center.
  */
-@property (assign, nonatomic) CGPoint dcButtonCenter;
+@property(assign, nonatomic) CGPoint dcButtonCenter;
 
 /*!
  *  If set to `YES` a sound will be played when the `DCPathButton` object is being interacted. The default value is `YES`.
  */
-@property (assign, nonatomic) BOOL allowSounds;
+@property(assign, nonatomic) BOOL allowSounds;
 
 /*!
  *  The path to the `DCPathButton` object's bloom effect sound file.
  */
-@property (copy, nonatomic) NSString *bloomSoundPath;
+@property(copy, nonatomic) NSString *bloomSoundPath;
 
 /*!
  *  The path to the `DCPathButton` object's fold effect sound file.
  */
-@property (copy, nonatomic) NSString *foldSoundPath;
+@property(copy, nonatomic) NSString *foldSoundPath;
 
 /*!
  *  The path to the `DCPathButton` object's item action sound file.
  */
-@property (copy, nonatomic) NSString *itemSoundPath;
+@property(copy, nonatomic) NSString *itemSoundPath;
 
 /*!
  *  `YES` if allows the `DCPathButton` object's center button to rotate. Otherwise `NO`.
  */
-@property (assign, nonatomic) BOOL allowCenterButtonRotation;
+@property(assign, nonatomic) BOOL allowCenterButtonRotation;
 
 /*!
  *  Color of the backdrop view when `DCPathButton` object's sub items are shown.
  */
-@property (strong, nonatomic) UIColor *bottomViewColor;
+@property(strong, nonatomic) UIColor *bottomViewColor;
 
 /*!
  *  Direction of `DCPathButton` object's bloom animation.
  */
-@property (assign, nonatomic) kDCPathButtonBloomDirection bloomDirection;
+@property(assign, nonatomic) kDCPathButtonBloomDirection bloomDirection;
 
 /*!
  *  Creates a `DCPathButton` object with a given normal image and highlited images for center button.

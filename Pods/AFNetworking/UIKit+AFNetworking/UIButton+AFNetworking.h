@@ -98,8 +98,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setImageForState:(UIControlState)state
           withURLRequest:(NSURLRequest *)urlRequest
         placeholderImage:(nullable UIImage *)placeholderImage
-                 success:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, UIImage *image))success
-                 failure:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error))failure;
+                 success:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse *_Nullable response, UIImage *image))success
+                 failure:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse *_Nullable response, NSError *error))failure;
 
 
 ///-------------------------------
@@ -146,8 +146,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setBackgroundImageForState:(UIControlState)state
                     withURLRequest:(NSURLRequest *)urlRequest
                   placeholderImage:(nullable UIImage *)placeholderImage
-                           success:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, UIImage *image))success
-                           failure:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error))failure;
+                           success:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse *_Nullable response, UIImage *image))success
+                           failure:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse *_Nullable response, NSError *error))failure;
 
 
 ///------------------------------

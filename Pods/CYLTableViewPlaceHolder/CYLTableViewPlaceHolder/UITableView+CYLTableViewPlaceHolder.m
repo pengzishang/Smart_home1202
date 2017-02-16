@@ -13,8 +13,8 @@
 
 @interface UITableView ()
 
-@property (nonatomic, assign) BOOL scrollWasEnabled;
-@property (nonatomic, strong) UIView *placeHolderView;
+@property(nonatomic, assign) BOOL scrollWasEnabled;
+@property(nonatomic, strong) UIView *placeHolderView;
 
 @end
 
@@ -45,25 +45,25 @@
 
 - (void)cyl_checkEmpty {
     BOOL isEmpty = YES;
-    
-    id<UITableViewDataSource> src = self.dataSource;
+
+    id <UITableViewDataSource> src = self.dataSource;
     NSInteger sections = 1;
-    if ([src respondsToSelector: @selector(numberOfSectionsInTableView:)]) {
+    if ([src respondsToSelector:@selector(numberOfSectionsInTableView:)]) {
         sections = [src numberOfSectionsInTableView:self];
     }
-    for (int i = 0; i<sections; ++i) {
+    for (int i = 0; i < sections; ++i) {
         NSInteger rows = [src tableView:self numberOfRowsInSection:i];
         if (rows) {
             isEmpty = NO;
         }
-        
+
     }
     if (!isEmpty != !self.placeHolderView) {
         if (isEmpty) {
             self.scrollWasEnabled = self.scrollEnabled;
             BOOL scrollEnabled = NO;
             if ([self respondsToSelector:@selector(enableScrollWhenPlaceHolderViewShowing)]) {
-                 scrollEnabled = [self performSelector:@selector(enableScrollWhenPlaceHolderViewShowing)];
+                scrollEnabled = [self performSelector:@selector(enableScrollWhenPlaceHolderViewShowing)];
                 if (!scrollEnabled) {
                     NSString *reason = @"There is no need to return  NO for `-enableScrollWhenPlaceHolderViewShowing`, it will be NO by default";
                     @throw [NSException exceptionWithName:NSGenericException
@@ -82,7 +82,7 @@
             self.scrollEnabled = scrollEnabled;
             if ([self respondsToSelector:@selector(makePlaceHolderView)]) {
                 self.placeHolderView = [self performSelector:@selector(makePlaceHolderView)];
-            } else if ( [self.delegate respondsToSelector:@selector(makePlaceHolderView)]) {
+            } else if ([self.delegate respondsToSelector:@selector(makePlaceHolderView)]) {
                 self.placeHolderView = [self.delegate performSelector:@selector(makePlaceHolderView)];
             } else {
                 NSString *selectorName = NSStringFromSelector(_cmd);

@@ -22,11 +22,12 @@
 #import <Foundation/Foundation.h>
 
 #if !TARGET_OS_WATCH
+
 #import <SystemConfiguration/SystemConfiguration.h>
 
 typedef NS_ENUM(NSInteger, AFNetworkReachabilityStatus) {
-    AFNetworkReachabilityStatusUnknown          = -1,
-    AFNetworkReachabilityStatusNotReachable     = 0,
+    AFNetworkReachabilityStatusUnknown = -1,
+    AFNetworkReachabilityStatusNotReachable = 0,
     AFNetworkReachabilityStatusReachableViaWWAN = 1,
     AFNetworkReachabilityStatusReachableViaWiFi = 2,
 };
@@ -47,22 +48,22 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The current network reachability status.
  */
-@property (readonly, nonatomic, assign) AFNetworkReachabilityStatus networkReachabilityStatus;
+@property(readonly, nonatomic, assign) AFNetworkReachabilityStatus networkReachabilityStatus;
 
 /**
  Whether or not the network is currently reachable.
  */
-@property (readonly, nonatomic, assign, getter = isReachable) BOOL reachable;
+@property(readonly, nonatomic, assign, getter = isReachable) BOOL reachable;
 
 /**
  Whether or not the network is currently reachable via WWAN.
  */
-@property (readonly, nonatomic, assign, getter = isReachableViaWWAN) BOOL reachableViaWWAN;
+@property(readonly, nonatomic, assign, getter = isReachableViaWWAN) BOOL reachableViaWWAN;
 
 /**
  Whether or not the network is currently reachable via WiFi.
  */
-@property (readonly, nonatomic, assign, getter = isReachableViaWiFi) BOOL reachableViaWiFi;
+@property(readonly, nonatomic, assign, getter = isReachableViaWiFi) BOOL reachableViaWiFi;
 
 ///---------------------
 /// @name Initialization
@@ -190,8 +191,8 @@ NS_ASSUME_NONNULL_BEGIN
 
  @warning In order for network reachability to be monitored, include the `SystemConfiguration` framework in the active target's "Link Binary With Library" build phase, and add `#import <SystemConfiguration/SystemConfiguration.h>` to the header prefix of the project (`Prefix.pch`).
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingReachabilityDidChangeNotification;
-FOUNDATION_EXPORT NSString * const AFNetworkingReachabilityNotificationStatusItem;
+FOUNDATION_EXPORT NSString *const AFNetworkingReachabilityDidChangeNotification;
+FOUNDATION_EXPORT NSString *const AFNetworkingReachabilityNotificationStatusItem;
 
 ///--------------------
 /// @name Functions
@@ -200,7 +201,7 @@ FOUNDATION_EXPORT NSString * const AFNetworkingReachabilityNotificationStatusIte
 /**
  Returns a localized string representation of an `AFNetworkReachabilityStatus` value.
  */
-FOUNDATION_EXPORT NSString * AFStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus status);
+FOUNDATION_EXPORT NSString *AFStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus status);
 
 NS_ASSUME_NONNULL_END
 #endif

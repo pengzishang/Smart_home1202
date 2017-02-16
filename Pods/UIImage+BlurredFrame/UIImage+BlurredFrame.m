@@ -10,8 +10,7 @@
 
 @implementation UIImage (BlurredFrame)
 
--(UIImage *)croppedImageAtFrame:(CGRect)frame
-{
+- (UIImage *)croppedImageAtFrame:(CGRect)frame {
     frame = CGRectMake(frame.origin.x * self.scale, frame.origin.y * self.scale, frame.size.width * self.scale, frame.size.height * self.scale);
     CGImageRef sourceImageRef = [self CGImage];
     CGImageRef newImageRef = CGImageCreateWithImageInRect(sourceImageRef, frame);
@@ -22,49 +21,44 @@
 
 #pragma mark - Marge two Images
 
-- (UIImage *) addImageToImage:(UIImage *)img atRect:(CGRect)cropRect{
-    
+- (UIImage *)addImageToImage:(UIImage *)img atRect:(CGRect)cropRect {
+
     CGSize size = CGSizeMake(self.size.width, self.size.height);
     UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
-    
-    CGPoint pointImg1 = CGPointMake(0,0);
+
+    CGPoint pointImg1 = CGPointMake(0, 0);
     [self drawAtPoint:pointImg1];
-    
+
     CGPoint pointImg2 = cropRect.origin;
-    [img drawAtPoint: pointImg2];
-    
-    UIImage* result = UIGraphicsGetImageFromCurrentImageContext();
+    [img drawAtPoint:pointImg2];
+
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
+
     return result;
 }
 
-- (UIImage *)applyLightBluredAtFrame:(CGRect)frame
-{
+- (UIImage *)applyLightBluredAtFrame:(CGRect)frame {
     UIImage *bluredFrame = [[self croppedImageAtFrame:frame] applyLightEffect];
     return [self addImageToImage:bluredFrame atRect:frame];
 }
 
-- (UIImage *)applyLightEffectAtFrame:(CGRect)frame
-{
+- (UIImage *)applyLightEffectAtFrame:(CGRect)frame {
     UIImage *blurredFrame = [[self croppedImageAtFrame:frame] applyLightEffect];
     return [self addImageToImage:blurredFrame atRect:frame];
 }
 
-- (UIImage *)applyExtraLightEffectAtFrame:(CGRect)frame
-{
+- (UIImage *)applyExtraLightEffectAtFrame:(CGRect)frame {
     UIImage *blurredFrame = [[self croppedImageAtFrame:frame] applyExtraLightEffect];
     return [self addImageToImage:blurredFrame atRect:frame];
 }
 
-- (UIImage *)applyDarkEffectAtFrame:(CGRect)frame
-{
+- (UIImage *)applyDarkEffectAtFrame:(CGRect)frame {
     UIImage *blurredFrame = [[self croppedImageAtFrame:frame] applyDarkEffect];
     return [self addImageToImage:blurredFrame atRect:frame];
 }
 
-- (UIImage *)applyTintEffectWithColor:(UIColor *)tintColor atFrame:(CGRect)frame
-{
+- (UIImage *)applyTintEffectWithColor:(UIColor *)tintColor atFrame:(CGRect)frame {
     UIImage *blurredFrame = [[self croppedImageAtFrame:frame] applyTintEffectWithColor:tintColor];
     return [self addImageToImage:blurredFrame atRect:frame];
 }
@@ -73,8 +67,7 @@
                        tintColor:(UIColor *)tintColor
            saturationDeltaFactor:(CGFloat)saturationDeltaFactor
                        maskImage:(UIImage *)maskImage
-                         atFrame:(CGRect)frame
-{
+                         atFrame:(CGRect)frame {
     UIImage *blurredFrame = [[self croppedImageAtFrame:frame] applyBlurWithRadius:blurRadius tintColor:tintColor saturationDeltaFactor:saturationDeltaFactor maskImage:maskImage];
     return [self addImageToImage:blurredFrame atRect:frame];
 }

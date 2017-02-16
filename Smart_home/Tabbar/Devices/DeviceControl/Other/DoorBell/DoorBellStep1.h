@@ -10,7 +10,7 @@
 
 @interface DoorBellStep1 : UIViewController
 
-@property (strong,nonatomic) NSString *wifiSSID;
-@property (strong,nonatomic) NSString *lastWifiSSID;
-@property (weak, nonatomic) IBOutlet UIButton *nextStep;
+@property(strong, nonatomic) NSString *wifiSSID;
+@property(strong, nonatomic) NSString *lastWifiSSID;
+@property(weak, nonatomic) IBOutlet UIButton *nextStep;
 @end

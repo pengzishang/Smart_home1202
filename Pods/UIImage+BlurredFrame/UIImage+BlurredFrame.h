@@ -12,9 +12,13 @@
 - (UIImage *)applyLightBluredAtFrame:(CGRect)frame __attribute__((deprecated));
 
 - (UIImage *)applyLightEffectAtFrame:(CGRect)frame;
+
 - (UIImage *)applyExtraLightEffectAtFrame:(CGRect)frame;
+
 - (UIImage *)applyDarkEffectAtFrame:(CGRect)frame;
+
 - (UIImage *)applyTintEffectWithColor:(UIColor *)tintColor atFrame:(CGRect)frame;
+
 - (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius
                        tintColor:(UIColor *)tintColor
            saturationDeltaFactor:(CGFloat)saturationDeltaFactor

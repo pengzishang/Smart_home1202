@@ -14,32 +14,32 @@
 
 #define kPasswordLenght 6
 
-@interface XLPasswordView () <XLRandomKeyboardDelegate , XLPasswordInputViewDelegate >
+@interface XLPasswordView () <XLRandomKeyboardDelegate, XLPasswordInputViewDelegate>
 
 /**
  *  背景视图
  */
-@property (nonatomic , strong) UIView *backgroundView;
+@property(nonatomic, strong) UIView *backgroundView;
 /**
  *  密码输入视图容器视图
  */
-@property (nonatomic , strong) UIView  *inputContainerView;
+@property(nonatomic, strong) UIView *inputContainerView;
 /**
  *  密码输入视图
  */
-@property (nonatomic , strong) XLPasswordInputView  *passwordInputView;
+@property(nonatomic, strong) XLPasswordInputView *passwordInputView;
 /**
  *  随机键盘
  */
-@property (nonatomic , strong) XLRandomKeyboard  *randomKeyboard;
+@property(nonatomic, strong) XLRandomKeyboard *randomKeyboard;
 /**
  *  输入的密码
  */
-@property (nonatomic , strong) NSString  *password;
+@property(nonatomic, strong) NSString *password;
 /**
  *  密码数组
  */
-@property (nonatomic , strong) NSMutableArray  *passwordNumberS;
+@property(nonatomic, strong) NSMutableArray *passwordNumberS;
 /**
  *  忘记密码label
  */
@@ -54,25 +54,22 @@
 /**
  *  懒加载成员属性
  */
-- (NSMutableArray *)passwordNumberS
-{
+- (NSMutableArray *)passwordNumberS {
     if (_passwordNumberS == nil) {
         _passwordNumberS = [NSMutableArray array];
     }
-    
+
     return _passwordNumberS;
 }
 
 #pragma mark    -   initial
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     [self initial];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self initial];
     }
@@ -82,8 +79,7 @@
 /**
  *  初始化
  */
-- (void)initial
-{
+- (void)initial {
     self.password = [NSString string];
     self.backgroundView = ({
         UIView *tempView = [[UIView alloc] init];
@@ -93,7 +89,7 @@
         [tempView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCloseButton)]];
         tempView;
     });
-    
+
     self.inputContainerView = ({
         UIView *tempView = [[UIView alloc] init];
         tempView.backgroundColor = [UIColor colorWithHexString:@"f3f3f5"];
@@ -101,7 +97,7 @@
         tempView.frame = CGRectMake(0, XLScreenH, XLScreenW, XLScreenW * 0.6 + 224 * xl_autoSizeScaleY);
         tempView;
     });
-    
+
     UILabel *titleLabel = ({
         UILabel *tempLabel = [[UILabel alloc] init];
         tempLabel.backgroundColor = [UIColor clearColor];
@@ -116,7 +112,7 @@
         tempLabel;
     });
     [self.inputContainerView addSubview:titleLabel];
-    
+
     UIView *separateView = ({
         UIView *tempView = [[UIView alloc] init];
         tempView.backgroundColor = [UIColor clearColor];
@@ -125,7 +121,7 @@
         tempView;
     });
     [self.inputContainerView addSubview:separateView];
-    
+
     UIButton *closeButton = ({
         UIButton *button = [[UIButton alloc] init];
         [button setImage:[UIImage imageNamed:@"XLPasswordView.bundle/payment_shutdown"] forState:UIControlStateNormal];
@@ -153,7 +149,7 @@
         passwordInputView;
     });
     [self.inputContainerView addSubview:self.passwordInputView];
-    
+
 //    UILabel *forgetPasswordLabel = ({
 //        UILabel *tempLabel = [[UILabel alloc] init];
 //        tempLabel.backgroundColor = [UIColor clearColor];
@@ -173,7 +169,7 @@
 //    });
 //    self.forgetPasswordLabel = forgetPasswordLabel;
 //    [self.inputContainerView addSubview:forgetPasswordLabel];
-    
+
     self.randomKeyboard = ({
         XLRandomKeyboard *randomKeyboard = [[XLRandomKeyboard alloc] init];
         randomKeyboard.delegate = self;
@@ -186,8 +182,7 @@
     });
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     self.backgroundView.frame = self.bounds;
 }
@@ -197,8 +192,7 @@
 /**
  *  退出
  */
-- (void)clickCloseButton
-{
+- (void)clickCloseButton {
     [self hidePasswordView];
 //    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否确定退出" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
 //    [alertView show];
@@ -217,18 +211,17 @@
 #pragma mark    -   XLRandomKeyboardDelegate method
 
 /** 数字按钮点击 */
-- (void)randomKeyboard:(XLRandomKeyboard *)keyboard clickButtonNumber:(NSString *)number
-{
+- (void)randomKeyboard:(XLRandomKeyboard *)keyboard clickButtonNumber:(NSString *)number {
     if (self.passwordNumberS.count < kPasswordLenght) {
         [self.passwordNumberS addObject:number];
         NSMutableString *password = [NSMutableString string];
-        for ( int i = 0 ; i < self.passwordNumberS.count; i ++) {
+        for (int i = 0; i < self.passwordNumberS.count; i++) {
             [password appendString:self.passwordNumberS[i]];
         }
         if ([self.delegate respondsToSelector:@selector(passwordView:passwordTextDidChange:)]) {
             [self.delegate passwordView:self passwordTextDidChange:password];
         }
-        
+
         if (self.passwordNumberS.count == kPasswordLenght) {
             if ([self.delegate respondsToSelector:@selector(passwordView:didFinishInput:)]) {
                 [self.delegate passwordView:self didFinishInput:password];
@@ -239,15 +232,13 @@
 }
 
 /** 删除按钮点击 */
-- (void)randomKeyboardDeleteButtonClick:(XLRandomKeyboard *)keyboard
-{
+- (void)randomKeyboardDeleteButtonClick:(XLRandomKeyboard *)keyboard {
     [self.passwordNumberS removeLastObject];
     self.passwordInputView.inputCount = self.passwordNumberS.count;
 }
 
 /** 确定按钮点击 */
-- (void)randomKeyboardOKButtonClick:(XLRandomKeyboard *)keyboard
-{
+- (void)randomKeyboardOKButtonClick:(XLRandomKeyboard *)keyboard {
     [self hidePasswordView];
 }
 
@@ -274,8 +265,7 @@
 
 #pragma mark    -   public method
 
-+ (instancetype)passwordView
-{
++ (instancetype)passwordView {
     XLPasswordView *password = [[self alloc] init];
     return password;
 }
@@ -285,8 +275,7 @@
  *
  *  @param view 添加到的目的视图
  */
-- (void)showPasswordInView:(UIView *)view
-{
+- (void)showPasswordInView:(UIView *)view {
     self.frame = XLKeyWindow.bounds;
     if (view == nil) {
         [XLKeyWindow addSubview:self];
@@ -296,20 +285,19 @@
     [UIView animateWithDuration:0.25 animations:^{
         self.backgroundView.alpha = 0.4;
         self.inputContainerView.xl_y = XLScreenH - self.inputContainerView.xl_height;
-    } completion:^(BOOL finished) {
-        
+    }                completion:^(BOOL finished) {
+
     }];
 }
 
 /**
  *  隐藏
  */
-- (void)hidePasswordView
-{
+- (void)hidePasswordView {
     [UIView animateWithDuration:0.25 animations:^{
         self.backgroundView.alpha = 0.0;
         self.inputContainerView.xl_y = XLScreenH;
-    } completion:^(BOOL finished) {
+    }                completion:^(BOOL finished) {
         self.backgroundView = nil;
         [self removeFromSuperview];
     }];
@@ -318,8 +306,7 @@
 /**
  *  清除
  */
-- (void)clearPassword
-{
+- (void)clearPassword {
     [self.passwordInputView clearPassword];
 }
 

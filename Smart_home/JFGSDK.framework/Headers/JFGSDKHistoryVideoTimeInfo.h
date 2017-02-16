@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 /*!
  *  历史录像信息
  */
@@ -15,12 +16,12 @@
 /*!
  *  开始时间
  */
-@property (nonatomic,assign)int64_t beginTime;
+@property(nonatomic, assign) int64_t beginTime;
 
 /*!
  *  持续时长
  */
-@property (nonatomic,assign)int duration;
+@property(nonatomic, assign) int duration;
 
 @end
 
@@ -33,12 +34,12 @@
 /*!
  *  开始时间
  */
-@property (nonatomic,assign)int64_t beginTime;
+@property(nonatomic, assign) int64_t beginTime;
 
 
 /*!
  *  错位码
  */
-@property (nonatomic,assign)int code;
+@property(nonatomic, assign) int code;
 
 @end

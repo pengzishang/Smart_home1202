@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface LockSettingController : UIViewController
 
-@property (nonatomic,strong)DeviceInfo *deviceInfo;
+@property(nonatomic, strong) DeviceInfo *deviceInfo;
 
 @end

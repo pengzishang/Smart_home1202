@@ -9,12 +9,11 @@
 #import "DoorCheckController.h"
 #import <JFGSDK/JFGSDKVideoView.h>
 
-@interface DoorCheckController ()<JFGSDKCallbackDelegate,JFGSDKPlayVideoDelegate>
-{
+@interface DoorCheckController () <JFGSDKCallbackDelegate, JFGSDKPlayVideoDelegate> {
     JFGSDKVideoView *playView;
     BOOL isTalkBack;
 }
-@property (weak, nonatomic) IBOutlet UIView *videoView;
+@property(weak, nonatomic) IBOutlet UIView *videoView;
 
 @end
 
@@ -22,13 +21,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets=NO;
-    playView = [[JFGSDKVideoView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height)];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    playView = [[JFGSDKVideoView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+
     [self.navigationItem setHidesBackButton:YES animated:YES];
     playView.delegate = self;
     [_videoView addSubview:playView];
-    isTalkBack=NO;
+    isTalkBack = NO;
     [playView startLiveRemoteVideo:self.targetDevice.uuid];
     // Do any additional setup after loading the view.
 }
@@ -41,32 +40,32 @@
     [playView stopVideo];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 - (IBAction)getPhoto:(UIButton *)sender {
     UIImage *videoImage = [playView videoScreenshotForLocal:NO];
     UIImageWriteToSavedPhotosAlbum(videoImage, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
 }
 
--(void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
-{
-    NSString *msg = error?@"保存图片失败":@"保存图片成功";
-    NSLog(@"%@",msg);
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    NSString *msg = error ? @"保存图片失败" : @"保存图片成功";
+    NSLog(@"%@", msg);
 }
 
 
 - (IBAction)noSound:(UIButton *)sender {
-    isTalkBack=!isTalkBack;
+    isTalkBack = !isTalkBack;
     [playView setAudioForLocal:YES openMic:isTalkBack openSpeaker:isTalkBack];//本地
     [playView setAudioForLocal:NO openMic:isTalkBack openSpeaker:isTalkBack];//门铃
-    sender.highlighted=isTalkBack;
+    sender.highlighted = isTalkBack;
 }
 
 #pragma mark JFGSDK delegate
--(void)jfgRTCPNotifyBitRate:(int)bitRate
-                videoRecved:(int)videoRecved
-                  frameRate:(int)frameRate
-                  timesTamp:(int)timesTamp
-{
-    NSLog(@"bit:%d",bitRate);
+
+- (void)jfgRTCPNotifyBitRate:(int)bitRate
+                 videoRecved:(int)videoRecved
+                   frameRate:(int)frameRate
+                   timesTamp:(int)timesTamp {
+    NSLog(@"bit:%d", bitRate);
 }
 
 
@@ -76,18 +75,17 @@
  *  @param width  宽度
  *  @param height 高度
  */
--(void)jfgResolutionNotifyWidth:(int)width
-                         height:(int)height
-                           peer:(NSString *)peer
-{
-    
-    NSLog(@"[w:%d h:%d]",width,height);
+- (void)jfgResolutionNotifyWidth:(int)width
+                          height:(int)height
+                            peer:(NSString *)peer {
+
+    NSLog(@"[w:%d h:%d]", width, height);
     CGRect frame = playView.frame;
     frame.origin.x = 0;
     frame.origin.y = 64;
     frame.size.height = height;
     playView.frame = frame;
-    
+
 }
 
 - (void)didReceiveMemoryWarning {

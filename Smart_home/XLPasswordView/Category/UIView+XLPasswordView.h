@@ -18,12 +18,12 @@
 
 @interface UIView (XLPasswordView)
 
-@property (nonatomic, assign) CGFloat xl_height;
-@property (nonatomic, assign) CGFloat xl_width;
-@property (nonatomic, assign) CGFloat xl_x;
-@property (nonatomic, assign) CGFloat xl_y;
-@property (nonatomic, assign) CGSize xl_size;
-@property (nonatomic, assign) CGFloat xl_centerX;
-@property (nonatomic, assign) CGFloat xl_centerY;
+@property(nonatomic, assign) CGFloat xl_height;
+@property(nonatomic, assign) CGFloat xl_width;
+@property(nonatomic, assign) CGFloat xl_x;
+@property(nonatomic, assign) CGFloat xl_y;
+@property(nonatomic, assign) CGSize xl_size;
+@property(nonatomic, assign) CGFloat xl_centerX;
+@property(nonatomic, assign) CGFloat xl_centerY;
 
 @end

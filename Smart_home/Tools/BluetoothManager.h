@@ -28,38 +28,38 @@
  - SendTypeQuery: 查询锁
  */
 typedef NS_ENUM(NSUInteger, SendType) {
-    SendTypeSingle      = 0,
-    SendTypeMuti        = 1,
-    SendTypeSyncdevice  = 2,
-    SendTypeInfrared    = 3,
-    SendTypeLock        = 4,
-    SendTypeQuery       = 5
+    SendTypeSingle = 0,
+    SendTypeMuti = 1,
+    SendTypeSyncdevice = 2,
+    SendTypeInfrared = 3,
+    SendTypeLock = 4,
+    SendTypeQuery = 5
 };
 
 
- /**
-  扫描类型
+/**
+ 扫描类型
 
-  - ScanTypeSocket: 只扫描插座
-  - ScanTypeSwitch: 只扫描开关
-  - ScanTypeCurtain: 窗帘
-  - ScanTypeWarning: 报警
-  - ScanTypeOther: 其他设备
-  - ScanTypeWIFIControl: 远程控制器
-  - ScanTypeInfraredControl:红外控制器
-  - ScanTypeRemoteControl: 遥控器
-  - ScanTypeAll: 全部
-  */
- typedef NS_ENUM(NSUInteger, ScanType) {
-    ScanTypeSocket          =       0,
-    ScanTypeSwitch          =       1,
-    ScanTypeCurtain         =       2,
-    ScanTypeWarning         =       3,
-    ScanTypeOther           =       4,
-    ScanTypeWIFIControl     =       5,
-    ScanTypeInfraredControl =       6,
-    ScanTypeRemoteControl   =       7,
-    ScanTypeAll             =       8,
+ - ScanTypeSocket: 只扫描插座
+ - ScanTypeSwitch: 只扫描开关
+ - ScanTypeCurtain: 窗帘
+ - ScanTypeWarning: 报警
+ - ScanTypeOther: 其他设备
+ - ScanTypeWIFIControl: 远程控制器
+ - ScanTypeInfraredControl:红外控制器
+ - ScanTypeRemoteControl: 遥控器
+ - ScanTypeAll: 全部
+ */
+typedef NS_ENUM(NSUInteger, ScanType) {
+    ScanTypeSocket = 0,
+    ScanTypeSwitch = 1,
+    ScanTypeCurtain = 2,
+    ScanTypeWarning = 3,
+    ScanTypeOther = 4,
+    ScanTypeWIFIControl = 5,
+    ScanTypeInfraredControl = 6,
+    ScanTypeRemoteControl = 7,
+    ScanTypeAll = 8,
 };
 
 
@@ -68,22 +68,21 @@ typedef NS_ENUM(NSUInteger, SendType) {
 
  @param __nullable <#__nullable description#>
  */
-typedef void(^detectDevice)( NSDictionary * __nullable);
+typedef void(^detectDevice)(NSDictionary *__nullable);
 
-@interface BluetoothManager : NSObject<CBCentralManagerDelegate,CBPeripheralDelegate>
-
+@interface BluetoothManager : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 
 /**
  周围设备
  */
-@property (retain,nonatomic,nullable)NSMutableArray <__kindof NSDictionary *>* peripheralsInfo;
+@property(retain, nonatomic, nullable) NSMutableArray <__kindof NSDictionary *> *peripheralsInfo;
 
 
 /**
  用这个block触发发现设备
  */
-@property (copy,nonatomic,nullable)detectDevice detectDevice;//发现设备
+@property(copy, nonatomic, nullable) detectDevice detectDevice;//发现设备
 
 /**
  初始化
@@ -98,7 +97,7 @@ typedef void(^detectDevice)( NSDictionary * __nullable);
  @param isAllowDuplicates NO的时候是低功耗扫描 YES为快速扫描
  @param PrefixArr 一个列表,包括设备类型的NSNumber
  */
-- (void)scanPeriherals:(BOOL)isAllowDuplicates AllowPrefix:(NSArray <__kindof NSNumber *>* _Nullable)PrefixArr;
+- (void)scanPeriherals:(BOOL)isAllowDuplicates AllowPrefix:(NSArray <__kindof NSNumber *> *_Nullable)PrefixArr;
 
 /**
  停止扫描
@@ -121,8 +120,8 @@ typedef void(^detectDevice)( NSDictionary * __nullable);
  @param fail <#fail description#>
  */
 - (void)queryDeviceStatus:(nonnull DeviceInfo *)deviceInfo
-                  success:(void(^ _Nullable)( NSData * _Nullable  data))success
-                     fail:(NSUInteger(^ _Nullable)( NSString * _Nullable  statusCode))fail;
+                  success:(void (^ _Nullable)(NSData *_Nullable data))success
+                     fail:(NSUInteger(^ _Nullable)(NSString *_Nullable statusCode))fail;
 
 
 /**
@@ -137,9 +136,8 @@ typedef void(^detectDevice)( NSDictionary * __nullable);
 - (void)sendByteCommandWithString:(NSString *__nonnull)commandStr
                          deviceID:(NSString *__nonnull)deviceID
                          sendType:(SendType)sendType
-                          success:(void  (^ _Nullable)(NSData *__nullable stateData))success
+                          success:(void (^ _Nullable)(NSData *__nullable stateData))success
                              fail:(NSUInteger (^ _Nullable)(NSString *__nullable stateCode))fail;
-
 
 
 /**
@@ -147,7 +145,7 @@ typedef void(^detectDevice)( NSDictionary * __nullable);
 
  @param peripheral <#peripheral description#>
  */
--(void)refreshMutiDeviceInfo:(nullable CBPeripheral *)peripheral;
+- (void)refreshMutiDeviceInfo:(nullable CBPeripheral *)peripheral;
 
 
 /**
@@ -156,6 +154,6 @@ typedef void(^detectDevice)( NSDictionary * __nullable);
  @param commandArr <#commandArr description#>
  @param resultList <#resultList description#>
  */
--(void)mutiCommandControlWithStringArr:(NSArray <__kindof DeviceForScene *>*__nullable)commandArr resultList:(void(^ _Nullable)(NSArray * _Nullable))resultList;
+- (void)mutiCommandControlWithStringArr:(NSArray <__kindof DeviceForScene *> *__nullable)commandArr resultList:(void (^ _Nullable)(NSArray *_Nullable))resultList;
 
 @end

@@ -8,20 +8,19 @@
 
 #import "MJRefreshAutoGifFooter.h"
 
-@interface MJRefreshAutoGifFooter()
-{
+@interface MJRefreshAutoGifFooter () {
     __unsafe_unretained UIImageView *_gifView;
 }
 /** 所有状态对应的动画图片 */
-@property (strong, nonatomic) NSMutableDictionary *stateImages;
+@property(strong, nonatomic) NSMutableDictionary *stateImages;
 /** 所有状态对应的动画时间 */
-@property (strong, nonatomic) NSMutableDictionary *stateDurations;
+@property(strong, nonatomic) NSMutableDictionary *stateDurations;
 @end
 
 @implementation MJRefreshAutoGifFooter
 #pragma mark - 懒加载
-- (UIImageView *)gifView
-{
+
+- (UIImageView *)gifView {
     if (!_gifView) {
         UIImageView *gifView = [[UIImageView alloc] init];
         [self addSubview:_gifView = gifView];
@@ -29,16 +28,14 @@
     return _gifView;
 }
 
-- (NSMutableDictionary *)stateImages
-{
+- (NSMutableDictionary *)stateImages {
     if (!_stateImages) {
         self.stateImages = [NSMutableDictionary dictionary];
     }
     return _stateImages;
 }
 
-- (NSMutableDictionary *)stateDurations
-{
+- (NSMutableDictionary *)stateDurations {
     if (!_stateDurations) {
         self.stateDurations = [NSMutableDictionary dictionary];
     }
@@ -46,13 +43,13 @@
 }
 
 #pragma mark - 公共方法
-- (void)setImages:(NSArray *)images duration:(NSTimeInterval)duration forState:(MJRefreshState)state
-{
+
+- (void)setImages:(NSArray *)images duration:(NSTimeInterval)duration forState:(MJRefreshState)state {
     if (images == nil) return;
-    
+
     self.stateImages[@(state)] = images;
     self.stateDurations[@(state)] = @(duration);
-    
+
     /* 根据图片设置控件的高度 */
     UIImage *image = [images firstObject];
     if (image.size.height > self.mj_h) {
@@ -60,26 +57,24 @@
     }
 }
 
-- (void)setImages:(NSArray *)images forState:(MJRefreshState)state
-{
+- (void)setImages:(NSArray *)images forState:(MJRefreshState)state {
     [self setImages:images duration:images.count * 0.1 forState:state];
 }
 
 #pragma mark - 实现父类的方法
-- (void)prepare
-{
+
+- (void)prepare {
     [super prepare];
-    
+
     // 初始化间距
     self.labelLeftInset = 20;
 }
 
-- (void)placeSubviews
-{
+- (void)placeSubviews {
     [super placeSubviews];
-    
+
     if (self.gifView.constraints.count) return;
-    
+
     self.gifView.frame = self.bounds;
     if (self.isRefreshingTitleHidden) {
         self.gifView.contentMode = UIViewContentModeCenter;
@@ -89,16 +84,15 @@
     }
 }
 
-- (void)setState:(MJRefreshState)state
-{
+- (void)setState:(MJRefreshState)state {
     MJRefreshCheckState
-    
+
     // 根据状态做事情
     if (state == MJRefreshStateRefreshing) {
         NSArray *images = self.stateImages[@(state)];
         if (images.count == 0) return;
         [self.gifView stopAnimating];
-        
+
         self.gifView.hidden = NO;
         if (images.count == 1) { // 单张图片
             self.gifView.image = [images lastObject];

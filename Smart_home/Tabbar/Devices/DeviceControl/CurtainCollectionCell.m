@@ -10,10 +10,10 @@
 
 @interface CurtainCollectionCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *macID;
-@property (weak, nonatomic) IBOutlet UIButton *nameBtn;
-@property (weak, nonatomic) IBOutlet UIButton *leftBtn;
-@property (weak, nonatomic) IBOutlet UIButton *rightBtn;
+@property(weak, nonatomic) IBOutlet UILabel *macID;
+@property(weak, nonatomic) IBOutlet UIButton *nameBtn;
+@property(weak, nonatomic) IBOutlet UIButton *leftBtn;
+@property(weak, nonatomic) IBOutlet UIButton *rightBtn;
 
 
 @end
@@ -24,28 +24,26 @@
 
 - (IBAction)didClickBtn:(UIButton *)sender {
     [self setNormalImage];
-    if (_delegate&&[_delegate respondsToSelector:@selector(didClickCurtainBtnTag:cellTag:cell:)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(didClickCurtainBtnTag:cellTag:cell:)]) {
         [_delegate didClickCurtainBtnTag:sender.tag cellTag:self.tag cell:self];
     }
 }
 
 - (IBAction)nameBtn:(UIButton *)sender {
-    if (_delegate&&[_delegate respondsToSelector:@selector(didClickEditCellTag:)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(didClickEditCellTag:)]) {
         [_delegate didClickEditCellTag:self.tag];
     }
 }
 
--(void)setInformationMac:(NSString *)macID name:(NSString *)name indexPath:(NSIndexPath *)indexPath
-{
-    _macID.text=macID;
+- (void)setInformationMac:(NSString *)macID name:(NSString *)name indexPath:(NSIndexPath *)indexPath {
+    _macID.text = macID;
     [_nameBtn setTitle:name forState:UIControlStateNormal];
     [self setNormalImage];
-    self.indexPath=indexPath;
-    self.tag=indexPath.row+200;
+    self.indexPath = indexPath;
+    self.tag = indexPath.row + 200;
 }
 
--(void)setNormalImage
-{
+- (void)setNormalImage {
     [_leftBtn setImage:[UIImage imageNamed:@"curtain_left_status_close"] forState:UIControlStateNormal];
     [_rightBtn setImage:[UIImage imageNamed:@"curtain_right_status_close"] forState:UIControlStateNormal];
 }

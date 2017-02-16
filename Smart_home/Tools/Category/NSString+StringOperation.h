@@ -10,7 +10,7 @@
 
 @interface NSString (StringOperation)
 
-@property (nonatomic,copy,readonly) NSString*        (^fullWithLengthCountBehide)(NSUInteger length);
+@property(nonatomic, copy, readonly) NSString *(^fullWithLengthCountBehide)(NSUInteger length);
 
 /**
  *  将字符往首位填0至指定位数
@@ -19,7 +19,7 @@
  *
  *  @return <#return value description#>
  */
--(NSString *)fullWithLengthCount:(NSUInteger)length;
+- (NSString *)fullWithLengthCount:(NSUInteger)length;
 
 /**
  在后面填充字符0
@@ -28,7 +28,7 @@
 
  @return <#return value description#>
  */
--(NSString *)fullWithLengthCountBehide:(NSUInteger)length;
+- (NSString *)fullWithLengthCountBehide:(NSUInteger)length;
 
 //-(NSString *(^)(NSUInteger length))fullWithLengthCountBehide;
 
@@ -40,8 +40,7 @@
 
  @return <#return value description#>
  */
-+(NSString *)initWithDate:(NSDate *)date isRemote:(BOOL)isRemote;
-
++ (NSString *)initWithDate:(NSDate *)date isRemote:(BOOL)isRemote;
 
 
 /**
@@ -50,7 +49,7 @@
  @param date <#date description#>
  @return <#return value description#>
  */
-+(NSString *)translateDateToDay:(NSDate *)date;
++ (NSString *)translateDateToDay:(NSDate *)date;
 
 /**
  将时间转成时分秒
@@ -58,18 +57,18 @@
  @param date <#date description#>
  @return <#return value description#>
  */
-+(NSString *)translateDateToTime:(NSDate *)date;
++ (NSString *)translateDateToTime:(NSDate *)date;
 
-+(NSString *)convertPassWord:(NSString *)passWord;
++ (NSString *)convertPassWord:(NSString *)passWord;
 
-+(NSString *)convertMacID:(NSString *)MacID;
++ (NSString *)convertMacID:(NSString *)MacID;
 
-+(NSString *)ListNameWithPrefix:(NSString *)prefix;
++ (NSString *)ListNameWithPrefix:(NSString *)prefix;
 
 //+(NSDate *)initCommandWithStr:(NSString *)commandStr deviceID:(NSString *)deviceID;
 
-+(Byte *)translateToByte:(NSString *)part;
++ (Byte *)translateToByte:(NSString *)part;
 
-+(NSString *)translateRemoteID:(NSString *)remoteID;
++ (NSString *)translateRemoteID:(NSString *)remoteID;
 
 @end

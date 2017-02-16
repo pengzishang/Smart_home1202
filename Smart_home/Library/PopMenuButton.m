@@ -8,19 +8,18 @@
 
 #import "PopMenuButton.h"
 #import "UIColor+ImageGetColor.h"
+
 @implementation PopMenuButton
 
-static NSString* animationKey = @"transform.scale";
+static NSString *animationKey = @"transform.scale";
 
-+ (instancetype __nonnull)buttonWithType:(UIButtonType)buttonType
-{
-    PopMenuButton* button = [super buttonWithType:buttonType];
++ (instancetype __nonnull)buttonWithType:(UIButtonType)buttonType {
+    PopMenuButton *button = [super buttonWithType:buttonType];
 
     return button;
 }
 
-- (instancetype __nonnull)init
-{
+- (instancetype __nonnull)init {
     self = [super initWithFrame:CGRectNull];
     if (self) {
         self.titleLabel.alpha = 0.0f;
@@ -35,16 +34,15 @@ static NSString* animationKey = @"transform.scale";
         self.adjustsImageWhenHighlighted = false;
 
         [self addTarget:self action:@selector(scaleToSmall)
-            forControlEvents:UIControlEventTouchDown | UIControlEventTouchDragEnter];
+       forControlEvents:UIControlEventTouchDown | UIControlEventTouchDragEnter];
         [self addTarget:self action:@selector(scaleToDefault)
-            forControlEvents:UIControlEventTouchDragExit];
+       forControlEvents:UIControlEventTouchDragExit];
     }
     return self;
 }
 
-- (void)setTextLabelWithShadowColor:(UIColor*)color
-{
-    UILabel* textLabel = [self viewWithTag:21];
+- (void)setTextLabelWithShadowColor:(UIColor *)color {
+    UILabel *textLabel = [self viewWithTag:21];
     if (!textLabel) {
         textLabel = [UILabel new];
         textLabel.tag = 21;
@@ -59,9 +57,8 @@ static NSString* animationKey = @"transform.scale";
     textLabel.shadowOffset = CGSizeMake(0.3f, 0.3f);
 }
 
-- (void)scaleToSmall
-{
-    CABasicAnimation* theAnimation;
+- (void)scaleToSmall {
+    CABasicAnimation *theAnimation;
     theAnimation = [CABasicAnimation animationWithKeyPath:animationKey];
     theAnimation.delegate = self;
     theAnimation.duration = 0.1;
@@ -74,9 +71,8 @@ static NSString* animationKey = @"transform.scale";
     [self.imageView.layer addAnimation:theAnimation forKey:theAnimation.keyPath];
 }
 
-- (void)scaleToDefault
-{
-    CABasicAnimation* theAnimation;
+- (void)scaleToDefault {
+    CABasicAnimation *theAnimation;
     theAnimation = [CABasicAnimation animationWithKeyPath:animationKey];
     theAnimation.delegate = self;
     theAnimation.duration = 0.1;
@@ -89,10 +85,9 @@ static NSString* animationKey = @"transform.scale";
     [self.imageView.layer addAnimation:theAnimation forKey:theAnimation.keyPath];
 }
 
-- (void)selectdAnimation
-{
+- (void)selectdAnimation {
     if (_model.transitionType == PopMenuTransitionTypeSystemApi) {
-        CABasicAnimation* scaleAnimation = [CABasicAnimation animationWithKeyPath:animationKey];
+        CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:animationKey];
         scaleAnimation.delegate = self;
         scaleAnimation.duration = 0.2;
         scaleAnimation.repeatCount = 0;
@@ -102,7 +97,7 @@ static NSString* animationKey = @"transform.scale";
         scaleAnimation.fromValue = @1;
         scaleAnimation.toValue = @1.4;
 
-        CABasicAnimation* opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
         opacityAnimation.delegate = self;
         opacityAnimation.duration = 0.2;
         opacityAnimation.repeatCount = 0;
@@ -114,25 +109,24 @@ static NSString* animationKey = @"transform.scale";
 
         [self.layer addAnimation:scaleAnimation forKey:scaleAnimation.keyPath];
         [self.layer addAnimation:opacityAnimation forKey:opacityAnimation.keyPath];
-    }
-    else {
+    } else {
         self.userInteractionEnabled = false;
         self.layer.cornerRadius = CGRectGetWidth(self.bounds) / 2;
-        UIImage* image = self.imageView.image;
-        UIColor* color = [UIColor getPixelColorAtLocation:CGPointMake(50, 20) inImage:image];
+        UIImage *image = self.imageView.image;
+        UIColor *color = [UIColor getPixelColorAtLocation:CGPointMake(50, 20) inImage:image];
         [self setBackgroundColor:color];
         if (_model.transitionRenderingColor) {
             [self setBackgroundColor:_model.transitionRenderingColor];
         }
-        UILabel* textLabel = [self viewWithTag:21];
+        UILabel *textLabel = [self viewWithTag:21];
         textLabel.text = @"";
         [self setTitle:@"" forState:UIControlStateNormal];
         [self setImage:nil forState:UIControlStateNormal];
 
-        CABasicAnimation* expandAnim = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        CABasicAnimation *expandAnim = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
         expandAnim.fromValue = @(1.0);
         expandAnim.toValue = @(33.0);
-        expandAnim.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.95:0.02:1:0.05];
+        expandAnim.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.95 :0.02 :1 :0.05];
         expandAnim.duration = 0.3;
         expandAnim.delegate = self;
         expandAnim.fillMode = kCAFillModeForwards;
@@ -142,10 +136,9 @@ static NSString* animationKey = @"transform.scale";
     }
 }
 
-- (void)cancelAnimation
-{
+- (void)cancelAnimation {
 
-    CABasicAnimation* scaleAnimation = [CABasicAnimation animationWithKeyPath:animationKey];
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:animationKey];
     scaleAnimation.delegate = self;
     scaleAnimation.duration = 0.2;
     scaleAnimation.repeatCount = 0;
@@ -155,7 +148,7 @@ static NSString* animationKey = @"transform.scale";
     scaleAnimation.fromValue = @1;
     scaleAnimation.toValue = @0.3;
 
-    CABasicAnimation* opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.delegate = self;
     opacityAnimation.duration = 0.2;
     opacityAnimation.repeatCount = 0;
@@ -169,13 +162,12 @@ static NSString* animationKey = @"transform.scale";
     [self.layer addAnimation:opacityAnimation forKey:opacityAnimation.keyPath];
 }
 
-- (void)animationDidStop:(CAAnimation*)anim finished:(BOOL)flag
-{
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
 
-    CABasicAnimation* cab = (CABasicAnimation*)anim;
+    CABasicAnimation *cab = (CABasicAnimation *) anim;
     if ([cab.toValue floatValue] == 33.0f || [cab.toValue floatValue] == 1.4f) {
         [self setUserInteractionEnabled:true];
-        __weak PopMenuButton* weakButton = self;
+        __weak PopMenuButton *weakButton = self;
         if (weakButton.block) {
             weakButton.block();
         }
@@ -184,15 +176,14 @@ static NSString* animationKey = @"transform.scale";
     }
 }
 
-- (void)DidStopAnimation
-{
+- (void)DidStopAnimation {
 
     [self.layer removeAllAnimations];
 }
 
 #pragma mark 调整内部ImageView的frame
-- (CGRect)imageRectForContentRect:(CGRect)contentRect
-{
+
+- (CGRect)imageRectForContentRect:(CGRect)contentRect {
     CGFloat imageWidth = contentRect.size.width / 1.7;
     CGFloat imageX = CGRectGetWidth(contentRect) / 2 - imageWidth / 2;
     CGFloat imageHeight = imageWidth;
@@ -201,8 +192,8 @@ static NSString* animationKey = @"transform.scale";
 }
 
 #pragma mark 调整内部UILabel的frame
-- (CGRect)titleRectForContentRect:(CGRect)contentRect
-{
+
+- (CGRect)titleRectForContentRect:(CGRect)contentRect {
     CGFloat titleX = 0;
     CGFloat titleHeight = 20;
     CGFloat titleY = contentRect.size.height - titleHeight;
@@ -210,15 +201,14 @@ static NSString* animationKey = @"transform.scale";
     return CGRectMake(titleX, titleY, titleWidth, titleHeight);
 }
 
-- (void)setModel:(PopMenuModel*)model
-{
+- (void)setModel:(PopMenuModel *)model {
     _model = model;
-    UIImage* image = [UIImage imageNamed:model.imageNameString];
+    UIImage *image = [UIImage imageNamed:model.imageNameString];
     [self setImage:image forState:UIControlStateNormal];
     [self setTitle:model.titleString forState:UIControlStateNormal];
 
-    UIColor* tempColor = nil;
-    UIColor* color = [UIColor getPixelColorAtLocation:CGPointMake(image.size.width / 2, image.size.height / 2) inImage:image];
+    UIColor *tempColor = nil;
+    UIColor *color = [UIColor getPixelColorAtLocation:CGPointMake(image.size.width / 2, image.size.height / 2) inImage:image];
     // [self setTitleColor:color forState:UIControlStateNormal];
     tempColor = color;
     if (!_model.automaticIdentificationColor) {

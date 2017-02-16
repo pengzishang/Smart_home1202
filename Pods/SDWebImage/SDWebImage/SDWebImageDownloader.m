@@ -14,16 +14,16 @@ static NSString *const kCompletedCallbackKey = @"completed";
 
 @interface SDWebImageDownloader () <NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 
-@property (strong, nonatomic) NSOperationQueue *downloadQueue;
-@property (weak, nonatomic) NSOperation *lastAddedOperation;
-@property (assign, nonatomic) Class operationClass;
-@property (strong, nonatomic) NSMutableDictionary *URLCallbacks;
-@property (strong, nonatomic) NSMutableDictionary *HTTPHeaders;
+@property(strong, nonatomic) NSOperationQueue *downloadQueue;
+@property(weak, nonatomic) NSOperation *lastAddedOperation;
+@property(assign, nonatomic) Class operationClass;
+@property(strong, nonatomic) NSMutableDictionary *URLCallbacks;
+@property(strong, nonatomic) NSMutableDictionary *HTTPHeaders;
 // This queue is used to serialize the handling of the network responses of all the download operation in a single queue
-@property (SDDispatchQueueSetterSementics, nonatomic) dispatch_queue_t barrierQueue;
+@property(SDDispatchQueueSetterSementics, nonatomic) dispatch_queue_t barrierQueue;
 
 // The session in which data tasks will run
-@property (strong, nonatomic) NSURLSession *session;
+@property(strong, nonatomic) NSURLSession *session;
 
 @end
 
@@ -104,8 +104,7 @@ static NSString *const kCompletedCallbackKey = @"completed";
 - (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)field {
     if (value) {
         self.HTTPHeaders[field] = value;
-    }
-    else {
+    } else {
         [self.HTTPHeaders removeObjectForKey:field];
     }
 }
@@ -132,7 +131,7 @@ static NSString *const kCompletedCallbackKey = @"completed";
 
 - (id <SDWebImageOperation>)downloadImageWithURL:(NSURL *)url options:(SDWebImageDownloaderOptions)options progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageDownloaderCompletedBlock)completedBlock {
     __block SDWebImageDownloaderOperation *operation;
-    __weak __typeof(self)wself = self;
+    __weak __typeof(self) wself = self;
 
     [self addProgressCallback:progressBlock completedBlock:completedBlock forURL:url createCallback:^{
         NSTimeInterval timeoutInterval = wself.downloadTimeout;
@@ -146,8 +145,7 @@ static NSString *const kCompletedCallbackKey = @"completed";
         request.HTTPShouldUsePipelining = YES;
         if (wself.headersFilter) {
             request.allHTTPHeaderFields = wself.headersFilter(url, [wself.HTTPHeaders copy]);
-        }
-        else {
+        } else {
             request.allHTTPHeaderFields = wself.HTTPHeaders;
         }
         operation = [[wself.operationClass alloc] initWithRequest:request
@@ -190,13 +188,13 @@ static NSString *const kCompletedCallbackKey = @"completed";
                                                             });
                                                         }];
         operation.shouldDecompressImages = wself.shouldDecompressImages;
-        
+
         if (wself.urlCredential) {
             operation.credential = wself.urlCredential;
         } else if (wself.username && wself.password) {
             operation.credential = [NSURLCredential credentialWithUser:wself.username password:wself.password persistence:NSURLCredentialPersistenceForSession];
         }
-        
+
         if (options & SDWebImageDownloaderHighPriority) {
             operation.queuePriority = NSOperationQueuePriorityHigh;
         } else if (options & SDWebImageDownloaderLowPriority) {

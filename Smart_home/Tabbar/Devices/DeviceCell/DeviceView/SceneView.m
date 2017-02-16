@@ -9,6 +9,7 @@
 
 #import "DCPathButton.h"
 #import "SceneView.h"
+
 @interface SceneView ()
 
 
@@ -24,8 +25,7 @@
 }
 */
 
--(instancetype)initWithFrame:(CGRect)frame target:(UIViewController *)target
-{
+- (instancetype)initWithFrame:(CGRect)frame target:(UIViewController *)target {
     self = [super initWithFrame:frame];
     if (self) {
 //        [self loadXXXView];

@@ -10,17 +10,17 @@
 
 @interface NSMutableArray (AddDeviceArray)
 
-@property(nonatomic,strong,readonly)NSArray *brandTitleList;
-@property(nonatomic,strong,readonly)NSArray *brandTitlePreFixListWithSort;
-@property(nonatomic,strong,readonly)NSArray *brandTitlePreFixListNOSort;
+@property(nonatomic, strong, readonly) NSArray *brandTitleList;
+@property(nonatomic, strong, readonly) NSArray *brandTitlePreFixListWithSort;
+@property(nonatomic, strong, readonly) NSArray *brandTitlePreFixListNOSort;
 
--(NSUInteger)refreshWithDeviceInfo:(NSDictionary *)info;
+- (NSUInteger)refreshWithDeviceInfo:(NSDictionary *)info;
 
 //-(NSArray *)getBrandTitlePreFixSort:(BOOL)needSort withTitleArr:(NSArray *)titleArr;
 
--(NSArray *)getBrandTitle;
+- (NSArray *)getBrandTitle;
 
--(NSUInteger)getIndexOfTitle:(NSString *)title;
+- (NSUInteger)getIndexOfTitle:(NSString *)title;
 
 //-(NSArray *)getSectionObj:(NSUInteger)section WithAllTitlePreNOSort:(NSArray *)allTitlePreNOSort WithAllTitlePreSort:(NSArray *)allTitlePreWithSort WithTitleArr:(NSArray *)titleArr;
 

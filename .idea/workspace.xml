@@ -23,68 +23,89 @@
       <file leaf-file-name="TTSUtility.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Smart_home/Tools/TTSUtility.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4046">
-              <caret line="289" column="1" lean-forward="false" selection-start-line="289" selection-start-column="1" selection-end-line="289" selection-end-column="1" />
+            <state relative-caret-position="104">
+              <caret line="662" column="122" lean-forward="false" selection-start-line="662" selection-start-column="122" selection-end-line="662" selection-end-column="122" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppDelegate.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Smart_home/AppDelegate.m">
+      <file leaf-file-name="BluetoothManager.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Smart_home/Tools/BluetoothManager.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="34" column="21" lean-forward="false" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+            <state relative-caret-position="146">
+              <caret line="130" column="29" lean-forward="false" selection-start-line="130" selection-start-column="29" selection-end-line="130" selection-end-column="29" />
+              <folding>
+                <marker date="1487315901000" expanded="true" signature="942:25932" ph="..." />
+                <marker date="1487315901000" expanded="true" signature="1583:1741" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="1790:1902" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="1932:2026" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="2064:2182" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="2221:2373" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="2392:2455" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="2567:2875" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="2939:3622" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="3671:3712" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="3731:3770" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="3818:3976" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="4180:5518" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="5578:5839" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="6154:7765" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="7825:8337" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="8474:11549" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="11635:11956" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="12031:12544" ph="{...}" />
+                <marker date="1487315901000" expanded="true" signature="15395:20519" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrefixHeader.pch" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Smart_home/PrefixHeader.pch">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="20" column="69" lean-forward="false" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainLeftController.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/MainLeftController.m">
+      <file leaf-file-name="ConfirmCodeController.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/Devices/ConfirmCodeController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2058">
-              <caret line="147" column="11" lean-forward="false" selection-start-line="147" selection-start-column="11" selection-end-line="147" selection-end-column="11" />
+            <state relative-caret-position="132">
+              <caret line="92" column="14" lean-forward="false" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TTSTabBarController.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/TTSTabBarController.m">
+      <file leaf-file-name="InfrareAddController.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/Devices/InfrareAddController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="144">
+              <caret line="84" column="31" lean-forward="false" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DevicesController.m" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/Devices/DevicesController.m">
+      <file leaf-file-name="ManualAddBlueToothController.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/Devices/ManualAddBlueToothController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="120" column="17" lean-forward="true" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
+            <state relative-caret-position="132">
+              <caret line="95" column="14" lean-forward="false" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DoorBellController.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellController.m">
+      <file leaf-file-name="DCPathButton.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Pods/Headers/Private/DCPathButton/DCPathButton.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="2" selection-end-line="17" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DoorBellStep2.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellStep2.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+            <state relative-caret-position="132">
+              <caret line="99" column="34" lean-forward="false" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -131,9 +152,11 @@
         <option value="$PROJECT_DIR$/Smart_home/Tabbar/Devices/DeviceControl/Other/DoorBell/DoorBellController.m" />
         <option value="$PROJECT_DIR$/Smart_home/Tabbar/Devices/DeviceControl/Other/DoorBell/CallingController.m" />
         <option value="$PROJECT_DIR$/Smart_home/Tabbar/Devices/DeviceControl/CurtainCollectionCell.h" />
-        <option value="$PROJECT_DIR$/Smart_home/Tools/TTSUtility.m" />
         <option value="$PROJECT_DIR$/Smart_home/AppDelegate.m" />
         <option value="$PROJECT_DIR$/Smart_home/Tabbar/Devices/DevicesController.m" />
+        <option value="$PROJECT_DIR$/Smart_home/Tools/BluetoothManager.m" />
+        <option value="$PROJECT_DIR$/Smart_home/Tools/TTSUtility.m" />
+        <option value="$PROJECT_DIR$/Smart_home/PrefixHeader.pch" />
       </list>
     </option>
   </component>
@@ -213,12 +236,12 @@
       <workItem from="1486536122525" duration="3120000" />
       <workItem from="1486604072127" duration="70000" />
       <workItem from="1486783775400" duration="743000" />
-      <workItem from="1487227375500" duration="1828000" />
+      <workItem from="1487227375500" duration="4214000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5761000" />
+    <option name="totallyTimeSpent" value="8147000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -231,13 +254,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.49086758" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection Results" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43918052" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -249,7 +273,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43918052" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -322,6 +345,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -401,6 +425,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -480,6 +505,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -487,14 +513,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Smart_home/Tools/TTSUtility.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4046">
-          <caret line="289" column="1" lean-forward="false" selection-start-line="289" selection-start-column="1" selection-end-line="289" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -525,8 +543,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/Devices/DevicesController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="120" column="17" lean-forward="true" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
+        <state relative-caret-position="392">
+          <caret line="73" column="25" lean-forward="false" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -567,6 +585,83 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
           <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/Devices/ConfirmCodeController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="92" column="14" lean-forward="false" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/Devices/InfrareAddController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="84" column="31" lean-forward="false" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Smart_home/Tabbar/Devices/ManualAddBlueToothController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="95" column="14" lean-forward="false" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pods/Headers/Private/DCPathButton/DCPathButton.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="99" column="34" lean-forward="false" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Smart_home/Tools/TTSUtility.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="662" column="122" lean-forward="false" selection-start-line="662" selection-start-column="122" selection-end-line="662" selection-end-column="122" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Smart_home/Tools/BluetoothManager.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="130" column="29" lean-forward="false" selection-start-line="130" selection-start-column="29" selection-end-line="130" selection-end-column="29" />
+          <folding>
+            <marker date="1487315901000" expanded="true" signature="942:25932" ph="..." />
+            <marker date="1487315901000" expanded="true" signature="1583:1741" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="1790:1902" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="1932:2026" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="2064:2182" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="2221:2373" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="2392:2455" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="2567:2875" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="2939:3622" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="3671:3712" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="3731:3770" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="3818:3976" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="4180:5518" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="5578:5839" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="6154:7765" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="7825:8337" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="8474:11549" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="11635:11956" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="12031:12544" ph="{...}" />
+            <marker date="1487315901000" expanded="true" signature="15395:20519" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Smart_home/PrefixHeader.pch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="20" column="69" lean-forward="false" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
           <folding />
         </state>
       </provider>

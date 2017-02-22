@@ -453,29 +453,6 @@
     return effectview;
 }
 
-/**
- *  加入编辑设备界面
- *
- *  @param view   <#view description#>
- *  @param device <#device description#>
- *
- *  @return <#return value description#>
- */
-
-+ (UIView *)addWindowsWithNibNamed:(NSString *)nibName OnView:(UIView *)view {
-    UIView *blackGround = [[UIView alloc] initWithFrame:Screen_Frame];
-    blackGround.tag = 2000;
-    blackGround.backgroundColor = [UIColor colorWithRed:0x00 / 0xff green:0x00 / 0xff blue:0x00 / 0xff alpha:0.5];
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    [window addSubview:blackGround];
-    UIView *addView = [[[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil] firstObject];
-    addView.center = view.center;
-    addView.layer.cornerRadius = 6.0;
-    addView.clipsToBounds = YES;
-    [blackGround addSubview:addView];
-    return addView;
-}
-
 
 + (RoomInfo *)addRoomWithName:(NSString *)roomName roomType:(NSNumber *)roomType {
     NSDate *curDate = [NSDate date];

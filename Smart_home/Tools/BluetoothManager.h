@@ -109,7 +109,7 @@ typedef void(^detectDevice)(NSDictionary *__nullable);
 
  @param peripheral <#peripheral description#>
  */
-- (void)disconnectPeriheral:(nullable CBPeripheral *)peripheral;
+- (void)disconnectPeriheral:(NSTimer *)peripheral;
 
 
 /**

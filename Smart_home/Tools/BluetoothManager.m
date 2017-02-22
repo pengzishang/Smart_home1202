@@ -332,33 +332,45 @@ NSString *_Nonnull const ScanTypeDescription[] = {
 }
 
 - (void)initCommandWithStr:(NSString *)commandStr UDID:(NSString *)UDID; {
-    NSData *singleData = [[NSData alloc] init];
     if ([commandStr length] > 3) {
         if (_sendType == SendTypeLock) {
-            Byte *byte1to10 = [NSString translateToByte:commandStr];
-            singleData = [NSData dataWithBytes:byte1to10 length:10];
-            NSLogMethodArgs(@"%@", singleData);
-        } else {
-            _sendType = SendTypeInfrared;
-            Byte *byte1to9 = [NSString translateToByte:commandStr];
-            Byte byteCommand[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-            for (NSInteger i = 0; i < 9; i++) {
-                byteCommand[i] = byte1to9[i];
-            }
-            byteCommand[9] = byte1to9[1] ^ byte1to9[2] ^ byte1to9[3];//第10个字节
-            singleData = [NSData dataWithBytes:byteCommand length:10];
-
+            [self.dataArr addObject:@{@"Data": [self returnLockControl:commandStr], @"ID": UDID}];
         }
-    } else {
-        //开关控制
-        _sendType = SendTypeSingle;
-        Byte commamd = (Byte) [commandStr integerValue];
-        singleData = [NSData dataWithBytes:&commamd length:1];
+        else {
+            _sendType = SendTypeInfrared;
+            [self.dataArr addObject:@{@"Data": [self returnInfrareControl:commandStr], @"ID": UDID}];
+        }
     }
-
-    NSDictionary *singleDic = @{@"Data": singleData, @"ID": UDID};
-    [self.dataArr addObject:singleDic];
+    else {
+        _sendType = SendTypeSingle;
+        [self.dataArr addObject:@{@"Data": [self returnSwitchControl:commandStr], @"ID": UDID}];
+    }
 }
+
+-(NSData *)returnLockControl:(NSString *)commandStr
+{
+    Byte *byte1to10 = [NSString translateToByte:commandStr];
+    return  [NSData dataWithBytes:byte1to10 length:10];
+}
+
+-(NSData *)returnSwitchControl:(NSString *)commandStr
+{
+    Byte commamd = (Byte) [commandStr integerValue];
+    return  [NSData dataWithBytes:&commamd length:1];
+}
+
+-(NSData *)returnInfrareControl:(NSString *)commandStr
+{
+    Byte *byte1to9 = [NSString translateToByte:commandStr];
+    Byte byteCommand[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    for (NSInteger i = 0; i < 9; i++) {
+        byteCommand[i] = byte1to9[i];
+    }
+    byteCommand[9] = byte1to9[1] ^ byte1to9[2] ^ byte1to9[3];//第10个字节
+    return  [NSData dataWithBytes:byteCommand length:10];
+}
+
+
 
 - (void)refreshMutiDeviceInfo:(CBPeripheral *)peripheral {
     _sendType = SendTypeSyncdevice;
@@ -458,7 +470,7 @@ NSString *_Nonnull const ScanTypeDescription[] = {
 
 
         if ([stateCode isEqualToString:@":"] || [deviceIDFromAdv hasPrefix:@"WIFI"]) {
-            stateIndex = 48;//48一个不存在的状态
+//            stateIndex = 48;//48一个不存在的状态
             stateCodeCurrent = @(-1);
             //老设备
         }

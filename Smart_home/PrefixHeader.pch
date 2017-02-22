@@ -17,10 +17,8 @@
 
 #define  iPhone @"iPhone"
 #define  iPad @"iPad"
-#define  iOS7               [[[UIDevice currentDevice]systemVersion]floatValue] >= 7.0
 #define  Screen_Width       [[UIScreen mainScreen]bounds].size.width
 #define  Screen_Height      [[UIScreen mainScreen]bounds].size.height
-#define  Screen_Frame       [[UIScreen mainScreen]bounds]
 #define  InfraredDefault    [[NSUserDefaults standardUserDefaults]objectForKey:@"InfraredControlID"]
 #define  RemoteDefault      [[NSUserDefaults standardUserDefaults]objectForKey:@"RemoteControlID"]
 #define  RemoteOn           [[[NSUserDefaults standardUserDefaults]objectForKey:@"RemoteOn"] boolValue]

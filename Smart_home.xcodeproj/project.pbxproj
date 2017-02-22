@@ -90,7 +90,6 @@
 		3CA715FD1D548FD70011473A /* NoneTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CA715FC1D548FD70011473A /* NoneTableView.xib */; };
 		3CAB77191DAC8A8800F7B73D /* Devices_Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB77171DAC8A8800F7B73D /* Devices_Other.storyboard */; };
 		3CAB771C1DAC93D700F7B73D /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB771B1DAC93D700F7B73D /* MessageController.m */; };
-		3CB4914E1E52FE0500D468F5 /* HiJoine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB4914D1E52FE0500D468F5 /* HiJoine.framework */; };
 		3CB4914F1E53058400D468F5 /* HiJoine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB4914D1E52FE0500D468F5 /* HiJoine.framework */; };
 		3CB491501E53058400D468F5 /* HiJoine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB4914D1E52FE0500D468F5 /* HiJoine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3CB83BD81D66A2BC003E1ECD /* BlurView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB83BD71D66A2BC003E1ECD /* BlurView.xib */; };
@@ -362,7 +361,6 @@
 				3CF119811DAA441C002A957D /* libz.tbd in Frameworks */,
 				3CF1197F1DAA4400002A957D /* Security.framework in Frameworks */,
 				3CF1197D1DAA43F0002A957D /* UIKit.framework in Frameworks */,
-				3CB4914E1E52FE0500D468F5 /* HiJoine.framework in Frameworks */,
 				3CF1197B1DAA43D9002A957D /* Foundation.framework in Frameworks */,
 				3CF119791DAA43C5002A957D /* CoreGraphics.framework in Frameworks */,
 				3CF119771DAA43A2002A957D /* CoreFoundation.framework in Frameworks */,
@@ -946,7 +944,7 @@
 		3C7ECDCC1D23B48500335F75 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "彭子上";
 				TargetAttributes = {
 					3C7ECDD31D23B48500335F75 = {
@@ -1332,7 +1330,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Smart_home/PrefixHeader.pch";
 				INFOPLIST_FILE = Smart_home/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1367,7 +1365,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Smart_home/PrefixHeader.pch";
 				INFOPLIST_FILE = Smart_home/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

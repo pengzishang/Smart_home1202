@@ -54,12 +54,12 @@
  @param target Target object.
  @param action Target Selector.
  */
-- (void)setTitleTarget:(nullable id)target action:(nullable SEL)action;
+-(void)setTitleTarget:(nullable id)target action:(nullable SEL)action;
 
 /**
  Customized Invocation to be called on title button action. titleInvocation is internally created using setTitleTarget:action: method.
  */
-@property(nullable, strong, nonatomic) NSInvocation *titleInvocation;
+@property (nullable, strong, nonatomic) NSInvocation *titleInvocation;
 
 @end
 

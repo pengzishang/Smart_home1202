@@ -79,7 +79,7 @@
 - (IBAction)addChange:(UIBarButtonItem *)sender event:(UIEvent *)event {
     [FTPopOverMenuConfiguration defaultConfiguration].menuWidth = 200;
     NSArray *seviceList = @[@"120.76.74.87(测试)", @"120.24.223.86(正式)", @"120.76.43.44(金中环)"];
-    [FTPopOverMenu showFromEvent:event withMenu:seviceList imageNameArray:@[@"setting_switch", @"setting_switch", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
+    [FTPopOverMenu showFromEvent:event withMenuArray:seviceList imageArray:@[@"setting_switch", @"setting_switch", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
         [[NSUserDefaults standardUserDefaults] setObject:seviceList[selectedIndex] forKey:@"SeviceHost"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }               dismissBlock:^{

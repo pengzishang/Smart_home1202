@@ -13,22 +13,32 @@
 @implementation NSMutableArray (AvoidCrash)
 
 + (void)avoidCrashExchangeMethod {
-    Class arrayMClass = NSClassFromString(@"__NSArrayM");
-
-
-    //get object from array method exchange
-    //由于继承于NSArray，所以 objectAtIndexedSubscript已经在NSArray中处理过了，无需处理
-
-    //array set object at index
-    [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(setObject:atIndexedSubscript:) method2Sel:@selector(avoidCrashSetObject:atIndexedSubscript:)];
-
-
-    //removeObjectAtIndex:
-    [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(removeObjectAtIndex:) method2Sel:@selector(avoidCrashRemoveObjectAtIndex:)];
-
-    //insertObject:atIndex:
-    [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(insertObject:atIndex:) method2Sel:@selector(avoidCrashInsertObject:atIndex:)];
-
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        Class arrayMClass = NSClassFromString(@"__NSArrayM");
+        
+        
+        //objectAtIndex:
+        [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(objectAtIndex:) method2Sel:@selector(avoidCrashObjectAtIndex:)];
+        
+        //setObject:atIndexedSubscript:
+        [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(setObject:atIndexedSubscript:) method2Sel:@selector(avoidCrashSetObject:atIndexedSubscript:)];
+        
+        
+        //removeObjectAtIndex:
+        [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(removeObjectAtIndex:) method2Sel:@selector(avoidCrashRemoveObjectAtIndex:)];
+        
+        //insertObject:atIndex:
+        [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(insertObject:atIndex:) method2Sel:@selector(avoidCrashInsertObject:atIndex:)];
+        
+        //getObjects:range:
+        [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(getObjects:range:) method2Sel:@selector(avoidCrashGetObjects:range:)];
+    });
+    
+    
+    
 }
 
 
@@ -39,7 +49,7 @@
 
 
 - (void)avoidCrashSetObject:(id)obj atIndexedSubscript:(NSUInteger)idx {
-
+    
     @try {
         [self avoidCrashSetObject:obj atIndexedSubscript:idx];
     }
@@ -47,7 +57,7 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:AvoidCrashDefaultIgnore];
     }
     @finally {
-
+        
     }
 }
 
@@ -65,7 +75,7 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:AvoidCrashDefaultIgnore];
     }
     @finally {
-
+        
     }
 }
 
@@ -74,7 +84,6 @@
 //                    insertObject:atIndex:
 //=================================================================
 #pragma mark - set方法
-
 - (void)avoidCrashInsertObject:(id)anObject atIndex:(NSUInteger)index {
     @try {
         [self avoidCrashInsertObject:anObject atIndex:index];
@@ -83,9 +92,52 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:AvoidCrashDefaultIgnore];
     }
     @finally {
-
+        
     }
 }
+
+
+//=================================================================
+//                           objectAtIndex:
+//=================================================================
+#pragma mark - objectAtIndex:
+
+- (id)avoidCrashObjectAtIndex:(NSUInteger)index {
+    id object = nil;
+    
+    @try {
+        object = [self avoidCrashObjectAtIndex:index];
+    }
+    @catch (NSException *exception) {
+        NSString *defaultToDo = AvoidCrashDefaultReturnNil;
+        [AvoidCrash noteErrorWithException:exception defaultToDo:defaultToDo];
+    }
+    @finally {
+        return object;
+    }
+}
+
+
+//=================================================================
+//                         getObjects:range:
+//=================================================================
+#pragma mark - getObjects:range:
+
+- (void)avoidCrashGetObjects:(__unsafe_unretained id  _Nonnull *)objects range:(NSRange)range {
+    
+    @try {
+        [self avoidCrashGetObjects:objects range:range];
+    } @catch (NSException *exception) {
+        
+        NSString *defaultToDo = AvoidCrashDefaultIgnore;
+        [AvoidCrash noteErrorWithException:exception defaultToDo:defaultToDo];
+        
+    } @finally {
+        
+    }
+}
+
+
 
 
 @end

@@ -81,7 +81,7 @@
     __block BOOL isRemote = RemoteOn;
     NSString *remoteOnString = isRemote ? @"远程:开" : @"远程:关";
     if (!ISALLROOM) {
-        [FTPopOverMenu showFromEvent:event withMenu:@[@"新设备", @"已有的设备", remoteOnString] imageNameArray:@[@"default_add_icon-0", @"default_add_icon-0", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
+        [FTPopOverMenu showFromEvent:event withMenuArray:@[@"新设备", @"已有的设备", remoteOnString] imageArray:@[@"default_add_icon-0", @"default_add_icon-0", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
             if (selectedIndex == 0) {
                 [self performSegueWithIdentifier:@"infaredAdd" sender:nil];
             } else if (selectedIndex == 1) {
@@ -94,7 +94,7 @@
         }               dismissBlock:^{
         }];
     } else {
-        [FTPopOverMenu showFromEvent:event withMenu:@[@"新设备", remoteOnString] imageNameArray:@[@"default_add_icon-0", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
+        [FTPopOverMenu showFromEvent:event withMenuArray:@[@"新设备", remoteOnString] imageArray:@[@"default_add_icon-0", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
             if (selectedIndex == 0) {
                 [self performSegueWithIdentifier:@"infaredAdd" sender:nil];
             } else if (selectedIndex == 1) {

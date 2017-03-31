@@ -92,7 +92,7 @@
         return;
     }
     [[FTPopOverMenuConfiguration defaultConfiguration] setMenuWidth:200];
-    [FTPopOverMenu showFromEvent:event withMenu:self.doorList imageNameArray:nil doneBlock:^(NSInteger selectedIndex) {
+    [FTPopOverMenu showFromEvent:event withMenuArray:self.doorList imageArray:nil doneBlock:^(NSInteger selectedIndex) {
         self.currentDeviceID = [self.doorList[selectedIndex] substringFromIndex:7];
         _macIDLab.text = self.doorList[selectedIndex];
     }               dismissBlock:^{

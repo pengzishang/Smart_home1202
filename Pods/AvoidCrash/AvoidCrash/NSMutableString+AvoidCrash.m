@@ -13,17 +13,21 @@
 @implementation NSMutableString (AvoidCrash)
 
 + (void)avoidCrashExchangeMethod {
-
-    Class stringClass = NSClassFromString(@"__NSCFString");
-
-    //replaceCharactersInRange
-    [AvoidCrash exchangeInstanceMethod:stringClass method1Sel:@selector(replaceCharactersInRange:withString:) method2Sel:@selector(avoidCrashReplaceCharactersInRange:withString:)];
-
-    //insertString:atIndex:
-    [AvoidCrash exchangeInstanceMethod:stringClass method1Sel:@selector(insertString:atIndex:) method2Sel:@selector(avoidCrashInsertString:atIndex:)];
-
-    //deleteCharactersInRange
-    [AvoidCrash exchangeInstanceMethod:stringClass method1Sel:@selector(deleteCharactersInRange:) method2Sel:@selector(avoidCrashDeleteCharactersInRange:)];
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        Class stringClass = NSClassFromString(@"__NSCFString");
+        
+        //replaceCharactersInRange
+        [AvoidCrash exchangeInstanceMethod:stringClass method1Sel:@selector(replaceCharactersInRange:withString:) method2Sel:@selector(avoidCrashReplaceCharactersInRange:withString:)];
+        
+        //insertString:atIndex:
+        [AvoidCrash exchangeInstanceMethod:stringClass method1Sel:@selector(insertString:atIndex:) method2Sel:@selector(avoidCrashInsertString:atIndex:)];
+        
+        //deleteCharactersInRange
+        [AvoidCrash exchangeInstanceMethod:stringClass method1Sel:@selector(deleteCharactersInRange:) method2Sel:@selector(avoidCrashDeleteCharactersInRange:)];
+    });
 }
 
 //=================================================================
@@ -32,7 +36,7 @@
 #pragma mark - replaceCharactersInRange
 
 - (void)avoidCrashReplaceCharactersInRange:(NSRange)range withString:(NSString *)aString {
-
+    
     @try {
         [self avoidCrashReplaceCharactersInRange:range withString:aString];
     }
@@ -41,7 +45,7 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:defaultToDo];
     }
     @finally {
-
+        
     }
 }
 
@@ -51,7 +55,7 @@
 #pragma mark - insertString:atIndex:
 
 - (void)avoidCrashInsertString:(NSString *)aString atIndex:(NSUInteger)loc {
-
+    
     @try {
         [self avoidCrashInsertString:aString atIndex:loc];
     }
@@ -60,7 +64,7 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:defaultToDo];
     }
     @finally {
-
+        
     }
 }
 
@@ -70,7 +74,7 @@
 #pragma mark - deleteCharactersInRange
 
 - (void)avoidCrashDeleteCharactersInRange:(NSRange)range {
-
+    
     @try {
         [self avoidCrashDeleteCharactersInRange:range];
     }
@@ -79,9 +83,15 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:defaultToDo];
     }
     @finally {
-
+        
     }
 }
+
+
+
+
+
+
 
 
 @end

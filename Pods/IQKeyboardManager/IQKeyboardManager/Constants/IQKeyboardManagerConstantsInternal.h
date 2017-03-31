@@ -47,9 +47,9 @@ typedef NS_ENUM(NSInteger, IQLayoutGuidePosition) {
 
 //Xcode 8 compatibility check
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
-#define IQ_IS_IOS10_OR_GREATER (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_9_x_Max)
+    #define IQ_IS_IOS10_OR_GREATER (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_9_x_Max)
 #else
-#define IQ_IS_IOS10_OR_GREATER NO
+    #define IQ_IS_IOS10_OR_GREATER NO
 #endif
 
 

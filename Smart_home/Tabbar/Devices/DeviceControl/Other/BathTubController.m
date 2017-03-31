@@ -85,7 +85,7 @@
 
 - (IBAction)chooseDevice:(UIBarButtonItem *)sender event:(UIEvent *)event {
     [[FTPopOverMenuConfiguration defaultConfiguration] setMenuWidth:200];
-    [FTPopOverMenu showFromEvent:event withMenu:self.bathTubList imageNameArray:nil doneBlock:^(NSInteger selectedIndex) {
+    [FTPopOverMenu showFromEvent:event withMenuArray:self.bathTubList imageArray:nil doneBlock:^(NSInteger selectedIndex) {
         self.currentDeviceID = [self.bathTubList[selectedIndex] substringFromIndex:7];
         _macIDLab.text = self.bathTubList[selectedIndex];
     }               dismissBlock:^{

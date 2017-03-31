@@ -13,18 +13,23 @@
 @implementation NSObject (AvoidCrash)
 
 + (void)avoidCrashExchangeMethod {
-
-    //setValue:forKey:
-    [AvoidCrash exchangeInstanceMethod:[self class] method1Sel:@selector(setValue:forKey:) method2Sel:@selector(avoidCrashSetValue:forKey:)];
-
-    //setValue:forKeyPath:
-    [AvoidCrash exchangeInstanceMethod:[self class] method1Sel:@selector(setValue:forKeyPath:) method2Sel:@selector(avoidCrashSetValue:forKeyPath:)];
-
-    //setValue:forUndefinedKey:
-    [AvoidCrash exchangeInstanceMethod:[self class] method1Sel:@selector(setValue:forUndefinedKey:) method2Sel:@selector(avoidCrashSetValue:forUndefinedKey:)];
-
-    //setValuesForKeysWithDictionary:
-    [AvoidCrash exchangeInstanceMethod:[self class] method1Sel:@selector(setValuesForKeysWithDictionary:) method2Sel:@selector(avoidCrashSetValuesForKeysWithDictionary:)];
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        //setValue:forKey:
+        [AvoidCrash exchangeInstanceMethod:[self class] method1Sel:@selector(setValue:forKey:) method2Sel:@selector(avoidCrashSetValue:forKey:)];
+        
+        //setValue:forKeyPath:
+        [AvoidCrash exchangeInstanceMethod:[self class] method1Sel:@selector(setValue:forKeyPath:) method2Sel:@selector(avoidCrashSetValue:forKeyPath:)];
+        
+        //setValue:forUndefinedKey:
+        [AvoidCrash exchangeInstanceMethod:[self class] method1Sel:@selector(setValue:forUndefinedKey:) method2Sel:@selector(avoidCrashSetValue:forUndefinedKey:)];
+        
+        //setValuesForKeysWithDictionary:
+        [AvoidCrash exchangeInstanceMethod:[self class] method1Sel:@selector(setValuesForKeysWithDictionary:) method2Sel:@selector(avoidCrashSetValuesForKeysWithDictionary:)];
+    });
+    
+    
 }
 
 
@@ -43,7 +48,7 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:defaultToDo];
     }
     @finally {
-
+        
     }
 }
 
@@ -62,7 +67,7 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:defaultToDo];
     }
     @finally {
-
+        
     }
 }
 
@@ -82,7 +87,7 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:defaultToDo];
     }
     @finally {
-
+        
     }
 }
 
@@ -92,7 +97,7 @@
 //=================================================================
 #pragma mark - setValuesForKeysWithDictionary:
 
-- (void)avoidCrashSetValuesForKeysWithDictionary:(NSDictionary<NSString *, id> *)keyedValues {
+- (void)avoidCrashSetValuesForKeysWithDictionary:(NSDictionary<NSString *,id> *)keyedValues {
     @try {
         [self avoidCrashSetValuesForKeysWithDictionary:keyedValues];
     }
@@ -101,7 +106,7 @@
         [AvoidCrash noteErrorWithException:exception defaultToDo:defaultToDo];
     }
     @finally {
-
+        
     }
 }
 

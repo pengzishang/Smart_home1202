@@ -16,15 +16,25 @@
 `FTPopOverMenu` is a pop over menu for `iOS` which is maybe the easiest one to use, supports both `portrait` and `landscape`. It can show from any `UIView`, any `UIBarButtonItem` and any `CGRect`. Simplest APIs, enable you to change the style in one line of code.
 
 
-## About Swift Version
+# About Swift Version
 
-FTPopOverMenu_Swift is now finished. [Take a look at it now](https://github.com/liufengting/FTPopOverMenu_Swift). The swift version has same APIs with this OC version.
+`FTPopOverMenu_Swift` is now published. [Take a look at it now](https://github.com/liufengting/FTPopOverMenu_Swift). The swift version has same APIs with this OC version.
 
 # ScreenShots
 
-<img src="/ScreenShots/Demo.gif" width="250"/>
+![screenshots](https://raw.githubusercontent.com/liufengting/FTResourceRepo/master/Resource/FTPopOverMenu/screenshots.gif)
+
+## Recently UrbanHooker added round arrow support, I changed a little bit.
+
+![screenshots](https://raw.githubusercontent.com/liufengting/FTResourceRepo/master/Resource/FTPopOverMenu/FTPopOverMenuRoundArrow.png)
 
 # Installation
+
+⚠️ Big jump from 1.2.6 to 1.3.0 (See [CHANGELOG](https://github.com/liufengting/FTPopOverMenu/blob/master/CHANGELOG.md) for more info)
+
+* supports more image resource, such as local UIImage, bundle image name, remote image url. 
+* also cache remote image into disk.
+* just changed almost all of the APIs, and still kept the old APIs working.
 
 ## Manually
 
@@ -56,6 +66,7 @@ Do any of the following settings to set the style (Only set the ones you want to
     configuration.borderWidth = ...
     configuration.textAlignment = ...
     configuration.ignoreImageOriginalColor = ...;// set 'ignoreImageOriginalColor' to YES, images color will be same as textColor
+    configuration.allowRoundedArrow = ...// Default is 'NO', if sets to 'YES', the arrow will be drawn with round corner.
 ```
 
 

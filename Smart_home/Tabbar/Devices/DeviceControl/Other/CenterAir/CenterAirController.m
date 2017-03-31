@@ -85,7 +85,7 @@
 
 - (IBAction)chooseDevice:(UIBarButtonItem *)sender event:(UIEvent *)event {
     [[FTPopOverMenuConfiguration defaultConfiguration] setMenuWidth:200];
-    [FTPopOverMenu showFromEvent:event withMenu:self.centerAirList imageNameArray:nil doneBlock:^(NSInteger selectedIndex) {
+    [FTPopOverMenu showFromEvent:event withMenuArray:self.centerAirList imageArray:nil doneBlock:^(NSInteger selectedIndex) {
         self.currentDeviceID = [self.centerAirList[selectedIndex] substringFromIndex:7];
         _infraredID.text = self.centerAirList[selectedIndex];
     }               dismissBlock:^{

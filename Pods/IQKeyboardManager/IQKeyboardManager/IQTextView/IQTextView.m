@@ -23,27 +23,34 @@
 
 #import "IQTextView.h"
 
+#import <UIKit/UILabel.h>
+#import <UIKit/UINibLoading.h>
+
 @interface IQTextView ()
 
-- (void)refreshPlaceholder;
+-(void)refreshPlaceholder;
 
 @end
 
-@implementation IQTextView {
+@implementation IQTextView
+{
     UILabel *placeHolderLabel;
 }
 
 @synthesize placeholder = _placeholder;
 
-- (void)initialize {
+-(void)initialize
+{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPlaceholder) name:UITextViewTextDidChangeNotification object:self];
 }
 
-- (void)dealloc {
+-(void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init];
     if (self) {
         [self initialize];
@@ -51,48 +58,58 @@
     return self;
 }
 
-- (void)awakeFromNib {
+-(void)awakeFromNib
+{
     [super awakeFromNib];
     [self initialize];
 }
 
-- (void)refreshPlaceholder {
-    if ([[self text] length]) {
+-(void)refreshPlaceholder
+{
+    if([[self text] length])
+    {
         [placeHolderLabel setAlpha:0];
-    } else {
+    }
+    else
+    {
         [placeHolderLabel setAlpha:1];
     }
-
+    
     [self setNeedsLayout];
     [self layoutIfNeeded];
 }
 
-- (void)setText:(NSString *)text {
+- (void)setText:(NSString *)text
+{
     [super setText:text];
     [self refreshPlaceholder];
 }
 
-- (void)setFont:(UIFont *)font {
+-(void)setFont:(UIFont *)font
+{
     [super setFont:font];
     placeHolderLabel.font = self.font;
-
+    
     [self setNeedsLayout];
     [self layoutIfNeeded];
 }
 
-- (void)layoutSubviews {
+-(void)layoutSubviews
+{
     [super layoutSubviews];
 
     [placeHolderLabel sizeToFit];
-    placeHolderLabel.frame = CGRectMake(8, 8, CGRectGetWidth(self.frame) - 16, CGRectGetHeight(placeHolderLabel.frame));
+    placeHolderLabel.frame = CGRectMake(8, 8, CGRectGetWidth(self.frame)-16, CGRectGetHeight(placeHolderLabel.frame));
 }
 
-- (void)setPlaceholder:(NSString *)placeholder {
+-(void)setPlaceholder:(NSString *)placeholder
+{
     _placeholder = placeholder;
-
-    if (placeHolderLabel == nil) {
+    
+    if ( placeHolderLabel == nil )
+    {
         placeHolderLabel = [[UILabel alloc] init];
-        placeHolderLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+        placeHolderLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight);
         placeHolderLabel.lineBreakMode = NSLineBreakByWordWrapping;
         placeHolderLabel.numberOfLines = 0;
         placeHolderLabel.font = self.font;
@@ -101,13 +118,14 @@
         placeHolderLabel.alpha = 0;
         [self addSubview:placeHolderLabel];
     }
-
+    
     placeHolderLabel.text = self.placeholder;
     [self refreshPlaceholder];
 }
 
 //When any text changes on textField, the delegate getter is called. At this time we refresh the textView's placeholder
-- (id <UITextViewDelegate>)delegate {
+-(id<UITextViewDelegate>)delegate
+{
     [self refreshPlaceholder];
     return [super delegate];
 }

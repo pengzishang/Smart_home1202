@@ -22,20 +22,27 @@
 // THE SOFTWARE.
 
 #import "IQTitleBarButtonItem.h"
+#import "IQKeyboardManagerConstants.h"
+#import "IQKeyboardManagerConstantsInternal.h"
+#import <UIKit/UILabel.h>
+#import <UIKit/UIButton.h>
 
-@implementation IQTitleBarButtonItem {
+@implementation IQTitleBarButtonItem
+{
     UIView *_titleView;
     UIButton *_titleButton;
 }
 @synthesize font = _font;
 
 
-- (nonnull instancetype)initWithTitle:(nullable NSString *)title {
+-(nonnull instancetype)initWithTitle:(nullable NSString *)title
+{
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _titleView = [[UIView alloc] init];
         _titleView.backgroundColor = [UIColor clearColor];
-        _titleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _titleView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
 
         _titleButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _titleButton.enabled = NO;
@@ -44,7 +51,7 @@
         [_titleButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
         [_titleButton setBackgroundColor:[UIColor clearColor]];
         [_titleButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        _titleButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _titleButton.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [self setTitle:title];
         [self setFont:[UIFont systemFontOfSize:13.0]];
         [_titleView addSubview:_titleButton];
@@ -53,30 +60,38 @@
     return self;
 }
 
-- (void)setFont:(UIFont *)font {
+-(void)setFont:(UIFont *)font
+{
     _font = font;
-
-    if (font) {
+    
+    if (font)
+    {
         _titleButton.titleLabel.font = font;
-    } else {
+    }
+    else
+    {
         _titleButton.titleLabel.font = [UIFont systemFontOfSize:13];
     }
 }
 
-- (void)setTitle:(NSString *)title {
+-(void)setTitle:(NSString *)title
+{
     [super setTitle:title];
     [_titleButton setTitle:title forState:UIControlStateNormal];
 }
 
-- (void)setSelectableTextColor:(UIColor *)selectableTextColor {
+-(void)setSelectableTextColor:(UIColor*)selectableTextColor
+{
     _selectableTextColor = selectableTextColor;
     [_titleButton setTitleColor:_selectableTextColor forState:UIControlStateNormal];
 }
 
-- (void)setTitleTarget:(nullable id)target action:(nullable SEL)action {
+-(void)setTitleTarget:(nullable id)target action:(nullable SEL)action
+{
     NSInvocation *invocation = nil;
-
-    if (target && action) {
+    
+    if (target && action)
+    {
         invocation = [NSInvocation invocationWithMethodSignature:[target methodSignatureForSelector:action]];
         invocation.target = target;
         invocation.selector = action;
@@ -85,14 +100,18 @@
     self.titleInvocation = invocation;
 }
 
-- (void)setTitleInvocation:(NSInvocation *)invocation {
+-(void)setTitleInvocation:(NSInvocation*)invocation
+{
     _titleInvocation = invocation;
-
-    if (_titleInvocation.target == nil || _titleInvocation.selector == NULL) {
+    
+    if (_titleInvocation.target == nil || _titleInvocation.selector == NULL)
+    {
         self.enabled = NO;
         _titleButton.enabled = NO;
         [_titleButton removeTarget:nil action:NULL forControlEvents:UIControlEventTouchUpInside];
-    } else {
+    }
+    else
+    {
         self.enabled = YES;
         _titleButton.enabled = YES;
         [_titleButton addTarget:_titleInvocation.target action:_titleInvocation.selector forControlEvents:UIControlEventTouchUpInside];

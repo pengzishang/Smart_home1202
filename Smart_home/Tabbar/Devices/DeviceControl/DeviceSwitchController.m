@@ -104,7 +104,7 @@
     NSString *remoteId = !ISALLROOM ? @"设置默认远程" : @"设置房间远程";
     NSString *remoteSync = !ISALLROOM ? @"同步房间内的远程" : @"同步所有设备远程";
     [FTPopOverMenuConfiguration defaultConfiguration].menuWidth = 150;
-    [FTPopOverMenu showFromEvent:event withMenu:@[title1, remoteOnString, remoteId, remoteSync] imageNameArray:@[@"default_add_icon-0", @"setting_switch", @"setting_switch", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
+    [FTPopOverMenu showFromEvent:event withMenuArray:@[title1, remoteOnString, remoteId, remoteSync] imageArray:@[@"default_add_icon-0", @"setting_switch", @"setting_switch", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
         if (selectedIndex == 0) {
             [self performSegueWithIdentifier:@"addSwitchDevice" sender:self.devices];
 

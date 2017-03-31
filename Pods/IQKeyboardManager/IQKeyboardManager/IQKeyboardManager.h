@@ -48,6 +48,7 @@ extern NSInteger const kIQDoneButtonToolbarTag;
 extern NSInteger const kIQPreviousNextButtonToolbarTag;
 
 
+
 /**
  Codeless drop-in universal library allows to prevent issues of keyboard sliding up and cover UITextField/UITextView. Neither need to write any code nor any setup required and much more. A generic version of KeyboardManagement. https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html
  */
@@ -85,7 +86,7 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
 /** 
  Boolean to know if keyboard is showing.
  */
-@property(nonatomic, assign, readonly, getter = isKeyboardShowing) BOOL keyboardShowing;
+@property(nonatomic, assign, readonly, getter = isKeyboardShowing) BOOL  keyboardShowing;
 
 /**
  moved distance to the top used to maintain distance between keyboard and textField. Most of the time this will be a positive value.
@@ -103,8 +104,12 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
 @property(nonatomic, assign, getter = isEnableAutoToolbar) BOOL enableAutoToolbar;
 
 /**
- AutoToolbar managing behaviour. Default is IQAutoToolbarBySubviews.
- */
+ IQAutoToolbarBySubviews:   Creates Toolbar according to subview's hirarchy of Textfield's in view.
+ IQAutoToolbarByTag:        Creates Toolbar according to tag property of TextField's.
+ IQAutoToolbarByPosition:   Creates Toolbar according to the y,x position of textField in it's superview coordinate.
+
+ Default is IQAutoToolbarBySubviews.
+*/
 @property(nonatomic, assign) IQAutoToolbarManageBehaviour toolbarManageBehaviour;
 
 /**
@@ -118,9 +123,11 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
 @property(nullable, nonatomic, strong) UIColor *toolbarTintColor;
 
 /**
- If YES, then hide previous/next button. Default is NO.
+ IQPreviousNextDisplayModeDefault:      Show NextPrevious when there are more than 1 textField otherwise hide.
+ IQPreviousNextDisplayModeAlwaysHide:   Do not show NextPrevious buttons in any case.
+ IQPreviousNextDisplayModeAlwaysShow:   Always show nextPrevious buttons, if there are more than 1 textField then both buttons will be visible but will be shown as disabled.
  */
-@property(nonatomic, assign) BOOL shouldHidePreviousNext;
+@property(nonatomic, assign) IQPreviousNextDisplayMode previousNextDisplayMode;
 
 /**
  Toolbar done button icon, If nothing is provided then check toolbarDoneBarButtonItemText to draw done button.
@@ -178,12 +185,12 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
 /**
  Returns YES if can navigate to previous responder textField/textView, otherwise NO.
  */
-@property(nonatomic, readonly) BOOL canGoPrevious;
+@property (nonatomic, readonly) BOOL canGoPrevious;
 
 /**
  Returns YES if can navigate to next responder textField/textView, otherwise NO.
  */
-@property(nonatomic, readonly) BOOL canGoNext;
+@property (nonatomic, readonly) BOOL canGoNext;
 
 /**
  Navigate to previous responder textField/textView.
@@ -272,9 +279,9 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
  @param didBeginEditingNotificationName This should be identical to UITextViewTextDidBeginEditingNotification
  @param didEndEditingNotificationName This should be identical to UITextViewTextDidEndEditingNotification
  */
-- (void)registerTextFieldViewClass:(nonnull Class)aClass
-   didBeginEditingNotificationName:(nonnull NSString *)didBeginEditingNotificationName
-     didEndEditingNotificationName:(nonnull NSString *)didEndEditingNotificationName;
+-(void)registerTextFieldViewClass:(nonnull Class)aClass
+  didBeginEditingNotificationName:(nonnull NSString *)didBeginEditingNotificationName
+    didEndEditingNotificationName:(nonnull NSString *)didEndEditingNotificationName;
 
 ///----------------------------------------
 /// @name Debugging.
@@ -289,7 +296,7 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
 /**
  Unavailable. Please use sharedManager method
  */
-- (nonnull instancetype)init NS_UNAVAILABLE;
+-(nonnull instancetype)init NS_UNAVAILABLE;
 
 /**
  Unavailable. Please use sharedManager method
@@ -299,7 +306,12 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
 @end
 
 
-@interface IQKeyboardManager (IQKeyboardManagerDeprecated)
+@interface IQKeyboardManager(IQKeyboardManagerDeprecated)
+
+/**
+ If YES, then hide previous/next button. Default is NO.
+ */
+@property(nonatomic, assign) BOOL shouldHidePreviousNext __attribute__((deprecated("Please use `previousNextDisplayMode` for better handling of previous/next button display. This property will be removed in future releases in favor of `previousNextDisplayMode`.")));
 
 @end
 

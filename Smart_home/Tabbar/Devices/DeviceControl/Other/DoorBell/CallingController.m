@@ -39,8 +39,7 @@
 
     if (device.url) {
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        [manager downloadImageWithURL:[NSURL URLWithString:device.url] options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        }                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        [manager loadImageWithURL:[NSURL URLWithString:device.url] options:SDWebImageRetryFailed progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
             if (image) {
                 NSLogMethodArgs(@"成功加载");
                 [firstImage setImage:image];
@@ -58,8 +57,8 @@
                     }
                 }];
             }
-        }]; // 将需要缓存的图片加载进来
-    }
+        }];
+}
 
 
     playView = [[JFGSDKVideoView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];

@@ -45,7 +45,7 @@
  
  @param title Title of barButtonItem.
  */
-- (nonnull instancetype)initWithTitle:(nullable NSString *)title NS_DESIGNATED_INITIALIZER;
+-(nonnull instancetype)initWithTitle:(nullable NSString *)title NS_DESIGNATED_INITIALIZER;
 
 /**
  Optional target & action to behave toolbar title button as clickable button
@@ -53,22 +53,22 @@
  @param target Target object.
  @param action Target Selector.
  */
-- (void)setTitleTarget:(nullable id)target action:(nullable SEL)action;
+-(void)setTitleTarget:(nullable id)target action:(nullable SEL)action;
 
 /**
  Customized Invocation to be called on title button action. titleInvocation is internally created using setTitleTarget:action: method.
  */
-@property(nullable, strong, nonatomic) NSInvocation *titleInvocation;
+@property (nullable, strong, nonatomic) NSInvocation *titleInvocation;
 
 /**
  Unavailable. Please use initWithFrame:title: method
  */
-- (nonnull instancetype)init NS_UNAVAILABLE;
+-(nonnull instancetype)init NS_UNAVAILABLE;
 
 /**
  Unavailable. Please use initWithFrame:title: method
  */
-- (nonnull instancetype)initWithCoder:(nullable NSCoder *)aDecoder NS_UNAVAILABLE;
+-(nonnull instancetype)initWithCoder:(nullable NSCoder *)aDecoder NS_UNAVAILABLE;
 
 /**
  Unavailable. Please use initWithFrame:title: method

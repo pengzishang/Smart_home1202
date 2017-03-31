@@ -85,7 +85,7 @@
     }];
     [roomNames addObject:@"添加房间"];
     [roomTypeImage addObject:@"default_add_icon-0"];
-    [FTPopOverMenu showForSender:sender withMenu:roomNames imageNameArray:roomTypeImage
+    [FTPopOverMenu showForSender:sender withMenuArray:roomNames imageArray:roomTypeImage
                        doneBlock:^(NSInteger selectedIndex) {
                            if (selectedIndex >= 0 && selectedIndex < roomNames.count - 1) {
                                _currentRoom = self.rooms[selectedIndex];

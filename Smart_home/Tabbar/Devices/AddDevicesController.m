@@ -157,20 +157,14 @@
 
 
 - (IBAction)confirmAdd:(UIButton *)sender {
-    NSString *deviceName = self.currentDeviceDic[@"deviceCustomName"];
+//    NSString *deviceName = self.currentDeviceDic[@"deviceCustomName"];
     NSString *deviceIDstr = self.currentDeviceDic[@"deviceMacID"];
     if (self.roomInfo) {
         if (![self roomContain:deviceIDstr inDevicesOfRoom:self.deviceOfRoom]) {
             DeviceInfo *deviceInfo = (DeviceInfo *) [[TTSCoreDataManager getInstance] getNewManagedObjectWithEntiltyName:@"DeviceInfo"];
             [deviceInfo setValuesForKeysWithDictionary:self.currentDeviceDic];
-            
-            if (self.deviceNameField.text) {
-                deviceInfo.deviceCustomName=self.deviceNameField.text;
-            }
-            else
-            {
-                deviceInfo.deviceCustomName = [NSString stringWithFormat:@"%@:%@", [NSString ListNameWithPrefix:[deviceName substringToIndex:6]], [deviceIDstr substringFromIndex:deviceIDstr.length - 4]];
-            }
+            deviceInfo.deviceCustomName=self.deviceNameField.text.length>0?
+            self.deviceNameField.text:self.deviceNameField.placeholder;
 
             deviceInfo.deviceCreateDate = [NSDate date];
             if (RemoteDefault) {
@@ -184,13 +178,8 @@
             [self.deviceOfRoom enumerateObjectsUsingBlock:^(__kindof DeviceInfo *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
                 if ([obj.deviceMacID isEqualToString:deviceIDstr]) {
                     deviceInfo = obj;
-                    if (self.deviceNameField.text) {
-                        deviceInfo.deviceCustomName=self.deviceNameField.text;
-                    }
-                    else
-                    {
-                        deviceInfo.deviceCustomName = [NSString stringWithFormat:@"%@:%@", [NSString ListNameWithPrefix:[deviceName substringToIndex:6]], [deviceIDstr substringFromIndex:deviceIDstr.length - 4]];
-                    }
+                    deviceInfo.deviceCustomName=self.deviceNameField.text.length>0?
+                    self.deviceNameField.text:self.deviceNameField.placeholder;
                     *stop = YES;
                 }
             }];
@@ -199,14 +188,8 @@
     } else {
         DeviceInfo *deviceInfo = (DeviceInfo *) [[TTSCoreDataManager getInstance] getNewManagedObjectWithEntiltyName:@"DeviceInfo"];
         [deviceInfo setValuesForKeysWithDictionary:self.currentDeviceDic];
-        if (self.deviceNameField.text) {
-            deviceInfo.deviceCustomName=self.deviceNameField.text;
-        }
-        else
-        {
-            deviceInfo.deviceCustomName = [NSString stringWithFormat:@"%@:%@", [NSString ListNameWithPrefix:[deviceName substringToIndex:6]], [deviceIDstr substringFromIndex:deviceIDstr.length - 4]];
-        }
-        
+        deviceInfo.deviceCustomName=self.deviceNameField.text.length>0?
+        self.deviceNameField.text:self.deviceNameField.placeholder;
         
         deviceInfo.deviceCreateDate = [NSDate date];
         if (RemoteDefault) {

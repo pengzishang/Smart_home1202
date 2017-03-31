@@ -210,7 +210,6 @@
 #pragma mark SwitchCell方法 CurtainCell方法
 
 - (void)didClickEditCellTag:(NSUInteger)cellTag; {
-//    NSLogMethodArgs(@"%@",self.devicesOfRoom[cellTag-200]);
     [self performSegueWithIdentifier:@"editDevice" sender:self.devicesOfRoom[cellTag - 200]];
 }
 

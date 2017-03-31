@@ -332,25 +332,26 @@ NSString *_Nonnull const ScanTypeDescription[] = {
 }
 
 - (void)initCommandWithStr:(NSString *)commandStr UDID:(NSString *)UDID; {
-    if ([commandStr length] > 3) {
-        if (_sendType == SendTypeLock) {
-            [self.dataArr addObject:@{@"Data": [self returnLockControl:commandStr], @"ID": UDID}];
-        }
-        else {
-            _sendType = SendTypeInfrared;
-            [self.dataArr addObject:@{@"Data": [self returnInfrareControl:commandStr], @"ID": UDID}];
-        }
+    if (_sendType==SendTypeLock) {
+        [self.dataArr addObject:@{@"Data": [self returnLockControl:commandStr], @"ID": UDID}];
     }
-    else {
-        _sendType = SendTypeSingle;
+    else if (_sendType==SendTypeInfrared)
+    {
+        [self.dataArr addObject:@{@"Data": [self returnInfrareControl:commandStr], @"ID": UDID}];
+    }
+    else if (_sendType==SendTypeSingle)
+    {
         [self.dataArr addObject:@{@"Data": [self returnSwitchControl:commandStr], @"ID": UDID}];
+    }
+    else if (_sendType==SendTypeRemote)
+    {
+        [self.dataArr addObject:@{@"Data": [self returnRemote:commandStr], @"ID": UDID}];
     }
 }
 
 -(NSData *)returnLockControl:(NSString *)commandStr
 {
-    Byte *byte1to10 = [NSString translateToByte:commandStr];
-    return  [NSData dataWithBytes:byte1to10 length:10];
+    return  [NSData dataWithBytes:[NSString translateToByte:commandStr] length:10];
 }
 
 -(NSData *)returnSwitchControl:(NSString *)commandStr
@@ -370,6 +371,16 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     return  [NSData dataWithBytes:byteCommand length:10];
 }
 
+-(NSData *)returnRemote:(NSString *)commandStr
+{
+    Byte *byte1to19 = [NSString translateToByte:commandStr];
+    Byte byteCommand[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    for (NSInteger i = 0; i < 19; i++) {
+        byteCommand[i] = byte1to19[i];
+        byteCommand[19]=i==0?byteCommand[i]:byteCommand[19] ^ byteCommand[i];
+    }
+    return  [NSData dataWithBytes:byteCommand length:20];
+}
 
 
 - (void)refreshMutiDeviceInfo:(CBPeripheral *)peripheral {
@@ -383,7 +394,6 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     [self.centralManager connectPeripheral:_curPeripheral options:options];
     double time1 = [[NSDate date] timeIntervalSinceDate:_dataf];
     NSLog(@"time1 sync:%f", time1);
-
 }
 
 
@@ -631,23 +641,24 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     for (CBCharacteristic *character in service.characteristics) {
         NSString *characterID = character.UUID.UUIDString;
         NSData *controlData = [self returnWithDeviceID:peripheral.identifier.UUIDString];
-        if ([characterID isEqualToString:@"FFF1"] && [controlData length] == 1) {
+        if ([characterID isEqualToString:@"FFF1"] && [controlData length] == 1) {//短数据
             NSLog(@"写入1bit数据");
-            if (_sendType == SendTypeSingle) {
-
+            [peripheral writeValue:controlData forCharacteristic:character type:CBCharacteristicWriteWithResponse];
+            _isWritingSuccess = YES;
+            break;
+        }
+        else if ([characterID isEqualToString:@"FFF6"]) {
+            if ([controlData length] == 10||[controlData length] == 20) {//长数据
+                //进行长数据写入
+                NSLog(@"写入%zdbit长数据Data:%@", controlData.length,controlData);
                 [peripheral writeValue:controlData forCharacteristic:character type:CBCharacteristicWriteWithResponse];
             }
-            break;
-        } else if ([characterID isEqualToString:@"FFF6"]) {
-            if ([controlData length] == 10) {
-                //进行长数据写入
-                NSLog(@"写入10bit长数据Data:%@", controlData);
-                [peripheral writeValue:controlData forCharacteristic:character type:CBCharacteristicWriteWithResponse];
-            } else {
+            else {
                 //进行查询数据
                 [peripheral readValueForCharacteristic:character];
-                _isWritingSuccess = YES;
             }
+            _isWritingSuccess = YES;
+            break;
         }
     }
 }

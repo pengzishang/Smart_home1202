@@ -16,7 +16,7 @@
 #define RSSI_VALUE         @"RSSI"
 #define Note_Refresh_State  @"Note_Refresh_State"//刷新屏幕上的转动图标
 
-
+#define NSLogMethodArgs(format, ...)    NSLog(@"\n---方法:%s---\n---行号:%d\n---内容:\n%@\n ", __PRETTY_FUNCTION__, __LINE__ , [NSString stringWithFormat:format, ##__VA_ARGS__] );
 /**
  控制类型方式
 
@@ -33,7 +33,8 @@ typedef NS_ENUM(NSUInteger, SendType) {
     SendTypeSyncdevice = 2,
     SendTypeInfrared = 3,
     SendTypeLock = 4,
-    SendTypeQuery = 5
+    SendTypeQuery = 5,
+    SendTypeRemote = 6
 };
 
 

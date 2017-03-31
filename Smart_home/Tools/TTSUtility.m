@@ -256,8 +256,6 @@
     } else if ([deviceType isEqualToString:iPad]) {
         [TTSUtility playSoundWithName:@"switch_21.mp3"];
     }
-    //            [TTSUtility playSoundWithName:@"switch_21.mp3"];
-
 }
 
 
@@ -642,34 +640,45 @@
         return;
     }
     [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在控制", @"正在控制") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceMacID]];
-    [[BluetoothManager getInstance] sendByteCommandWithString:command
-                                                     deviceID:deviceMacID
-                                                     sendType:SendTypeSingle
-                                                      success:^(NSData *_Nullable stateData) {
-                                                          failRetryTime = 0;
-                                                          [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制完成", @"控制完成") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制反馈代码:%@", @"控制反馈代码:%@"), stateData]];
-                                                          if (getStateCode) {
-                                                              getStateCode(stateData);
-                                                          }
-                                                      }
-                                                         fail:^NSUInteger(NSString *_Nullable stateString) {
-                                                             NSLog(@"失败返回数据:%@", stateString);
-                                                             if (++failRetryTime < retryTimes && [stateString integerValue] != 404 && [stateString integerValue] != 403) {
-                                                                 [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在重试", @"正在重试") subTitle:[NSString stringWithFormat:NSLocalizedString(@"第%zd次重试", @"第%zd次重试"), failRetryTime]];
-                                                                 return failRetryTime;
-                                                             } else {
-                                                                 failRetryTime = 0;
-                                                                 NSDictionary *errorDetail = @{@"404": @"设备不在范围内,或者信号太弱", @"403": @"蓝牙未开启", @"102": @"连接设备失败,请重试", @"103": @"未能发现服务", @"104": @"数据写入失败", @"107": @"被设备异常断开,设备中途异常端口", @"106": @"控制结果异常"};
-                                                                 [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制失败", @"控制失败") subTitle:errorDetail[stateString]];
-                                                                 if (getStateCode) {
-                                                                     getStateCode(stateString);
-                                                                 }
-                                                                 return 0;
-                                                             }
-                                                         }];
+    SendType sendtype;
+    if (command.length<=3) {//单个短指令
+        sendtype=SendTypeSingle;
+    }
+    else if(command.length>3&&command.length<=30)//红外
+    {
+        sendtype=SendTypeInfrared;
+    }
+    else if (command.length >30)//遥控器同步
+    {
+        //预留
+    }
+    [[BluetoothManager getInstance]
+     sendByteCommandWithString:command
+     deviceID:deviceMacID
+     sendType:sendtype
+     success:^(NSData *_Nullable stateData) {
+         failRetryTime = 0;
+         [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制完成", @"控制完成") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制反馈代码:%@", @"控制反馈代码:%@"), stateData]];
+         if (getStateCode) {
+             getStateCode(stateData);
+         }
+     }
+     fail:^NSUInteger(NSString *_Nullable stateString) {
+         NSLog(@"失败返回数据:%@", stateString);
+         if (++failRetryTime < retryTimes && [stateString integerValue] != 404 && [stateString integerValue] != 403) {
+             [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在重试", @"正在重试") subTitle:[NSString stringWithFormat:NSLocalizedString(@"第%zd次重试", @"第%zd次重试"), failRetryTime]];
+             return failRetryTime;
+         } else {
+             failRetryTime = 0;
+             NSDictionary *errorDetail = @{@"404": @"设备不在范围内,或者信号太弱", @"403": @"蓝牙未开启", @"102": @"连接设备失败,请重试", @"103": @"未能发现服务", @"104": @"数据写入失败", @"107": @"被设备异常断开,设备中途异常端口", @"106": @"控制结果异常"};
+             [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制失败", @"控制失败") subTitle:errorDetail[stateString]];
+             if (getStateCode) {
+                 getStateCode(stateString);
+             }
+             return 0;
+         }
+     }];
 }
-
-
 /**
  *  本地蓝牙多控制
  *
@@ -756,9 +765,15 @@
 
 + (void)remoteDeviceControl:(DeviceInfo *)deviceInfo commandStr:(NSString *)command retryTimes:(NSUInteger)retryTimes conditionReturn:(void (^)(NSString *))getStateCode {
     static NSInteger failRetryTimer = 0;
+    NSUInteger commandCode=command.integerValue+70;
+    if (commandCode ==70) {
+        commandCode =67;
+    }
+    command=[NSString stringWithFormat:@"%zd",commandCode];
     [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在发送远程命令", @"正在发送远程命令") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
+    
+    
     [[RemoteManger getInstance] sendRemoteCommand:command deviceID:deviceInfo.deviceMacID success:^(NSString *stateCode) {
-        //        [TTSUtility refreshDataBaseWithDeviceID:deviceInfo.deviceMacID stateCode:@(stateCode.integerValue)];
         [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制成功", @"控制成功") subTitle:@""];
         failRetryTimer = 0;
         if (getStateCode) {

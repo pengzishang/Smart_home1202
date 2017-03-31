@@ -57,7 +57,7 @@ typedef void(^mutiSave)(BOOL);
         if (shareInstance == nil) {
             shareInstance = [[[self class] alloc] init];
             if (!HOST) {
-                [[NSUserDefaults standardUserDefaults] setObject:@"120.76.74.87" forKey:@"SeviceHost"];
+                [[NSUserDefaults standardUserDefaults] setObject:@"120.24.223.86" forKey:@"SeviceHost"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }
         }
@@ -97,7 +97,7 @@ typedef void(^mutiSave)(BOOL);
     }
 
 }
-//香菇滑鸡放17   招牌云吞16  共19.3            萝卜牛腩17  耗油菜心 8  共14   小胖10块  小蒲9.5
+
 
 - (void)sendRemoteCommand:(NSString *)commandCode deviceID:(NSString *)deviceID success:(void (^)(NSString *))success fail:(NSUInteger (^)(NSString *))fail {
     _dataTime = [NSDate date];
@@ -284,6 +284,7 @@ typedef void(^mutiSave)(BOOL);
 
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
+    
     if (err) {
         _stateCode = @"E5";
         NSLogMethodArgs(@"%@", err);

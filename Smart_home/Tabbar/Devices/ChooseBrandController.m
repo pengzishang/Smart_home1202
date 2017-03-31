@@ -101,34 +101,6 @@
 
 #pragma mark - Table view data source
 
-//-(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-//{
-//    return self.brandTitlePreFix;
-//}
-
-//-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-//{
-//    NSLog(@"===%@  ===%zd",title,index);
-//    
-//    //点击索引，列表跳转到对应索引的行
-//    
-//    [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index+4] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//    //弹出首字母提示
-//    //[self showLetter:title ];
-//    return index+4;
-//    
-//}
-
-//- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    return self.brandTitlePreFix[section];
-//}
-
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//
-//    return self.brandTitlePreFix.count;
-//}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     if (self.searchController.active) {

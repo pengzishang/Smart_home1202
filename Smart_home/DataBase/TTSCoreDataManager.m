@@ -72,7 +72,7 @@ static TTSCoreDataManager *shareInstance = nil;
 
     if (!manageObject) {
 
-        NSLogMethodArgs(@"没有该表");
+        
     }
 
     return manageObject;

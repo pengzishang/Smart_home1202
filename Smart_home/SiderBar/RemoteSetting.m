@@ -9,10 +9,10 @@
 #import "RemoteSetting.h"
 #import "BluetoothManager.h"
 #import "TTSUtility.h"
-#import "HiJoine.framework/Headers/HiJoine.h"
+//#import "HiJoine.framework/Headers/HiJoine.h"
 
 @interface RemoteSetting () <UITableViewDelegate> {
-    HiJoine *joine;
+//    HiJoine *joine;
 }
 @property(weak, nonatomic) IBOutlet UIButton *startBtn;
 @property(weak, nonatomic) IBOutlet UIView *buttomMain;
@@ -38,10 +38,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    joine = [[HiJoine alloc] init];
+//    joine = [[HiJoine alloc] init];
     _startBtn.enabled = NO;
-    NSDictionary *ssidInfo = [joine fetchSSIDInfo];
-    _ssidLab.text = ssidInfo[@"SSID"];
+//    NSDictionary *ssidInfo = [joine fetchSSIDInfo];
+//    _ssidLab.text = ssidInfo[@"SSID"];
     [[BluetoothManager getInstance] scanPeriherals:NO AllowPrefix:@[@(ScanTypeWIFIControl)]];
     [[BluetoothManager getInstance].peripheralsInfo enumerateObjectsUsingBlock:^(__kindof NSDictionary *_Nonnull deviceInfoDic, NSUInteger idx, BOOL *_Nonnull stop) {
         NSString *deviceBroadcastName = deviceInfoDic[AdvertisementData][@"kCBAdvDataLocalName"];
@@ -85,11 +85,11 @@
 }
 
 - (IBAction)settingWifi:(UIButton *)sender {
-    __weak RemoteSetting *weakself = self;
-    [joine setBoardDataWithPassword:_pwdLab.text withBackBlock:^(NSInteger result, NSString *message) {
-        NSLog(@"message = %@", message);
-        weakself.returnLab.text = [NSString stringWithFormat:@"返回结果:%@", message];
-    }];
+//    __weak RemoteSetting *weakself = self;
+//    [joine setBoardDataWithPassword:_pwdLab.text withBackBlock:^(NSInteger result, NSString *message) {
+//        NSLog(@"message = %@", message);
+//        weakself.returnLab.text = [NSString stringWithFormat:@"返回结果:%@", message];
+//    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

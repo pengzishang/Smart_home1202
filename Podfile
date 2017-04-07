@@ -16,4 +16,5 @@ target 'Smart_home' do
   pod 'MJRefresh'
   pod 'IQKeyboardManager'
   pod 'AvoidCrash'
+  pod 'JPush'
 end

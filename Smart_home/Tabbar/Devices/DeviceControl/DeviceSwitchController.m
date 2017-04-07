@@ -217,14 +217,18 @@
     __block DeviceInfo *device = self.devicesOfRoom[cellTag - 200];
     if (RemoteOn) {
 //        NSLogMethodArgs(@"///>>>>>%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"SeviceHost"])
-
-        [TTSUtility remoteDeviceControl:device commandStr:[@(btnTag - 1000).stringValue fullWithLengthCount:2] retryTimes:2 conditionReturn:^(NSString *statusCode) {
-            NSData *stateData = [[statusCode substringFromIndex:1] dataUsingEncoding:NSUTF8StringEncoding];
-            device.deviceStatus = [self returnStateCodeWithData:(NSData *) stateData btnCount:device.deviceType.integerValue];
-            [[TTSCoreDataManager getInstance] updateData];
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:cellTag - 200 inSection:0];
-            [_mainCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+        
+        
+        [TTSUtility remoteWithSoap:device commandStr:[@(btnTag - 1000).stringValue fullWithLengthCount:2] retryTimes:2 conditionReturn:^(NSString *statusCode) {
+            
         }];
+//        [TTSUtility remoteDeviceControl:device commandStr:[@(btnTag - 1000).stringValue fullWithLengthCount:2] retryTimes:2 conditionReturn:^(NSString *statusCode) {
+//            NSData *stateData = [[statusCode substringFromIndex:1] dataUsingEncoding:NSUTF8StringEncoding];
+//            device.deviceStatus = [self returnStateCodeWithData:(NSData *) stateData btnCount:device.deviceType.integerValue];
+//            [[TTSCoreDataManager getInstance] updateData];
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:cellTag - 200 inSection:0];
+//            [_mainCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+//        }];
     } else {
         [TTSUtility localDeviceControl:device.deviceMacID commandStr:@(btnTag - 1000).stringValue retryTimes:3 conditionReturn:^(id stateData) {
             if ([stateData isKindOfClass:[NSData class]]) {//控制成功的

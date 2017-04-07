@@ -18,10 +18,10 @@
 		3C0513411D2D088800ED6DA1 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0513401D2D088800ED6DA1 /* CoreBluetooth.framework */; };
 		3C056F341D81069700EFB827 /* SceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C056F331D81069700EFB827 /* SceneView.m */; };
 		3C08F1B11D2F40CD0091224F /* AddDevicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C08F1B01D2F40CD0091224F /* AddDevicesController.m */; };
+		3C12A6E91E95F12A00B5D220 /* NewRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C12A6E81E95F12A00B5D220 /* NewRemote.m */; };
 		3C1ADD511D549FD4009EA027 /* InfrareAddController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1ADD501D549FD4009EA027 /* InfrareAddController.m */; };
 		3C1B5E1A1D2BB0EA00E68797 /* Devices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1B5E181D2BB0EA00E68797 /* Devices.storyboard */; };
 		3C1B5E1D1D2BBD3400E68797 /* RemoteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1B5E1C1D2BBD3400E68797 /* RemoteController.m */; };
-		3C1E8B551DBF4BA900900A82 /* jpush-ios-2.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1E8B541DBF4BA900900A82 /* jpush-ios-2.2.0.a */; };
 		3C1ECC901D30A81500F93FFF /* ManualAddBlueToothController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1ECC8F1D30A81500F93FFF /* ManualAddBlueToothController.m */; };
 		3C212A3F1D8804A900724EF6 /* EditSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C212A3E1D8804A900724EF6 /* EditSceneController.m */; };
 		3C24E5E71D8170A900E74C24 /* AddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C24E5E61D8170A900E74C24 /* AddView.xib */; };
@@ -91,8 +91,6 @@
 		3CA715FD1D548FD70011473A /* NoneTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CA715FC1D548FD70011473A /* NoneTableView.xib */; };
 		3CAB77191DAC8A8800F7B73D /* Devices_Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB77171DAC8A8800F7B73D /* Devices_Other.storyboard */; };
 		3CAB771C1DAC93D700F7B73D /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB771B1DAC93D700F7B73D /* MessageController.m */; };
-		3CB4914F1E53058400D468F5 /* HiJoine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB4914D1E52FE0500D468F5 /* HiJoine.framework */; };
-		3CB491501E53058400D468F5 /* HiJoine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB4914D1E52FE0500D468F5 /* HiJoine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3CB83BD81D66A2BC003E1ECD /* BlurView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB83BD71D66A2BC003E1ECD /* BlurView.xib */; };
 		3CB83BDC1D66B813003E1ECD /* AirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB83BDB1D66B813003E1ECD /* AirViewController.m */; };
 		3CB9F5241D7565500027D155 /* RoomAddDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB9F5231D7565500027D155 /* RoomAddDeviceController.m */; };
@@ -136,7 +134,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3CB491501E53058400D468F5 /* HiJoine.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,13 +157,13 @@
 		3C056F331D81069700EFB827 /* SceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneView.m; path = Tabbar/Devices/DeviceCell/DeviceView/SceneView.m; sourceTree = "<group>"; };
 		3C08F1AF1D2F40CD0091224F /* AddDevicesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddDevicesController.h; path = Tabbar/Devices/AddDevicesController.h; sourceTree = "<group>"; };
 		3C08F1B01D2F40CD0091224F /* AddDevicesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddDevicesController.m; path = Tabbar/Devices/AddDevicesController.m; sourceTree = "<group>"; };
+		3C12A6E71E95F12A00B5D220 /* NewRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewRemote.h; path = Tools/NewRemote.h; sourceTree = "<group>"; };
+		3C12A6E81E95F12A00B5D220 /* NewRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewRemote.m; path = Tools/NewRemote.m; sourceTree = "<group>"; };
 		3C1ADD4F1D549FD4009EA027 /* InfrareAddController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfrareAddController.h; path = Tabbar/Devices/InfrareAddController.h; sourceTree = "<group>"; };
 		3C1ADD501D549FD4009EA027 /* InfrareAddController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfrareAddController.m; path = Tabbar/Devices/InfrareAddController.m; sourceTree = "<group>"; };
 		3C1B5E191D2BB0EA00E68797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Devices.storyboard; sourceTree = "<group>"; };
 		3C1B5E1B1D2BBD3400E68797 /* RemoteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RemoteController.h; path = SiderBar/RemoteController.h; sourceTree = "<group>"; };
 		3C1B5E1C1D2BBD3400E68797 /* RemoteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RemoteController.m; path = SiderBar/RemoteController.m; sourceTree = "<group>"; };
-		3C1E8B541DBF4BA900900A82 /* jpush-ios-2.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.2.0.a"; sourceTree = "<group>"; };
-		3C1E8B571DBF4BFF00900A82 /* JPUSHService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		3C1ECC8E1D30A81500F93FFF /* ManualAddBlueToothController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManualAddBlueToothController.h; path = Tabbar/Devices/ManualAddBlueToothController.h; sourceTree = "<group>"; };
 		3C1ECC8F1D30A81500F93FFF /* ManualAddBlueToothController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManualAddBlueToothController.m; path = Tabbar/Devices/ManualAddBlueToothController.m; sourceTree = "<group>"; };
 		3C212A3D1D8804A900724EF6 /* EditSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSceneController.h; path = Tabbar/Scene/EditSceneController.h; sourceTree = "<group>"; };
@@ -292,7 +289,6 @@
 		3CAB77181DAC8A8800F7B73D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Devices_Other.storyboard; sourceTree = "<group>"; };
 		3CAB771A1DAC93D700F7B73D /* MessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageController.h; path = Tabbar/MessageController.h; sourceTree = "<group>"; };
 		3CAB771B1DAC93D700F7B73D /* MessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageController.m; path = Tabbar/MessageController.m; sourceTree = "<group>"; };
-		3CB4914D1E52FE0500D468F5 /* HiJoine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HiJoine.framework; sourceTree = "<group>"; };
 		3CB83BD71D66A2BC003E1ECD /* BlurView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BlurView.xib; path = Tabbar/Devices/DeviceCell/BlurView.xib; sourceTree = "<group>"; };
 		3CB83BDA1D66B813003E1ECD /* AirViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirViewController.h; path = Tabbar/Devices/DeviceControl/Infrared/AirViewController.h; sourceTree = "<group>"; };
 		3CB83BDB1D66B813003E1ECD /* AirViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AirViewController.m; path = Tabbar/Devices/DeviceControl/Infrared/AirViewController.m; sourceTree = "<group>"; };
@@ -359,7 +355,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C99F2DA1DBF4E0900614E91 /* libresolv.tbd in Frameworks */,
-				3CB4914F1E53058400D468F5 /* HiJoine.framework in Frameworks */,
 				3C954E731DACE47B008FF504 /* UserNotifications.framework in Frameworks */,
 				3CF119811DAA441C002A957D /* libz.tbd in Frameworks */,
 				3CF1197F1DAA4400002A957D /* Security.framework in Frameworks */,
@@ -378,7 +373,6 @@
 				3C905F651D27C4CE00A9FE5B /* CoreData.framework in Frameworks */,
 				D3AD2F938BA8C2D629D6DC9B /* libPods-Smart_home.a in Frameworks */,
 				3C491F0A1DBA07C6007DC6A2 /* JFGSDK.framework in Frameworks */,
-				3C1E8B551DBF4BA900900A82 /* jpush-ios-2.2.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,9 +398,7 @@
 		3C056F2D1D81052C00EFB827 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				3CB4914D1E52FE0500D468F5 /* HiJoine.framework */,
 				3C491F091DBA07C6007DC6A2 /* JFGSDK.framework */,
-				3CF119701DAA4354002A957D /* JPushLib */,
 				3C999A611D6B16D000E66DCB /* XLPasswordView */,
 				3C3387751D927E7500577C0D /* HyPopMenuView.h */,
 				3C3387761D927E7500577C0D /* HyPopMenuView.m */,
@@ -457,6 +449,8 @@
 				3C318B741D46FF6300359F60 /* BluetoothManager.m */,
 				3C3804FB1D4A062E00B1EA72 /* RemoteManger.h */,
 				3C3804FC1D4A062E00B1EA72 /* RemoteManger.m */,
+				3C12A6E71E95F12A00B5D220 /* NewRemote.h */,
+				3C12A6E81E95F12A00B5D220 /* NewRemote.m */,
 				3C2C59D41D2E4B12009F5016 /* PrefixHeader.pch */,
 			);
 			name = ToolFuntion;
@@ -856,16 +850,6 @@
 			name = Room;
 			sourceTree = "<group>";
 		};
-		3CF119701DAA4354002A957D /* JPushLib */ = {
-			isa = PBXGroup;
-			children = (
-				3C1E8B541DBF4BA900900A82 /* jpush-ios-2.2.0.a */,
-				3C1E8B571DBF4BFF00900A82 /* JPUSHService.h */,
-			);
-			name = JPushLib;
-			path = Lib;
-			sourceTree = "<group>";
-		};
 		3CF992081D65577B00E2FFE8 /* Infrared */ = {
 			isa = PBXGroup;
 			children = (
@@ -1089,6 +1073,7 @@
 				3C3EFC4E1D55C27800CE5A89 /* ChooseBrandController.m in Sources */,
 				3C6305181DB7077000218744 /* DoorCheckController.m in Sources */,
 				3C905F6B1D27C5BD00A9FE5B /* DataBase.xcdatamodeld in Sources */,
+				3C12A6E91E95F12A00B5D220 /* NewRemote.m in Sources */,
 				3C7C6ACD1D24C9E700CEDDEF /* SiderNormalCell.m in Sources */,
 				3CDE29D81D7D71AA00EE90FD /* RoomInfo.m in Sources */,
 				3CD233471DAF79A800614CED /* LoginController.m in Sources */,

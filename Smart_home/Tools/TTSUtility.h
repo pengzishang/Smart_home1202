@@ -158,6 +158,15 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
 + (void)remoteDeviceControl:(DeviceInfo *)deviceInfo commandStr:(NSString *)command retryTimes:(NSUInteger)retryTimes conditionReturn:(void (^)(NSString *))getStateCode;
 
 /**
+ 新远程控制
+
+ @param deviceInfo <#deviceInfo description#>
+ @param command <#command description#>
+ @param retryTimes <#retryTimes description#>
+ @param getStateCode <#getStateCode description#>
+ */
++ (void)remoteWithSoap:(DeviceInfo *)deviceInfo commandStr:(NSString *)command retryTimes:(NSUInteger)retryTimes conditionReturn:(void (^)(NSString *))getStateCode;
+/**
  *  同步状态
  *
  *  @param deviceInfo   <#deviceInfo description#>

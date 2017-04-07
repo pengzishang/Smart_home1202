@@ -7,7 +7,7 @@
 //
 
 #import "TTSUtility.h"
-
+#import "NewRemote.h"
 
 @implementation TTSUtility
 
@@ -791,6 +791,36 @@
             [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"远程控制失败", @"远程控制失败") subTitle:failCode[stateCode]];
             return 0;
         }
+    }];
+}
+
+/**
+ 用SOAP控制远程
+
+ @param deviceInfo <#deviceInfo description#>
+ @param command <#command description#>
+ @param retryTimes <#retryTimes description#>
+ @param getStateCode <#getStateCode description#>
+ */
++ (void)remoteWithSoap:(DeviceInfo *)deviceInfo commandStr:(NSString *)command retryTimes:(NSUInteger)retryTimes conditionReturn:(void (^)(NSString *))getStateCode
+{
+//    static NSInteger failRetryTimer = 0;
+    NSUInteger commandCode=command.integerValue+70;
+    if (commandCode ==70) {
+        commandCode =67;
+    }
+    command=[NSString stringWithFormat:@"%zd",commandCode];
+    [TTSUtility showForShortTime:2 mainTitle:NSLocalizedString(@"正在发送远程命令", @"正在发送远程命令") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
+//    [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在发送远程命令", @"正在发送远程命令") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
+    NewRemote *manger=[[NewRemote alloc]init];
+    NSString * commandData =[NSString stringWithFormat:@"FA07%@10%zd", deviceInfo.deviceMacID, commandCode] ;
+    NSDictionary *requestBody = @{@"cmds": commandData};
+    [manger sendDataToServerWithUrlstr:@"http://www.51youcome.com/PMSWebService/services/" interface:@"InsertTDevicetrol" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
+        
+        NSLog(@">>>>>>>>>>%@",requestDic);
+        
+    } fail:^(NSError * _Nullable error) {
+        
     }];
 }
 

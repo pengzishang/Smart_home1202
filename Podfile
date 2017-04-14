@@ -8,8 +8,6 @@ target 'Smart_home' do
   pod 'MMDrawerController'
   pod 'CYLTableViewPlaceHolder'
   pod 'DCPathButton'
-  pod 'Pgyer'
-  pod 'PgyUpdate'
   pod 'pop'
   pod 'Bugly'
   pod 'SDWebImage'

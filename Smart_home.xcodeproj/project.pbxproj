@@ -938,7 +938,7 @@
 				TargetAttributes = {
 					3C7ECDD31D23B48500335F75 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 7BLZ9JWB5U;
+						DevelopmentTeam = LD2KPD7UX3;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1311,7 +1311,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7BLZ9JWB5U;
+				DEVELOPMENT_TEAM = LD2KPD7UX3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1328,10 +1328,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Smart_home/Lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.amj.SmartHome;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amj.store.SmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9d6d2c6a-132e-41c6-8ed7-a5b0f534da3c";
-				PROVISIONING_PROFILE_SPECIFIER = Development_General_Test_2016_09_28;
+				PROVISIONING_PROFILE = "3244e795-e3bb-452a-9708-8d3b4dcf9ac9";
+				PROVISIONING_PROFILE_SPECIFIER = Development_PZS_2016_10_09_amj.store.SmartHome;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
@@ -1346,7 +1346,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart_home/Smart_home.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 7BLZ9JWB5U;
+				DEVELOPMENT_TEAM = LD2KPD7UX3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1363,10 +1363,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Smart_home/Lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.amj.SmartHome;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amj.store.SmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f4e00b6a-6cfd-41e4-8459-f7ada9c51163";
-				PROVISIONING_PROFILE_SPECIFIER = Distribution_SmartHome_2016_07_06;
+				PROVISIONING_PROFILE = "83fafc64-8456-4921-90fb-a32273521670";
+				PROVISIONING_PROFILE_SPECIFIER = Distribution_PZS_AMJ_2016_9_30;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";

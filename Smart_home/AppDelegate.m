@@ -7,8 +7,6 @@
 //
 #import "BluetoothManager.h"
 #import "AppDelegate.h"
-#import <PgySDK/PgyManager.h>
-#import <PgyUpdate/PgyUpdateManager.h>
 #import "TTSUtility.h"
 #import <Bugly/Bugly.h>
 #import "JPUSHService.h"
@@ -52,10 +50,6 @@
 }
 
 - (void)BugAndUpdate {
-    [[PgyManager sharedPgyManager] startManagerWithAppId:pgyKey];
-    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:pgyKey];
-    [[PgyUpdateManager sharedPgyManager] checkUpdate];
-    [PgyManager sharedPgyManager].enableFeedback = NO;
     [Bugly startWithAppId:nil];
 }
 

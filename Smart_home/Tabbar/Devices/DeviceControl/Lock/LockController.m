@@ -224,8 +224,10 @@
 - (void)passwordView:(XLPasswordView *)passwordView didFinishInput:(NSString *)password {
     [passwordView hidePasswordView];
     if (RemoteOn) {
-
-        [TTSUtility lockWithRemoteInfo:self.devicesOfRoom[_operationIndex] lockMode:APPLockModeOpen passWord:password validtime:10000];
+//        NSString *commandCode = [NSString stringWithFormat:@"%@%@%@", methodString, timeStr, password];
+//        [TTSUtility remoteWithSoap:self.devicesOfRoom[_operationIndex] commandStr:<#(NSString *)#> retryTimes:<#(NSUInteger)#> conditionReturn:<#^(NSString *)getStateCode#>]
+        [TTSUtility lockWithRemoteNew:self.devicesOfRoom[_operationIndex] passWord:password validtime:10000];
+//        [TTSUtility lockWithRemoteInfo:self.devicesOfRoom[_operationIndex] lockMode:APPLockModeOpen passWord:password validtime:10000];
     } else {
         [TTSUtility lockWithDeviceInfo:self.devicesOfRoom[_operationIndex] lockMode:APPLockModeOpen passWord:password validtime:10000];
     }

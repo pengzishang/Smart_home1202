@@ -529,6 +529,24 @@
     }];
 }
 
++(void)lockWithRemoteNew:(DeviceInfo *)lockInfo passWord:(NSString *)passWord validtime:(NSTimeInterval)validtime
+{
+    [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在远程控制", @"正在远程控制") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), lockInfo.deviceMacID]];
+    NSString *timeStr = [NSString initWithDate:[NSDate date] isRemote:YES];
+    NSString *methodString = @"01";
+    NSString *commandCode = [NSString stringWithFormat:@"%@%@%@", methodString, timeStr, passWord];
+    commandCode=[NSString stringWithFormat:@"FA0A%@%@",lockInfo.deviceMacID,commandCode];
+    NewRemote *manger=[[NewRemote alloc]init];
+    NSDictionary *requestBody = @{@"cmds": commandCode};
+    [manger sendDataToServerWithUrlstr:@"http://www.51youcome.com/PMSWebService/services/" interface:@"InsertTDevicetrol" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
+        
+        NSLog(@">>>>>>>>>>%@",requestDic);
+        
+    } fail:^(NSError * _Nullable error) {
+        
+    }];
+}
+
 
 /**
  *  链接触发设备
@@ -805,11 +823,14 @@
 + (void)remoteWithSoap:(DeviceInfo *)deviceInfo commandStr:(NSString *)command retryTimes:(NSUInteger)retryTimes conditionReturn:(void (^)(NSString *))getStateCode
 {
 //    static NSInteger failRetryTimer = 0;
-    NSUInteger commandCode=command.integerValue+70;
-    if (commandCode ==70) {
-        commandCode =67;
-    }
-    command=[NSString stringWithFormat:@"%zd",commandCode];
+    
+//这一句决定是否取反
+//    NSUInteger commandCode=command.integerValue+70;
+//    if (commandCode ==70) {
+//        commandCode =67;
+//    }
+//    command=[NSString stringWithFormat:@"%zd",commandCode];
+    NSUInteger commandCode=command.integerValue;
     [TTSUtility showForShortTime:2 mainTitle:NSLocalizedString(@"正在发送远程命令", @"正在发送远程命令") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
 //    [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在发送远程命令", @"正在发送远程命令") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
     NewRemote *manger=[[NewRemote alloc]init];

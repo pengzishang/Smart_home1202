@@ -211,6 +211,8 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
 
 + (void)lockWithRemoteInfo:(DeviceInfo *)lockInfo lockMode:(APPLockMode)lockMode passWord:(NSString *)passWord validtime:(NSTimeInterval)validtime;
 
++ (void)lockWithRemoteNew:(DeviceInfo *)lockInfo passWord:(NSString *)passWord validtime:(NSTimeInterval)validtime;
+
 + (void)lockWithLinkDevice:(NSString *)deviceID lockInfo:(DeviceInfo *)lockInfo command:(NSString *)command;
 
 + (void)lockWithPowerLockInfo:(DeviceInfo *)lockInfo lockMode:(APPLockMode)lockMode powerWarning:(NSInteger)val;

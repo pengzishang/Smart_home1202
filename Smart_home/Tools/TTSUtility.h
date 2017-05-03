@@ -48,6 +48,8 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
 
 @interface TTSUtility : NSObject
 
+
+
 + (void)shake;
 
 
@@ -156,6 +158,8 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
  *  @param getStateCode 返回码
  */
 + (void)remoteDeviceControl:(DeviceInfo *)deviceInfo commandStr:(NSString *)command retryTimes:(NSUInteger)retryTimes conditionReturn:(void (^)(NSString *))getStateCode;
+
+- (void)refreshState:(NSString *)deviceAddress result:(void(^)(NSString * status))result;
 
 /**
  新远程控制

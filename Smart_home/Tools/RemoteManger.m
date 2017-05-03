@@ -99,7 +99,10 @@ typedef void(^mutiSave)(BOOL);
 }
 
 
-- (void)sendRemoteCommand:(NSString *)commandCode deviceID:(NSString *)deviceID success:(void (^)(NSString *))success fail:(NSUInteger (^)(NSString *))fail {
+- (void)sendRemoteCommand:(NSString *)commandCode deviceID:(NSString *)deviceID
+                  success:(void (^)(NSString *))success
+                     fail:(NSUInteger (^)(NSString *))fail
+{
     _dataTime = [NSDate date];
     double time1 = [[NSDate date] timeIntervalSinceDate:_dataTime];
     NSLog(@"time1:%f   id:%@", time1, deviceID);

@@ -118,7 +118,12 @@
         return @(stateCode.integerValue & 0x03);
     } else if (deviceType.integerValue == 1) {
         return @(stateCode.integerValue & 0x01);
-    } else {
+    }
+    else if (deviceType.integerValue == 4 ||deviceType.integerValue == 5)
+    {
+        return @(41);
+    }
+    else {
         return stateCode;
     }
 }

@@ -28,6 +28,7 @@
 		3C24E5EA1D82908600E74C24 /* CommonInfraredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E5E91D82908600E74C24 /* CommonInfraredController.m */; };
 		3C24E5EC1D82A28B00E74C24 /* PopTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C24E5EB1D82A28B00E74C24 /* PopTopView.xib */; };
 		3C24E5EF1D82A75F00E74C24 /* PopTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E5EE1D82A75F00E74C24 /* PopTopView.m */; };
+		3C289E0E1EB8759C00E4DD91 /* NSTimer+NSTimerBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C289E0D1EB8759C00E4DD91 /* NSTimer+NSTimerBlock.m */; };
 		3C2C59D71D2E51ED009F5016 /* LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2C59D61D2E51ED009F5016 /* LaunchView.m */; };
 		3C2CB0921D6A9F0500E798C0 /* TVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CB0911D6A9F0400E798C0 /* TVController.m */; };
 		3C318B751D46FF6300359F60 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C318B741D46FF6300359F60 /* BluetoothManager.m */; };
@@ -175,6 +176,8 @@
 		3C24E5EB1D82A28B00E74C24 /* PopTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopTopView.xib; path = Tabbar/Devices/DeviceCell/PopTopView.xib; sourceTree = "<group>"; };
 		3C24E5ED1D82A75F00E74C24 /* PopTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopTopView.h; path = Tabbar/Devices/DeviceCell/DeviceView/PopTopView.h; sourceTree = "<group>"; };
 		3C24E5EE1D82A75F00E74C24 /* PopTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopTopView.m; path = Tabbar/Devices/DeviceCell/DeviceView/PopTopView.m; sourceTree = "<group>"; };
+		3C289E0C1EB8759C00E4DD91 /* NSTimer+NSTimerBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+NSTimerBlock.h"; sourceTree = "<group>"; };
+		3C289E0D1EB8759C00E4DD91 /* NSTimer+NSTimerBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+NSTimerBlock.m"; sourceTree = "<group>"; };
 		3C2C59D41D2E4B12009F5016 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		3C2C59D51D2E51ED009F5016 /* LaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchView.h; path = Launch/LaunchView.h; sourceTree = "<group>"; };
 		3C2C59D61D2E51ED009F5016 /* LaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchView.m; path = Launch/LaunchView.m; sourceTree = "<group>"; };
@@ -840,6 +843,8 @@
 				3CE479851D53420800C26168 /* NSMutableArray+AddDeviceArray.m */,
 				3C589D721E5ECB2C002D3637 /* UIButton+CS_FixMultiClick_h.h */,
 				3C589D731E5ECB2C002D3637 /* UIButton+CS_FixMultiClick_h.m */,
+				3C289E0C1EB8759C00E4DD91 /* NSTimer+NSTimerBlock.h */,
+				3C289E0D1EB8759C00E4DD91 /* NSTimer+NSTimerBlock.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1122,6 +1127,7 @@
 				3C24E5EF1D82A75F00E74C24 /* PopTopView.m in Sources */,
 				3CD8EA9A1D7418B000B843C7 /* AddRoomController.m in Sources */,
 				3CDE29D51D7D71AA00EE90FD /* DeviceInfo+CoreDataProperties.m in Sources */,
+				3C289E0E1EB8759C00E4DD91 /* NSTimer+NSTimerBlock.m in Sources */,
 				3C4771861D8F97DB000284D6 /* BathTubController.m in Sources */,
 				3C056F341D81069700EFB827 /* SceneView.m in Sources */,
 				3CB83BDC1D66B813003E1ECD /* AirViewController.m in Sources */,

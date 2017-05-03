@@ -217,11 +217,25 @@
     __block DeviceInfo *device = self.devicesOfRoom[cellTag - 200];
     if (RemoteOn) {
 //        NSLogMethodArgs(@"///>>>>>%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"SeviceHost"])
-        
-        
+ 
         [TTSUtility remoteWithSoap:device commandStr:[@(btnTag - 1000).stringValue fullWithLengthCount:2] retryTimes:2 conditionReturn:^(NSString *statusCode) {
+            TTSUtility *manger=[[TTSUtility alloc]init];
+            [manger refreshState:device.deviceMacID result:^(NSString *status) {
+                NSLog(@"状态:%@",status);
+                device.deviceStatus = @(status.integerValue);
+                [[TTSCoreDataManager getInstance] updateData];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:cellTag - 200 inSection:0];
+                [_mainCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+                NSString *completeString=@"完成";
+                if ([status isEqualToString:@"timeout"]) {
+                    completeString = @"超时";
+                }
+                [TTSUtility stopAnimationWithMainTitle:completeString subTitle:@""];
+            }];
             
         }];
+        
+        
 //        [TTSUtility remoteDeviceControl:device commandStr:[@(btnTag - 1000).stringValue fullWithLengthCount:2] retryTimes:2 conditionReturn:^(NSString *statusCode) {
 //            NSData *stateData = [[statusCode substringFromIndex:1] dataUsingEncoding:NSUTF8StringEncoding];
 //            device.deviceStatus = [self returnStateCodeWithData:(NSData *) stateData btnCount:device.deviceType.integerValue];
@@ -248,12 +262,29 @@
 - (void)didClickCurtainBtnTag:(NSUInteger)btnTag cellTag:(NSUInteger)cellTag cell:(CurtainCollectionCell *)cell {
     __block DeviceInfo *device = self.devicesOfRoom[cellTag - 200];
     if (RemoteOn) {
-        [TTSUtility remoteDeviceControl:device commandStr:@(btnTag - 1000 - 24).stringValue retryTimes:3 conditionReturn:^(NSString *statusCode) {
-            device.deviceStatus = @(statusCode.integerValue);
-            [[TTSCoreDataManager getInstance] updateData];
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:cellTag - 200 inSection:0];
-            [_mainCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+        [TTSUtility remoteWithSoap:device commandStr:[@(btnTag - 1000).stringValue fullWithLengthCount:2] retryTimes:2 conditionReturn:^(NSString *statusCode) {
+            TTSUtility *manger=[[TTSUtility alloc]init];
+            [manger refreshState:device.deviceMacID result:^(NSString *status) {
+                NSLog(@"状态:%@",status);
+                device.deviceStatus = @(status.integerValue);
+                [[TTSCoreDataManager getInstance] updateData];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:cellTag - 200 inSection:0];
+                [_mainCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+                NSString *completeString=@"完成";
+                if ([status isEqualToString:@"timeout"]) {
+                    completeString = @"超时";
+                }
+                [TTSUtility stopAnimationWithMainTitle:completeString subTitle:@""];
+            }];
+            
         }];
+        
+//        [TTSUtility remoteDeviceControl:device commandStr:@(btnTag - 1000 - 24).stringValue retryTimes:3 conditionReturn:^(NSString *statusCode) {
+//            device.deviceStatus = @(statusCode.integerValue);
+//            [[TTSCoreDataManager getInstance] updateData];
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:cellTag - 200 inSection:0];
+//            [_mainCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+//        }];
     } else {
         [TTSUtility localDeviceControl:device.deviceMacID commandStr:@(btnTag - 1000).stringValue retryTimes:3 conditionReturn:^(id stateData) {
             if ([stateData isKindOfClass:[NSData class]]) {//控制成功的
@@ -322,7 +353,7 @@
             [self.devices addObject:self.deviceForAdding];
             [[TTSCoreDataManager getInstance] insertDataWithObject:self.deviceForAdding];
             [TTSUtility syncRemoteDevice:self.deviceForAdding remoteMacID:RemoteDefault conditionReturn:^(NSString *statusCode) {
-
+                
             }];
         }
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.devicesOfRoom.count - 1 inSection:0];

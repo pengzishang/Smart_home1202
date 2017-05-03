@@ -8,7 +8,7 @@
 
 #import "TTSUtility.h"
 #import "NewRemote.h"
-
+#import "NSTimer+NSTimerBlock.h"
 @implementation TTSUtility
 
 
@@ -43,8 +43,8 @@
     MBProgressHUD *hud = (MBProgressHUD *) [frontView viewWithTag:10001];
     hud.label.text = mainTitle;
     hud.detailsLabel.text = subTitle;
-    [hud hideAnimated:YES afterDelay:1.5];
-    [TTSUtility shake];
+    [hud hideAnimated:YES afterDelay:0.5];
+//    [TTSUtility shake];
 }
 
 /**
@@ -825,24 +825,64 @@
 //    static NSInteger failRetryTimer = 0;
     
 //这一句决定是否取反
+    
 //    NSUInteger commandCode=command.integerValue+70;
 //    if (commandCode ==70) {
 //        commandCode =67;
 //    }
 //    command=[NSString stringWithFormat:@"%zd",commandCode];
+    
+    
     NSUInteger commandCode=command.integerValue;
-    [TTSUtility showForShortTime:2 mainTitle:NSLocalizedString(@"正在发送远程命令", @"正在发送远程命令") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
-//    [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在发送远程命令", @"正在发送远程命令") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
+    if (deviceInfo.deviceType.integerValue ==4 ||deviceInfo.deviceType.integerValue ==5) {
+        commandCode-=24;
+    }
+//    [TTSUtility showForShortTime:2 mainTitle:NSLocalizedString(@"正在发送远程命令", @"正在发送远程命令") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
+    [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在发送远程命令", @"正在发送远程命令") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
     NewRemote *manger=[[NewRemote alloc]init];
-    NSString * commandData =[NSString stringWithFormat:@"FA07%@10%zd", deviceInfo.deviceMacID, commandCode] ;
+    NSString * commandData =[NSString stringWithFormat:@"FA07%@100%zd", deviceInfo.deviceMacID, commandCode] ;//取反
     NSDictionary *requestBody = @{@"cmds": commandData};
-    [manger sendDataToServerWithUrlstr:@"http://www.51youcome.com/PMSWebService/services/" interface:@"InsertTDevicetrol" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
-        
-        NSLog(@">>>>>>>>>>%@",requestDic);
-        
+    //正式站
+//    http://120.76.74.87
+//    http://www.51youcome.com
+    [manger sendDataToServerWithUrlstr:@"http://120.76.74.87/PMSWebService/services/" interface:@"InsertTDevicetrol" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
+        if (getStateCode) {
+            getStateCode(requestDic[@"Status"]);
+        }
     } fail:^(NSError * _Nullable error) {
-        
+        [TTSUtility stopAnimationWithMainTitle:@"失败" subTitle:@""];
     }];
+}
+
+-(void)refreshState:(NSString *)deviceAddress result:(void(^)(NSString * status))result
+{
+    __block NSTimeInterval timeLimit=0;
+    __block NSTimer *timer=[NSTimer scheduledTimerWithTimeInterval:0.4 block:^{
+        NewRemote *manger=[[NewRemote alloc]init];
+        NSDictionary *requestBody = @{@"deviceAddress": deviceAddress};
+        [manger sendDataToServerWithUrlstr:@"http://120.76.74.87/PMSWebService/services/" interface:@"SelcetDeviceStatus" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
+            NSLog(@">>>>>>>>>>%@",requestDic);
+            timeLimit+=0.4;
+            if ([requestDic[@"Status"] isEqualToString:@"02"]) {
+                if (result) {
+                    [timer invalidate];
+                    timer=nil;
+                    result(requestDic[@"resultType"]);
+                }
+            }
+            if (timeLimit>5) {
+                if (result) {
+                    [timer invalidate];
+                    timer=nil;
+                    result(@"timeout");
+                }
+            }
+            
+        } fail:^(NSError * _Nullable error) {
+            
+        }];
+    } repeats:YES];
+    [timer fire];
 }
 
 
@@ -853,30 +893,51 @@
  *  @param remoteMacID  <#remoteMacID description#>
  *  @param getStateCode <#getStateCode description#>
  */
-+ (void)syncRemoteDevice:(DeviceInfo *)deviceInfo remoteMacID:(NSString *)remoteMacID conditionReturn:(void (^)(NSString *))getStateCode {
+//+ (void)syncRemoteDevice:(DeviceInfo *)deviceInfo remoteMacID:(NSString *)remoteMacID conditionReturn:(void (^)(NSString *))getStateCode {
+//    [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在远程同步", @"正在远程同步") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
+//    [[RemoteManger getInstance] syncRemoteDevice:remoteMacID deviceID:deviceInfo.deviceMacID success:^(NSString *stateCode) {
+//        [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"同步成功", @"同步成功") subTitle:@""];
+//        if (getStateCode) {
+//            getStateCode(stateCode);
+//        }
+//    }                                       fail:^NSUInteger(NSString *stateCode) {
+//        [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"同步失败", @"同步失败") subTitle:NSLocalizedString(@"原因复杂", @"原因复杂")];
+//        return 0;
+//    }];
+//}
+
++ (void)syncRemoteDevice:(DeviceInfo *)deviceInfo remoteMacID:(NSString *)remoteMacID conditionReturn:(void (^)(NSString *))getStateCode
+{
+    if (!remoteMacID) {
+        return;
+    }
     [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在远程同步", @"正在远程同步") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
-    [[RemoteManger getInstance] syncRemoteDevice:remoteMacID deviceID:deviceInfo.deviceMacID success:^(NSString *stateCode) {
-        [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"同步成功", @"同步成功") subTitle:@""];
-        if (getStateCode) {
-            getStateCode(stateCode);
-        }
-    }                                       fail:^NSUInteger(NSString *stateCode) {
-        [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"同步失败", @"同步失败") subTitle:NSLocalizedString(@"原因复杂", @"原因复杂")];
-        return 0;
+    NewRemote *manger=[[NewRemote alloc]init];
+    NSDictionary *requestBody = @{@"mac": remoteMacID,@"device":deviceInfo.deviceMacID};
+    [manger sendDataToServerWithUrlstr:@"http://120.76.74.87/PMSWebService/services/" interface:@"InsertModule" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
+        NSLog(@">>>>>>>>>>%@",requestDic);
+        [TTSUtility stopAnimationWithMainTitle:@"完成" subTitle:@""];
+    } fail:^(NSError * _Nullable error) {
+        [TTSUtility stopAnimationWithMainTitle:@"失败" subTitle:@""];
     }];
 }
 
+
 + (void)mutiRemoteSave:(NSArray<DeviceInfo *> *)devices remoteMacID:(NSString *)remoteMacID {
-    __block NSMutableArray *deviceIDs = [NSMutableArray array];
+//    __block NSMutableArray *deviceIDs = [NSMutableArray array];
     NSLogMethodArgs(@"同步的远程控制器:%@", remoteMacID);
     [devices enumerateObjectsUsingBlock:^(DeviceInfo *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
         if (obj.deviceMacID) {
-            [deviceIDs addObject:obj.deviceMacID];
+            [TTSUtility syncRemoteDevice:obj remoteMacID:remoteMacID conditionReturn:^(NSString * status) {
+                
+            }];
+//            [deviceIDs addObject:obj.deviceMacID];
         }
     }];
-    [[RemoteManger getInstance] multiSaveRemoteDevices:deviceIDs successNumberReturn:^(NSUInteger num) {
-        NSLogMethodArgs(@"%zd", num);
-    }                                        remoteMac:remoteMacID];
+    [TTSUtility stopAnimationWithMainTitle:@"完成" subTitle:@""];
+//    [[RemoteManger getInstance] multiSaveRemoteDevices:deviceIDs successNumberReturn:^(NSUInteger num) {
+//        NSLogMethodArgs(@"%zd", num);
+//    }                                        remoteMac:remoteMacID];
 }
 
 

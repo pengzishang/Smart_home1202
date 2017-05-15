@@ -845,7 +845,10 @@
     //正式站
 //    http://120.76.74.87
 //    http://www.51youcome.com
-    [manger sendDataToServerWithUrlstr:@"http://120.76.74.87/PMSWebService/services/" interface:@"InsertTDevicetrol" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
+    
+    
+    //0.121
+    [manger sendDataToServerWithUrlstr:@"http://192.168.0.121/PMSWebService/services/" interface:@"InsertTDevicetrol" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
         if (getStateCode) {
             getStateCode(requestDic[@"Status"]);
         }
@@ -913,7 +916,8 @@
     }
     [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在远程同步", @"正在远程同步") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), deviceInfo.deviceMacID]];
     NewRemote *manger=[[NewRemote alloc]init];
-    NSDictionary *requestBody = @{@"mac": remoteMacID,@"device":deviceInfo.deviceMacID};
+    NSString *remoteDeviceMacID = [NSString translateRemoteID:remoteMacID];
+    NSDictionary *requestBody = @{@"mac": remoteDeviceMacID,@"device":deviceInfo.deviceMacID};
     [manger sendDataToServerWithUrlstr:@"http://120.76.74.87/PMSWebService/services/" interface:@"InsertModule" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
         NSLog(@">>>>>>>>>>%@",requestDic);
         [TTSUtility stopAnimationWithMainTitle:@"完成" subTitle:@""];

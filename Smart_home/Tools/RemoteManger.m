@@ -71,7 +71,7 @@ typedef void(^mutiSave)(BOOL);
 
 - (void)startConnectSocket:(NSString *)deviceID commandCode:(NSString *)commandCode method:(RemoteMethod)method {
     self.clientSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
-//    [self.clientSocket setRunLoopModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
+//LoopCommonModes]];
     [_clientSocket connectToHost:HOST onPort:Port withTimeout:TimeOut error:nil];
     [_clientSocket readDataWithTimeout:TimeOut tag:100];
     switch (method) {

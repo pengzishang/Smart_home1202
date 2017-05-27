@@ -56,10 +56,16 @@
 			<string>单火线三路开关快添</string>
 			<key>Name21</key>
 			<string>C系列一路开关</string>
+			<key>AMJe21</key>
+			<string>C系列一路开关快添</string>
 			<key>Name22</key>
 			<string>C系列二路开关</string>
+			<key>AMJe22</key>
+			<string>C系列二路开关快添</string>
 			<key>Name23</key>
 			<string>C系列三路开关</string>
+			<key>AMJe23</key>
+			<string>C系列三路开关快添</string>
 		</dict>
 	</array>
 	<key>ScanTypeCurtain</key>

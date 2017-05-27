@@ -43,6 +43,7 @@
 
 - (IBAction)startRefresh:(id)sender {
     NSArray *scanTypeList = @[@(ScanTypeSwitch), @(ScanTypeSocket), @(ScanTypeCurtain)];
+//    NSArray *scanTypeList = @[@(ScanTypeAll)];
     [[BluetoothManager getInstance] scanPeriherals:YES AllowPrefix:scanTypeList];
     [BluetoothManager getInstance].detectDevice = ^(NSDictionary *deviceInfoDic) {
         NSString *deviceBroadcastName = deviceInfoDic[AdvertisementData][@"kCBAdvDataLocalName"];

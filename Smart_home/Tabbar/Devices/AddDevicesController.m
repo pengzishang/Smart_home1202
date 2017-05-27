@@ -110,7 +110,23 @@
 }
 
 - (NSString *)deviceTypeWithID:(NSString *)deviceName {
-    return [deviceName substringWithRange:NSMakeRange(4, 2)];
+    NSString *deviceType = [NSString new];
+    BOOL isOldDevice = [deviceName hasPrefix:@"Switch"] || [deviceName hasPrefix:@"Socket"];
+    if (isOldDevice) {
+        deviceType = [deviceName substringWithRange:NSMakeRange(7, 1)];
+    } else {
+        deviceType = [deviceName substringWithRange:NSMakeRange(4, 2)];
+        if (deviceType.integerValue >= 21) {
+            deviceType = @(deviceType.integerValue - 20).stringValue;
+        } else if (deviceType.integerValue >= 11 && deviceType.integerValue <= 13) {
+            deviceType = @(deviceType.integerValue - 10).stringValue;
+        } else if (deviceType.integerValue >= 0 && deviceType.integerValue <= 5) {
+            
+        } else {
+            deviceType = @"00";
+        }
+    }
+    return deviceType;
 }
 
 
@@ -128,9 +144,9 @@
     NSUInteger deviceType = [deviceDic[@"deviceType"] integerValue];
     NSString *deviceIDstr = [deviceName substringFromIndex:7];
 
-    if (deviceType > 5) {
-        deviceType = 0;
-    }
+//    if (deviceType > 5) {
+//        deviceType = 0;
+//    }
     NSArray *auto_add_image = @[@"auto_add_type00", @"auto_add_type01", @"auto_add_type02", @"auto_add_type03", @"auto_add_type04", @"auto_add_type05"];
     _deviceNameField.placeholder = [NSString stringWithFormat:@"%@:%@", [NSString ListNameWithPrefix:[deviceName substringToIndex:6]], [deviceIDstr substringFromIndex:deviceIDstr.length - 4]];
     _macID.text = [NSString stringWithFormat:@"ID:%@", deviceIDstr];

@@ -848,7 +848,7 @@
     
     
     //0.121
-    [manger sendDataToServerWithUrlstr:@"http://192.168.0.121/PMSWebService/services/" interface:@"InsertTDevicetrol" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
+    [manger sendDataToServerWithUrlstr:@"http://120.76.74.87/PMSWebService/services/" interface:@"InsertTDevicetrol" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
         if (getStateCode) {
             getStateCode(requestDic[@"Status"]);
         }
@@ -882,7 +882,11 @@
             }
             
         } fail:^(NSError * _Nullable error) {
-            
+            if (result) {
+                [timer invalidate];
+                timer=nil;
+                result(@"timeout");
+            }
         }];
     } repeats:YES];
     [timer fire];

@@ -443,6 +443,12 @@ NSString *_Nonnull const ScanTypeDescription[] = {
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     NSString *deviceIDFromAdv = [advertisementData[@"kCBAdvDataLocalName"] stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *deviceIDFromPeripheral = [peripheral.name stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+//    if ([deviceIDFromAdv containsString:@"D0B5C2A400E3"]) {
+//        if ([deviceIDFromAdv containsString:@"AMJ"]) {
+//            NSLog(@"\n111111111>>>>>>>>%@:",deviceIDFromAdv);
+//        }
+//    }
     if ([RSSI integerValue] <= -115 || [RSSI integerValue] == 127) {
         return;
     }
@@ -451,15 +457,20 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     }
     __block BOOL isSelectPreFix = NO;
     //检查前缀是否符合条件
+    
     [_scaningPreFix enumerateObjectsUsingBlock:^(__kindof NSString *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
         if ([deviceIDFromAdv hasPrefix:obj]) {
             isSelectPreFix = YES;
             *stop = YES;
         }
     }];
+    
     if (!isSelectPreFix) {
         return;
     }
+    
+    
+    
     //慢速,监测扫描,
     if (!_scanFastSpeed) {
         if (deviceIDFromAdv.length < 6) {
@@ -528,6 +539,12 @@ NSString *_Nonnull const ScanTypeDescription[] = {
         if (deviceIDFromAdv.length < 6) {
             return;
         }
+        
+        if ([deviceIDFromAdv containsString:@"D0B5C2A400E3"]) {
+            NSLog(@"\n111111111>>>>>>>>%@:",deviceIDFromAdv);
+        }
+        
+        
         NSString *stateCode = [deviceIDFromAdv substringWithRange:NSMakeRange(6, 1)];
         NSString *deviceType = [deviceIDFromAdv substringWithRange:NSMakeRange(5, 1)];
         NSUInteger stateIndex = [stateCode characterAtIndex:0];

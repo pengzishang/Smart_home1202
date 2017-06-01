@@ -7,25 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSString+StringOperation.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 
 
 #define Peripheral         @"peripheral"
 #define AdvertisementData  @"advertisementData"
 #define RSSI_VALUE         @"RSSI"
-#define Note_Refresh_State  @"Note_Refresh_State"//刷新屏幕上的转动图标
-
+#define Note_Refresh_State  @"Note_Refresh_State"//刷新
 #define NSLogMethodArgs(format, ...)    NSLog(@"\n---方法:%s---\n---行号:%d\n---内容:\n%@\n ", __PRETTY_FUNCTION__, __LINE__ , [NSString stringWithFormat:format, ##__VA_ARGS__] );
+
 /**
  控制类型方式
 
- - SendTypeSingle: 单个控制锁
- - SendTypeMuti: 控制多个锁
+ - SendTypeSingle: 单个控制指令
+ - SendTypeMuti: 多个控制指令
  - SendTypeSyncdevice: 同步设备状态
  - SendTypeInfrared: 控制红外设备
  - SendTypeLock: 控制锁
  - SendTypeQuery: 查询锁
+ SendTypeRemote = 遥控器指令
+ SendTypeRemoteTemp = 7
  */
 typedef NS_ENUM(NSUInteger, SendType) {
     SendTypeSingle = 0,
@@ -34,7 +35,9 @@ typedef NS_ENUM(NSUInteger, SendType) {
     SendTypeInfrared = 3,
     SendTypeLock = 4,
     SendTypeQuery = 5,
-    SendTypeRemote = 6
+    SendTypeRemote = 6,
+    SendTypeRemoteTemp = 7,
+    SendTypeSellMachine = 8
 };
 
 
@@ -64,12 +67,13 @@ typedef NS_ENUM(NSUInteger, ScanType) {
 };
 
 
+
 /**
  发现设备,扫描设备
 
- @param __nullable <#__nullable description#>
+ @param infoDic <#infoDic description#>
  */
-typedef void(^detectDevice)(NSDictionary *__nullable);
+typedef void(^detectDevice)(NSDictionary *__nullable infoDic);
 
 @interface BluetoothManager : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
 
@@ -110,7 +114,7 @@ typedef void(^detectDevice)(NSDictionary *__nullable);
 
  @param peripheral <#peripheral description#>
  */
-- (void)disconnectPeriheral:(NSTimer *)peripheral;
+- (void)disconnectPeriheral:(NSTimer *__nonnull)peripheral;
 
 
 /**
@@ -120,9 +124,9 @@ typedef void(^detectDevice)(NSDictionary *__nullable);
  @param success <#success description#>
  @param fail <#fail description#>
  */
-- (void)queryDeviceStatus:(nonnull DeviceInfo *)deviceInfo
-                  success:(void (^ _Nullable)(NSData *_Nullable data))success
-                     fail:(NSUInteger(^ _Nullable)(NSString *_Nullable statusCode))fail;
+//- (void)queryDeviceStatus:(nonnull DeviceInfo *)deviceInfo
+//                  success:(void (^ _Nullable)(NSData *_Nullable data))success
+//                     fail:(NSUInteger(^ _Nullable)(NSString *_Nullable statusCode))fail;
 
 
 /**
@@ -155,6 +159,6 @@ typedef void(^detectDevice)(NSDictionary *__nullable);
  @param commandArr <#commandArr description#>
  @param resultList <#resultList description#>
  */
-- (void)mutiCommandControlWithStringArr:(NSArray <__kindof DeviceForScene *> *__nullable)commandArr resultList:(void (^ _Nullable)(NSArray *_Nullable))resultList;
+- (void)mutiCommandControlWithStringArr:(NSArray <NSDictionary <NSString *,id>*> *__nullable)commandArr resultList:(void (^ _Nullable)(NSArray *_Nullable))resultList;
 
 @end

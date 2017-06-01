@@ -13,6 +13,8 @@
 #import "CYLTableViewPlaceHolder.h"
 #import "NSMutableArray+AddDeviceArray.h"
 #import "AppDelegate.h"
+#import "NSString+StringOperation.h"
+
 
 @interface LockAddController () <CYLTableViewPlaceHolderDelegate>
 
@@ -39,23 +41,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView cyl_reloadData];
-    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    [app.autoScan invalidate];
-    [self performSelector:@selector(startRefresh:) withObject:nil afterDelay:1];
+//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+//    [app.autoScan invalidate];
+//    [self performSelector:@selector(startRefresh:) withObject:nil afterDelay:1];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    app.autoScan = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
-    [app.autoScan fire];
+//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+//    app.autoScan = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
+//    [app.autoScan fire];
 }
 
 
-- (void)autoScan:(id)sender {
-    NSLogMethodArgs(@"autoScan");
-    [[BluetoothManager getInstance] scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
-}
+//- (void)autoScan:(id)sender {
+//    NSLogMethodArgs(@"autoScan");
+//    [[BluetoothManager getInstance] scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

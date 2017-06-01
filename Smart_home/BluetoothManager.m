@@ -9,7 +9,7 @@
 
 //如果寻找设备过久,很容易导致控制失败
 #import "BluetoothManager.h"
-
+#import "NSString+StringOperation.h"
 static BluetoothManager *shareInstance;
 
 typedef void(^stateValueFailReturn)(NSInteger);
@@ -27,6 +27,7 @@ typedef void(^stateValueSuccessReturn)(NSData *);
     CBCentralManager *_centralManager;
     CBPeripheral *_curPeripheral;
     NSMutableArray *_dataArr;
+    NSTimer *_refreshTimer;
 }
 
 @property(copy, nonatomic, nonnull) stateValueSuccessReturn successControl;
@@ -91,7 +92,7 @@ NSString *_Nonnull const ScanTypeDescription[] = {
 }
 
 - (void)initData {
-    NSLogMethodArgs(@"%i", self.centralManager.isScanning);
+    NSLogMethodArgs(@"%@", self.centralManager.isScanning?@"载入成功,正在扫描":@"正在载入");
 }
 
 - (void)scanPeriherals:(BOOL)isAllowDuplicates AllowPrefix:(NSArray<__kindof NSNumber *> *_Nullable)PrefixArr {
@@ -101,7 +102,14 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     _scanFastSpeed = isAllowDuplicates;
     NSDictionary *optionsDic = @{CBCentralManagerScanOptionAllowDuplicatesKey: @(isAllowDuplicates)};
     //代理触发更新了
-    [self.centralManager scanForPeripheralsWithServices:nil options:optionsDic];
+    [_refreshTimer invalidate];
+    _refreshTimer=[NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(refreshNearDevice:) userInfo:optionsDic repeats:YES];
+    [_refreshTimer fire];
+}
+
+-(void)refreshNearDevice:(NSTimer *)sender
+{
+    [self.centralManager scanForPeripheralsWithServices:nil options:sender.userInfo];
 }
 
 - (void)initPreFix:(NSArray <__kindof NSNumber *> *)PrefixArr {
@@ -132,54 +140,54 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     [self.centralManager cancelPeripheralConnection:peripheral];
     [sender invalidate];
 }
-
-- (void)queryDeviceStatus:(DeviceInfo *)deviceInfo
-                  success:(void (^ _Nullable)(NSData *_Nullable))success
-                     fail:(NSUInteger (^ _Nullable)(NSString *_Nullable))fail {
-    _sendType = SendTypeQuery;
-    [self.dataArr removeAllObjects];
-    _dataf = [NSDate date];
-    if (success) {
-        __block BluetoothManager *blockManger = self;
-        blockManger.successControl = ^(NSData *stateData) {
-            //返回成功
-            success(stateData);
-        };
-    }
-
-    if (fail) {
-        __block BluetoothManager *blockManger = self;
-        blockManger.failControl = ^(NSInteger stateCode) {
-            NSString *stateCodeStr = @(stateCode).stringValue;
-            //返回错误状态码
-            NSUInteger failRetryTime = fail(stateCodeStr);
-            if (failRetryTime != 0 && [stateCodeStr integerValue] != 404 && [stateCodeStr integerValue] != 403) {
-                CBPeripheral *curPeripheral = [self isAvailableID:deviceInfo.deviceMacID];
-                [self connect2Peripheral:curPeripheral];
-            } else {
-                NSLog(@"重试次数为0或者不在范围");
-            }
-        };
-    }
-
-
-    if (self.centralManager.state != CBCentralManagerStatePoweredOn) {
-        if (self.failControl) {
-            _failControl(403);
-        }
-    }
-
-    CBPeripheral *curPeripheral = [self isAvailableID:deviceInfo.deviceMacID];
-
-    if (curPeripheral) {
-        [self connect2Peripheral:curPeripheral];
-    } else {//超出范围
-        if (self.failControl) {
-            self.failControl(404);
-        }
-    }
-
-}
+//
+//- (void)queryDeviceStatus:(DeviceInfo *)deviceInfo
+//                  success:(void (^ _Nullable)(NSData *_Nullable))success
+//                     fail:(NSUInteger (^ _Nullable)(NSString *_Nullable))fail {
+//    _sendType = SendTypeQuery;
+//    [self.dataArr removeAllObjects];
+//    _dataf = [NSDate date];
+//    if (success) {
+//        __block BluetoothManager *blockManger = self;
+//        blockManger.successControl = ^(NSData *stateData) {
+//            //返回成功
+//            success(stateData);
+//        };
+//    }
+//
+//    if (fail) {
+//        __block BluetoothManager *blockManger = self;
+//        blockManger.failControl = ^(NSInteger stateCode) {
+//            NSString *stateCodeStr = @(stateCode).stringValue;
+//            //返回错误状态码
+//            NSUInteger failRetryTime = fail(stateCodeStr);
+//            if (failRetryTime != 0 && [stateCodeStr integerValue] != 404 && [stateCodeStr integerValue] != 403) {
+//                CBPeripheral *curPeripheral = [self isAvailableID:deviceInfo.deviceMacID];
+//                [self connect2Peripheral:curPeripheral];
+//            } else {
+//                NSLog(@"重试次数为0或者不在范围");
+//            }
+//        };
+//    }
+//
+//
+//    if (self.centralManager.state != CBCentralManagerStatePoweredOn) {
+//        if (self.failControl) {
+//            _failControl(403);
+//        }
+//    }
+//
+//    CBPeripheral *curPeripheral = [self isAvailableID:deviceInfo.deviceMacID];
+//
+//    if (curPeripheral) {
+//        [self connect2Peripheral:curPeripheral];
+//    } else {//超出范围
+//        if (self.failControl) {
+//            self.failControl(404);
+//        }
+//    }
+//
+//}
 
 - (void)setTimeOutWithPeriheral:(CBPeripheral *)periheral {
     [_timeOutTimer invalidate];
@@ -258,7 +266,7 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     NSLog(@"STEP1:开始连接:%f  id:%@", time1, curPeripheral.name);
 }
 
-- (void)mutiCommandControlWithStringArr:(NSArray *__nullable)commandArr resultList:(void (^ _Nullable)(NSArray *_Nullable))resultList; {
+- (void)mutiCommandControlWithStringArr:(NSArray <NSDictionary <NSString *,id>*> *__nullable)commandArr resultList:(void (^ _Nullable)(NSArray *_Nullable))resultList; {
     _dataf = [NSDate date];
     NSUInteger totalCount = commandArr.count;
     if (commandArr.count == 0) {
@@ -272,46 +280,49 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     __block NSUInteger operationDeviceType = [commandArr[operationIndex][@"deviceType"] integerValue];
     __block NSMutableArray *requestArr = [NSMutableArray array];
 
-    [self sendByteCommandWithString:operationCommand deviceID:operationDeviceID sendType:SendTypeSingle
-                            success:^(NSData *_Nullable stateData) {
-
-                                operationDic = [NSMutableDictionary dictionaryWithDictionary:commandArr[operationIndex]];
-                                operationDic[@"stateCode"] = [self returnStateCodeWithData:stateData btnCount:operationDeviceType];
-                                [requestArr addObject:operationDic];
-
-                                if (operationIndex + 1 < totalCount) {
-                                    operationIndex++;
-                                    operationDeviceID = commandArr[operationIndex][@"deviceID"];
-                                    operationCommand = commandArr[operationIndex][@"deviceCommand"];
-                                    operationDeviceType = [commandArr[operationIndex][@"deviceType"] integerValue];
-                                    [self sendByteCommandWithString:operationCommand deviceID:operationDeviceID sendType:SendTypeSingle success:nil fail:nil];
-                                } else {
-                                    operationIndex = 0;
-                                    if (resultList) {
-                                        resultList(requestArr);
-                                    }
-                                }
-
-                            } fail:^NSUInteger(NSString *_Nullable stateCode) {
-
-                operationDic = [NSMutableDictionary dictionaryWithDictionary:commandArr[operationIndex]];
-                operationDic[@"stateCode"] = @(stateCode.integerValue);//待修改
-                [requestArr addObject:operationDic];
-                if (operationIndex + 1 < totalCount) {
-                    operationIndex++;
-                    operationDeviceID = commandArr[operationIndex][@"deviceID"];
-                    operationCommand = commandArr[operationIndex][@"deviceCommand"];
-                    operationDeviceType = [commandArr[operationIndex][@"deviceType"] integerValue];
-                    [self sendByteCommandWithString:operationCommand deviceID:operationDeviceID sendType:SendTypeSingle success:nil fail:nil];
-                } else {
-                    operationIndex = 0;
-                    if (resultList) {
-                        resultList(requestArr);
-                    }
-                }
-                return 0;
-            }];
-
+    [self
+     sendByteCommandWithString:operationCommand
+     deviceID:operationDeviceID
+     sendType:SendTypeSingle
+     success:^(NSData *_Nullable stateData) {
+         operationDic = [NSMutableDictionary dictionaryWithDictionary:commandArr[operationIndex]];
+         operationDic[@"stateCode"] = [self returnStateCodeWithData:stateData btnCount:operationDeviceType];
+         [requestArr addObject:operationDic];
+         if (operationIndex + 1 < totalCount) {
+             operationIndex++;
+             operationDeviceID = commandArr[operationIndex][@"deviceID"];
+             operationCommand = commandArr[operationIndex][@"deviceCommand"];
+             operationDeviceType = [commandArr[operationIndex][@"deviceType"] integerValue];
+             [self sendByteCommandWithString:operationCommand deviceID:operationDeviceID sendType:SendTypeSingle success:nil fail:nil];
+         }
+         else
+         {
+             operationIndex = 0;
+             if (resultList) {
+                 resultList(requestArr);
+             }
+         }
+     }
+     fail:^NSUInteger(NSString *_Nullable stateCode) {
+         
+         operationDic = [NSMutableDictionary dictionaryWithDictionary:commandArr[operationIndex]];
+         operationDic[@"stateCode"] = @(stateCode.integerValue);//待修改
+         [requestArr addObject:operationDic];
+         if (operationIndex + 1 < totalCount) {
+             operationIndex++;
+             operationDeviceID = commandArr[operationIndex][@"deviceID"];
+             operationCommand = commandArr[operationIndex][@"deviceCommand"];
+             operationDeviceType = [commandArr[operationIndex][@"deviceType"] integerValue];
+             [self sendByteCommandWithString:operationCommand deviceID:operationDeviceID sendType:SendTypeSingle success:nil fail:nil];
+         } else {
+             operationIndex = 0;
+             if (resultList) {
+                 resultList(requestArr);
+             }
+         }
+         return 0;
+     }];
+    
 }
 
 
@@ -326,7 +337,6 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     } else if (btnCount == 3) {
         byte = byte & 0x07;
     } else if (btnCount == 4 || btnCount == 5) {
-
     }
     return @(byte);
 }
@@ -345,7 +355,15 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     }
     else if (_sendType==SendTypeRemote)
     {
-        [self.dataArr addObject:@{@"Data": [self returnRemote:commandStr], @"ID": UDID}];
+        [self.dataArr addObject:@{@"Data": [self returnRemote:commandStr length:20], @"ID": UDID}];
+    }
+    else if (_sendType==SendTypeRemoteTemp)
+    {
+        [self.dataArr addObject:@{@"Data": [self returnRemote:commandStr length:10], @"ID": UDID}];
+    }
+    else if (_sendType==SendTypeSellMachine)
+    {
+        [self.dataArr addObject:@{@"Data": [self returnRemote:commandStr length:10], @"ID": UDID}];
     }
 }
 
@@ -371,15 +389,26 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     return  [NSData dataWithBytes:byteCommand length:10];
 }
 
--(NSData *)returnRemote:(NSString *)commandStr
+-(NSData *)returnRemote:(NSString *)commandStr length:(NSUInteger)length
 {
-    Byte *byte1to19 = [NSString translateToByte:commandStr];
-    Byte byteCommand[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    for (NSInteger i = 0; i < 19; i++) {
-        byteCommand[i] = byte1to19[i];
-        byteCommand[19]=i==0?byteCommand[i]:byteCommand[19] ^ byteCommand[i];
+    if (length ==20) {
+        Byte *byte1to19 = [NSString translateToByte:commandStr];
+        Byte byteCommand[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        for (NSInteger i = 0; i < 19; i++) {
+            byteCommand[i] = byte1to19[i];
+            byteCommand[19]=i==0?byteCommand[i]:byteCommand[19] ^ byteCommand[i];
+        }
+        return  [NSData dataWithBytes:byteCommand length:20];
     }
-    return  [NSData dataWithBytes:byteCommand length:20];
+    else {//(length==10)
+        Byte *byte1to10 = [NSString translateToByte:commandStr];
+        Byte byteCommand[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        for (NSInteger i = 0; i < 19; i++) {
+            byteCommand[i] = byte1to10[i];
+            byteCommand[9]=i==0?byteCommand[i]:byteCommand[9] ^ byteCommand[i];
+        }
+        return  [NSData dataWithBytes:byteCommand length:10];
+    }
 }
 
 
@@ -443,12 +472,6 @@ NSString *_Nonnull const ScanTypeDescription[] = {
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     NSString *deviceIDFromAdv = [advertisementData[@"kCBAdvDataLocalName"] stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *deviceIDFromPeripheral = [peripheral.name stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-//    if ([deviceIDFromAdv containsString:@"D0B5C2A400E3"]) {
-//        if ([deviceIDFromAdv containsString:@"AMJ"]) {
-//            NSLog(@"\n111111111>>>>>>>>%@:",deviceIDFromAdv);
-//        }
-//    }
     if ([RSSI integerValue] <= -115 || [RSSI integerValue] == 127) {
         return;
     }
@@ -457,20 +480,15 @@ NSString *_Nonnull const ScanTypeDescription[] = {
     }
     __block BOOL isSelectPreFix = NO;
     //检查前缀是否符合条件
-    
     [_scaningPreFix enumerateObjectsUsingBlock:^(__kindof NSString *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
         if ([deviceIDFromAdv hasPrefix:obj]) {
             isSelectPreFix = YES;
             *stop = YES;
         }
     }];
-    
     if (!isSelectPreFix) {
         return;
     }
-    
-    
-    
     //慢速,监测扫描,
     if (!_scanFastSpeed) {
         if (deviceIDFromAdv.length < 6) {
@@ -488,8 +506,6 @@ NSString *_Nonnull const ScanTypeDescription[] = {
         } else {
             stateCodeCurrent = @(stateIndex & (0x07));
         }
-
-
         if ([stateCode isEqualToString:@":"] || [deviceIDFromAdv hasPrefix:@"WIFI"]) {
 //            stateIndex = 48;//48一个不存在的状态
             stateCodeCurrent = @(-1);
@@ -539,12 +555,6 @@ NSString *_Nonnull const ScanTypeDescription[] = {
         if (deviceIDFromAdv.length < 6) {
             return;
         }
-        
-        if ([deviceIDFromAdv containsString:@"D0B5C2A400E3"]) {
-            NSLog(@"\n111111111>>>>>>>>%@:",deviceIDFromAdv);
-        }
-        
-        
         NSString *stateCode = [deviceIDFromAdv substringWithRange:NSMakeRange(6, 1)];
         NSString *deviceType = [deviceIDFromAdv substringWithRange:NSMakeRange(5, 1)];
         NSUInteger stateIndex = [stateCode characterAtIndex:0];

@@ -59,20 +59,20 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    if (!app.autoScan.valid) {
-        app.autoScan = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
-        [app.autoScan fire];
-    }
+//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+//    if (!app.autoScan.valid) {
+//        app.autoScan = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
+//        [app.autoScan fire];
+//    }
 
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    if (app.autoScan.valid) {
-        [app.autoScan invalidate];
-    }
+//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+//    if (app.autoScan.valid) {
+//        [app.autoScan invalidate];
+//    }
 }
 
 //刷新状态
@@ -93,9 +93,9 @@
 }
 
 
-- (void)autoScan:(id)sender {
-    [[BluetoothManager getInstance] scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
-}
+//- (void)autoScan:(id)sender {
+//    [[BluetoothManager getInstance] scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
+//}
 
 - (IBAction)addDevice:(UIBarButtonItem *)sender event:(UIEvent *)event {
     __block BOOL isRemote = RemoteOn;

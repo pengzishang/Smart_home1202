@@ -31,7 +31,6 @@
 		3C289E0E1EB8759C00E4DD91 /* NSTimer+NSTimerBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C289E0D1EB8759C00E4DD91 /* NSTimer+NSTimerBlock.m */; };
 		3C2C59D71D2E51ED009F5016 /* LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2C59D61D2E51ED009F5016 /* LaunchView.m */; };
 		3C2CB0921D6A9F0500E798C0 /* TVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CB0911D6A9F0400E798C0 /* TVController.m */; };
-		3C318B751D46FF6300359F60 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C318B741D46FF6300359F60 /* BluetoothManager.m */; };
 		3C318B781D47006200359F60 /* TTSUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C318B771D47006200359F60 /* TTSUtility.m */; };
 		3C3387701D927DBD00577C0D /* AutoChooseFuntion.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C33876F1D927DBD00577C0D /* AutoChooseFuntion.m */; };
 		3C3387731D927E5E00577C0D /* DeviceTypeList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C3387711D927E5E00577C0D /* DeviceTypeList.plist */; };
@@ -115,6 +114,7 @@
 		3CDE29D91D7D71AA00EE90FD /* SceneInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE29D01D7D71AA00EE90FD /* SceneInfo+CoreDataProperties.m */; };
 		3CDE29DA1D7D71AA00EE90FD /* SceneInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE29D21D7D71AA00EE90FD /* SceneInfo.m */; };
 		3CE479861D53420800C26168 /* NSMutableArray+AddDeviceArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE479851D53420800C26168 /* NSMutableArray+AddDeviceArray.m */; };
+		3CE78B971ED92C9600CC3011 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE78B961ED92C9600CC3011 /* BluetoothManager.m */; };
 		3CF119751DAA4387002A957D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF119741DAA4387002A957D /* CFNetwork.framework */; };
 		3CF119771DAA43A2002A957D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF119761DAA43A2002A957D /* CoreFoundation.framework */; };
 		3CF119791DAA43C5002A957D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF119781DAA43C5002A957D /* CoreGraphics.framework */; };
@@ -183,8 +183,6 @@
 		3C2C59D61D2E51ED009F5016 /* LaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchView.m; path = Launch/LaunchView.m; sourceTree = "<group>"; };
 		3C2CB0901D6A9F0400E798C0 /* TVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TVController.h; path = Tabbar/Devices/DeviceControl/Infrared/TVController.h; sourceTree = "<group>"; };
 		3C2CB0911D6A9F0400E798C0 /* TVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TVController.m; path = Tabbar/Devices/DeviceControl/Infrared/TVController.m; sourceTree = "<group>"; };
-		3C318B731D46FF6300359F60 /* BluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothManager.h; path = Tools/BluetoothManager.h; sourceTree = "<group>"; };
-		3C318B741D46FF6300359F60 /* BluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothManager.m; path = Tools/BluetoothManager.m; sourceTree = "<group>"; };
 		3C318B761D47006200359F60 /* TTSUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSUtility.h; path = Tools/TTSUtility.h; sourceTree = "<group>"; };
 		3C318B771D47006200359F60 /* TTSUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSUtility.m; path = Tools/TTSUtility.m; sourceTree = "<group>"; };
 		3C33876E1D927DBD00577C0D /* AutoChooseFuntion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutoChooseFuntion.h; path = Tabbar/Devices/DeviceControl/Other/Remote/AutoChooseFuntion.h; sourceTree = "<group>"; };
@@ -335,6 +333,8 @@
 		3CDE29D21D7D71AA00EE90FD /* SceneInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneInfo.m; path = DataBase/SceneInfo.m; sourceTree = "<group>"; };
 		3CE479841D53420800C26168 /* NSMutableArray+AddDeviceArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+AddDeviceArray.h"; path = "Tools/Category/NSMutableArray+AddDeviceArray.h"; sourceTree = "<group>"; };
 		3CE479851D53420800C26168 /* NSMutableArray+AddDeviceArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+AddDeviceArray.m"; path = "Tools/Category/NSMutableArray+AddDeviceArray.m"; sourceTree = "<group>"; };
+		3CE78B951ED92C9600CC3011 /* BluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothManager.h; sourceTree = "<group>"; };
+		3CE78B961ED92C9600CC3011 /* BluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothManager.m; sourceTree = "<group>"; };
 		3CE979F81D9B9B4600D1A288 /* Smart_home.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Smart_home.entitlements; sourceTree = "<group>"; };
 		3CF119741DAA4387002A957D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3CF119761DAA43A2002A957D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -451,8 +451,8 @@
 				3CC1FEB21D474FF800784AE4 /* Category */,
 				3C318B761D47006200359F60 /* TTSUtility.h */,
 				3C318B771D47006200359F60 /* TTSUtility.m */,
-				3C318B731D46FF6300359F60 /* BluetoothManager.h */,
-				3C318B741D46FF6300359F60 /* BluetoothManager.m */,
+				3CE78B951ED92C9600CC3011 /* BluetoothManager.h */,
+				3CE78B961ED92C9600CC3011 /* BluetoothManager.m */,
 				3C3804FB1D4A062E00B1EA72 /* RemoteManger.h */,
 				3C3804FC1D4A062E00B1EA72 /* RemoteManger.m */,
 				3C12A6E71E95F12A00B5D220 /* NewRemote.h */,
@@ -1083,6 +1083,7 @@
 				3CA37F2D1D5890B900852505 /* ConfirmCodeController.m in Sources */,
 				3C3EFC4E1D55C27800CE5A89 /* ChooseBrandController.m in Sources */,
 				3C6305181DB7077000218744 /* DoorCheckController.m in Sources */,
+				3CE78B971ED92C9600CC3011 /* BluetoothManager.m in Sources */,
 				3C905F6B1D27C5BD00A9FE5B /* DataBase.xcdatamodeld in Sources */,
 				3C12A6E91E95F12A00B5D220 /* NewRemote.m in Sources */,
 				3C7C6ACD1D24C9E700CEDDEF /* SiderNormalCell.m in Sources */,
@@ -1123,7 +1124,6 @@
 				3CA4852F1D93B2BC00BABB60 /* CenterAirController.m in Sources */,
 				3C02B1FA1DD1CD4A007CE3BE /* SetBellWifiController.m in Sources */,
 				3C50ED3F1D6D487800FEB855 /* CurtainCollectionCell.m in Sources */,
-				3C318B751D46FF6300359F60 /* BluetoothManager.m in Sources */,
 				3C24E5EF1D82A75F00E74C24 /* PopTopView.m in Sources */,
 				3CD8EA9A1D7418B000B843C7 /* AddRoomController.m in Sources */,
 				3CDE29D51D7D71AA00EE90FD /* DeviceInfo+CoreDataProperties.m in Sources */,

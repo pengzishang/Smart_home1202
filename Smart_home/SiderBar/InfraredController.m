@@ -33,8 +33,8 @@
     [super viewDidLoad];
     _indexIdx = 0;
     _selectIdx = 0;
-    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    [app.autoScan invalidate];
+//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+//    [app.autoScan invalidate];
 
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"InfraredControlID"]) {
         _currentInfraredController.text = [NSString stringWithFormat:@"当前红外伴侣:%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"InfraredControlID"]];
@@ -46,16 +46,16 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    app.autoScan = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
-    [app.autoScan fire];
+//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+//    app.autoScan = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
+//    [app.autoScan fire];
 }
 
 
-- (void)autoScan:(id)sender {
-    NSLogMethodArgs(@"autoScan");
-    [[BluetoothManager getInstance] scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
-}
+//- (void)autoScan:(id)sender {
+//    NSLogMethodArgs(@"autoScan");
+//    [[BluetoothManager getInstance] scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
+//}
 
 - (IBAction)refreshControl:(UIBarButtonItem *)sender {
     [[BluetoothManager getInstance] scanPeriherals:YES AllowPrefix:@[@(ScanTypeInfraredControl)]];

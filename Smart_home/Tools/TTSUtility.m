@@ -613,30 +613,31 @@
 }
 
 + (void)lockWithSystemInfo:(DeviceInfo *)lockInfo codeReturn:(void (^)(NSData *))codeReturn {
-    static NSUInteger failRetryTime = 0;
-    [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在控制", @"正在控制") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), lockInfo.deviceMacID]];
-    [[BluetoothManager getInstance] queryDeviceStatus:lockInfo success:^(NSData *_Nullable stateData) {
-        failRetryTime = 0;
-        [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制成功", @"控制成功") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制反馈代码:%@", @"控制反馈代码:%@"), stateData]];
-        if (codeReturn) {
-            codeReturn(stateData);
-        }
-    }                                            fail:^NSUInteger(NSString *_Nullable statusCode) {
-        NSLog(@"失败返回数据:%@", statusCode);
-        if (++failRetryTime < 3 && [statusCode integerValue] != 404 && [statusCode integerValue] != 403) {
-            [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在重试", @"正在重试") subTitle:[NSString stringWithFormat:NSLocalizedString(@"第%zd次重试", @"第%zd次重试"), failRetryTime]];
-            return failRetryTime;
-        } else {
-            failRetryTime = 0;
-            NSDictionary *errorDetail = @{@"404": @"设备不在范围内,或者信号太弱", @"403": @"蓝牙未开启", @"102": @"连接设备失败,请重试", @"103": @"未能发现服务", @"104": @"数据写入失败", @"107": @"异常断开,设备中途主动断开,如果控制失效,请重试一次"};
-            [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制失败", @"控制失败") subTitle:errorDetail[statusCode]];
-            NSData *statusCodeData = [statusCode dataUsingEncoding:NSUTF8StringEncoding];
-            if (codeReturn) {
-                codeReturn(statusCodeData);
-            }
-            return 0;
-        }
-    }];
+//    static NSUInteger failRetryTime = 0;
+    [TTSUtility showForShortTime:2 mainTitle:@"功能暂未开放" subTitle:@""];
+//    [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在控制", @"正在控制") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制ID:%@", @"控制ID:%@"), lockInfo.deviceMacID]];
+//    [[BluetoothManager getInstance] queryDeviceStatus:lockInfo success:^(NSData *_Nullable stateData) {
+//        failRetryTime = 0;
+//        [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制成功", @"控制成功") subTitle:[NSString stringWithFormat:NSLocalizedString(@"控制反馈代码:%@", @"控制反馈代码:%@"), stateData]];
+//        if (codeReturn) {
+//            codeReturn(stateData);
+//        }
+//    }                                            fail:^NSUInteger(NSString *_Nullable statusCode) {
+//        NSLog(@"失败返回数据:%@", statusCode);
+//        if (++failRetryTime < 3 && [statusCode integerValue] != 404 && [statusCode integerValue] != 403) {
+//            [TTSUtility startAnimationWithMainTitle:NSLocalizedString(@"正在重试", @"正在重试") subTitle:[NSString stringWithFormat:NSLocalizedString(@"第%zd次重试", @"第%zd次重试"), failRetryTime]];
+//            return failRetryTime;
+//        } else {
+//            failRetryTime = 0;
+//            NSDictionary *errorDetail = @{@"404": @"设备不在范围内,或者信号太弱", @"403": @"蓝牙未开启", @"102": @"连接设备失败,请重试", @"103": @"未能发现服务", @"104": @"数据写入失败", @"107": @"异常断开,设备中途主动断开,如果控制失效,请重试一次"};
+//            [TTSUtility stopAnimationWithMainTitle:NSLocalizedString(@"控制失败", @"控制失败") subTitle:errorDetail[statusCode]];
+//            NSData *statusCodeData = [statusCode dataUsingEncoding:NSUTF8StringEncoding];
+//            if (codeReturn) {
+//                codeReturn(statusCodeData);
+//            }
+//            return 0;
+//        }
+//    }];
 }
 
 

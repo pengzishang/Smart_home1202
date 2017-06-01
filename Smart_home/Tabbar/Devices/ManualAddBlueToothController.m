@@ -12,6 +12,8 @@
 #import "DeviceSwitchController.h"
 #import "TTSCoreDataManager.h"
 #import "CYLTableViewPlaceHolder.h"
+#import "NSString+StringOperation.h"
+
 
 @interface ManualAddBlueToothController () <CYLTableViewPlaceHolderDelegate>
 @property(nonatomic, strong) NSMutableArray *nearbyDevice;

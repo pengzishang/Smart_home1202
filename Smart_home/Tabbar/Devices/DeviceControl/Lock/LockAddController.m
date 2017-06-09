@@ -43,7 +43,7 @@
     [self.tableView cyl_reloadData];
 //    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
 //    [app.autoScan invalidate];
-//    [self performSelector:@selector(startRefresh:) withObject:nil afterDelay:1];
+    [self performSelector:@selector(startRefresh:) withObject:nil afterDelay:1];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

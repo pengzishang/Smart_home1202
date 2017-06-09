@@ -214,6 +214,7 @@
         }
         deviceInfo.deviceTapCount = @(0);
         deviceInfo.isCommonDevice = @(YES);
+        [[BluetoothManager getInstance]scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
         [self performSegueWithIdentifier:@"manual2MainSwitch" sender:deviceInfo];
     } else {
         NSDictionary *infoDic = _deviceInStore[indexPath.row];
@@ -226,6 +227,7 @@
                 *stop = YES;
             }
         }];
+        [[BluetoothManager getInstance]scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
         [self performSegueWithIdentifier:@"manual2MainSwitch" sender:deviceInfo];
     }
 

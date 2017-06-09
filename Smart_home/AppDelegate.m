@@ -14,7 +14,8 @@
 #import "IQKeyboardManager.h"
 #import "AvoidCrash.h"
 #import <JFGSDK/JFGSDKToolMethods.h>
-
+#import "Reachability.h"
+#import "CustomStatusBar.h"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 
 #import <UserNotifications/UserNotifications.h>
@@ -22,16 +23,23 @@
 #endif
 
 @interface AppDelegate () <JPUSHRegisterDelegate, MainDelegate, JFGSDKCallbackDelegate>
-
+@property (strong,nonatomic)CustomStatusBar *netBar;
 @end
 
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    _autoScan = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
-//    [_autoScan fire];
+-(CustomStatusBar *)netBar
+{
+    if (!_netBar) {
+        _netBar = [[CustomStatusBar alloc]initWithFrame:self.window.frame];
+        [self.window addSubview:_netBar];
+    }
+    return _netBar;
+}
 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     [IQKeyboardManager sharedManager].shouldShowTextFieldPlaceholder = YES;
@@ -42,15 +50,39 @@
 #endif
     [self JFGConfig];
     [self JpushConfig:launchOptions];
+    
+    Reachability *reachManger = [Reachability reachabilityWithHostName:@"http://120.76.74.87/PMSWebService/services/"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+    [reachManger startNotifier];
     return YES;
 }
 
-//- (void)autoScan:(id)sender {
-//    [[BluetoothManager getInstance] scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
-//}
+-(void)reachabilityChanged:(NSNotification *)notification{
+    
+    Reachability *reach = [notification object];
+    if([reach isKindOfClass:[Reachability class]]){
+        NetworkStatus status = [reach currentReachabilityStatus];
+        NSLog(@"%zd",status);
+        if (status == NotReachable) {
+            [self.netBar showBar];
+            [TTSUtility showForShortTime:2 mainTitle:@"网络有问题" subTitle:@""];
+        }
+        else
+        {
+            [self.netBar hideBar];
+            [TTSUtility showForShortTime:2 mainTitle:@"网络恢复" subTitle:@""];
+        }
+        
+    }
+    
+}
 
 - (void)BugAndUpdate {
-    [Bugly startWithAppId:nil];
+    [Bugly startWithAppId:@"b911c456be"];
 }
 
 - (void)JFGConfig {

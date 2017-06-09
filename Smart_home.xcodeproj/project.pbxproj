@@ -101,6 +101,8 @@
 		3CC22C8B1E514E8200F2140F /* RemoteSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC22C8A1E514E8200F2140F /* RemoteSetting.m */; };
 		3CC2D67F1EA452EB006DF2BE /* UIButton+touchLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC2D67C1EA452EB006DF2BE /* UIButton+touchLimit.m */; };
 		3CC2D6801EA452EB006DF2BE /* UIViewController+NamePrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC2D67E1EA452EB006DF2BE /* UIViewController+NamePrint.m */; };
+		3CCCE26B1EE11397002F5BA6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCE26A1EE11397002F5BA6 /* Reachability.m */; };
+		3CCCE26E1EE118D6002F5BA6 /* CustomStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCE26D1EE118D6002F5BA6 /* CustomStatusBar.m */; };
 		3CD233471DAF79A800614CED /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD233461DAF79A800614CED /* LoginController.m */; };
 		3CD8EA9A1D7418B000B843C7 /* AddRoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD8EA991D7418B000B843C7 /* AddRoomController.m */; };
 		3CDDD6291DC6E25400F6DDF7 /* EditBellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDD6281DC6E25400F6DDF7 /* EditBellController.m */; };
@@ -307,6 +309,10 @@
 		3CC2D67C1EA452EB006DF2BE /* UIButton+touchLimit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+touchLimit.m"; sourceTree = "<group>"; };
 		3CC2D67D1EA452EB006DF2BE /* UIViewController+NamePrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NamePrint.h"; sourceTree = "<group>"; };
 		3CC2D67E1EA452EB006DF2BE /* UIViewController+NamePrint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NamePrint.m"; sourceTree = "<group>"; };
+		3CCCE2691EE11397002F5BA6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = XLPasswordView/Reachability.h; sourceTree = "<group>"; };
+		3CCCE26A1EE11397002F5BA6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = XLPasswordView/Reachability.m; sourceTree = "<group>"; };
+		3CCCE26C1EE118D6002F5BA6 /* CustomStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomStatusBar.h; path = Tools/Category/CustomStatusBar.h; sourceTree = "<group>"; };
+		3CCCE26D1EE118D6002F5BA6 /* CustomStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomStatusBar.m; path = Tools/Category/CustomStatusBar.m; sourceTree = "<group>"; };
 		3CD233451DAF79A800614CED /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = SiderBar/LoginController.h; sourceTree = "<group>"; };
 		3CD233461DAF79A800614CED /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginController.m; path = SiderBar/LoginController.m; sourceTree = "<group>"; };
 		3CD8EA981D7418B000B843C7 /* AddRoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddRoomController.h; path = Tabbar/Devices/Room/AddRoomController.h; sourceTree = "<group>"; };
@@ -409,6 +415,8 @@
 				3C3387751D927E7500577C0D /* HyPopMenuView.h */,
 				3C3387761D927E7500577C0D /* HyPopMenuView.m */,
 				3C3387771D927E7500577C0D /* HyPopMenuViewDelegate.h */,
+				3CCCE2691EE11397002F5BA6 /* Reachability.h */,
+				3CCCE26A1EE11397002F5BA6 /* Reachability.m */,
 				3C3387781D927E7500577C0D /* PopMenuButton.h */,
 				3C3387791D927E7500577C0D /* PopMenuButton.m */,
 				3C33877A1D927E7500577C0D /* PopMenuModel.h */,
@@ -845,6 +853,8 @@
 				3C589D731E5ECB2C002D3637 /* UIButton+CS_FixMultiClick_h.m */,
 				3C289E0C1EB8759C00E4DD91 /* NSTimer+NSTimerBlock.h */,
 				3C289E0D1EB8759C00E4DD91 /* NSTimer+NSTimerBlock.m */,
+				3CCCE26C1EE118D6002F5BA6 /* CustomStatusBar.h */,
+				3CCCE26D1EE118D6002F5BA6 /* CustomStatusBar.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1133,6 +1143,7 @@
 				3CB83BDC1D66B813003E1ECD /* AirViewController.m in Sources */,
 				3C3804FD1D4A062E00B1EA72 /* RemoteManger.m in Sources */,
 				3C5DBF3B1D5D807F006A6146 /* SettingController.m in Sources */,
+				3CCCE26E1EE118D6002F5BA6 /* CustomStatusBar.m in Sources */,
 				3C579AEC1DB5CED400E00E08 /* DoorBellBinding.m in Sources */,
 				3CC2D67F1EA452EB006DF2BE /* UIButton+touchLimit.m in Sources */,
 				3C999A761D6B16D000E66DCB /* XLRandomKeyboard.m in Sources */,
@@ -1157,6 +1168,7 @@
 				3C7ECDF81D23CB9F00335F75 /* TTSTabBarController.m in Sources */,
 				3C579AE01DB4B4FC00E00E08 /* DoorAddController.m in Sources */,
 				3C3A43E21D6C32A7008EDC47 /* LockAddController.m in Sources */,
+				3CCCE26B1EE11397002F5BA6 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

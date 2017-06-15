@@ -13,6 +13,8 @@
 @property (nonatomic,strong) UILabel * messageLab;
 
 -(instancetype)init;
+
+
 -(void)showBar;
 -(void)hideBar;
 

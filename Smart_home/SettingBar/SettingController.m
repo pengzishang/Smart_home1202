@@ -60,13 +60,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"isRemote"];
-        UISwitch *remoteSwitch = [cell viewWithTag:1001];
-        NSNumber *isOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"RemoteOn"];
-        [remoteSwitch setOn:isOn.boolValue];
-        cell.backgroundColor = [UIColor clearColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
+//        if (indexPath.row == 0 ) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"isRemote"];
+            UISwitch *remoteSwitch = [cell viewWithTag:1001];
+            NSNumber *isOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"RemoteOn"];
+            [remoteSwitch setOn:isOn.boolValue];
+            cell.backgroundColor = [UIColor clearColor];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+//        }
+//        else
+//        {
+//            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"isRemote"];
+//            UISwitch *remoteSwitch = [cell viewWithTag:1001];
+//            NSNumber *isOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"RemoteOn"];
+//
+//
+//            [remoteSwitch setOn:isOn.boolValue];
+//            cell.backgroundColor = [UIColor clearColor];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            return cell;
+//        }
+        
     } else if (indexPath.section == 1) {
         NSArray *imageName = @[@"setting_clean", @"setting_version", @"setting_switch", @"setting_switch", @"setting_switch"];
         NSArray *labTitle = @[@"清理应用数据", [NSString stringWithFormat:@"版本号:%f", [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] floatValue]], @"切换中英文", @"远程内置Wifi设置"];

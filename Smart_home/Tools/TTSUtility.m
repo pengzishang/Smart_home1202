@@ -847,10 +847,8 @@
 //    http://120.76.74.87
 //    http://www.51youcome.com
     
-    
-    
     //0.121
-    [manger sendDataToServerWithUrlstr:@"http://www.51youcome.com/PMSWebService/services/" interface:@"InsertTDevicetrol" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
+    [manger sendDataToServerWithUrlstr:@"http://120.76.74.87/PMSWebService/services/" interface:@"InsertTDevicetrol" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
         if (getStateCode) {
             getStateCode(requestDic[@"Status"]);
         }
@@ -865,7 +863,7 @@
     __block NSTimer *timer=[NSTimer scheduledTimerWithTimeInterval:0.4 block:^{
         NewRemote *manger=[[NewRemote alloc]init];
         NSDictionary *requestBody = @{@"deviceAddress": deviceAddress};
-        [manger sendDataToServerWithUrlstr:@"http://www.51youcome.com/PMSWebService/services/" interface:@"SelcetDeviceStatus" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
+        [manger sendDataToServerWithUrlstr:@"http://120.76.74.87/PMSWebService/services/" interface:@"SelcetDeviceStatus" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
             NSLog(@">>>>>>>>>>%@",requestDic);
             timeLimit+=0.4;
             if ([requestDic[@"Status"] isEqualToString:@"02"]) {
@@ -924,7 +922,7 @@
     NewRemote *manger=[[NewRemote alloc]init];
     NSString *remoteDeviceMacID = [NSString translateRemoteID:remoteMacID];
     NSDictionary *requestBody = @{@"mac": remoteDeviceMacID,@"device":deviceInfo.deviceMacID};
-    [manger sendDataToServerWithUrlstr:@"http://www.51youcome.com/PMSWebService/services/" interface:@"InsertModule" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
+    [manger sendDataToServerWithUrlstr:@"http://120.76.74.87/PMSWebService/services/" interface:@"InsertModule" requestBody:requestBody success:^(NSDictionary * _Nullable requestDic) {
         NSLog(@">>>>>>>>>>%@",requestDic);
         [TTSUtility stopAnimationWithMainTitle:@"完成" subTitle:@""];
     } fail:^(NSError * _Nullable error) {

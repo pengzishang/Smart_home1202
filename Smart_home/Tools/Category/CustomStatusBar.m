@@ -24,6 +24,9 @@
 }
 
 
+
+
+
 -(void)showBar
 {
     self.hidden = NO;

@@ -21,7 +21,7 @@
     UIWindow *window;
 }
 
-@property(nonatomic, weak) UIView *backgroundView;
+@property(nonatomic, weak) UIVisualEffectView *backgroundView;
 @property(nonatomic, weak) UIButton *disappearButton;
 @property(nonatomic, weak) UIView *bottomView;
 @property(nonatomic, assign) BOOL isOpen;
@@ -68,7 +68,7 @@ static HyPopMenuView *_popMenuObject;
     UIView *bottomView = [_backgroundView viewWithTag:2];
     if (!bottomView) {
         bottomView = [UIView new];
-        [_backgroundView addSubview:bottomView];
+        [_backgroundView.contentView addSubview:bottomView];
         [bottomView setTag:2];
         _bottomView = bottomView;
     }
@@ -84,7 +84,7 @@ static HyPopMenuView *_popMenuObject;
     if (!disappearButton) {
         disappearButton = [UIButton buttonWithType:UIButtonTypeCustom];
         disappearButton.adjustsImageWhenHighlighted = NO;
-        [_backgroundView addSubview:disappearButton];
+        [_backgroundView.contentView addSubview:disappearButton];
         disappearButton.tag = 3;
         _disappearButton = disappearButton;
     }
@@ -114,10 +114,10 @@ static HyPopMenuView *_popMenuObject;
 - (void)openMenu {
     [self addNotificationAtNotificationName:HyPopMenuViewWillShowNotification];
     _delegate = (id) [self currentViewController];
-    UIView *backgroundView = [self effectsViewWithType:_backgroundType];
+    UIVisualEffectView *backgroundView = [self effectsViewWithType:_backgroundType];
     _backgroundView = backgroundView;
     if (_topView) {
-        [_backgroundView addSubview:_topView];
+        [_backgroundView.contentView addSubview:_topView];
     }
     [self addSubview:_backgroundView];
     [self initUIsize];
@@ -166,7 +166,7 @@ static HyPopMenuView *_popMenuObject;
         model.automaticIdentificationColor = weakView.automaticIdentificationColor;
         [model.customView removeFromSuperview];
         model.customView.alpha = 0.0f;
-        [weakView.backgroundView addSubview:model.customView];
+        [weakView.backgroundView.contentView addSubview:model.customView];
 
         CGRect toRect;
         CGRect fromRect;
@@ -363,13 +363,13 @@ static HyPopMenuView *_popMenuObject;
     }];
 }
 
-- (__kindof UIView *)effectsViewWithType:(HyPopMenuViewBackgroundType)type {
+- (__kindof UIVisualEffectView *)effectsViewWithType:(HyPopMenuViewBackgroundType)type {
     if (_backgroundView) {
         [_backgroundView removeFromSuperview];
         _backgroundView = nil;
     }
 
-    UIView *effectView = nil;
+    UIVisualEffectView *effectView = nil;
     UIBlurEffect *effectBlur = nil;
     CAGradientLayer *gradientLayer = nil;
     switch (type) {
@@ -393,7 +393,7 @@ static HyPopMenuView *_popMenuObject;
     if (effectBlur) {
         effectView = [[UIVisualEffectView alloc] initWithEffect:effectBlur];
     } else {
-        effectView = [UIView new];
+        effectView = [UIVisualEffectView new];
         if (gradientLayer) {
             [effectView.layer addSublayer:gradientLayer];
         } else {

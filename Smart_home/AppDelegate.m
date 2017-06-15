@@ -32,7 +32,7 @@
 -(CustomStatusBar *)netBar
 {
     if (!_netBar) {
-        _netBar = [[CustomStatusBar alloc]initWithFrame:self.window.frame];
+        _netBar = [[CustomStatusBar alloc]init];
         [self.window addSubview:_netBar];
     }
     return _netBar;

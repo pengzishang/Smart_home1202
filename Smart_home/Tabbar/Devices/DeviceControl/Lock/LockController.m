@@ -183,8 +183,23 @@
 
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    _operationIndex = indexPath.row;
-    [self performSegueWithIdentifier:@"lockmain2detail" sender:nil];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"验证管理员密码" message:@"必须输入管理员密码才能启用" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.text=@"admin";
+        textField.secureTextEntry = YES;
+    }];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if ([alert.textFields.firstObject.text isEqualToString:@"admin"]) {
+            _operationIndex = indexPath.row;
+            [self performSegueWithIdentifier:@"lockmain2detail" sender:nil];
+        }
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        return ;
+    }]];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -227,7 +242,6 @@
 //        NSString *commandCode = [NSString stringWithFormat:@"%@%@%@", methodString, timeStr, password];
 //        [TTSUtility remoteWithSoap:self.devicesOfRoom[_operationIndex] commandStr:<#(NSString *)#> retryTimes:<#(NSUInteger)#> conditionReturn:<#^(NSString *)getStateCode#>]
         [TTSUtility lockWithRemoteNew:self.devicesOfRoom[_operationIndex] passWord:password validtime:10000];
-//        [TTSUtility lockWithRemoteInfo:self.devicesOfRoom[_operationIndex] lockMode:APPLockModeOpen passWord:password validtime:10000];
     } else {
         [TTSUtility lockWithDeviceInfo:self.devicesOfRoom[_operationIndex] lockMode:APPLockModeOpen passWord:password validtime:10000];
     }

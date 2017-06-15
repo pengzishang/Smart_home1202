@@ -1,4 +1,4 @@
-platform :ios, '9.3'
+tplatform :ios, '9.3'
 target 'Smart_home' do
   pod 'FTPopOverMenu'
   pod 'BlurryModalSegue'

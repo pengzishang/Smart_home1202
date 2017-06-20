@@ -24,6 +24,9 @@ static NSString *pgyKey = @"5d8a11866945bfc65d775cef7d663020";//d876420c861f2925
 
 //@property(strong, nonatomic) NSTimer *autoScan;
 @property(assign, nonatomic) BOOL isJFGLogin;
+@property(assign, nonatomic) BOOL isAdminLogin;
+
+
 @property(strong, nonatomic) NSDictionary *pushUserInfo;
 @property(strong, nonatomic) NSData *deviceToken;
 

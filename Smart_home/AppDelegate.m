@@ -51,34 +51,37 @@
     [self JFGConfig];
     [self JpushConfig:launchOptions];
     
-    Reachability *reachManger = [Reachability reachabilityWithHostName:@"http://120.76.74.87/PMSWebService/services/"];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(reachabilityChanged:)
-                                                 name:kReachabilityChangedNotification
-                                               object:nil];
-    [reachManger startNotifier];
+//    Reachability *reachManger = [Reachability reachabilityWithHostName:@"http://120.76.74.87/PMSWebService/services/"];
+//
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(reachabilityChanged:)
+//                                                 name:kReachabilityChangedNotification
+//                                               object:nil];
+//    [reachManger startNotifier];
     return YES;
 }
 
 -(void)reachabilityChanged:(NSNotification *)notification{
-    
+    static NetworkStatus statusSteady = NotReachable;
     Reachability *reach = [notification object];
     if([reach isKindOfClass:[Reachability class]]){
         NetworkStatus status = [reach currentReachabilityStatus];
+        statusSteady = status;
         NSLog(@"%zd",status);
-        if (status == NotReachable) {
-            [self.netBar showBar];
-            [TTSUtility showForShortTime:2 mainTitle:@"网络有问题" subTitle:@""];
-        }
-        else
-        {
-            [self.netBar hideBar];
-            [TTSUtility showForShortTime:2 mainTitle:@"网络恢复" subTitle:@""];
-        }
-        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [NSThread sleepForTimeInterval:1];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (statusSteady == NotReachable) {
+                    [self.netBar showBar];
+                    [TTSUtility showForShortTime:2 mainTitle:@"网络有问题" subTitle:@""];
+                }
+                else
+                {
+                    [self.netBar hideBar];
+                }
+            });
+        });
     }
-    
 }
 
 - (void)BugAndUpdate {
@@ -182,7 +185,6 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     [self setValue:userInfo forKey:@"pushUserInfo"];
     NSLog(@"iOS7及以上系统，收到通知:%@", userInfo);//先在全局储存,再到相应页面推送,设置标识就好
     if (completionHandler) {
-        //        [TTSUtility openVideo:userInfo];
         completionHandler(UIBackgroundFetchResultNewData);
     }
 }
@@ -294,12 +296,20 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    Reachability *reachManger = [Reachability reachabilityWithHostName:@"http://120.76.74.87/PMSWebService/services/"];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+    [reachManger startNotifier];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:kReachabilityChangedNotification object:nil];
+    
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    //    [[TTSCoreDataManager getInstance]updateData];
+    
 }
 
 @end

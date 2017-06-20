@@ -57,24 +57,6 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-//    if (!app.autoScan.valid) {
-//        app.autoScan = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
-//        [app.autoScan fire];
-//    }
-
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-//    if (app.autoScan.valid) {
-//        [app.autoScan invalidate];
-//    }
-}
-
 //刷新状态
 - (void)backgroundRefreshState:(NSNotification *)sender {
     NSDictionary *peripheralInfo = sender.userInfo[AdvertisementData];
@@ -106,7 +88,14 @@
     [FTPopOverMenuConfiguration defaultConfiguration].menuWidth = 150;
     [FTPopOverMenu showFromEvent:event withMenuArray:@[title1, remoteOnString, remoteId, remoteSync] imageArray:@[@"default_add_icon-0", @"setting_switch", @"setting_switch", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
         if (selectedIndex == 0) {
-            [self performSegueWithIdentifier:@"addSwitchDevice" sender:self.devices];
+            if ([TTSUtility isAdmin]) {
+                [self performSegueWithIdentifier:@"addSwitchDevice" sender:self.devices];
+            } else {
+                [TTSUtility showForShortTime:1 mainTitle:@"没有管理权限" subTitle:@"请在主界面登录管理账号" complete:^{
+                    
+                }];
+            }
+            
 
         } else if (selectedIndex == 1) {
             isRemote = !isRemote;

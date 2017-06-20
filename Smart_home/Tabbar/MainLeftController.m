@@ -188,12 +188,17 @@
 
             }];
         } else if (index == 1) {
-            [TTSUtility addMutiDeviceAnimationFinish:^{
-                if (_delegate && [_delegate respondsToSelector:@selector(didFinishAdding)]) {
-                    [_delegate didFinishAdding];
-                }
-            }];
-
+            if ([TTSUtility isAdmin]) {
+                [TTSUtility addMutiDeviceAnimationFinish:^{
+                    if (_delegate && [_delegate respondsToSelector:@selector(didFinishAdding)]) {
+                        [_delegate didFinishAdding];
+                    }
+                }];
+            } else {
+                [TTSUtility showForShortTime:2 mainTitle:@"需要管理权限" subTitle:@"" complete:^{
+                    
+                }];
+            }
         } else if (index == 0) {
             [self turnToWebCam];
         }
@@ -211,10 +216,8 @@
 #pragma mark DeviceMainDelegate
 
 - (void)didClickLeftDrawer {
-
     _isLeftOpen = !_isLeftOpen;
     _isLeftOpen ? [self openDrawerSide:MMDrawerSideLeft animated:YES completion:nil] : [self closeDrawerAnimated:YES completion:nil];
-
 }
 
 - (void)didClickSceneIcon:(RoomInfo *)roomInfo {

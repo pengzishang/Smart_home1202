@@ -17,6 +17,7 @@
 #import "CYLTableViewPlaceHolder.h"
 #import "RoomAddDeviceController.h"
 #import "BluetoothManager.h"
+#import "TTSUtility.h"
 
 @interface DeviceInfraredController () <CYLTableViewPlaceHolderDelegate>
 
@@ -53,37 +54,19 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-//    if (!app.autoScan.valid) {
-//        app.autoScan = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
-//        [app.autoScan fire];
-//    }
-
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-//    if (app.autoScan.valid) {
-//        [app.autoScan invalidate];
-//    }
-}
-
-
-//- (void)autoScan:(id)sender {
-//    NSLogMethodArgs(@"autoScan");
-//    [[BluetoothManager getInstance] scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
-//}
-
 - (IBAction)addDevice:(UIBarButtonItem *)sender event:(UIEvent *)event {
     __block BOOL isRemote = RemoteOn;
     NSString *remoteOnString = isRemote ? @"远程:开" : @"远程:关";
     if (!ISALLROOM) {
         [FTPopOverMenu showFromEvent:event withMenuArray:@[@"新设备", @"已有的设备", remoteOnString] imageArray:@[@"default_add_icon-0", @"default_add_icon-0", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
             if (selectedIndex == 0) {
-                [self performSegueWithIdentifier:@"infaredAdd" sender:nil];
+                if ([TTSUtility isAdmin]) {
+                    [self performSegueWithIdentifier:@"infaredAdd" sender:nil];
+                } else {
+                    [TTSUtility showForShortTime:1 mainTitle:@"没有管理权限" subTitle:@"请在主界面登录管理账号" complete:^{
+                    }];
+                }
+                
             } else if (selectedIndex == 1) {
                 [self performSegueWithIdentifier:@"addRoomInfrared" sender:self.roomInfo];//有房间信息
             } else if (selectedIndex == 2) {

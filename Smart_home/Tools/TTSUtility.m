@@ -9,7 +9,14 @@
 #import "TTSUtility.h"
 #import "NewRemote.h"
 #import "NSTimer+NSTimerBlock.h"
+#import "AppDelegate.h"
 @implementation TTSUtility
+
++(BOOL)isAdmin
+{
+    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    return app.isAdminLogin;
+}
 
 
 /**
@@ -56,6 +63,26 @@
  */
 
 + (void)showForShortTime:(NSUInteger)time mainTitle:(NSString *)mainTitle subTitle:(NSString *)subTitle {
+//    UIView *frontView = [TTSUtility getCurrentView];
+//    MBProgressHUD *hud = [frontView viewWithTag:10001];
+//    if (!hud) {
+//        hud = [[MBProgressHUD alloc] initWithView:frontView];
+//        hud.tag = 10001;
+//        [hud setRemoveFromSuperViewOnHide:YES];
+//        [hud showAnimated:YES];
+//        [frontView addSubview:hud];
+//    }
+//    hud.label.text = mainTitle;
+//    hud.detailsLabel.text = subTitle;
+//    [hud hideAnimated:YES afterDelay:time];
+//    [TTSUtility shake];
+    [TTSUtility showForShortTime:time mainTitle:mainTitle subTitle:subTitle complete:^{
+        
+    }];
+}
+
++ (void)showForShortTime:(NSUInteger)time mainTitle:(NSString *)mainTitle subTitle:(NSString *)subTitle complete:(void(^)(void))complete
+{
     UIView *frontView = [TTSUtility getCurrentView];
     MBProgressHUD *hud = [frontView viewWithTag:10001];
     if (!hud) {
@@ -63,6 +90,11 @@
         hud.tag = 10001;
         [hud setRemoveFromSuperViewOnHide:YES];
         [hud showAnimated:YES];
+        [hud setCompletionBlock:^{
+            if (complete) {
+                complete();
+            }
+        }];
         [frontView addSubview:hud];
     }
     hud.label.text = mainTitle;
@@ -70,6 +102,7 @@
     [hud hideAnimated:YES afterDelay:time];
     [TTSUtility shake];
 }
+
 
 //添加多个设备
 + (void)addMutiDeviceAnimationFinish:(void (^)(void))finish {

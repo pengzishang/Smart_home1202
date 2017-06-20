@@ -52,26 +52,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
-//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-//    if (!app.autoScan.valid) {
-//        app.autoScan = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(autoScan:) userInfo:nil repeats:YES];
-//        [app.autoScan fire];
-//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-//    if (app.autoScan.valid) {
-//        [app.autoScan invalidate];
-//    }
+    
 }
-
-
-//- (void)autoScan:(id)sender {
-//    NSLogMethodArgs(@"autoScan");
-//    [[BluetoothManager getInstance] scanPeriherals:NO AllowPrefix:@[@(ScanTypeAll)]];
-//}
 
 - (IBAction)addLock:(UIBarButtonItem *)sender event:(UIEvent *)event {
     __block BOOL isRemote = RemoteOn;
@@ -82,14 +68,18 @@
     [FTPopOverMenuConfiguration defaultConfiguration].menuWidth = 200;
     [FTPopOverMenu showFromEvent:event withMenuArray:@[title1, remoteOnString, remoteId, remoteSync] imageArray:@[@"default_add_icon-0", @"setting_switch", @"setting_switch", @"setting_switch"] doneBlock:^(NSInteger selectedIndex) {
         if (selectedIndex == 0) {
-            //            !ISALLROOM?
-            //            [self performSegueWithIdentifier:@"addRoomLock" sender:self.roomInfo]://有房间信息
-            [self performSegueWithIdentifier:@"lockAdd" sender:self.devices];
+            if ([TTSUtility isAdmin]) {
+                [self performSegueWithIdentifier:@"lockAdd" sender:self.devices];
+            } else {
+                [TTSUtility showForShortTime:1 mainTitle:@"没有管理权限" subTitle:@"请在主界面登录管理账号" complete:^{
+                }];
+            }
         } else if (selectedIndex == 1) {
             isRemote = !isRemote;
             [[NSUserDefaults standardUserDefaults] setBool:isRemote forKey:@"RemoteOn"];
             [[NSUserDefaults standardUserDefaults] synchronize];
         } else if (selectedIndex == 2) {
+            
             [self performSegueWithIdentifier:@"room2addRemote" sender:self.roomInfo];
         } else if (selectedIndex == 3) {
             //远程同步房间
@@ -183,23 +173,31 @@
 
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"验证管理员密码" message:@"必须输入管理员密码才能启用" preferredStyle:UIAlertControllerStyleAlert];
-    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.text=@"admin";
-        textField.secureTextEntry = YES;
-    }];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        if ([alert.textFields.firstObject.text isEqualToString:@"admin"]) {
-            _operationIndex = indexPath.row;
-            [self performSegueWithIdentifier:@"lockmain2detail" sender:nil];
-        }
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        return ;
-    }]];
-    [self presentViewController:alert animated:YES completion:^{
-        
-    }];
+    
+    if ([TTSUtility isAdmin]) {
+        [self performSegueWithIdentifier:@"lockAdd" sender:self.devices];
+    } else {
+        [TTSUtility showForShortTime:1 mainTitle:@"没有管理权限" subTitle:@"请在主界面登录管理账号" complete:^{
+        }];
+    }
+    
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"验证管理员密码" message:@"必须输入管理员密码才能启用" preferredStyle:UIAlertControllerStyleAlert];
+//    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+//        textField.text=@"admin";
+//        textField.secureTextEntry = YES;
+//    }];
+//    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        if ([alert.textFields.firstObject.text isEqualToString:@"admin"]) {
+//            _operationIndex = indexPath.row;
+//            [self performSegueWithIdentifier:@"lockmain2detail" sender:nil];
+//        }
+//    }]];
+//    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//        return ;
+//    }]];
+//    [self presentViewController:alert animated:YES completion:^{
+//
+//    }];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

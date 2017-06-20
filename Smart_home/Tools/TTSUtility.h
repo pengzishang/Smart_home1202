@@ -53,6 +53,13 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
 + (void)shake;
 
 
+/**
+ 是否是管理员状态
+ 
+ @return <#return value description#>
+ */
++ (BOOL)isAdmin;
+
 + (MainLeftController *)getCurrentDrawerControl;
 
 /**
@@ -74,7 +81,7 @@ typedef NS_ENUM(NSUInteger, APPLockMode) {
  */
 + (void)showForShortTime:(NSUInteger)time mainTitle:(NSString *)maintitle subTitle:(NSString *)subTitle;
 
-
++ (void)showForShortTime:(NSUInteger)time mainTitle:(NSString *)maintitle subTitle:(NSString *)subTitle complete:(void(^)(void))complete;
 /**
  开始显示一段屏幕提示
 

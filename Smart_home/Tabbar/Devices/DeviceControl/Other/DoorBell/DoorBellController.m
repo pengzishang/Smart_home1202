@@ -12,8 +12,9 @@
 #import "EditBellController.h"
 #import "MJRefresh.h"
 #import <JFGSDK/JFGSDKVideoView.h>
+#import "AppDelegate.h"
 
-@interface DoorBellController () <JFGSDKCallbackDelegate, JFGSDKPlayVideoDelegate> {
+@interface DoorBellController () <JFGSDKCallbackDelegate, JFGSDKPlayVideoDelegate,UIApplicationDelegate> {
 //    JFGSDKVideoView *playView;
 //    JFGSDKDataPoint *dataPoint;
 }
@@ -34,12 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [JFGSDK addDelegate:self];
-
-    //playView = [[JFGSDKVideoView alloc]init];
-    //    playView.center = CGPointMake(self.view.bounds.size.width*0.5, 64+300);
-    //playView.delegate = self;
-    //    [self.view addSubview:playView];
-    //    [playView getHistoryVideoList:@"500000005083"];
 
 }
 
@@ -73,6 +68,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)logout:(UIBarButtonItem *)sender {
+    AppDelegate *app = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    app.isJFGLogin = NO;
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (IBAction)addBell:(UIBarButtonItem *)sender {

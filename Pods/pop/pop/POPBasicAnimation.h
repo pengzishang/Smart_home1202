@@ -61,11 +61,11 @@
 /**
  @abstract The duration in seconds. Defaults to 0.4.
  */
-@property(assign, nonatomic) CFTimeInterval duration;
+@property (assign, nonatomic) CFTimeInterval duration;
 
 /**
  @abstract A timing function defining the pacing of the animation. Defaults to nil indicating pacing according to kCAMediaTimingFunctionDefault.
  */
-@property(strong, nonatomic) CAMediaTimingFunction *timingFunction;
+@property (strong, nonatomic) CAMediaTimingFunction *timingFunction;
 
 @end

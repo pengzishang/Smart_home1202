@@ -24,57 +24,57 @@
  @abstract The name of the animation.
  @discussion Optional property to help identify the animation.
  */
-@property(copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *name;
 
 /**
  @abstract The beginTime of the animation in media time.
  @discussion Defaults to 0 and starts immediately.
  */
-@property(assign, nonatomic) CFTimeInterval beginTime;
+@property (assign, nonatomic) CFTimeInterval beginTime;
 
 /**
  @abstract The animation delegate.
  @discussion See {@ref POPAnimationDelegate} for details.
  */
-@property(weak, nonatomic) id delegate;
+@property (weak, nonatomic) id delegate;
 
 /**
  @abstract The animation tracer.
  @discussion Returns the existing tracer, creating one if needed. Call start/stop on the tracer to toggle event collection.
  */
-@property(readonly, nonatomic) POPAnimationTracer *tracer;
+@property (readonly, nonatomic) POPAnimationTracer *tracer;
 
 /**
  @abstract Optional block called on animation start.
  */
-@property(copy, nonatomic) void (^animationDidStartBlock)(POPAnimation *anim);
+@property (copy, nonatomic) void (^animationDidStartBlock)(POPAnimation *anim);
 
 /**
  @abstract Optional block called when value meets or exceeds to value.
  */
-@property(copy, nonatomic) void (^animationDidReachToValueBlock)(POPAnimation *anim);
+@property (copy, nonatomic) void (^animationDidReachToValueBlock)(POPAnimation *anim);
 
 /**
  @abstract Optional block called on animation completion.
  */
-@property(copy, nonatomic) void (^completionBlock)(POPAnimation *anim, BOOL finished);
+@property (copy, nonatomic) void (^completionBlock)(POPAnimation *anim, BOOL finished);
 
 /**
  @abstract Optional block called each frame animation is applied.
  */
-@property(copy, nonatomic) void (^animationDidApplyBlock)(POPAnimation *anim);
+@property (copy, nonatomic) void (^animationDidApplyBlock)(POPAnimation *anim);
 
 /**
  @abstract Flag indicating whether animation should be removed on completion.
  @discussion Setting to NO can facilitate animation reuse. Defaults to YES.
  */
-@property(assign, nonatomic) BOOL removedOnCompletion;
+@property (assign, nonatomic) BOOL removedOnCompletion;
 
 /**
  @abstract Flag indicating whether animation is paused.
  @discussion A paused animation is excluded from the list of active animations. On initial creation, defaults to YES. On animation addition, the animation is implicity unpaused. On animation completion, the animation is implicity paused including for animations with removedOnCompletion set to NO.
  */
-@property(assign, nonatomic, getter = isPaused) BOOL paused;
+@property (assign, nonatomic, getter = isPaused) BOOL paused;
 
 /**
  @abstract Flag indicating whether animation autoreverses.
@@ -84,7 +84,7 @@
      2) animationDidReachToValue: is called every time the toValue is reached. The toValue is swapped with the fromValue at the end of each animation segment. This means that with autoreverses set to YES, the animationDidReachToValue: delegate method will be called a minimum of twice.
      3) animationDidStop:finished: is called every time the toValue is reached, the finished argument will be NO if the autoreverse is not yet complete.
  */
-@property(assign, nonatomic) BOOL autoreverses;
+@property (assign, nonatomic) BOOL autoreverses;
 
 /**
  @abstract The number of times to repeat the animation.
@@ -96,13 +96,13 @@
 
 When combined with the autoreverses property, a singular animation is effectively twice as long.
  */
-@property(assign, nonatomic) NSInteger repeatCount;
+@property (assign, nonatomic) NSInteger repeatCount;
 
 /**
  @abstract Repeat the animation forever.
  @discussion This property will make the animation repeat forever. The value of the repeatCount property is undefined when this property is set. The finished parameter of the delegate callback animationDidStop:finished: will always be NO.
  */
-@property(assign, nonatomic) BOOL repeatForever;
+@property (assign, nonatomic) BOOL repeatForever;
 
 @end
 
@@ -163,7 +163,7 @@ When combined with the autoreverses property, a singular animation is effectivel
 
 /**
  @abstract Returns an array containing the keys of all animations currently attached to the receiver.
- @param The order of keys reflects the order in which animations will be applied.
+ The order of keys reflects the order in which animations will be applied.
  */
 - (NSArray *)pop_animationKeys;
 

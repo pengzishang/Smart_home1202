@@ -14,17 +14,19 @@
 #import "POPDefines.h"
 #import "POPVector.h"
 
-NS_INLINE CGFloat sqrtr(CGFloat f) {
+NS_INLINE CGFloat sqrtr(CGFloat f)
+{
 #if CGFLOAT_IS_DOUBLE
-    return sqrt(f);
+  return sqrt(f);
 #else
-    return sqrtf(f);
+  return sqrtf(f);
 #endif
 }
 
 // round to nearest sub; pass 2.0 to round to every 0.5 (eg: retina pixels)
-NS_INLINE CGFloat POPSubRound(CGFloat f, CGFloat sub) {
-    return round(f * sub) / sub;
+NS_INLINE CGFloat POPSubRound(CGFloat f, CGFloat sub)
+{
+  return round(f * sub) / sub;
 }
 
 #define MIX(a, b, f) ((a) + (f) * ((b) - (a)))

@@ -160,16 +160,6 @@ Updated and maintained by Deusty LLC and the Apple development community.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>The DCPathButton use the MIT license</string>
-			<key>License</key>
-			<string>MIT</string>
-			<key>Title</key>
-			<string>DCPathButton</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
 			<string>The MIT License (MIT)
 
 Copyright (c) 2016 Liu Fengting

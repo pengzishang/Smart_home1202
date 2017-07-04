@@ -2,29 +2,85 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2759d183-e3f2-41fb-9127-8dbdccdc8022" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/JCore/libjcore-ios-1.1.2.a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/JPush/libjpush-ios-3.0.3.a" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Bugly/Bugly.framework/Bugly" afterPath="$PROJECT_DIR$/Pods/Bugly/Bugly.framework/Bugly" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Smart_home.xcodeproj/project.xcworkspace/xcuserdata/pengzishang.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/Smart_home.xcodeproj/project.xcworkspace/xcuserdata/pengzishang.xcuserdatad/UserInterfaceState.xcuserstate" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Bugly/Bugly.framework/Headers/Bugly.h" afterPath="$PROJECT_DIR$/Pods/Bugly/Bugly.framework/Headers/Bugly.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Bugly/Bugly.framework/Headers/BuglyLog.h" afterPath="$PROJECT_DIR$/Pods/Bugly/Bugly.framework/Headers/BuglyLog.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.h" afterPath="$PROJECT_DIR$/Pods/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.m" afterPath="$PROJECT_DIR$/Pods/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/CocoaAsyncSocket/Source/GCD/GCDAsyncUdpSocket.h" afterPath="$PROJECT_DIR$/Pods/CocoaAsyncSocket/Source/GCD/GCDAsyncUdpSocket.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/CocoaAsyncSocket/Source/GCD/GCDAsyncUdpSocket.m" afterPath="$PROJECT_DIR$/Pods/CocoaAsyncSocket/Source/GCD/GCDAsyncUdpSocket.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/Categories/IQUIView+Hierarchy.h" afterPath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/Categories/IQUIView+Hierarchy.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/Categories/IQUIView+Hierarchy.m" afterPath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/Categories/IQUIView+Hierarchy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/IQKeyboardManager.h" afterPath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/IQKeyboardManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/IQKeyboardManager.m" afterPath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/IQKeyboardManager.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/IQTextView/IQTextView.m" afterPath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/IQTextView/IQTextView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/IQToolbar/IQToolbar.m" afterPath="$PROJECT_DIR$/Pods/IQKeyboardManager/IQKeyboardManager/IQToolbar/IQToolbar.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/IQKeyboardManager/README.md" afterPath="$PROJECT_DIR$/Pods/IQKeyboardManager/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/JPush/JPUSHService.h" afterPath="$PROJECT_DIR$/Pods/JPush/JPUSHService.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Manifest.lock" afterPath="$PROJECT_DIR$/Pods/Manifest.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/AFNetworking.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/AFNetworking.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/AvoidCrash.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/AvoidCrash.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/BlurryModalSegue.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/BlurryModalSegue.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/CYLTableViewPlaceHolder.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/CYLTableViewPlaceHolder.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/CocoaAsyncSocket.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/CocoaAsyncSocket.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/DCPathButton.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/DCPathButton.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/FTPopOverMenu.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/FTPopOverMenu.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/IQKeyboardManager.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/IQKeyboardManager.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/MBProgressHUD.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/MBProgressHUD.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/MJRefresh.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/MJRefresh.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/MMDrawerController.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/MMDrawerController.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/MZAppearance.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/MZAppearance.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/Pods-Smart_home.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/Pods-Smart_home.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/SDWebImage.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/SDWebImage.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/UIImage+BlurredFrame.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/UIImage+BlurredFrame.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/pop.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/pop.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/IQKeyboardManager/IQKeyboardManager.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/IQKeyboardManager/IQKeyboardManager.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Smart_home/Pods-Smart_home-resources.sh" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Smart_home/Pods-Smart_home-resources.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Smart_home/Pods-Smart_home.debug.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Smart_home/Pods-Smart_home.debug.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Smart_home/Pods-Smart_home.release.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Smart_home/Pods-Smart_home.release.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/README.md" afterPath="$PROJECT_DIR$/Pods/pop/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POP.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POP.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAction.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAction.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimatableProperty.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimatableProperty.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimatableProperty.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimatableProperty.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimation.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimation.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimation.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimation.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationEvent.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationEvent.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationEvent.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationEvent.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationEventInternal.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationEventInternal.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationExtras.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationExtras.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationInternal.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationInternal.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationRuntime.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationRuntime.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationRuntime.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationRuntime.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationTracer.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationTracer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationTracer.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationTracer.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationTracerInternal.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimationTracerInternal.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimator.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimator.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimator.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimator.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPAnimatorPrivate.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPAnimatorPrivate.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPBasicAnimation.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPBasicAnimation.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPBasicAnimation.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPBasicAnimation.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPBasicAnimationInternal.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPBasicAnimationInternal.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPCGUtils.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPCGUtils.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPCGUtils.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPCGUtils.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPCustomAnimation.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPCustomAnimation.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPCustomAnimation.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPCustomAnimation.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPDecayAnimation.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPDecayAnimation.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPDecayAnimation.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPDecayAnimation.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPDecayAnimationInternal.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPDecayAnimationInternal.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPDefines.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPDefines.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPGeometry.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPGeometry.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPGeometry.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPGeometry.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPLayerExtras.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPLayerExtras.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPMath.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPMath.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPMath.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPMath.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPPropertyAnimation.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPPropertyAnimation.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPPropertyAnimation.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPPropertyAnimation.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPPropertyAnimationInternal.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPPropertyAnimationInternal.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPSpringAnimation.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPSpringAnimation.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPSpringAnimation.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPSpringAnimation.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPSpringAnimationInternal.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPSpringAnimationInternal.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPSpringSolver.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPSpringSolver.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPVector.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPVector.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/POPVector.mm" afterPath="$PROJECT_DIR$/Pods/pop/pop/POPVector.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/WebCore/FloatConversion.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/WebCore/FloatConversion.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/WebCore/TransformationMatrix.cpp" afterPath="$PROJECT_DIR$/Pods/pop/pop/WebCore/TransformationMatrix.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/WebCore/TransformationMatrix.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/WebCore/TransformationMatrix.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/pop/pop/WebCore/UnitBezier.h" afterPath="$PROJECT_DIR$/Pods/pop/pop/WebCore/UnitBezier.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Smart_home.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/Smart_home.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Smart_home.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/Smart_home.xcscheme" afterPath="$PROJECT_DIR$/Smart_home.xcodeproj/xcuserdata/pengzishang.xcuserdatad/xcschemes/Smart_home.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Smart_home/Base.lproj/Devices_Lock.storyboard" afterPath="$PROJECT_DIR$/Smart_home/Base.lproj/Devices_Lock.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Smart_home/Tabbar/Devices/DeviceControl/Lock/LockController.m" afterPath="$PROJECT_DIR$/Smart_home/Tabbar/Devices/DeviceControl/Lock/LockController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Smart_home/Base.lproj/Devices_Switch.storyboard" afterPath="$PROJECT_DIR$/Smart_home/Base.lproj/Devices_Switch.storyboard" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Smart_home/Tabbar/Devices/DevicesController.m" afterPath="$PROJECT_DIR$/Smart_home/Tabbar/Devices/DevicesController.m" />
     </list>
     <ignored path="$USER_HOME$/Library/Caches/AppCode2016.3/DerivedData/Build/Products/" />
     <ignored path="$USER_HOME$/Library/Caches/AppCode2016.3/DerivedData/Build/Intermediates/" />
@@ -48,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/Smart_home/Tools/TTSUtility.m">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="9268">
-              <caret line="662" column="35" lean-forward="false" selection-start-line="662" selection-start-column="35" selection-end-line="662" selection-end-column="35" />
+              <caret line="662" column="18" lean-forward="false" selection-start-line="662" selection-start-column="18" selection-end-line="662" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -57,8 +113,8 @@
       <file leaf-file-name="PrefixHeader.pch" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Smart_home/PrefixHeader.pch">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+            <state relative-caret-position="196">
+              <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -67,8 +123,8 @@
       <file leaf-file-name="NewRemote.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Smart_home/Tools/NewRemote.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="27" column="43" lean-forward="false" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+            <state relative-caret-position="658">
+              <caret line="50" column="45" lean-forward="true" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -166,10 +222,16 @@
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="838" />
+    <option name="height" value="834" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -189,7 +251,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Cidr.FilesView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -274,12 +335,14 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Cidr.FilesView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="CocoaPods" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -296,10 +359,16 @@
   <component name="RunManager" selected="Application.Smart_home">
     <configuration default="true" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Smart_home" TARGET_NAME="Smart_home" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Smart_home" RUN_TARGET_NAME="Smart_home" MAKE_ACTIVE="TRUE">
       <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
       <method />
     </configuration>
     <configuration default="false" name="Smart_home" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Smart_home" TARGET_NAME="Smart_home" CONFIG_NAME="Debug" SCHEME_NAME="Smart_home" RUN_TARGET_PROJECT_NAME="Smart_home" RUN_TARGET_NAME="Smart_home" MAKE_ACTIVE="TRUE">
       <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
       <method />
     </configuration>
     <list size="1">
@@ -321,11 +390,13 @@
       <workItem from="1486783775400" duration="743000" />
       <workItem from="1487227375500" duration="4214000" />
       <workItem from="1496994818899" duration="1354000" />
+      <workItem from="1498788310969" duration="837000" />
+      <workItem from="1499061778169" duration="188000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9501000" />
+    <option name="totallyTimeSpent" value="10526000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -337,28 +408,33 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="838" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="834" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.49086758" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24930556" sideWeight="0.49086758" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection Results" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4383378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.50913244" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3281046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4383378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -404,7 +480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
           <caret line="31" column="21" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -412,7 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2170">
           <caret line="155" column="11" lean-forward="true" selection-start-line="155" selection-start-column="11" selection-end-line="155" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -420,7 +494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -436,7 +509,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
           <caret line="31" column="21" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -444,7 +516,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -452,7 +523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -460,7 +530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -468,7 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="2" selection-end-line="19" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -476,7 +544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -516,7 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
           <caret line="31" column="21" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -524,7 +590,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -532,7 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -540,7 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -548,7 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="2" selection-end-line="19" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -556,7 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -598,7 +659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
           <caret line="137" column="13" lean-forward="false" selection-start-line="137" selection-start-column="13" selection-end-line="137" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -606,7 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -614,7 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -622,7 +680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
           <caret line="34" column="21" lean-forward="false" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -630,7 +687,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2058">
           <caret line="147" column="11" lean-forward="false" selection-start-line="147" selection-start-column="11" selection-end-line="147" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -638,7 +694,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -646,7 +701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
           <caret line="73" column="25" lean-forward="false" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -654,7 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="2" selection-end-line="17" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -662,7 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -725,7 +777,7 @@
     <entry file="file://$PROJECT_DIR$/Smart_home/Tools/TTSUtility.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9268">
-          <caret line="662" column="35" lean-forward="false" selection-start-line="662" selection-start-column="35" selection-end-line="662" selection-end-column="35" />
+          <caret line="662" column="18" lean-forward="false" selection-start-line="662" selection-start-column="18" selection-end-line="662" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -733,16 +785,16 @@
     <entry file="file://$PROJECT_DIR$/Smart_home/Tools/BluetoothManager.m" />
     <entry file="file://$PROJECT_DIR$/Smart_home/PrefixHeader.pch">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        <state relative-caret-position="196">
+          <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Smart_home/Tools/NewRemote.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="27" column="43" lean-forward="false" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+        <state relative-caret-position="658">
+          <caret line="50" column="45" lean-forward="true" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
           <folding />
         </state>
       </provider>

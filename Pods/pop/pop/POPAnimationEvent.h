@@ -13,20 +13,20 @@
  @abstract Enumeraton of animation event types.
  */
 typedef NS_ENUM(NSUInteger, POPAnimationEventType) {
-    kPOPAnimationEventPropertyRead = 0,
-    kPOPAnimationEventPropertyWrite,
-    kPOPAnimationEventToValueUpdate,
-    kPOPAnimationEventFromValueUpdate,
-    kPOPAnimationEventVelocityUpdate,
-    kPOPAnimationEventBouncinessUpdate,
-    kPOPAnimationEventSpeedUpdate,
-    kPOPAnimationEventFrictionUpdate,
-    kPOPAnimationEventMassUpdate,
-    kPOPAnimationEventTensionUpdate,
-    kPOPAnimationEventDidStart,
-    kPOPAnimationEventDidStop,
-    kPOPAnimationEventDidReachToValue,
-    kPOPAnimationEventAutoreversed
+  kPOPAnimationEventPropertyRead = 0,
+  kPOPAnimationEventPropertyWrite,
+  kPOPAnimationEventToValueUpdate,
+  kPOPAnimationEventFromValueUpdate,
+  kPOPAnimationEventVelocityUpdate,
+  kPOPAnimationEventBouncinessUpdate,
+  kPOPAnimationEventSpeedUpdate,
+  kPOPAnimationEventFrictionUpdate,
+  kPOPAnimationEventMassUpdate,
+  kPOPAnimationEventTensionUpdate,
+  kPOPAnimationEventDidStart,
+  kPOPAnimationEventDidStop,
+  kPOPAnimationEventDidReachToValue,
+  kPOPAnimationEventAutoreversed
 };
 
 /**
@@ -37,17 +37,17 @@ typedef NS_ENUM(NSUInteger, POPAnimationEventType) {
 /**
  @abstract The event type. See {@ref POPAnimationEventType} for possible values.
  */
-@property(readonly, nonatomic, assign) POPAnimationEventType type;
+@property (readonly, nonatomic, assign) POPAnimationEventType type;
 
 /**
  @abstract The time of event.
  */
-@property(readonly, nonatomic, assign) CFTimeInterval time;
+@property (readonly, nonatomic, assign) CFTimeInterval time;
 
 /**
  @abstract Optional string describing the animation at time of event.
  */
-@property(readonly, nonatomic, copy) NSString *animationDescription;
+@property (readonly, nonatomic, copy) NSString *animationDescription;
 
 @end
 
@@ -59,11 +59,11 @@ typedef NS_ENUM(NSUInteger, POPAnimationEventType) {
 /**
  @abstract The value recorded.
  */
-@property(readonly, nonatomic, strong) id value;
+@property (readonly, nonatomic, strong) id value;
 
 /**
  @abstract The velocity recorded, if any.
  */
-@property(readonly, nonatomic, strong) id velocity;
+@property (readonly, nonatomic, strong) id velocity;
 
 @end

@@ -14,7 +14,7 @@
 @class POPAnimation;
 
 /**
- @abstract Tracer of animation events to fasciliate unit testing & debugging.
+ @abstract Tracer of animation events to facilitate unit testing & debugging.
  */
 @interface POPAnimationTracer : NSObject
 
@@ -35,26 +35,26 @@
 
 /**
  @abstract Property representing all recorded events.
- @discussion Events are returned in order of occurence.
+ @discussion Events are returned in order of occurrence.
  */
-@property(nonatomic, assign, readonly) NSArray *allEvents;
+@property (nonatomic, assign, readonly) NSArray *allEvents;
 
 /**
  @abstract Property representing all recorded write events for convenience.
- @discussion Events are returned in order of occurence.
+ @discussion Events are returned in order of occurrence.
  */
-@property(nonatomic, assign, readonly) NSArray *writeEvents;
+@property (nonatomic, assign, readonly) NSArray *writeEvents;
 
 /**
  @abstract Queries for events of specified type.
  @param type The type of event to return.
- @returns An array of events of specified type in order of occurence.
+ @returns An array of events of specified type in order of occurrence.
  */
 - (NSArray *)eventsWithType:(POPAnimationEventType)type;
 
 /**
  @abstract Property indicating whether tracer should automatically log events and reset collection on animation completion.
  */
-@property(nonatomic, assign) BOOL shouldLogAndResetOnCompletion;
+@property (nonatomic, assign) BOOL shouldLogAndResetOnCompletion;
 
 @end

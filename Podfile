@@ -1,4 +1,4 @@
-tplatform :ios, '9.3'
+platform :ios, '9.3'
 target 'Smart_home' do
   pod 'FTPopOverMenu'
   pod 'BlurryModalSegue'
@@ -7,7 +7,6 @@ target 'Smart_home' do
   pod 'MBProgressHUD'
   pod 'MMDrawerController'
   pod 'CYLTableViewPlaceHolder'
-  pod 'DCPathButton'
   pod 'pop'
   pod 'Bugly'
   pod 'SDWebImage'

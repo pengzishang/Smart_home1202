@@ -12,6 +12,7 @@
 #import <Foundation/NSObject.h>
 
 #import <pop/POPDefines.h>
+#import <pop/POPAnimatablePropertyTypes.h>
 
 @class POPMutableAnimatableProperty;
 
@@ -41,22 +42,22 @@
  @abstract The name of the property.
  @discussion Used to uniquely identify an animatable property.
  */
-@property(readonly, nonatomic, copy) NSString *name;
+@property (readonly, nonatomic, copy) NSString *name;
 
 /**
  @abstract Block used to read values from a property into an array of floats.
  */
-@property(readonly, nonatomic, copy) void (^readBlock)(id obj, CGFloat values[]);
+@property (readonly, nonatomic, copy) POPAnimatablePropertyReadBlock readBlock;
 
 /**
  @abstract Block used to write values from an array of floats into a property.
  */
-@property(readonly, nonatomic, copy) void (^writeBlock)(id obj, const CGFloat values[]);
+@property (readonly, nonatomic, copy) POPAnimatablePropertyWriteBlock writeBlock;
 
 /**
  @abstract The threshold value used when determining completion of dynamics simulations.
  */
-@property(readonly, nonatomic, assign) CGFloat threshold;
+@property (readonly, nonatomic, assign) CGFloat threshold;
 
 @end
 
@@ -68,73 +69,73 @@
 /**
  @abstract A read-write version of POPAnimatableProperty name property.
  */
-@property(readwrite, nonatomic, copy) NSString *name;
+@property (readwrite, nonatomic, copy) NSString *name;
 
 /**
  @abstract A read-write version of POPAnimatableProperty readBlock property.
  */
-@property(readwrite, nonatomic, copy) void (^readBlock)(id obj, CGFloat values[]);
+@property (readwrite, nonatomic, copy) POPAnimatablePropertyReadBlock readBlock;
 
 /**
  @abstract A read-write version of POPAnimatableProperty writeBlock property.
  */
-@property(readwrite, nonatomic, copy) void (^writeBlock)(id obj, const CGFloat values[]);
+@property (readwrite, nonatomic, copy) POPAnimatablePropertyWriteBlock writeBlock;
 
 /**
  @abstract A read-write version of POPAnimatableProperty threshold property.
  */
-@property(readwrite, nonatomic, assign) CGFloat threshold;
+@property (readwrite, nonatomic, assign) CGFloat threshold;
 
 @end
 
 /**
  Common CALayer property names.
  */
-extern NSString *const kPOPLayerBackgroundColor;
-extern NSString *const kPOPLayerBounds;
-extern NSString *const kPOPLayerCornerRadius;
-extern NSString *const kPOPLayerBorderWidth;
-extern NSString *const kPOPLayerBorderColor;
-extern NSString *const kPOPLayerOpacity;
-extern NSString *const kPOPLayerPosition;
-extern NSString *const kPOPLayerPositionX;
-extern NSString *const kPOPLayerPositionY;
-extern NSString *const kPOPLayerRotation;
-extern NSString *const kPOPLayerRotationX;
-extern NSString *const kPOPLayerRotationY;
-extern NSString *const kPOPLayerScaleX;
-extern NSString *const kPOPLayerScaleXY;
-extern NSString *const kPOPLayerScaleY;
-extern NSString *const kPOPLayerSize;
-extern NSString *const kPOPLayerSubscaleXY;
-extern NSString *const kPOPLayerSubtranslationX;
-extern NSString *const kPOPLayerSubtranslationXY;
-extern NSString *const kPOPLayerSubtranslationY;
-extern NSString *const kPOPLayerSubtranslationZ;
-extern NSString *const kPOPLayerTranslationX;
-extern NSString *const kPOPLayerTranslationXY;
-extern NSString *const kPOPLayerTranslationY;
-extern NSString *const kPOPLayerTranslationZ;
-extern NSString *const kPOPLayerZPosition;
-extern NSString *const kPOPLayerShadowColor;
-extern NSString *const kPOPLayerShadowOffset;
-extern NSString *const kPOPLayerShadowOpacity;
-extern NSString *const kPOPLayerShadowRadius;
+extern NSString * const kPOPLayerBackgroundColor;
+extern NSString * const kPOPLayerBounds;
+extern NSString * const kPOPLayerCornerRadius;
+extern NSString * const kPOPLayerBorderWidth;
+extern NSString * const kPOPLayerBorderColor;
+extern NSString * const kPOPLayerOpacity;
+extern NSString * const kPOPLayerPosition;
+extern NSString * const kPOPLayerPositionX;
+extern NSString * const kPOPLayerPositionY;
+extern NSString * const kPOPLayerRotation;
+extern NSString * const kPOPLayerRotationX;
+extern NSString * const kPOPLayerRotationY;
+extern NSString * const kPOPLayerScaleX;
+extern NSString * const kPOPLayerScaleXY;
+extern NSString * const kPOPLayerScaleY;
+extern NSString * const kPOPLayerSize;
+extern NSString * const kPOPLayerSubscaleXY;
+extern NSString * const kPOPLayerSubtranslationX;
+extern NSString * const kPOPLayerSubtranslationXY;
+extern NSString * const kPOPLayerSubtranslationY;
+extern NSString * const kPOPLayerSubtranslationZ;
+extern NSString * const kPOPLayerTranslationX;
+extern NSString * const kPOPLayerTranslationXY;
+extern NSString * const kPOPLayerTranslationY;
+extern NSString * const kPOPLayerTranslationZ;
+extern NSString * const kPOPLayerZPosition;
+extern NSString * const kPOPLayerShadowColor;
+extern NSString * const kPOPLayerShadowOffset;
+extern NSString * const kPOPLayerShadowOpacity;
+extern NSString * const kPOPLayerShadowRadius;
 
 /**
  Common CAShapeLayer property names.
  */
-extern NSString *const kPOPShapeLayerStrokeStart;
-extern NSString *const kPOPShapeLayerStrokeEnd;
-extern NSString *const kPOPShapeLayerStrokeColor;
-extern NSString *const kPOPShapeLayerFillColor;
-extern NSString *const kPOPShapeLayerLineWidth;
-extern NSString *const kPOPShapeLayerLineDashPhase;
+extern NSString * const kPOPShapeLayerStrokeStart;
+extern NSString * const kPOPShapeLayerStrokeEnd;
+extern NSString * const kPOPShapeLayerStrokeColor;
+extern NSString * const kPOPShapeLayerFillColor;
+extern NSString * const kPOPShapeLayerLineWidth;
+extern NSString * const kPOPShapeLayerLineDashPhase;
 
 /**
  Common NSLayoutConstraint property names.
  */
-extern NSString *const kPOPLayoutConstraintConstant;
+extern NSString * const kPOPLayoutConstraintConstant;
 
 
 #if TARGET_OS_IPHONE
@@ -142,57 +143,57 @@ extern NSString *const kPOPLayoutConstraintConstant;
 /**
  Common UIView property names.
  */
-extern NSString *const kPOPViewAlpha;
-extern NSString *const kPOPViewBackgroundColor;
-extern NSString *const kPOPViewBounds;
-extern NSString *const kPOPViewCenter;
-extern NSString *const kPOPViewFrame;
-extern NSString *const kPOPViewScaleX;
-extern NSString *const kPOPViewScaleXY;
-extern NSString *const kPOPViewScaleY;
-extern NSString *const kPOPViewSize;
-extern NSString *const kPOPViewTintColor;
+extern NSString * const kPOPViewAlpha;
+extern NSString * const kPOPViewBackgroundColor;
+extern NSString * const kPOPViewBounds;
+extern NSString * const kPOPViewCenter;
+extern NSString * const kPOPViewFrame;
+extern NSString * const kPOPViewScaleX;
+extern NSString * const kPOPViewScaleXY;
+extern NSString * const kPOPViewScaleY;
+extern NSString * const kPOPViewSize;
+extern NSString * const kPOPViewTintColor;
 
 /**
  Common UIScrollView property names.
  */
-extern NSString *const kPOPScrollViewContentOffset;
-extern NSString *const kPOPScrollViewContentSize;
-extern NSString *const kPOPScrollViewZoomScale;
-extern NSString *const kPOPScrollViewContentInset;
-extern NSString *const kPOPScrollViewScrollIndicatorInsets;
+extern NSString * const kPOPScrollViewContentOffset;
+extern NSString * const kPOPScrollViewContentSize;
+extern NSString * const kPOPScrollViewZoomScale;
+extern NSString * const kPOPScrollViewContentInset;
+extern NSString * const kPOPScrollViewScrollIndicatorInsets;
 
 /**
  Common UITableView property names.
  */
-extern NSString *const kPOPTableViewContentOffset;
-extern NSString *const kPOPTableViewContentSize;
+extern NSString * const kPOPTableViewContentOffset;
+extern NSString * const kPOPTableViewContentSize;
 
 /**
  Common UICollectionView property names.
  */
-extern NSString *const kPOPCollectionViewContentOffset;
-extern NSString *const kPOPCollectionViewContentSize;
+extern NSString * const kPOPCollectionViewContentOffset;
+extern NSString * const kPOPCollectionViewContentSize;
 
 /**
  Common UINavigationBar property names.
  */
-extern NSString *const kPOPNavigationBarBarTintColor;
+extern NSString * const kPOPNavigationBarBarTintColor;
 
 /**
  Common UIToolbar property names.
  */
-extern NSString *const kPOPToolbarBarTintColor;
+extern NSString * const kPOPToolbarBarTintColor;
 
 /**
  Common UITabBar property names.
  */
-extern NSString *const kPOPTabBarBarTintColor;
+extern NSString * const kPOPTabBarBarTintColor;
 
 /**
  Common UILabel property names.
  */
-extern NSString *const kPOPLabelTextColor;
+extern NSString * const kPOPLabelTextColor;
 
 #else
 

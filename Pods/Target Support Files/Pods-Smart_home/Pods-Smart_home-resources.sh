@@ -77,16 +77,10 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "DCPathButton/DCPathButton/Sounds/bloom.caf"
-  install_resource "DCPathButton/DCPathButton/Sounds/fold.caf"
-  install_resource "DCPathButton/DCPathButton/Sounds/selected.caf"
   install_resource "IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "DCPathButton/DCPathButton/Sounds/bloom.caf"
-  install_resource "DCPathButton/DCPathButton/Sounds/fold.caf"
-  install_resource "DCPathButton/DCPathButton/Sounds/selected.caf"
   install_resource "IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
 fi

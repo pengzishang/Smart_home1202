@@ -111,10 +111,6 @@ The original TCP version (AsyncSocket) was created by Dustin Voss in January 200
 Updated and maintained by Deusty LLC and the Apple development community.
 
 
-## DCPathButton
-
-The DCPathButton use the MIT license
-
 ## FTPopOverMenu
 
 The MIT License (MIT)

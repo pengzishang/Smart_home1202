@@ -18,14 +18,13 @@ PODS:
   - BlurryModalSegue (1.1.2):
     - MZAppearance (~> 1.1.1)
     - UIImage+BlurredFrame (~> 0.0.4)
-  - Bugly (2.4.7)
-  - CocoaAsyncSocket (7.6.0)
+  - Bugly (2.4.8)
+  - CocoaAsyncSocket (7.6.1)
   - CYLTableViewPlaceHolder (1.0.8)
-  - DCPathButton (2.1.4)
   - FTPopOverMenu (1.3.3)
-  - IQKeyboardManager (4.0.9)
-  - JCore (1.1.2)
-  - JPush (3.0.3):
+  - IQKeyboardManager (4.0.10)
+  - JCore (1.1.5)
+  - JPush (3.0.6):
     - JCore (~> 1.1.1)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
@@ -42,7 +41,7 @@ PODS:
   - MMDrawerController/Subclass (0.6.0):
     - MMDrawerController/Core
   - MZAppearance (1.1.6)
-  - pop (1.0.9)
+  - pop (1.0.10)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -55,7 +54,6 @@ DEPENDENCIES:
   - Bugly
   - CocoaAsyncSocket
   - CYLTableViewPlaceHolder
-  - DCPathButton
   - FTPopOverMenu
   - IQKeyboardManager
   - JPush
@@ -69,22 +67,21 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AvoidCrash: 74136074de17bde312719c0b44fa0c9b26a4b652
   BlurryModalSegue: 35cdad34eba31228e4d84073033a9ea7d6537aa4
-  Bugly: 2c256069145f550171907c5cb1c0f84ad291f6c1
-  CocoaAsyncSocket: b9d5589f07baf9de8f34cc25abd4fcba28f13805
+  Bugly: da3c02408c14838d498429320545a8e439392978
+  CocoaAsyncSocket: 7eadd3f59e1a6c84e2aefc93e9ff7b55156fe174
   CYLTableViewPlaceHolder: 44075c119aab78bbc514c75d771d6565e19938e8
-  DCPathButton: 99c8211ef3eafc3b438c917a4c7b4502fa77eee7
   FTPopOverMenu: a12bb907b8402acc4566ce3ac85f706e09af19e8
-  IQKeyboardManager: 322c7405df3eb5f7e50dede32ea937bf3d4364e0
-  JCore: 9e9bd280a38090d66aca0a7547581cd29804c6eb
-  JPush: 8ea7c5bee363191cb5214f5d34ae11e1c5494722
+  IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
+  JCore: 9bd9c770c877c583d98b90a68792b8361974c231
+  JPush: c41be50eb1a574a66aeb68d237f00a4ec6ec3a82
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
-  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   UIImage+BlurredFrame: ad2f7195c6947ea3117c7d202f75a51958d5061a
 
-PODFILE CHECKSUM: 708e178683cb57e7ba9aad0a00a7c19ff5f88114
+PODFILE CHECKSUM: 9ba327cf87d2b86a9a0fdfd8629f4639c5f22b68
 
-COCOAPODS: 1.2.0.rc.1
+COCOAPODS: 1.2.0

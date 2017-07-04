@@ -36,11 +36,11 @@ typedef BOOL (^POPCustomAnimationBlock)(id target, POPCustomAnimation *animation
 /**
  @abstract The current animation time at time of callback.
  */
-@property(readonly, nonatomic) CFTimeInterval currentTime;
+@property (readonly, nonatomic) CFTimeInterval currentTime;
 
 /**
  @abstract The elapsed animation time since last callback.
  */
-@property(readonly, nonatomic) CFTimeInterval elapsedTime;
+@property (readonly, nonatomic) CFTimeInterval elapsedTime;
 
 @end

@@ -12,7 +12,7 @@
 #import "POPCustomAnimation.h"
 
 @interface POPCustomAnimation ()
-@property(nonatomic, copy) POPCustomAnimationBlock animate;
+@property (nonatomic, copy) POPCustomAnimationBlock animate;
 @end
 
 @implementation POPCustomAnimation
@@ -20,33 +20,38 @@
 @synthesize elapsedTime = _elapsedTime;
 @synthesize animate = _animate;
 
-+ (instancetype)animationWithBlock:(BOOL(^)(id target, POPCustomAnimation *))block {
-    POPCustomAnimation *b = [[self alloc] _init];
-    b.animate = block;
-    return b;
++ (instancetype)animationWithBlock:(BOOL(^)(id target, POPCustomAnimation *))block
+{
+  POPCustomAnimation *b = [[self alloc] _init];
+  b.animate = block;
+  return b;
 }
 
-- (id)_init {
-    self = [super _init];
-    if (nil != self) {
-        _state->type = kPOPAnimationCustom;
-    }
-    return self;
+- (id)_init
+{
+  self = [super _init];
+  if (nil != self) {
+    _state->type = kPOPAnimationCustom;
+  }
+  return self;
 }
 
-- (CFTimeInterval)beginTime {
-    POPAnimationState *s = POPAnimationGetState(self);
-    return s->startTime > 0 ? s->startTime : s->beginTime;
+- (CFTimeInterval)beginTime
+{
+  POPAnimationState *s = POPAnimationGetState(self);
+  return s->startTime > 0 ? s->startTime : s->beginTime;
 }
 
-- (BOOL)_advance:(id)object currentTime:(CFTimeInterval)currentTime elapsedTime:(CFTimeInterval)elapsedTime {
-    _currentTime = currentTime;
-    _elapsedTime = elapsedTime;
-    return _animate(object, self);
+- (BOOL)_advance:(id)object currentTime:(CFTimeInterval)currentTime elapsedTime:(CFTimeInterval)elapsedTime
+{
+  _currentTime = currentTime;
+  _elapsedTime = elapsedTime;
+  return _animate(object, self);
 }
 
-- (void)_appendDescription:(NSMutableString *)s debug:(BOOL)debug {
-    [s appendFormat:@"; elapsedTime = %f; currentTime = %f;", _elapsedTime, _currentTime];
+- (void)_appendDescription:(NSMutableString *)s debug:(BOOL)debug
+{
+  [s appendFormat:@"; elapsedTime = %f; currentTime = %f;", _elapsedTime, _currentTime];
 }
 
 @end
@@ -57,14 +62,14 @@
 @implementation POPCustomAnimation (NSCopying)
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-
-    POPCustomAnimation *copy = [super copyWithZone:zone];
-
-    if (copy) {
-        copy.animate = self.animate;
-    }
-
-    return copy;
+  
+  POPCustomAnimation *copy = [super copyWithZone:zone];
+  
+  if (copy) {
+    copy.animate = self.animate;
+  }
+  
+  return copy;
 }
 
 @end

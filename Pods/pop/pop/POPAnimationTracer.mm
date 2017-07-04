@@ -9,158 +9,184 @@
 
 #import "POPAnimationTracer.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "POPAnimationEventInternal.h"
 #import "POPAnimationInternal.h"
 #import "POPSpringAnimation.h"
 
-@implementation POPAnimationTracer {
-    __weak POPAnimation *_animation;
-    POPAnimationState *_animationState;
-    NSMutableArray *_events;
-    BOOL _animationHasVelocity;
+@implementation POPAnimationTracer
+{
+  __weak POPAnimation *_animation;
+  POPAnimationState *_animationState;
+  NSMutableArray *_events;
+  BOOL _animationHasVelocity;
 }
 @synthesize shouldLogAndResetOnCompletion = _shouldLogAndResetOnCompletion;
 
-static POPAnimationEvent *create_event(POPAnimationTracer *self, POPAnimationEventType type, id value = nil, bool recordAnimation = false) {
-    bool useLocalTime = 0 != self->_animationState->startTime;
-    CFTimeInterval time = useLocalTime
-            ? self->_animationState->lastTime - self->_animationState->startTime
-            : self->_animationState->lastTime;
+static POPAnimationEvent *create_event(POPAnimationTracer *self, POPAnimationEventType type, id value = nil, bool recordAnimation = false)
+{
+  bool useLocalTime = 0 != self->_animationState->startTime;
+  CFTimeInterval time = useLocalTime
+    ? self->_animationState->lastTime - self->_animationState->startTime
+    : self->_animationState->lastTime;
 
-    POPAnimationEvent *event;
+  POPAnimationEvent *event;
+  __strong POPAnimation* animation = self->_animation;
 
-    if (!value) {
-        event = [[POPAnimationEvent alloc] initWithType:type time:time];
-    } else {
-        event = [[POPAnimationValueEvent alloc] initWithType:type time:time value:value];
-        if (self->_animationHasVelocity) {
-            [(POPAnimationValueEvent *) event setVelocity:[(POPSpringAnimation *) self->_animation velocity]];
-        }
+  if (!value) {
+    event = [[POPAnimationEvent alloc] initWithType:type time:time];
+  } else {
+    event = [[POPAnimationValueEvent alloc] initWithType:type time:time value:value];
+    if (self->_animationHasVelocity) {
+      [(POPAnimationValueEvent *)event setVelocity:[(POPSpringAnimation *)animation velocity]];
     }
+  }
 
-    if (recordAnimation) {
-        event.animationDescription = [self->_animation description];
+  if (recordAnimation) {
+    event.animationDescription = [animation description];
+  }
+
+  return event;
+}
+
+- (id)initWithAnimation:(POPAnimation *)anAnim
+{
+  self = [super init];
+  if (nil != self) {
+    _animation = anAnim;
+    _animationState = POPAnimationGetState(anAnim);
+    _events = [[NSMutableArray alloc] initWithCapacity:50];
+    _animationHasVelocity = [anAnim respondsToSelector:@selector(velocity)];
+  }
+  return self;
+}
+
+- (void)readPropertyValue:(id)aValue
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventPropertyRead, aValue);
+  [_events addObject:event];
+}
+
+- (void)writePropertyValue:(id)aValue
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventPropertyWrite, aValue);
+  [_events addObject:event];
+}
+
+- (void)updateToValue:(id)aValue
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventToValueUpdate, aValue);
+  [_events addObject:event];
+}
+
+- (void)updateFromValue:(id)aValue
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventFromValueUpdate, aValue);
+  [_events addObject:event];
+}
+
+- (void)updateVelocity:(id)aValue
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventVelocityUpdate, aValue);
+  [_events addObject:event];
+}
+
+- (void)updateSpeed:(float)aFloat
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventSpeedUpdate, @(aFloat));
+  [_events addObject:event];
+}
+
+- (void)updateBounciness:(float)aFloat
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventBouncinessUpdate, @(aFloat));
+  [_events addObject:event];
+}
+
+- (void)updateFriction:(float)aFloat
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventFrictionUpdate, @(aFloat));
+  [_events addObject:event];
+}
+
+- (void)updateMass:(float)aFloat
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventMassUpdate, @(aFloat));
+  [_events addObject:event];
+}
+
+- (void)updateTension:(float)aFloat
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventTensionUpdate, @(aFloat));
+  [_events addObject:event];
+}
+
+- (void)didStart
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventDidStart, nil, true);
+  [_events addObject:event];
+}
+
+- (void)didStop:(BOOL)finished
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventDidStop, @(finished), true);
+  [_events addObject:event];
+
+  if (_shouldLogAndResetOnCompletion) {
+    NSLog(@"events:%@", self.allEvents);
+    [self reset];
+  }
+}
+
+- (void)didReachToValue:(id)aValue
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventDidReachToValue, aValue);
+  [_events addObject:event];
+}
+
+- (void)autoreversed
+{
+  POPAnimationEvent *event = create_event(self, kPOPAnimationEventAutoreversed);
+  [_events addObject:event];
+}
+
+- (void)start
+{
+  POPAnimationState *s = POPAnimationGetState(_animation);
+  s->tracing = true;
+}
+
+- (void)stop
+{
+  POPAnimationState *s = POPAnimationGetState(_animation);
+  s->tracing = false;
+}
+
+- (void)reset
+{
+  [_events removeAllObjects];
+}
+
+- (NSArray *)allEvents
+{
+  return [_events copy];
+}
+
+- (NSArray *)writeEvents
+{
+  return [self eventsWithType:kPOPAnimationEventPropertyWrite];
+}
+
+- (NSArray *)eventsWithType:(POPAnimationEventType)aType
+{
+  NSMutableArray *array = [NSMutableArray array];
+  for (POPAnimationEvent *event in _events) {
+    if (aType == event.type) {
+      [array addObject:event];
     }
-
-    return event;
-}
-
-- (id)initWithAnimation:(POPAnimation *)anAnim {
-    self = [super init];
-    if (nil != self) {
-        _animation = anAnim;
-        _animationState = POPAnimationGetState(anAnim);
-        _events = [[NSMutableArray alloc] initWithCapacity:50];
-        _animationHasVelocity = [anAnim respondsToSelector:@selector(velocity)];
-    }
-    return self;
-}
-
-- (void)readPropertyValue:(id)aValue {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventPropertyRead, aValue);
-    [_events addObject:event];
-}
-
-- (void)writePropertyValue:(id)aValue {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventPropertyWrite, aValue);
-    [_events addObject:event];
-}
-
-- (void)updateToValue:(id)aValue {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventToValueUpdate, aValue);
-    [_events addObject:event];
-}
-
-- (void)updateFromValue:(id)aValue {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventFromValueUpdate, aValue);
-    [_events addObject:event];
-}
-
-- (void)updateVelocity:(id)aValue {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventVelocityUpdate, aValue);
-    [_events addObject:event];
-}
-
-- (void)updateSpeed:(float)aFloat {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventSpeedUpdate, @(aFloat));
-    [_events addObject:event];
-}
-
-- (void)updateBounciness:(float)aFloat {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventBouncinessUpdate, @(aFloat));
-    [_events addObject:event];
-}
-
-- (void)updateFriction:(float)aFloat {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventFrictionUpdate, @(aFloat));
-    [_events addObject:event];
-}
-
-- (void)updateMass:(float)aFloat {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventMassUpdate, @(aFloat));
-    [_events addObject:event];
-}
-
-- (void)updateTension:(float)aFloat {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventTensionUpdate, @(aFloat));
-    [_events addObject:event];
-}
-
-- (void)didStart {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventDidStart, nil, true);
-    [_events addObject:event];
-}
-
-- (void)didStop:(BOOL)finished {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventDidStop, @(finished), true);
-    [_events addObject:event];
-
-    if (_shouldLogAndResetOnCompletion) {
-        NSLog(@"events:%@", self.allEvents);
-        [self reset];
-    }
-}
-
-- (void)didReachToValue:(id)aValue {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventDidReachToValue, aValue);
-    [_events addObject:event];
-}
-
-- (void)autoreversed {
-    POPAnimationEvent *event = create_event(self, kPOPAnimationEventAutoreversed);
-    [_events addObject:event];
-}
-
-- (void)start {
-    POPAnimationState *s = POPAnimationGetState(_animation);
-    s->tracing = true;
-}
-
-- (void)stop {
-    POPAnimationState *s = POPAnimationGetState(_animation);
-    s->tracing = false;
-}
-
-- (void)reset {
-    [_events removeAllObjects];
-}
-
-- (NSArray *)allEvents {
-    return [_events copy];
-}
-
-- (NSArray *)writeEvents {
-    return [self eventsWithType:kPOPAnimationEventPropertyWrite];
-}
-
-- (NSArray *)eventsWithType:(POPAnimationEventType)aType {
-    NSMutableArray *array = [NSMutableArray array];
-    for (POPAnimationEvent *event in _events) {
-        if (aType == event.type) {
-            [array addObject:event];
-        }
-    }
-    return array;
+  }
+  return array;
 }
 
 @end
